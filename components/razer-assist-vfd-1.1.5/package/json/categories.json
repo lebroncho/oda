@@ -1,0 +1,1472 @@
+{
+  "AccessBios": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ActivationCode": {
+    "product_id": "1585",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "AnzuAudio": {
+    "product_id": "2003",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "AnzuBTIssue": {
+    "product_id": "2003",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "AnzuFAQ": {
+    "product_id": "2003",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "AnzuPairing": {
+    "product_id": "2003",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ASCIISymbols": {
+    "product_id": "891",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "AssignMacro": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Synapse 3, Synapse 2, Headset, Keyboard, Mouse"
+  },
+  "AudioMixerSettings": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "AudioMixerSetup": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "AudioMixerUse": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "AuthorizedSeller": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "AuthSupport": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BarracudaUsbCPair": {
+    "product_id": "932",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BasiliskDongleFirmware": {
+    "product_id": "932",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BatteryLife": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BiosBoot": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "Blade14Activation": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeCrashing": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeDead": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeDeadPixel": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Laptop, Monitor"
+  },
+  "BladeGsync": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeHdmi": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeLighting": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeLowStorage": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeMaxStorageMemory": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeMonitor": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeNotWakingUp": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeOvercharge": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeRefreshRate": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeScreenFlickering": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeScreenTurnsBlack": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeSkinInstall": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeSkinRemoval": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeSystemRecovery": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeThirdPartyCharge": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeTrackpad": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BladeWifiIssue": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BloatedBattery": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BluetoothDevice": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Laptop, Headset, Keyboard, Mouse, Controller, Smart Glasses, Wearables, Other"
+  },
+  "BorderFee": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "BrokenDevice": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "MultipleCategoryA",
+    "category_2": "Systems, Monitor, Core, Peripherals, Networking, Chair,Wearables"
+  },
+  "BrokenReplacement": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "MultipleCategoryB",
+    "category_2": "Replacement Issue, Systems, Monitor, Core, Peripherals, Networking, Chair,Wearables"
+  },
+  "BrowserCookies": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "CardCharged": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "CaseStatus": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ChairCasterStuds": {
+    "product_id": "1609",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ChairRMA": {
+    "product_id": "1609",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ChairSupport": {
+    "product_id": "1609",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ChangeDeliveryAddress": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ChargingDock": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ChargingIssue": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Laptop, Headset, Keyboard, Mouse, Controller, Smart Glasses, Wearables, Other"
+  },
+  "ChargingStandXbox": {
+    "product_id": "725",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ChatExpired": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ChromaLighting": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "MultipleCategoryC",
+    "category_2": "Synapse 3, Synapse 2, Laptop, Monitor, Headset,  Keyboard, Mouse, Broadcaster, Mats, Other"
+  },
+  "ChromaLightStrip": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "CleanDevice": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "MultipleCategoryA",
+    "category_2": "Systems, Monitor, Core, Peripherals, Networking, Chair,Wearables"
+  },
+  "ConnectAgent": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ContactSupport": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ControllerSupport": {
+    "product_id": "725",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "CoreSetup": {
+    "product_id": "277",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "CoreSupport": {
+    "product_id": "277",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "CountryAvailability": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "CreateMacro": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Synapse 3, Synapse 2, Headset, Keyboard, Mouse"
+  },
+  "CreateSynapseAccount": {
+    "product_id": "1284",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "CreditRejected": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "CustomsFees": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "DebitRejected": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "DedicatedGpu": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "DeviceEncyption": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "DeviceNotDetected": {
+    "product_id": "1284",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "DgpuBlankScreen": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "DirtyMouse": {
+    "product_id": "932",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "DisassembleIskur": {
+    "product_id": "1609",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "DisplayMenu": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "DownloadFirmware": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "EchoSound": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "EthernetCable": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "EndChat": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "EnkiProFunctions": {
+    "product_id": "1609",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ErrorBsod": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ErrorCode43": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ExtendCoverage": {
+    "product_id": "1268",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "FanNoise": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "FinancingOptions": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "GamingMode": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Laptop, Keyboard, Networking"
+  },
+  "GetAccessory": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "MultipleCategoryA",
+    "category_2": "Systems, Monitor, Core, Peripherals, Networking, Chair,Wearables"
+  },
+  "Greeting": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "HammerheadTrueWireless": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "HeadCushionChromaLighting": {
+    "product_id": "1609",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "HeadCushionChromaPairing": {
+    "product_id": "1609",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "HeadsetAudioIssue": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "HeadsetCracklingNoise": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "HeadsetEarCushions": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "HeadsetNotDetected": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "HeadsetSupport": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "HelpGuide": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "HypershiftMouse": {
+    "product_id": "932",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "InstallHanbo": {
+    "product_id": "2678",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "IntermittentHanbo": {
+    "product_id": "2678",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "IskurAdjustLever": {
+    "product_id": "1609",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ItemAvailability": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KairaSupport": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KeyBinding": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Synapse 3, Synapse 2, Laptop, Keyboard, Mouse"
+  },
+  "KeyboardDemoMode": {
+    "product_id": "891",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KeyboardDifferentColor": {
+    "product_id": "891",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KeyboardNotDetected": {
+    "product_id": "891",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KeyboardSpamming": {
+    "product_id": "891",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KeyboardSupport": {
+    "product_id": "891",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KeycapFit": {
+    "product_id": "891",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KeyLightCustomization": {
+    "product_id": "691",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KeyLightSetup": {
+    "product_id": "691",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KeypressIssue": {
+    "product_id": "891",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KishiFirmware": {
+    "product_id": "725",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KishiGrips": {
+    "product_id": "725",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KiyoProFirmware": {
+    "product_id": "691",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KrakenAudioIssue": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KrakenKitty": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "KunaiSetup": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "LaptopOverheating": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "LaptopSupport": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "LaunchSurroundSound": {
+    "product_id": "1341",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "LeakingHanbo": {
+    "product_id": "2678",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "LegacyProduct": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "MultipleCategoryA",
+    "category_2": "NULL"
+  },
+  "LeviathanSupport": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "LightBleed": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "LooseHanbo": {
+    "product_id": "2678",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "LowerWattageBlade": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "LowFPS": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "MatSupport": {
+    "product_id": "916",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "MaximizeGpu": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "MicSetDefault": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "MicSupport": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "MilitaryDiscount": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ModernStandby": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "MonitorSupport": {
+    "product_id": "1220",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "MonitorUsbSpecs": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "MouseNotCharging": {
+    "product_id": "932",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "MouseProfile": {
+    "product_id": "932",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "MouseSpamming": {
+    "product_id": "932",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "MouseSupport": {
+    "product_id": "932",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "NariFAQ": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "NariPairing": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "NeedDongle": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Headset, Mouse, Controller, Other Peripherals"
+  },
+  "NetworkSupport": {
+    "product_id": "129",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "NoisyHanbo": {
+    "product_id": "2678",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "NvidiaAdvancedOptimus": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ObsMixAudio": {
+    "product_id": "1268",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "OpusPairing": {
+    "product_id": "856",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "OrderCancel": {
+    "product_id": "73",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "OrderCustoms": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "OrderNotFound": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "OrderRefund": {
+    "product_id": "35",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "OrderStatus": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "OrderSupport": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Order Issue/Delay, Refund, Order Cancellation"
+  },
+  "OverheatingHanbo": {
+    "product_id": "2678",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PairingUtility": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Headset, Mouse"
+  },
+  "PaymentMethods": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PayPalCredit": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PhoneCoolerPairing": {
+    "product_id": "284",
+    "category_0": "phone",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PhoneCoolerSettings": {
+    "product_id": "284",
+    "category_0": "phone",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PhoneCoolerSetup": {
+    "product_id": "284",
+    "category_0": "phone",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PhoneSupport": {
+    "product_id": "284",
+    "category_0": "phone",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PowerAdapterIssue": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PrivacyPolicy": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ProductRegistration": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Synapse 3, Synapse 2"
+  },
+  "ProductSupport": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PromoCode": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PurchaseProof": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PwmNotSpinning": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PwmOverheating": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "PwmSetup": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RazerAccount": {
+    "product_id": "671",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RazerGold": {
+    "product_id": "1268",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RazerCare": {
+    "product_id": "1268",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RazerRipsaw": {
+    "product_id": "691",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RazerSynapse": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Synapse 3, Synapse 2"
+  },
+  "RazerTurret": {
+    "product_id": "891",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RazerWebcam": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Laptop, Razer Kiyo"
+  },
+  "ReadingsHanbo": {
+    "product_id": "2678",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ReceiveDelivery": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RecycleDevice": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RefundRequest": {
+    "product_id": "35",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RefundStatus": {
+    "product_id": "35",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RegistrationFailed": {
+    "product_id": "671",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ReplaceKeycap": {
+    "product_id": "891",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ReturnRefundPolicy": {
+    "product_id": "35",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RgbHanbo": {
+    "product_id": "2678",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RipsawSetup": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RmaChangeAddress": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "RMA or Repair Status, Request an RMA, Repair Issue, Replacement Issue"
+  },
+  "RmaFlow": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "RmaSla": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "RMA or Repair Status, Request an RMA, Repair Issue, Replacement Issue"
+  },
+  "RmaStatus": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Repair Issue, Replacement Issue"
+  },
+  "SalesTax": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ScreenBrightness": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "SeirenSupport": {
+    "product_id": "691",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "SensitiveMic": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Headset, Razer Seiren"
+  },
+  "SerialNumber": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "MultipleCategoryA",
+    "category_2": "Systems, Monitor, Core, Peripherals, Networking, Chair,Wearables"
+  },
+  "SetupKatana": {
+    "product_id": "2851",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ShippingAddress": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "SsdScrewSize": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "StartOver": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "StreamControllerSupport": {
+    "product_id": "691",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "StreamingSupport": {
+    "product_id": "691",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "SurroundSound": {
+    "product_id": "1323",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "SynapseCrashed": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Synapse 3, Synapse 2"
+  },
+  "SynapseDialKey": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Synapse 3, Synapse 2, Keyboard"
+  },
+  "SynapseInstall": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Synapse 3, Synapse 2"
+  },
+  "SynapseLightSettings": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "MultipleCategoryC",
+    "category_2": "Synapse 3, Synapse 2, Laptop, Monitor, Headset,  Keyboard, Mouse, Broadcaster, Mats, Other"
+  },
+  "SynapseMac": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Synapse 3, Synapse 2"
+  },
+  "SynapseReinstall": {
+    "product_id": "NULL",
+    "category_0": "Multiple Categories",
+    "category_1": "NULL",
+    "category_2": "Synapse 3, Synapse 2"
+  },
+  "ThumbpadIssue": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ThunderboltDockSupport": {
+    "product_id": "1073",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ThxActivationCode": {
+    "product_id": "1585",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "THXSpatialAudio": {
+    "product_id": "1585",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "TomahawkFirmware": {
+    "product_id": "1827",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "TomahawkStorage": {
+    "product_id": "1827",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "TomahawkSupport": {
+    "product_id": "1827",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "TrackingNumber": {
+    "product_id": "9",
+    "category_0": "order",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "UnhelpfulAnswer": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "UnregisterDevice": {
+    "product_id": "671",
+    "category_0": "others",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "UpgradeMemory": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "UpgradeStorage": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "UsbPort": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "UserManual": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "VesaInstallation": {
+    "product_id": "1220",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ViperSupport": {
+    "product_id": "932",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "WarrantyCoverage": {
+    "product_id": "NULL",
+    "category_0": "N/A",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "WatchWristbandSupport": {
+    "product_id": "1035",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "Windows11Accessories": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "Windows11Difference": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "Windows11Install": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "Windows11Requirements": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "Windows11Upgrade": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "WindowsHello": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "WobblingBlade": {
+    "product_id": "281",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "WolverineDeadzone": {
+    "product_id": "725",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "WristRest": {
+    "product_id": "891",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ZephyrGap": {
+    "product_id": "2494",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ZephyrLighting": {
+    "product_id": "2494",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ZephyrOrder": {
+    "product_id": "2494",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ZephyrPairing": {
+    "product_id": "2494",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ZephyrReplaceFilter": {
+    "product_id": "2494",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ZephyrReplaceStrap": {
+    "product_id": "2494",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  },
+  "ZephyrUsage": {
+    "product_id": "2494",
+    "category_0": "product",
+    "category_1": "NULL",
+    "category_2": "NULL"
+  }
+}

@@ -1,0 +1,51 @@
+{
+    "key-input": {
+      "1": "- Keys not responding",
+      "2": "- Delayed response",
+      "3": "- Keys spamming",
+      "4": "- Wrong key input",
+      "5": "- Other issues not listed",
+      "6": "All of the above",
+      "all": "- Keys not responding</br>- Delayed response</br>- Keys spamming</br>- Wrong key input"
+    },
+    "connection": {
+      "1": "- Not detected",
+      "2": "- Detected but not in Razer Synapse",
+      "3": "- Connection drops randomly",
+      "4": "- Bluetooth not broadcasting",
+      "5": "- Dongle pairing issue",
+      "6": "- Bluetooth pairing issue",
+      "7": "- Other issues not listed",
+      "8": "All of the above",
+      "all": "- Not detected/br>- Detected but not in Razer Synapse</br>- Connection drops randomly/br>- Bluetooth not broadcasting</br>- Dongle pairing issue</br>- Bluetooth pairing issue"
+    },
+    "multimedia": {
+      "1": "- Volume knob incorrect response",
+      "2": "- Volume knob no response",
+      "3": "- No mic function",
+      "4": "- No audio function",
+      "5": "- Multimedia keys wrong response",
+      "6": "- Other issues not listed",
+      "7": "All of the above",
+      "all": "- Volume knob incorrect response</br>- Volume knob no response</br>- No mic function</br>- No audio function</br>- Multimedia keys wrong response"
+    },
+    "key-lighting": {
+      "1": "- Flickering",
+      "2": "- Lights are too dim",
+      "3": "- Lights are uneven",
+      "4": "- Wrong color",
+      "5": "- Colors not syncing",
+      "6": "- Other issues not listed",
+      "7": "All of the above",
+      "all": "- Flickering</br>- Lights are too dim</br>- Lights are uneven</br>- Wrong color</br>- Colors not syncing"
+    },
+    "power": {
+      "1": "- Stuck at X% while charging",
+      "2": "- Poor battery life",
+      "3": "- Charging too slow",
+      "4": "- Keyboard does not charge",    
+      "5": "- Other issues not listed",
+      "6": "All of the above",
+      "all": "- Stuck at X% while charging</br>- Poor battery life</br>- Charging too slow</br>- Keyboard does not charge"
+    }
+  }

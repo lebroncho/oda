@@ -1,0 +1,41 @@
+{
+  "buttons": {
+    "1": "- Buttons double clicking",
+    "2": "- Buttons spamming",
+    "3": "- Buttons do not respond when pressed",
+    "4": "- Buttons releasing while pressed",
+    "5": "- Bouncing or skipping cursor while scrolling",
+    "6": "- Other symptom not listed",
+    "7": "All of the above",
+    "all": "- Buttons double clicking</br>- Buttons spamming</br>- Buttons do not respond when pressed</br>- Buttons releasing while pressed</br>- Bouncing or skipping cursor while scrolling"
+  },
+  "connection": {
+    "1": "- Disconnection issues",
+    "2": "- Mouse does not work or is not detected",
+    "3": "- Connection drops randomly",
+    "4": "- Random freezing issues",
+    "5": "- Mouse cannot pair",
+    "6": "- Other symptom not listed",
+    "7": "All of the above",
+    "all": "- Disconnection issues</br>- Mouse does not work or is not detected</br>- Connection drops randomly</br>- Random freezing issues</br>- Mouse cannot pair"
+  },
+  "power": {
+    "1": "- Mouse does not charge",
+    "2": "- Battery drains fast",
+    "3": "- Poor battery life",
+    "4": "- Stuck at X% while charging",
+    "5": "- Mouse won't power on",
+    "6": "- Other symptom not listed",
+    "7": "All of the above",
+    "all": "- Mouse does not charge</br>- Battery drains fast</br>- Poor battery life</br>- Stuck at X% while charging</br>- Mouse won't power on"
+  },
+  "tracking": {
+    "1": "- Erratic Cursor Movement",
+    "2": "- Cursor is jumping or skipping",
+    "3": "- Cursor does not move but buttons are working",
+    "4": "- Cursor keeps disappearing",
+    "5": "- Other symptom not listed",
+    "6": "All of the above",
+    "all": "- Erratic Cursor Movement</br>- Cursor is jumping or skipping</br>- Cursor does not move but buttons are working</br>- Cursor keeps disappearing"
+  }
+}
