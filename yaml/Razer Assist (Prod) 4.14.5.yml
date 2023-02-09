@@ -3584,7 +3584,7 @@ states:
       variable: chatType
       value: "${system.config.incidentTs2Id}"
     transitions:
-      next: checkChatQueue
+      next: setContactInfo #checkChatQueue
 
   setChatQueueTS1:
     component: System.SetVariable
