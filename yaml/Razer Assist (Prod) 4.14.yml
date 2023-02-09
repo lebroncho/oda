@@ -3520,6 +3520,25 @@ states:
     transitions:
       next: checkChatQueue
 
+  # setChatQueueTSEdge:
+  #   component: System.SetVariable
+  #   properties:
+  #     variable: chatQueue
+  #     value: "${system.config.incidentTs2Id}"
+  # setChatWebIncidentTSEdge:
+  #   component: System.SetVariable
+  #   properties:
+  #     variable: webIncident
+  #     value: "My Razer Edge Handheld"
+  # setChatTypeTSEdge:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: chatType
+  #     value: "${system.config.incidentTs2Id}"
+  #   transitions:
+  #     next: checkChatQueue
+
   setChatQueueTSEdge:
     component: System.SetVariable
     properties:
