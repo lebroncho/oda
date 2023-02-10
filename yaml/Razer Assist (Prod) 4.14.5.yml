@@ -5974,7 +5974,7 @@ states:
       text: "${rb.phoneCoolerSetup}"
       keepTurn: true
     transitions:
-      next: resolveQuickAnswerPhone
+      next: quickAnswerTS1
 
   phoneCoolerPairing:
     component: System.Output
@@ -5982,7 +5982,7 @@ states:
       text: "${rb.phoneCoolerPairing}"
       keepTurn: true
     transitions:
-      next: resolveQuickAnswerPhone
+      next: quickAnswerTS1
 
   phoneCoolerSettings:
     component: System.Output
@@ -5990,7 +5990,7 @@ states:
       text: "${rb.phoneCoolerSettings}"
       keepTurn: true
     transitions:
-      next: resolveQuickAnswerPhone
+      next: quickAnswerTS1
 
   zephyrReplaceStrap:
     component: System.Output
@@ -7475,6 +7475,10 @@ states:
         exists: caseResetSerialSSL
         notexists: initiateCaseCreation
 
+  #-------------------------------------------------------------------------------
+  # Case Creation ----------------------------------------------------------------
+  #-------------------------------------------------------------------------------
+
   initiateCaseCreation:
     component: System.ConditionExists
     properties:
@@ -7833,7 +7837,7 @@ states:
         "Other Peripherals": casePeripheralOther
         "Networking": caseNetworkingSila
         "Chair": caseNetworkingChair
-        "Smart Glasses": caseNetworkingGlasses
+        "Smart Glasses": caseSmartGlasses
         "Wearables": caseNetworkingWearables
         "Razer Kiyo": casePeripheralBroadcaster
         "Razer Seiren": casePeripheralBroadcaster
@@ -7883,11 +7887,16 @@ states:
                 keyword: "6,f,F,networking,chair,wearables"
                 payload:
                   action: "networking"
-              - label: "Phone"
+              - label: "Mobile"
                 type: postback
-                keyword: "7,g,G,phone"
+                keyword: "7,g,G,mobile"
                 payload:
-                  action: "phone"
+                  action: "mobile"
+              # - label: "Phone"
+              #   type: postback
+              #   keyword: "7,g,G,phone"
+              #   payload:
+              #     action: "phone"
     transitions:
       next: intent
       actions:
@@ -7897,7 +7906,8 @@ states:
         peripherals: casePeripheral
         software: caseSoftware
         networking: caseNetworking
-        phone: casePhone
+        mobile: caseMobile
+        # phone: casePhone
 
   caseRMA:
     component: System.CommonResponse
@@ -8420,14 +8430,9 @@ states:
                 keyword: "2,b,B,chair"
                 payload:
                   action: "chair"
-              - label: "Smart Glasses"
-                type: postback
-                keyword: "3,c,C,smart glasses,glasses"
-                payload:
-                  action: "glasses"
               - label: "Wearables"
                 type: postback
-                keyword: "4,d,D,wearables"
+                keyword: "3,c,C,wearables"
                 payload:
                   action: "wearables"
     transitions:
@@ -8435,7 +8440,6 @@ states:
       actions:
         networking: caseNetworkingSila
         chair: caseNetworkingChair
-        glasses: caseNetworkingGlasses
         wearables: caseNetworkingWearables
 
   caseNetworkingSila:
@@ -8456,7 +8460,51 @@ states:
     transitions:
       next: caseSetCategoryOthers
 
-  caseNetworkingGlasses:
+  caseNetworkingWearables:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: case.category
+      value: "1035"
+    transitions:
+      next: caseSetCategoryOthers
+
+  caseMobile:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "What type of device do you need help with?"
+            actions:
+              - label: "Smart Glasses"
+                type: postback
+                keyword: "1,a,A,smartglasses,glasses"
+                payload:
+                  action: "glasses"
+              - label: "Handhelds"
+                type: postback
+                keyword: "2,b,B,handhelds"
+                payload:
+                  action: "handhelds"
+              - label: "Razer Apps"
+                type: postback
+                keyword: "3,c,C,apps"
+                payload:
+                  action: "apps"
+    transitions:
+      next: intent
+      actions:
+        glasses: caseSmartGlasses
+        handhelds: caseHandhelds
+        apps: caseApps
+
+  caseSmartGlasses:
     component: System.SetVariable
     properties:
       insightsInclude: false
@@ -8465,12 +8513,21 @@ states:
     transitions:
       next: caseSetCategoryOthers
 
-  caseNetworkingWearables:
+  caseHandhelds:
     component: System.SetVariable
     properties:
       insightsInclude: false
       variable: case.category
-      value: "1035"
+      value: "3046"
+    transitions:
+      next: caseSetCategoryOthers
+
+  caseApps:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: case.category
+      value: "1268" #placeholder id for other software
     transitions:
       next: caseSetCategoryOthers
 
