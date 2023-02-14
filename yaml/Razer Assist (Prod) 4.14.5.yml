@@ -3584,7 +3584,7 @@ states:
       variable: chatType
       value: "${system.config.incidentTs2Id}"
     transitions:
-      next: setContactInfo #checkChatQueue
+      next: checkChatQueue
 
   setChatQueueTS1:
     component: System.SetVariable
@@ -3659,7 +3659,7 @@ states:
       actions:
         chatAvailable: setContactInfo
         chatUnavailableMaxQueue: chatUnavailableMaxQueue
-        chatUnavailableHours: chatUnavailableHours
+        chatUnavailableHours: setContactInfo #chatUnavailableHours
         fail: timedOutMessage
 
   chatUnavailableMaxQueue:
