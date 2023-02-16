@@ -51,13 +51,13 @@ var loadInlayWithStoredFields = function () {
             "value": getCookie('country')
         },
         {
-            "hidden": false,
+            "hidden": true,
             "name": "c$chat_product_sku",
             "required": false,
             "value": getWarrantyInfo('productCode')
         },
         {
-            "hidden": false,
+            "hidden": true,
             "name": "c$chat_product_desc",
             "required": false,
             "value": getWarrantyInfo('product')
@@ -237,10 +237,9 @@ function getcustomerInfo(fld) {
                 break;
             default: r = '';
                 break;
-
         }
+        console.log(fld + ": " + r);
     }
-    console.log(fld + ": " + r);
     return r;
 }
 

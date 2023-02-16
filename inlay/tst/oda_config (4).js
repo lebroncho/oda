@@ -1,3 +1,5 @@
+console.log("oda-config-loaded");
+
 //additional checker to separte pay rule and core rule
 function isCorePage() {
     return true;
@@ -5,63 +7,65 @@ function isCorePage() {
 
 //function to use stored fields to generate launch form fields and launch embedded chat with these populated
 var loadInlayWithStoredFields = function () {
-    var launchFormFields = [{
-        "hidden": false,
-        "name": "FIRST_NAME",
-        "required": true,
-        "value": getcustomerInfo('fname')
-    },
-    {
-        "hidden": false,
-        "name": "LAST_NAME",
-        "required": true,
-        "value": getcustomerInfo('lname')
-    },
-    {
-        "hidden": false,
-        "name": "EMAIL",
-        "required": true,
-        "value": getcustomerInfo('email')
-    },
-    {
-        "hidden": false,
-        "name": "c$chat_serial_num",
-        "required": false,
-        "value": getWarrantyInfo('serial') || getCookie('serial_number') //fetching the stored values
-    },
-    {
-        "hidden": true,
-        "name": "SUBJECT",
-        "required": false,
-        "value": getSubject()
-    },
-    {
-        "hidden": true,
-        "name": "c$chat_region",
-        "required": false,
-        "value": getCookie('region')
-    },
-    {
-        "hidden": true,
-        "name": "c$web_country",
-        "required": false,
-        "value": getCookie('country')
-    },
-    {
-        "hidden": true,
-        "name": "c$chat_product_sku",
-        "required": false,
-        "value": getWarrantyInfo('productCode')
-    },
-    {
-        "hidden": true,
-        "name": "c$chat_product_desc",
-        "required": false,
-        "value": getWarrantyInfo('product')
-    }
+    var launchFormFields = [
+        {
+            "hidden": false,
+            "name": "FIRST_NAME",
+            "required": true,
+            "value": "" //getcustomerInfo('fname')
+        },
+        {
+            "hidden": false,
+            "name": "LAST_NAME",
+            "required": true,
+            "value": "" //getcustomerInfo('lname')
+        },
+        {
+            "hidden": false,
+            "name": "EMAIL",
+            "required": true,
+            "value": "" //getcustomerInfo('email')
+        },
+        {
+            "hidden": false,
+            "name": "c$chat_serial_num",
+            "required": false,
+            "value": getWarrantyInfo('serial') || getCookie('serial_number')
+        },
+        {
+            "hidden": true,
+            "name": "SUBJECT",
+            "required": false,
+            "value": getSubject()
+        },
+        {
+            "hidden": true,
+            "name": "c$chat_region",
+            "required": false,
+            "value": getCookie('region')
+        },
+        {
+            "hidden": true,
+            "name": "c$web_country",
+            "required": false,
+            "value": getCookie('country')
+        },
+        {
+            "hidden": false,
+            "name": "c$chat_product_sku",
+            "required": false,
+            "value": getWarrantyInfo('productCode')
+        },
+        {
+            "hidden": false,
+            "name": "c$chat_product_desc",
+            "required": false,
+            "value": getWarrantyInfo('product')
+        }
     ];
 
-    let upload_type = ['.bmp', '.gif', '.jpeg', '.jpg', '.pdf', '.png', '.BMP', '.GIF', '.JPEG', '.JPG', '.PDF', '.PNG', '.mp4', '.avi', '.mov', '.mkv'];
+    var upload_type = ['.bmp', '.doc', '.docx', '.gif', '.jpeg', '.jpg', '.pdf', '.png', '.mp4', '.avi', '.mov', '.mkv', '.JPG', '.JPEG', '.BMP', '.DOC', '.DOCX', '.GIF', '.PDF', '.PNG'];
+    //let upload_type = ['.bmp','.gif','.jpeg','.jpg','.pdf','.png','.BMP','.GIF','.JPEG','.JPG','.PDF','.PNG','.mp4','.avi','.mov','.mkv'];
 
     //function to load embedded chat with prepopulated fields
     var addInlay = function () {
@@ -70,7 +74,7 @@ var loadInlayWithStoredFields = function () {
             "inlay-oracle-chat-embedded", //id of inlay element
             {
                 // "queue-id": "270",
-                "site-url": "razer.widget.custhelp.com",
+                "site-url": "razer--tst2.widget.custhelp.com",
                 "inlay-hidden": true,
                 "title-icon-url": "https://mysupport.razer.com/euf/assets/images/razerlogo64.png",
                 "file-upload-enabled": true,
@@ -88,9 +92,11 @@ var loadInlayWithStoredFields = function () {
 
     //checks if oit is available, else adds function to load inlay to listener of oit-loaded
     if (window.oit != null) {
+        console.log("oit!=null");
         addInlay();
     } else {
         document.addEventListener('oit-loaded', function () {
+            console.log("oit-loaded");
             addInlay();
         });
     }
@@ -126,7 +132,12 @@ function getSubject() {
         case 'mouse':
             subject = 'lRps932' + createUtterance('ms');
             break;
+        // case 'system':
+        //     //subject = 'lRlt281' + createUtterance();
+        //     subject = 'RPSLPTP';
+        //     break;
         case 'edge':
+            //subject = 'RPS3DG3 HNDHLD';
             subject = 'Razer Edge Handheld';
             break;
         default:
@@ -229,5 +240,9 @@ function getcustomerInfo(fld) {
 
         }
     }
+    console.log(fld + ": " + r);
     return r;
 }
+
+//initializes the function that loads the inlay pre-chat fields and settings
+loadInlayWithStoredFields();
