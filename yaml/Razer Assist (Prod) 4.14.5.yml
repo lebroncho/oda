@@ -61,6 +61,8 @@ context:
     caseSSCategoryResetAll: "string"
     razerComOrderBag: "RazerComOrderBag"
     casePrivateNotes: "string"
+    currentFlow: "string"
+    caseCreationState: "string"
 
     ########### RAZER CORTEX VARIABLES ##########
     cortexIssue: "string"
@@ -86,6 +88,11 @@ states:
     component: "System.SetVariable"
     properties:
       variable: "casePrivateNotes"
+      value: ""
+  setCurrentFlow:
+    component: "System.SetVariable"
+    properties:
+      variable: "currentFlow"
       value: ""
   setProductModel:
     component: "System.SetVariable"
@@ -633,6 +640,12 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
+  quickAnswerTS1SetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
+  
   quickTypeTS1:
     component: System.SetVariable
     properties:
@@ -676,6 +689,12 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
+  quickAnswerTS2SetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
+
   quickTypeTS2:
     component: System.SetVariable
     properties:
@@ -719,6 +738,12 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
+  quickAnswerTSChairSetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
+
   quickTypeTSChair:
     component: System.SetVariable
     properties:
@@ -762,6 +787,12 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
+  quickAnswerTSEdgeSetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
+
   quickTypeTSEdge:
     component: System.SetVariable
     properties:
@@ -3803,6 +3834,7 @@ states:
         contactSetForChat: "agentTransfer"
         fail: "timedOutMessage"
 
+  # -- temp agent transfer
   agentTransfer:
     component: System.AgentTransfer
     properties:
@@ -7487,7 +7519,8 @@ states:
     transitions:
       actions:
         exists: caseAlreadyCreated
-        notexists: setCaseFirstName
+        # -- PATCH FOR SPECIFIC CASE CREATION FOR DIFFERENT FLOWS -- #
+        notexists: "<#if caseCreationState?? && caseCreationState.value!=''>${caseCreationState.value}<#else>setCaseFirstName</#if>"
 
   caseAlreadyCreated:
     component: System.CommonResponse
@@ -9544,6 +9577,11 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
+  RazerCortex.quickAnswerTS1SetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
   RazerCortex.quickTypeTS1:
     component: System.SetVariable
     properties:
@@ -9822,6 +9860,12 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
+  RazerAxon.quickAnswerTS1SetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
+      
   RazerAxon.quickTypeTS1:
     component: System.SetVariable
     properties:
@@ -10557,6 +10601,12 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
+  quickAnswerCSSetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
+
   RazerComOrder.quickTypeCS:
     component: System.SetVariable
     properties:
@@ -10861,6 +10911,18 @@ states:
   ############ RAZER EDGE START ###############
 
   RazerEdge.start:
+    component: "System.SetVariable"
+    properties:
+      variable: "currentFlow"
+      value: "Razer Edge"
+  #-- PATCH FOR CASE CREATION SPECIFIC FLOWS --#
+  RazerEdge.setCaseCreationState:
+    component: "System.SetVariable"
+    properties:
+      variable: "caseCreationState"
+      value: "RazerEdge.checkCaseExists"
+
+  RazerEdge.startMenu:
     component: System.CommonResponse
     properties:
       processUserMessage: true
