@@ -1,8 +1,8 @@
 ﻿<?php
 header("Access-Control-Allow-Origin: *");
 
-require_once(get_cfg_var('doc_root')."/ConnectPHP/Connect_init.php");
-initConnectAPI("api_integration","H@%ttd9945HQ");
+require_once(get_cfg_var('doc_root') . "/ConnectPHP/Connect_init.php");
+initConnectAPI("api_integration", "H@%ttd9945HQ");
 
 use RightNow\Connect\v1_3 as RNCPHP;
 
@@ -31,7 +31,8 @@ $fileContentType = trim($data->file_content_type);
 // $reportId = 105274;
 $reportId = 106257;
 
-function findProduct($productCode) {
+function findProduct($productCode)
+{
     $productQuery = "ID > 0";
     $productQuery .= " AND product_code = '$productCode'";
     $productQuery .= " AND end_of_life = 0";
@@ -39,7 +40,8 @@ function findProduct($productCode) {
     return RNCPHP\CO\Products::first($productQuery);
 }
 
-function addMessageToIncidentThread(&$p_incident, $idx, $p_text, $p_type, $c_type = 1) {
+function addMessageToIncidentThread(&$p_incident, $idx, $p_text, $p_type, $c_type = 1)
+{
     // add new message thread to incident
     // if (!isset($incident->Threads)) {
     //     $p_incident->Threads = new RNCPHP\ThreadArray();
@@ -52,7 +54,8 @@ function addMessageToIncidentThread(&$p_incident, $idx, $p_text, $p_type, $c_typ
     $p_incident->Threads[$idx]->Text = $p_text;
 }
 
-function respond($respData) {
+function respond($respData)
+{
     $_json = json_encode($respData);
     header("Content-Type: application/json; charset=UTF-8");
     header("Content-Length: " . strlen($_json));
@@ -60,7 +63,8 @@ function respond($respData) {
     echo $_json;
 }
 
-function runAnalyticsReport($sessionId) {
+function runAnalyticsReport($sessionId)
+{
     global $reportId;
     $sessionIdFilterOperator = new RNCPHP\NamedIDOptList;
     $sessionIdFilterOperator->Id = "1"; //Equal:=
@@ -74,7 +78,8 @@ function runAnalyticsReport($sessionId) {
     return $ar->run(0, $reportFilters);
 }
 
-function buildChatTranscript($sessionId) {
+function buildChatTranscript($sessionId)
+{
     $reportResults = runAnalyticsReport($sessionId);
     $nrows = $reportResults->count();
     //column headings
@@ -99,7 +104,8 @@ function buildChatTranscript($sessionId) {
     return $transcript;
 }
 
-function getRegion($region) {
+function getRegion($region)
+{
     $regionObject = null;
 
     switch ($region) {
@@ -116,7 +122,8 @@ function getRegion($region) {
     return $regionObject;
 }
 
-function getQueue($problemId) {
+function getQueue($problemId)
+{
     $queue = null;
     // $repair = [87, 97];
     $order = [9, 35, 73, 90, 98];
@@ -132,21 +139,23 @@ function getQueue($problemId) {
     } else if (in_array($problemId, $l15)) {
         $queue = 78;
     } else if (in_array($problemId, $chair)) {
-      $queue = 327;
-   }  else {
+        $queue = 327;
+    } else {
         $queue = 93;
     }
 
     return $queue;
 }
 
-function getRmaProductTo($typeId) {
+function getRmaProductTo($typeId)
+{
     $returnId = ($typeId == 860) ? 2 : 1;   //To Razer : To Customer
 
     return RNCPHP\CO\Return_Product_To::fetch($returnId);
 }
 
-function getIncidentType($problemId) {
+function getIncidentType($problemId)
+{
     $typeId = null;
     $software = [1284, 567, 671, 1323, 1585, 663, 1268, 1341];
     $mobile = [284, 2003];
@@ -171,7 +180,8 @@ function getIncidentType($problemId) {
     return $typeId;
 }
 
-function getContactReason($problemId) {
+function getContactReason($problemId)
+{
     $contactReason = null;
     $order = [9, 35, 73];
     $rma = [90, 88, 98, 101];
@@ -187,9 +197,10 @@ function getContactReason($problemId) {
     return $contactReason;
 }
 
-function getCurrentTime() {
+function getCurrentTime()
+{
     $currtime = time();
-    return date("Y-m-d H:i:s",$currtime);
+    return date("Y-m-d H:i:s", $currtime);
 }
 
 $result = array();
@@ -208,8 +219,8 @@ try {
     $incident->Product = $serviceProduct;
 
     if ($problemId == 1341 && $categoryId != 'NULL') { //Surround Sound Activation
-      $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryId));
-      $incident->Category = $serviceCategory;
+        $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryId));
+        $incident->Category = $serviceCategory;
     }
 
     $contactReason = RNCPHP\CO1\Contact_Reason::fetch(getContactReason(intval($problemId)));
@@ -228,7 +239,7 @@ try {
      * Case ICFs
      */
     // serial number, set to uppercase
-     if (!empty($serialNumber)) {
+    if (!empty($serialNumber)) {
         // SysAttrib Length of Field=20
         $serialNumber = strtoupper($serialNumber);
         $serialNumber = (strlen($serialNumber) > 20) ? substr($serialNumber, 0, 20) : $serialNumber;
@@ -317,11 +328,9 @@ try {
     if ($rmaCreated == true && $mailingId > 1) {
         RNCPHP\Mailing::SendMailingToContact($contact, $incident, $mailingId, 0);
     }
-}
-
-catch (\Exception $e) {
+} catch (\Exception $e) {
     $mm = new RNCPHP\MailMessage();
-    $mm->To->EmailAddresses = array("darwin.sardual.ext@razer.com","josh.cabiles.ext@razer.com");
+    $mm->To->EmailAddresses = array("darwin.sardual.ext@razer.com", "josh.cabiles.ext@razer.com");
     $mm->Subject = "odacasebotprocessor";
     $mm->Body->Text = $e->getMessage();
     $mm->Options->IncludeOECustomHeaders = false;
@@ -332,4 +341,3 @@ catch (\Exception $e) {
 }
 
 respond($result);
-?>

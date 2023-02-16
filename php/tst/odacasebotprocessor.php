@@ -107,19 +107,28 @@ function buildChatTranscript($sessionId)
 function getRegion($region)
 {
     $regionObject = null;
+    $regionId = null;
 
     switch ($region) {
         case 'AP':
             $regionObject = RNCPHP\CO\Region::fetch(734);
+            $regionId = 734;
             break;
         case 'EU':
             $regionObject = RNCPHP\CO\Region::fetch(733);
+            $regionId = 733;
             break;
-        default:        //Americas
+        default: //Americas
             $regionObject = RNCPHP\CO\Region::fetch(732);
+            $regionId = 732;
     }
 
-    return $regionObject;
+    return $regionId;
+}
+
+function getCountry($region)
+{
+    return $region == 'NA' ? 'us' : null;
 }
 
 function getQueue($problemId)
@@ -312,7 +321,12 @@ try {
     $incident->CustomFields->c->incident_type->id = getIncidentType(intval($problemId));
 
     $incident->CustomFields->c->incident_source = new RNCPHP\NamedIDLabel();
-    $incident->CustomFields->c->incident_source->id = 346;     //Web ODA
+    $incident->CustomFields->c->incident_source->id = 346;  //Web ODA
+
+    $incident->CustomFields->c->web_country = getCountry($region);
+
+    $incident->CustomFields->c->region = new RNCPHP\NamedIDLabel();
+    $incident->CustomFields->c->region->id = getRegion($region);
 
     // incident save
     $incident->save();
@@ -331,7 +345,7 @@ try {
 } catch (\Exception $e) {
     $mm = new RNCPHP\MailMessage();
     $mm->To->EmailAddresses = array("darwin.sardual.ext@razer.com", "josh.cabiles.ext@razer.com");
-    $mm->Subject = "odacasebotprocessor.tst";
+    $mm->Subject = "odacasebotprocessor-TST";
     $mm->Body->Text = $e->getMessage();
     $mm->Options->IncludeOECustomHeaders = false;
     $mm->Options->HonorMarketingOptIn = false;

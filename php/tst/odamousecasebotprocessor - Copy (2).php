@@ -267,25 +267,25 @@ function createMouseCaseNotes(
   $rmaFileLocalFname,
   $issueDescription
 ) {
-  $note = "<b>Device Issue:</b> " . $issue . "</br>";
-  $note .= "<b>Description:</b> " . $issueDescription . "</br>";
+  $note = "<b>Please describe your issue:</b> " . $issueDescription . "</br></br>";
+  $note .= "<b>Issue Category:</b> " . $issue . "</br>";
   if (($deviceSymptoms != '') && ($deviceSymptoms != '<not set>')) {
-    $note .= "<b>Symptoms:</b></br> " . $deviceSymptoms . "</br>";
+    $note .= "<b>Symptoms</b>:</br> " . $deviceSymptoms . "</br>";
   }
   if (($deviceConnection != '') && ($deviceConnection != '<not set>')) {
-    $note .= "<b>Connection:</b> " . $deviceConnection . "</br>";
+    $note .= "<b>How are you using the mouse?</b>: " . $deviceConnection . "</br>";
   }
   if (($deviceTsSteps != '') && ($deviceTsSteps != '<not set>')) {
-    $note .= "<b>Troubleshooting Steps:</b></br> " . $deviceTsSteps . "</br>";
+    $note .= "<b>What troubleshooting steps did you perform?</b></br> " . $deviceTsSteps . "</br>";
   }
   if (($deviceUpdated != '') && ($deviceUpdated != '<not set>')) {
-    $note .= "<b>Updated the firmware to the latest version:</b> " . $deviceUpdated . "</br>";
+    $note .= "<b>Did you update the firmware to the latest version?</b> " . $deviceUpdated . "</br>";
   }
   if (($deviceOccurrence != '') && ($deviceOccurrence != '<not set>')) {
-    $note .= "<b>Issue occured on another PC:</b> " . $deviceOccurrence . "</br>";
+    $note .= "<b>Does the issue occur on another PC?</b> " . $deviceOccurrence . "</br>";
   }
   if (!empty($fileLocalFname) && ($fileLocalFname != '<not set>')) {
-    $note .= "<b>Photo or video of the issue</b>: See Attached";
+    $note .= "<b>Please attach a short video of the issue</b>: See Attached";
   }
 
   if ($rmaType != '<not set>') {
@@ -488,7 +488,7 @@ try {
 } catch (\Exception $e) {
   $mm = new RNCPHP\MailMessage();
   $mm->To->EmailAddresses = array("josh.cabiles.ext@razer.com");
-  $mm->Subject = "odamousecasebotprocessor-TST";
+  $mm->Subject = "odamousecasebotprocessor";
   $mm->Body->Text = $e->getMessage();
   $mm->Options->IncludeOECustomHeaders = false;
   $mm->Options->HonorMarketingOptIn = false;
