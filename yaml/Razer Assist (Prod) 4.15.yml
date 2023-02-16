@@ -140,11 +140,9 @@ states:
         LaptopSupport: laptopFaqs
         TomahawkSupport: tomahawkFaqs
         CoreSupport: egpuFaqs
-        HeadsetSupport: headsetPath
         MicSupport: micSupport
         StreamingSupport: streamingFaqs
         ControllerSupport: controllerFaqs
-        KeyboardSupport: keyboardFaqs
         MatSupport: matFaqs
         MonitorSupport: monitorFaqs
         ChairSupport: chairSupport
@@ -201,20 +199,14 @@ states:
         RmaSla: rmaSla
         OrderNotFound: RazerComOrder.start
         OrderRefund: RazerComOrder.askFromUS
-        HeadsetAudioIssue: headsetAudioIssue
         KrakenAudioIssue: krakenAudioIssue
         RegistrationFailed: registrationFailed
-        KeypressIssue: keypressIssue
-        KeyboardDifferentColor: keyboardDifferentColor
         ThumbpadIssue: thumbpadIssue
         LowFPS: lowFps
         PowerAdapterIssue: powerAdapterIssue
         SynapseCrashed: synapseCrashed
-        KeyboardSpamming: keyboardSpamming
         MicSetDefault: micSetDefault
-        HeadsetCracklingNoise: headsetCracklingNoise
         SynapseDialKey: synapseDialKey
-        KeyboardNotDetected: keyboardNotDetected
         BladeDead: bladeDead
         BladeDeadPixel: bladeDeadPixel
         BladeWifiIssue: bladeWifiIssue
@@ -270,7 +262,6 @@ states:
         ChromaLightStrip: chromaLightStrip
         RipsawSetup: ripsawSetup
         GamingMode: gamingMode
-        KeyboardDemoMode: keyboardDemoMode
         IskurAdjustLever: iskurAdjustLever
         BladeSystemRecovery: bladeSystemRecovery
         BladeMaxStorageMemory: bladeMaxStorageMemory
@@ -283,7 +274,6 @@ states:
         KishiFirmware: kishiFirmware
         CreateSynapseAccount: createSynapseAccount
         ProductRegistration: productRegistration
-        HeadsetEarCushions: headsetEarCushions
         TomahawkStorage: tomahawkStorage
         ZephyrUsage: zephyrUsage
         ZephyrOrder: zephyrOrder
@@ -314,7 +304,6 @@ states:
         WobblingBlade: wobblingBlade
         ThxActivationCode: thxActivationCode
         ZephyrGap: zephyrGap
-        HeadsetNotDetected: headsetNotDetected
         WolverineDeadzone: wolverineDeadzone
         BladeMonitor: bladeMonitor
         BladeHdmi: bladeHdmi
@@ -356,12 +345,14 @@ states:
         RazerAxon: RazerAxon.quickAnswerTS1
         BlueScreen: blueScreen
         HeadStrapSetup: headStrapSetup
+        BladeBootLoop: bladeBootLoop
 
+        #------ Order-related Intents -------#
         RazerComOrder: RazerComOrder.start
         RazerComReturnOrder: RazerComOrder.RO_quickAnswerCS
         RazerComCancelOrder: RazerComOrder.CO_quickAnswerCS
 
-        #------ Mouse-related Intents ------#
+        #------ Mouse-related Intents -------#
         MouseSupport: mousePath
         MouseSpamming: mousePath
         MouseProfile: mousePath
@@ -370,7 +361,22 @@ states:
         HypershiftMouse: mousePath
         DongleBasiliskViper: dongleBasiliskViper
 
-        #---- Razer Edge-related Intents ----#
+        #----- Headset-related Intents ------#
+        HeadsetSupport: headsetPath
+        HeadsetAudioIssue: headsetPath
+        HeadsetCracklingNoise: headsetPath
+        HeadsetEarCushions: headsetPath
+        HeadsetNotDetected: headsetPath
+
+        #----- Keyboard-related Intents -----#
+        KeyboardSupport: keyboardPath
+        KeypressIssue: keyboardPath
+        KeyboardSpamming: keyboardPath
+        KeyboardNotDetected: keyboardPath
+        KeyboardDifferentColor: keyboardPath
+        KeyboardDemoMode: keyboardDemoMode
+
+        #-------- Razer Edge Intents --------#
         RazerEdge: RazerEdge.start
         RazerEdgeSetup: RazerEdge.setup
         RazerEdgeSetupGoogle: RazerEdge.setupGoogle
@@ -2630,13 +2636,103 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
-  headsetPath:
-    component: System.Output
+  keyboardPath:
+    component: System.SetVariable
     properties:
-      text: "${rb.audioSupport}"
-      keepTurn: true
+      variable: user.journey
+      value: true
+  keyboardPath2:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.secondTry
+      value: true
+  setTypeKeyboard:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.chatType
+      value: "TS1"
+  resolveKeyboardPath:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Please confirm you need help with your keyboard"
+            actions:
+              - label: "Yes"
+                type: postback
+                keyword: "a,A,y,Y"
+                payload:
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDKBRD"
+              - label: "No"
+                type: postback
+                keyword: "b,B,n,N"
+                payload:
+                  action: "No"
     transitions:
-      next: quickAnswerTS1
+      next: intent
+      actions:
+        No: rephraseQuestionPath
+        match: hiddenAction
+        cancel: errorOutput
+
+  headsetPath:
+    component: System.SetVariable
+    properties:
+      variable: user.journey
+      value: true
+  headsetPath2:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.secondTry
+      value: true
+  setTypeHeadset:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.chatType
+      value: "TS1"
+  resolveHeadsetPath:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Please confirm you need help with your headset"
+            actions:
+              - label: "Yes"
+                type: postback
+                keyword: "a,A,y,Y"
+                payload:
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDHDST"
+              - label: "No"
+                type: postback
+                keyword: "b,B,n,N"
+                payload:
+                  action: "No"
+    transitions:
+      next: intent
+      actions:
+        No: rephraseQuestionPath
+        match: hiddenAction
+        cancel: errorOutput
 
   micSupport:
     component: System.CommonResponse
@@ -3988,8 +4084,9 @@ states:
       next: setRmaTypeReplace
 
   #-------------------------------------------------------------------------------
-  # Short Answers ----------------------------------------------------------------
+  # Intent Answers Start ---------------------------------------------------------
   #-------------------------------------------------------------------------------
+
   caseStatus:
     component: System.SetVariable
     properties:
@@ -5893,7 +5990,7 @@ states:
       text: "${rb.phoneCoolerSetup}"
       keepTurn: true
     transitions:
-      next: resolveQuickAnswerPhone
+      next: quickAnswerTS1
 
   phoneCoolerPairing:
     component: System.Output
@@ -5901,7 +5998,7 @@ states:
       text: "${rb.phoneCoolerPairing}"
       keepTurn: true
     transitions:
-      next: resolveQuickAnswerPhone
+      next: quickAnswerTS1
 
   phoneCoolerSettings:
     component: System.Output
@@ -5909,7 +6006,7 @@ states:
       text: "${rb.phoneCoolerSettings}"
       keepTurn: true
     transitions:
-      next: resolveQuickAnswerPhone
+      next: quickAnswerTS1
 
   zephyrReplaceStrap:
     component: System.Output
@@ -6551,6 +6648,18 @@ states:
     transitions:
       next: quickAnswerTS1
 
+  bladeBootLoop:
+    component: System.Output
+    properties:
+      text: "${rb.bladeBootLoop}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS2
+
+  #-------------------------------------------------------------------------------
+  # Intent Answers End -----------------------------------------------------------
+  #-------------------------------------------------------------------------------
+
   queryAnsweredSurroundSound1:
     component: System.CommonResponse
     properties:
@@ -6802,7 +6911,7 @@ states:
       variable: caseSSCategoryName
       value: "No code received"
     transitions:
-      next: queryAnsweredSurroundSound2
+      next: quickAnswerTS1
 
   surroundSoundTS3Scratched:
     component: System.SetVariable
@@ -6879,7 +6988,7 @@ states:
       variable: caseSSCategoryName
       value: "Headset model not supported"
     transitions:
-      next: queryAnsweredSurroundSound2
+      next: quickAnswerTS1
 
   surroundSoundCTS3CodeScratch:
     component: System.SetVariable
@@ -7394,6 +7503,10 @@ states:
         exists: caseResetSerialSSL
         notexists: initiateCaseCreation
 
+  #-------------------------------------------------------------------------------
+  # Case Creation ----------------------------------------------------------------
+  #-------------------------------------------------------------------------------
+
   initiateCaseCreation:
     component: System.ConditionExists
     properties:
@@ -7753,7 +7866,7 @@ states:
         "Other Peripherals": casePeripheralOther
         "Networking": caseNetworkingSila
         "Chair": caseNetworkingChair
-        "Smart Glasses": caseNetworkingGlasses
+        "Smart Glasses": caseSmartGlasses
         "Wearables": caseNetworkingWearables
         "Razer Kiyo": casePeripheralBroadcaster
         "Razer Seiren": casePeripheralBroadcaster
@@ -7803,11 +7916,16 @@ states:
                 keyword: "6,f,F,networking,chair,wearables"
                 payload:
                   action: "networking"
-              - label: "Phone"
+              - label: "Mobile"
                 type: postback
-                keyword: "7,g,G,phone"
+                keyword: "7,g,G,mobile"
                 payload:
-                  action: "phone"
+                  action: "mobile"
+              # - label: "Phone"
+              #   type: postback
+              #   keyword: "7,g,G,phone"
+              #   payload:
+              #     action: "phone"
     transitions:
       next: intent
       actions:
@@ -7817,7 +7935,8 @@ states:
         peripherals: casePeripheral
         software: caseSoftware
         networking: caseNetworking
-        phone: casePhone
+        mobile: caseMobile
+        # phone: casePhone
 
   caseRMA:
     component: System.CommonResponse
@@ -8340,14 +8459,9 @@ states:
                 keyword: "2,b,B,chair"
                 payload:
                   action: "chair"
-              - label: "Smart Glasses"
-                type: postback
-                keyword: "3,c,C,smart glasses,glasses"
-                payload:
-                  action: "glasses"
               - label: "Wearables"
                 type: postback
-                keyword: "4,d,D,wearables"
+                keyword: "3,c,C,wearables"
                 payload:
                   action: "wearables"
     transitions:
@@ -8355,7 +8469,6 @@ states:
       actions:
         networking: caseNetworkingSila
         chair: caseNetworkingChair
-        glasses: caseNetworkingGlasses
         wearables: caseNetworkingWearables
 
   caseNetworkingSila:
@@ -8376,7 +8489,51 @@ states:
     transitions:
       next: caseSetCategoryOthers
 
-  caseNetworkingGlasses:
+  caseNetworkingWearables:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: case.category
+      value: "1035"
+    transitions:
+      next: caseSetCategoryOthers
+
+  caseMobile:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "What type of device do you need help with?"
+            actions:
+              - label: "Smart Glasses"
+                type: postback
+                keyword: "1,a,A,smartglasses,glasses"
+                payload:
+                  action: "glasses"
+              - label: "Handhelds"
+                type: postback
+                keyword: "2,b,B,handhelds"
+                payload:
+                  action: "handhelds"
+              - label: "Razer Apps"
+                type: postback
+                keyword: "3,c,C,apps"
+                payload:
+                  action: "apps"
+    transitions:
+      next: intent
+      actions:
+        glasses: caseSmartGlasses
+        handhelds: caseHandhelds
+        apps: caseApps
+
+  caseSmartGlasses:
     component: System.SetVariable
     properties:
       insightsInclude: false
@@ -8385,12 +8542,21 @@ states:
     transitions:
       next: caseSetCategoryOthers
 
-  caseNetworkingWearables:
+  caseHandhelds:
     component: System.SetVariable
     properties:
       insightsInclude: false
       variable: case.category
-      value: "1035"
+      value: "3046"
+    transitions:
+      next: caseSetCategoryOthers
+
+  caseApps:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: case.category
+      value: "1268" #placeholder id for other software
     transitions:
       next: caseSetCategoryOthers
 
