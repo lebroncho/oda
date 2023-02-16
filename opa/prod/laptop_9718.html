@@ -1,0 +1,946 @@
+<style type="text/css">
+	#support-map .rz_Btn {
+		display: block;
+		width: 100%;
+		max-width: 230px;
+		text-align: center;
+		font-size: 1rem;
+		line-height: 1.5rem;
+		font-weight: 400 !important;
+		letter-spacing: 0.09rem !important;
+		border-radius: 0.25rem !important;
+		padding: 0.45rem;
+		margin: 1.5rem auto;
+		white-space: normal;
+		cursor: pointer;
+		text-transform: uppercase;
+		border: 1px solid var(--color-green);
+		color: var(--color-green);
+	}
+
+	#support-map .rz_Btn:hover,
+	#support-map .rz_Btn.disabled {
+		opacity: 1;
+	}
+
+	#support-map .rz_Btn.disabled {
+		border-color: #555;
+		color: #555 !important;
+	}
+
+	#support-map input[type=radio]:checked+label.rz_Btn {
+		background-color: var(--color-green) !important;
+		color: #000 !important;
+		font-weight: 500 !important;
+	}
+
+	#support-map .list-unstyled,
+	#support-map .list-unstyled>li {
+		list-style: none !important;
+	}
+
+	#support-map .list-unstyled {
+		padding-left: 2rem;
+		margin-bottom: 1.5rem;
+	}
+
+	#support-map .list-unstyled li {
+		position: relative;
+	}
+
+	#support-map .list-unstyled input[type=checkbox] {
+		position: absolute;
+		left: -2rem;
+		top: 0.25rem;
+	}
+
+	#support-map .list-unstyled input[type=checkbox]:after {
+		border-color: var(--color-green) !important;
+		border-radius: 0.25rem !important;
+	}
+
+	#support-map .list-unstyled input[type=checkbox]:checked:before {
+		border-color: #222 !important;
+	}
+
+	#support-map .list-unstyled input[type=checkbox]:checked:after {
+		background-color: var(--color-green) !important;
+	}
+
+	#support-map input[type=radio] {
+		position: absolute;
+		opacity: 0;
+		height: 0;
+		width: 0;
+	}
+
+	.d-none {
+		display: none;
+	}
+
+</style>
+<!--<form action="https://mysupport.razer.com/app/contact-support?i=lt" id="support-map" method="POST">-->
+<form action="https://tst2.dev.mysupport.razer.com/app/contact-support?i=lt" id="support-map" method="POST">
+	<input name="case_category" type="hidden" value="laptop" />
+	<div class="row mt-5">
+		<div class="col-sm-4"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" onclick="showSection('display-issues')">Display<br />Issue</label></div>
+
+		<div class="col-sm-4"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" onclick="showSection('performance-issues')">System Performance Issue</label></div>
+
+		<div class="col-sm-4"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" onclick="showSection('power-issues')">Power &amp;<br /> Battery Issue</label></div>
+	</div>
+
+	<div class="row mb-5">
+		<div class="col-sm-4"><input id="main-tab-4" name="case_reason" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-4" onclick="showSection('software-issues')">Driver/Software Issue</label></div>
+
+		<div class="col-sm-4"><input id="main-tab-5" name="case_reason" type="radio" value="4" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-5" onclick="showSection('cosmetic-issues')">Cosmetic &amp;<br />
+				Physical Issues</label></div>
+
+		<div class="col-sm-4"><input id="main-tab-6" name="case_reason" type="radio" value="5" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-6" onclick="showSection('general-questions')">Frequently Asked Questions</label></div>
+	</div>
+
+	<div class="support_faq mb-5" id="support_faq" itemscope="" itemtype="https://schema.org/FAQPage">
+
+		<div class="ts-section d-none" id="display-issues">
+
+			<h2 class="mb-4">Display Issues</h2>
+
+			<h3>Select a symptom your laptop is experiencing:</h3>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="display-issues-1">
+				<h3 itemprop="name">Screen is not turning on but has power</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least three (3) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="3" />Connect an external monitor via HDMI to the Razer Blade. If the display issues persist, it is likely a hardware issue.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="1" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1705" target="_blank">Graphics card update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="2" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+								<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="display-issues-2">
+				<h3 itemprop="name">Screen is sluggish/Slow refresh rate</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least three (3) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="4" />Ensure the charging adapter is plugged in properly and laptop is charging.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="1" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1705" target="_blank">Graphics card update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="2" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+								<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="display-issues-3">
+				<h3 itemprop="name">Screen has intermittent flickering</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least three (3) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="4" />Ensure the charging adapter is plugged in properly and laptop is charging.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="1" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1705" target="_blank">Graphics card update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="2" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+								<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="display-issues-4">
+				<h3 itemprop="name">Screen colour is not accurate</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least three (3) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="4" />Ensure the charging adapter is plugged in properly and laptop is charging.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="1" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1705" target="_blank">Graphics card update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="5" />Perform a <a href="https://lcdtech.info/en/tests/dead.pixel.htm" target="_blank">Pixel Test</a> and look for any defective pixels. If any pixels are still defective, dead, or flickering after testing, the pixel is physically defective.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="2" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+								<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="display-issues-5">
+				<h3 itemprop="name">Backlight bleeding</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least three (3) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="4" />Ensure the charging adapter is plugged in properly and laptop is charging.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="1" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1705" target="_blank">Graphics card update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="6" />Follow this guide on <a href="https://mysupport.razer.com/app/answers/detail/a_id/1576" target="_blank">How to reduce light bleed on the Razer Blade display</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="2" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+								<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="display-issues-6">
+				<h3 itemprop="name">Dead pixel/line on screen</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least three (3) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="4" />Ensure the charging adapter is plugged in properly and laptop is charging.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="1" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1705" target="_blank">Graphics card update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="5" />Perform a <a href="https://lcdtech.info/en/tests/dead.pixel.htm" target="_blank">Pixel Test</a> and look for any defective pixels. If any pixels are still defective, dead, or flickering after testing, the pixel is physically defective.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="2" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+								<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="ts-section d-none" id="performance-issues">
+
+			<h2 class="mb-4">System Performance Issues</h2>
+
+			<h3>Select a symptom your laptop is experiencing:</h3>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="performance-issues-1">
+				<h3 itemprop="name">Blue screen appears intermittently</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="26" />Get the latest BIOS version on our <a href="https://support.razer.com/" target="_blank">Support site</a>. Simply type in your model number in the search bar.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="7" /><a href="https://mysupport.razer.com/app/answers/detail/a_id/3222" target="_blank">Troubleshoot common Blue Screen of Death (BSOD) error codes</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="1" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1705" target="_blank">Graphics card update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="8" />Attempt to remove the last software that you installed before the blue screens started to occur.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="9" />Record/Photograph down the Error code (e.g. 0x0000009F).</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="10" /><a href="https://mysupport.razer.com/app/answers/detail/a_id/1536" target="_blank">Reset the Razer Blade to its factory default settings</a>.</p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="performance-issues-2">
+				<h3 itemprop="name">Unable to power on</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least three (3) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="11" />Check if the power cable is plugged in properly and the LED indicator on the Power Charger is lit up.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="12" />Check if LED lights up on the keyboard.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="13" />Check if the LCD monitor backlight is lit up.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="14" />Check out <a href="https://mysupport.razer.com/app/answers/detail/a_id/1798" target="_blank">Razer Blade does not have power, won't boot up or turn on</a>.</p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="performance-issues-3">
+				<h3 itemprop="name">Unable to boot to Windows</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least two (2) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="15" />Check out <a href="https://mysupport.razer.com/app/answers/detail/a_id/3221" target="_blank">Razer Blade boots into BIOS but not Windows OS</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="16" />Check if there are any error message or code.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="17" />Unplug ALL peripherals connected to your laptop before powering on.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="18" />Restore BIOS to default settings.</p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="performance-issues-4">
+				<h3 itemprop="name">Lag/Low refresh rate</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least two (2) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="4" />Ensure the charging adapter is plugged in properly and laptop is charging.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="19" />Check out <a href="https://mysupport.razer.com/app/answers/detail/a_id/1460" target="_blank">How to fix low FPS when gaming</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="2" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+								<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="performance-issues-5">
+				<h3 itemprop="name">System overheating</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least two (2) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="18" />Restore BIOS to default settings.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="20" />Clean air vents.</p>
+								<ul>
+									<li>Over time, dust could accumulate within the vents that prevent them from working properly. Rest the Blade on solid flat surfaces to keep the air vents clear from obstructions and maximize airflow.</li>
+									<li>Regularly clean the Blade's air vents to prevent the accumulation of dust.</li>
+									<li>Hold the device upside down and use compressed air to dislodge any clumps of dust that are clogging the vents.</li>
+								</ul>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="2" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+								<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="ts-section d-none" id="power-issues">
+
+			<h2 class="mb-4">Power &amp; Battery Issues</h2>
+
+			<h3>Select a symptom your laptop is experiencing:</h3>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="battery-issues-1">
+				<h3 itemprop="name">Battery Swelling</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least three (3) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="21" />Check out <a href="https://mysupport.razer.com/app/answers/detail/a_id/3209" target="_blank">The battery on my Razer Blade looks swollen</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="22" />Generate battery report. Check out <a href="https://mysupport.razer.com/app/answers/detail/a_id/2198" target="_blank">How to get a Battery Report from a Razer Blade</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="23" />Prepare a video or photo that clearly shows the issue of your device.</p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="battery-issues-2">
+				<h3 itemprop="name">Battery is not charging or detected</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least three (3) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="24" />Check out <a href="https://mysupport.razer.com/app/answers/detail/a_id/393" target="_blank">The Razer Blade battery is either not charging or not detected</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="26" />Get the latest BIOS version on our <a href="https://support.razer.com/" target="_blank">Support site</a>. Simply type in your model number in the search bar.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="25" />Check for any physical damage on the charging adapter and cables.</p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="battery-issues-3">
+				<h3 itemprop="name">Battery life is short</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least three (3) solutions</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="24" />Check out <a href="https://mysupport.razer.com/app/answers/detail/a_id/4565" target="_blank">How to improve or extend the battery life of your Razer Blade</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="26" />Get the latest BIOS version on our <a href="https://support.razer.com/" target="_blank">Support site</a>. Simply type in your model number in the search bar.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="25" />Check for any physical damage on the charging adapter and cables.</p>
+							</li>
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="22" />Generate battery report. Check out <a href="https://mysupport.razer.com/app/answers/detail/a_id/2198" target="_blank">How to get a Battery Report from a Razer Blade</a>.</p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="ts-section d-none" id="software-issues">
+
+			<h2 class="mb-4">Driver/Software Issues</h2>
+
+			<h3>Select a symptom your laptop is experiencing:</h3>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="software-issues-1">
+				<h3 itemprop="name">Driver update</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least one (1) solution</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="software-issues-2">
+				<h3 itemprop="name">BIOS update</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least one (1) solution</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="26" />Get the latest BIOS version on our <a href="https://support.razer.com/" target="_blank">Support site</a>. Simply type in your model number in the search bar.</p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question" id="software-issues-3">
+				<h3 itemprop="name">Recovery Image</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<h4><strong>Solutions</strong></h4>
+
+						<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least one (1) solution</u></strong> below to contact us for support.</p>
+
+						<ul class="list-unstyled list-solutions">
+							<li>
+								<p><input name="case_solutions[]" type="checkbox" value="27" />Check out the <a href="https://mysupport.razer.com/app/answers/detail/a_id/6300" target="_blank">Razer Blade System Recovery Image Online Service</a>.</p>
+							</li>
+						</ul>
+
+						<div class="contact-supp mt-4">
+							<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+								team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="ts-section d-none" id="cosmetic-issues">
+
+			<h2 class="mb-4">Cosmetic &amp; Physical Issues</h2>
+
+			<h3>Select a symptom your laptop is experiencing:</h3>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+				<h3 itemprop="name">Screen is cracked</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<div class="contact-supp mt-1">
+							<p>Please prepare a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> that clearly shows the issue of your device before you contact our support team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+				<h3 itemprop="name">Trackpad is cracked</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<div class="contact-supp mt-1">
+							<p>Please prepare a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> that clearly shows the issue of your device before you contact our support team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+				<h3 itemprop="name">Keyboard keycap has printing issue</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<div class="contact-supp mt-1">
+							<p>Please prepare a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> that clearly shows the issue of your device before you contact our support team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+				<h3 itemprop="name">Keyboard RGB is not working as expected</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<div class="contact-supp mt-1">
+							<p>Please prepare a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> that clearly shows the issue of your device before you contact our support team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+				<h3 itemprop="name">Keyboard is not responsive/lagging</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<div class="contact-supp mt-1">
+							<p>Please prepare a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> that clearly shows the issue of your device before you contact our support team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+				<h3 itemprop="name">Trackpad is not responsive/lagging</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<div class="contact-supp mt-1">
+							<p>Please prepare a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> that clearly shows the issue of your device before you contact our support team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+				<h3 itemprop="name">Port not detected</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<div class="contact-supp mt-1">
+							<p>Please prepare a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> that clearly shows the issue of your device before you contact our support team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+				<h3 itemprop="name">Speakers are not working as expected</h3>
+				<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+						<div class="contact-supp mt-1">
+							<p>Please prepare a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> that clearly shows the issue of your device before you contact our support team.</p>
+
+							<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="ts-section d-none" id="general-questions">
+
+			<h2 class="mb-4">Frequently Asked Questions</h2>
+
+			<ol>
+				<li><a href="https://mysupport.razer.com/app/answers/detail/a_id/548" target="_blank">How to find the serial number, product number, or part number on a Razer device</a></li>
+				<li><a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">How to clean your Razer devices</a></li>
+				<li><a href="https://mysupport.razer.com/app/answers/detail/a_id/973" target="_blank">How to keep the Razer Blade at optimal temperature while gaming</a></li>
+				<li><a href="https://mysupport.razer.com/app/answers/detail/a_id/5481" target="_blank">How to identify a Razer Blade model</a></li>
+				<li><a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">How to get the latest software and driver updates from Windows</a></li>
+				<li><a href="https://mysupport.razer.com/app/answers/detail/a_id/1536" target="_blank">How to reset the Razer Blade to its factory default settings</a></li>
+				<li><a href="https://mysupport.razer.com/app/answers/detail/a_id/5421" target="_blank">How to enable Gaming Mode on a Razer Blade, keyboard, or network device</a></li>
+				<li><a href="https://mysupport.razer.com/app/answers/detail/a_id/2044" target="_blank">How to create and use a system recovery stick for the Razer Blade</a></li>
+				<li><a href="https://mysupport.razer.com/app/answers/detail/a_id/1798" target="_blank">Razer Blade does not have power, won't boot up or turn on</a></li>
+				<li><a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">How to upload and share files larger than 25 MB with Razer Support</a></li>
+			</ol>
+
+			<div class="contact-supp mt-4">
+				<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo/video</a> of the issue. Please have this before you contact our support
+					team.</p>
+
+				<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+			</div>
+
+		</div>
+	</div>
+</form>
+<script>
+	// Shows the target section and scrolls down to it on mobile view
+	function showSection(target) {
+		document.querySelectorAll(".ts-section").forEach(elem => elem.classList.add("d-none"));
+		document.querySelectorAll(".contact_support_Btn").forEach(function(elem) {
+			elem.classList.add("disabled");
+			elem.setAttribute("disabled", true);
+		});
+		document.getElementById("support-map").reset();
+		document.getElementById(target).classList.remove("d-none");
+		if (window.innerWidth < 576) {
+			$("html, body").animate({
+				scrollTop: 820
+			}, "slow");
+		}
+		// Bypasses the required count of solutions taken
+		if (target == "general-questions" || target == "cosmetic-issues") {
+			let contactBtn = document.querySelectorAll(".contact_support_Btn");
+			contactBtn.forEach(elem => elem.classList.remove("disabled"));
+			contactBtn.forEach(elem => elem.removeAttribute("disabled"));
+		}
+		return false;
+	}
+
+	// Shows the target sub-section
+	function showSubItem(target) {
+		document.querySelectorAll(".ts-sub-item").forEach(elem => elem.classList.add("d-none"));
+		document.querySelectorAll(".list-solutions input").forEach(elem => elem.checked = false);
+		document.querySelectorAll(".contact-supp").forEach(elem => elem.classList.remove("d-none"));
+		document.querySelectorAll(".contact_support_Btn").forEach(function(elem) {
+			elem.classList.add("disabled");
+			elem.setAttribute("disabled", true);
+		});
+		document.getElementById(target).classList.remove("d-none");
+		return false;
+	}
+
+	// Checks if at least the required count of solutions have been taken
+	function checkStepsTaken(section, reqCount) {
+		let solList = document.querySelectorAll("#" + section + " .list-solutions input"),
+			contactBtn = document.querySelectorAll("#" + section + " .contact_support_Btn");
+		solList.forEach(elem => elem.addEventListener("change", function() {
+			let inCount = 0;
+			for (let i = 0; i < solList.length; i++) {
+				solList[i].checked ? inCount++ : inCount;
+			}
+			// console.log(inCount);
+			if (inCount >= reqCount) {
+				contactBtn.forEach(elem => elem.classList.remove("disabled"));
+				contactBtn.forEach(elem => elem.removeAttribute("disabled"));
+			} else {
+				contactBtn.forEach(elem => elem.classList.add("disabled"));
+				contactBtn.forEach(elem => elem.setAttribute("disabled", true));
+			};
+		}));
+	}
+
+	// Stores the checked field values in localStorage
+	function setCaseInfo() {
+		localStorage.setItem("case_category", document.getElementsByName("case_category")[0].value);
+		localStorage.setItem("case_reason", getValues("case_reason"));
+		localStorage.setItem("case_symptoms", getValues("case_symptoms[]", true));
+		localStorage.setItem("case_connection", getValues("case_connection"));
+		localStorage.setItem("case_solutions", getValues("case_solutions[]", true));
+	}
+
+	function getValues(key, multiple = false) {
+		let data = document.getElementsByName(key),
+			value = 'unspecified',
+			valArr = [];
+		if (data.length > 0) {
+			for (let i = 0; i < data.length; i++) {
+				if (data[i].checked) {
+					multiple ? valArr.push(data[i].value) : value = data[i].value;
+				}
+			}
+		}
+		if (multiple) {
+			return JSON.stringify(valArr);
+		}
+		return value;
+	}
+
+	document.addEventListener("DOMContentLoaded", function() {
+		// Inserts additional actions upon form submission
+		document.getElementById("support-map").addEventListener("submit", function(e) {
+			// e.preventDefault();
+			setCaseInfo();
+		});
+		// Initializes the required steps per section before enabling the contact support button
+		checkStepsTaken("display-issues-1", 3);
+		checkStepsTaken("display-issues-2", 3);
+		checkStepsTaken("display-issues-3", 3);
+		checkStepsTaken("display-issues-4", 3);
+		checkStepsTaken("display-issues-5", 3);
+		checkStepsTaken("display-issues-6", 3);
+		checkStepsTaken("performance-issues-1", 4);
+		checkStepsTaken("performance-issues-2", 3);
+		checkStepsTaken("performance-issues-3", 2);
+		checkStepsTaken("performance-issues-4", 2);
+		checkStepsTaken("performance-issues-5", 2);
+		checkStepsTaken("battery-issues-1", 3);
+		checkStepsTaken("battery-issues-2", 3);
+		checkStepsTaken("battery-issues-3", 3);
+		checkStepsTaken("software-issues-1", 1);
+		checkStepsTaken("software-issues-2", 1);
+		checkStepsTaken("software-issues-3", 1);
+	});
+
+</script>
