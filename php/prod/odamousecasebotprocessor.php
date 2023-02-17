@@ -270,10 +270,10 @@ function createMouseCaseNotes(
   $note = "<b>Please describe your issue:</b> " . $issueDescription . "</br></br>";
   $note .= "<b>Issue Category:</b> " . $issue . "</br>";
   if (($deviceSymptoms != '') && ($deviceSymptoms != '<not set>')) {
-    $note .= "<b>Symptoms</b>:</br> " . $deviceSymptoms . "</br>";
+    $note .= "<b>Symptoms:</b></br> " . $deviceSymptoms . "</br>";
   }
   if (($deviceConnection != '') && ($deviceConnection != '<not set>')) {
-    $note .= "<b>How are you using the mouse?</b>: " . $deviceConnection . "</br>";
+    $note .= "<b>How are you using the device?</b> " . $deviceConnection . "</br>";
   }
   if (($deviceTsSteps != '') && ($deviceTsSteps != '<not set>')) {
     $note .= "<b>What troubleshooting steps did you perform?</b></br> " . $deviceTsSteps . "</br>";
@@ -285,7 +285,7 @@ function createMouseCaseNotes(
     $note .= "<b>Does the issue occur on another PC?</b> " . $deviceOccurrence . "</br>";
   }
   if (!empty($fileLocalFname) && ($fileLocalFname != '<not set>')) {
-    $note .= "<b>Please attach a short video of the issue</b>: See Attached";
+    $note .= "<b>Photo or video of the issue</b>: See Attached";
   }
 
   if ($rmaType != '<not set>') {
@@ -488,7 +488,7 @@ try {
 } catch (\Exception $e) {
   $mm = new RNCPHP\MailMessage();
   $mm->To->EmailAddresses = array("josh.cabiles.ext@razer.com");
-  $mm->Subject = "odacasebotprocessor";
+  $mm->Subject = "odamousecasebotprocessor";
   $mm->Body->Text = $e->getMessage();
   $mm->Options->IncludeOECustomHeaders = false;
   $mm->Options->HonorMarketingOptIn = false;
