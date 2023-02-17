@@ -100,7 +100,6 @@ var loadInlayWithStoredFields = function () {
 function getSubject() {
     var subject = '';
     var reason = getWarrantyInfo('family');
-    console.log(reason);
 
     switch (reason) {
         case '7.1 surround sound':
@@ -115,14 +114,20 @@ function getSubject() {
                 subject = 'Order Support';
             }
             break;
+        case 'audio':
         case 'headset':
         case 'headsets':
+        case 'headphone':
+        case 'headphones':
             subject = 'lRhs856' + createUtterance();
             break;
+        case 'keypad':
+        case 'keypads':
         case 'keyboard':
         case 'keyboards':
             subject = 'lRkb891' + createUtterance();
             break;
+        case 'mice':
         case 'mouse':
             subject = 'lRps932' + createUtterance('ms');
             break;
