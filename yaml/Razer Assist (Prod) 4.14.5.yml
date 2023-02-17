@@ -309,12 +309,12 @@ states:
         RazerAxon: RazerAxon.quickAnswerTS1
         BlueScreen: blueScreen
 
-        #------ Order-related Intents ------#
+        #------ Order-related Intents -------#
         RazerComOrder: RazerComOrder.start
         RazerComReturnOrder: RazerComOrder.RO_quickAnswerCS
         RazerComCancelOrder: RazerComOrder.CO_quickAnswerCS
 
-        #------ Mouse-related Intents ------#
+        #------ Mouse-related Intents -------#
         MouseSupport: mousePath
         MouseSpamming: mousePath
         MouseProfile: mousePath
@@ -323,7 +323,7 @@ states:
         HypershiftMouse: mousePath
         DongleBasiliskViper: dongleBasiliskViper
 
-        #----- Headset-related Intents -----#
+        #----- Headset-related Intents ------#
         HeadsetSupport: headsetPath
         HeadsetAudioIssue: headsetPath
         HeadsetCracklingNoise: headsetPath
@@ -338,7 +338,7 @@ states:
         KeyboardDifferentColor: keyboardPath
         KeyboardDemoMode: keyboardDemoMode
 
-        #---- Razer Edge-related Intents ----#
+        #-------- Razer Edge Intents --------#
         RazerEdge: RazerEdge.start
         RazerEdgeSetup: RazerEdge.setup
         RazerEdgeSetupGoogle: RazerEdge.setupGoogle
@@ -2685,14 +2685,6 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
-  # headsetPath:
-  #   component: System.Output
-  #   properties:
-  #     text: "${rb.audioSupport}"
-  #     keepTurn: true
-  #   transitions:
-  #     next: quickAnswerTS1
-
   headsetPath:
     component: System.SetVariable
     properties:
@@ -4101,8 +4093,9 @@ states:
       next: setRmaTypeReplace
 
   #-------------------------------------------------------------------------------
-  # Short Answers ----------------------------------------------------------------
+  # Intent Answers Start ---------------------------------------------------------
   #-------------------------------------------------------------------------------
+
   caseStatus:
     component: System.SetVariable
     properties:
@@ -6664,6 +6657,18 @@ states:
     transitions:
       next: quickAnswerTS1
 
+  bladeBootLoop:
+    component: System.Output
+    properties:
+      text: "${rb.bladeBootLoop}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS2
+
+  #-------------------------------------------------------------------------------
+  # Intent Answers End -----------------------------------------------------------
+  #-------------------------------------------------------------------------------
+
   queryAnsweredSurroundSound1:
     component: System.CommonResponse
     properties:
@@ -6915,7 +6920,7 @@ states:
       variable: caseSSCategoryName
       value: "No code received"
     transitions:
-      next: queryAnsweredSurroundSound2
+      next: quickAnswerTS1
 
   surroundSoundTS3Scratched:
     component: System.SetVariable
@@ -6992,7 +6997,7 @@ states:
       variable: caseSSCategoryName
       value: "Headset model not supported"
     transitions:
-      next: queryAnsweredSurroundSound2
+      next: quickAnswerTS1
 
   surroundSoundCTS3CodeScratch:
     component: System.SetVariable
@@ -9865,7 +9870,7 @@ states:
     properties:
       variable: "caseCreationState"
       value: "setCaseFirstName"
-      
+
   RazerAxon.quickTypeTS1:
     component: System.SetVariable
     properties:
