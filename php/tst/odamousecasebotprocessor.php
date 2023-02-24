@@ -285,11 +285,11 @@ function createMouseCaseNotes(
     $note .= "<b>Does the issue occur on another PC?</b> " . $deviceOccurrence . "</br>";
   }
   if (!empty($fileLocalFname) && ($fileLocalFname != '<not set>')) {
-    $note .= "<b>Photo or video of the issue</b>: See Attached";
+    $note .= "<b>Photo or video of the issue:</b> See Attached</br>";
   }
 
-  if ($rmaType != '<not set>') {
-    $note .= "</br></br><b>Replacement Option:</b> " . $rmaType . "</br>";
+  if (($rmaType != '') && ($rmaType != '<not set>')) {
+    $note .= "</br><b>Replacement Option:</b> " . $rmaType . "</br>";
     $note .= "<b>Terms & Conditions:</b> Yes</br>";
     $note .= "<b>Phone:</b> " . $rmaPhone . "</br>";
     $note .= "<b>Shipping Address:</b> " . $rmaShippingAddress . "</br>";
@@ -297,12 +297,12 @@ function createMouseCaseNotes(
     $note .= "<b>Date of Purchase:</b> " . $rmaPurchaseDate . "</br>";
     $note .= "<b>Place of Purchase:</b> " . $rmaPurchasePlace . "</br>";
     if (!empty($rmaFileLocalFname) && ($rmaFileLocalFname != '<not set>')) {
-      $note .= "<b>Proof of Purchase</b>: See Attached";
+      $note .= "<b>Proof of Purchase:</b> See Attached";
     }
   }
 
-  if ($rmaCity != '<not set>') {
-    $note .= "</br></br><b>Replacement Option:</b> Standard</br>";
+  if (($rmaCity != '') && ($rmaCity != '<not set>')) {
+    $note .= "</br><b>Replacement Option:</b> Standard</br>";
     $note .= "<b>Phone:</b> " . $rmaPhone . "</br>";
     $note .= "<b>Street Address:</b> " . $rmaStreetAddress . "</br>";
     $note .= "<b>City:</b> " . $rmaCity . "</br>";
@@ -312,7 +312,7 @@ function createMouseCaseNotes(
     $note .= "<b>Date of Purchase:</b> " . $rmaPurchaseDate . "</br>";
     $note .= "<b>Place of Purchase:</b> " . $rmaPurchasePlace . "</br>";
     if (!empty($rmaFileLocalFname) && ($rmaFileLocalFname != '<not set>')) {
-      $note .= "<b>Proof of Purchase</b>: See Attached";
+      $note .= "<b>Proof of Purchase:</b> See Attached";
     }
   }
 
