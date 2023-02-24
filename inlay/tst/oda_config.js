@@ -121,14 +121,22 @@ function getSubject() {
                 subject = 'Order Support';
             }
             break;
+        case 'audio':
         case 'headset':
         case 'headsets':
+        case 'earphone':
+        case 'earphones':
+        case 'headphone':
+        case 'headphones':
             subject = 'lRhs856' + createUtterance();
             break;
+        case 'keypad':
+        case 'keypads':
         case 'keyboard':
         case 'keyboards':
             subject = 'lRkb891' + createUtterance();
             break;
+        case 'mice':
         case 'mouse':
             subject = 'lRps932' + createUtterance('ms');
             break;

@@ -117,6 +117,8 @@ function getSubject() {
         case 'audio':
         case 'headset':
         case 'headsets':
+        case 'earphone':
+        case 'earphones':
         case 'headphone':
         case 'headphones':
             subject = 'lRhs856' + createUtterance();
