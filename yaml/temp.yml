@@ -31,6 +31,31 @@ Here's a summary of your selection from our support site:<br /><br />
 <#if skill.rmaShippingAddress.value??><b>Shipping Address</b>: ${skill.rmaShippingAddress}<br /></#if>
 <#if skill.file.value??><b>File</b>: ${skill.fileTitle}</#if>
 
+<b>Name</b>: ${skill.firstName} ${skill.lastName}<br />
+<b>Email</b>: ${skill.email?lower_case}<br />
+<#if skill.serialNumber.value?? && skill.serialNumber.value!='-'><b>Serial Number</b>: ${skill.serialNumber}<br /></#if>
+<#if skill.productNumber.value?? && skill.productNumber.value!='-'><b>Product</b>: ${skill.productNumber}<br /></#if>
+<#if skill.productDescription.value?? && skill.productDescription.value!='-'><b>Product Description</b>: ${skill.productDescription}<br /></#if>
+<b>Device Issue</b>: ${skill.deviceIssue}<br />
+<b>Description</b>: ${skill.issueDescription}<br />
+<#if skill.deviceSymptoms.value?? && skill.deviceSymptoms.value!=''><b>Symptoms</b>: <br />${skill.deviceSymptoms}<br /></#if>
+<#if skill.deviceConnection.value?? && skill.deviceConnection.value!=''><b>Connection</b>: ${skill.deviceConnection}<br /></#if>
+<#if skill.deviceTsSteps.value?? && skill.deviceTsSteps.value!=''><b>Troubleshooting Steps</b>: <br />${skill.deviceTsSteps}<br /></#if>
+<#if skill.deviceUpdated.value??><b>Updated the firmware to the latest version</b>: ${skill.deviceUpdated}<br /></#if>
+<#if skill.deviceOccurrence.value??><b>Issue occured on another PC</b>: ${skill.deviceOccurrence}<br /></#if>
+<#if skill.rmaShippingAddress.value?? && skill.rmaShippingAddress.value!='-'><b>Shipping Address</b>: ${skill.rmaShippingAddress}<br /></#if>
+<#if skill.file.value??><b>File</b>: ${skill.fileTitle}</#if>
+
+(street, city, state/province, zip code, country)
+<#if skill.rmaCity.value?? && skill.rmaCity.value!=''>
+<#if skill.rmaStreetAddress.value?? && skill.rmaStreetAddress.value!=''>${skill.rmaStreetAddress}, </#if>
+<#if skill.rmaCity.value?? && skill.rmaCity.value!=''>${skill.rmaCity}, </#if>
+<#if skill.rmaStateProvince.value?? && skill.rmaStateProvince.value!=''>${skill.rmaStateProvince}, </#if>
+<#if skill.rmaZipPostal.value?? && skill.rmaZipPostal.value!=''>${skill.rmaZipPostal}, </#if>
+<#if skill.rmaCountry.value?? && skill.rmaCountry.value!=''>${skill.rmaCountry}</#if>
+<#else>-</#if>
+
+${(user.caseDataConfirmed)!'false'}
 ${(user.resetAction)!'false'}
 
 ${rb.tsStepsHeading1}
@@ -56,9 +81,12 @@ caseConnection
 "Bluetooth"
 "USB Dongle"
 
-
 <#list profile.contactInfo.value.customFields as p><#if p.name=='Chat Region'>${p.value}</#if></#list>
 <#if (profile.contactInfo)??><#list profile.contactInfo.value.customFields as p><#if p.name=='Chat Region'>${p.value}</#if></#list><#else>na</#if>
+
+${skill.system.nlpresult.value.coreTerms}
+/app/answers/list
+/app/answers/detail/a_id
 
 ${skill.system.config.da.caseCreated}
 ${(user.caseCreated)!'false'}
@@ -80,6 +108,8 @@ ${user.caseConnection.value}
 ${user.caseTsSteps.value}
 
 <#if user.caseIssue.value=='Cosmetic & Physical Issues'>true<#else>false</#if>
+<#if user.caseIssue.value=='Power & Battery Issues' || user.caseIssue.value=='Battery Issues'>true<#else>false</#if>
+<#if user.caseIssue.value=='Cosmetic & Physical Issues' || user.caseIssue.value=='Cosmetic Issues' || user.caseIssue.value=='General Product Questions'>true<#else>false</#if>
 <#if skill.issueDescription.value?? && skill.issueDescription.value!=''>true<#else>false</#if>
 
 ${profile.firstName.value}
@@ -145,12 +175,13 @@ Here's a summary of your selection from our support site:<br /><br />
 
 <b>Name</b>: ${skill.case.value.firstName} ${skill.case.value.lastName}<br />
 <b>Email</b>: ${skill.case.value.email?lower_case}<br />
-<b>Category</b>: Mouse<br />
-<#if skill.case.value.serialNumber != 'null'><b>Serial Number</b>: ${skill.case.value.serialNumber}<br /></#if>
+<#if skill.serialNumber.value?? && skill.serialNumber.value!='-'><b>Serial Number</b>: ${skill.serialNumber}<br /></#if>
+<#if skill.productNumber.value?? && skill.productNumber.value!='-'><b>Product</b>: ${skill.productNumber}<br /></#if>
+<#if skill.productDescription.value?? && skill.productDescription.value!='-'><b>Product Description</b>: ${skill.productDescription}<br /></#if>
 <b>Device Issue</b>: ${skill.deviceIssue}<br />
 <b>Description</b>: ${issueDescription}<br />
 <#if skill.deviceSymptoms.value?? && skill.deviceSymptoms.value!=''><b>Symptoms</b>:<br />${skill.deviceSymptoms}<br /></#if>
-<#if skill.deviceConnection.value?? && skill.deviceConnection.value!=''><b>Mouse Connection</b>: ${skill.deviceConnection}<br /></#if>
+<#if skill.deviceConnection.value?? && skill.deviceConnection.value!=''><b>Connection</b>: ${skill.deviceConnection}<br /></#if>
 <#if skill.deviceTsSteps.value?? && skill.deviceTsSteps.value!=''><b>Troubleshooting Steps</b>:<br />${skill.deviceTsSteps}<br /></#if>
 <#if skill.deviceUpdated.value??><b>Updated the firmware to the latest version</b>: ${skill.deviceUpdated}<br /></#if>
 <#if skill.deviceOccurrence.value??><b>Issue occured on another PC</b>: ${skill.deviceOccurrence}<br /></#if>
