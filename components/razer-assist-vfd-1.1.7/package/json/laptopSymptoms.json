@@ -1,0 +1,14 @@
+{
+  "cosmetic": {
+    "1": "- Screen is cracked",
+    "2": "- Trackpad is cracked",
+    "3": "- Keyboard keycap has printing issue",
+    "4": "- Keyboard RGB is not working as expected (Uneven lighting)",
+    "5": "- Keyboard is not responsive/lagging",
+    "6": "- USB port not detected or dented",
+    "7": "- Speakers are not working as expected",
+    "8": "- Other cosmetic issue",
+    "9": "All of the above",
+    "all": "- Screen is cracked<br>- Trackpad is cracked<br>- Keyboard keycap has printing issue<br>- Keyboard RGB is not working as expected (Uneven lighting)<br>- Keyboard is not responsive/lagging<br>- USB port not detected or dented<br>- Speakers are not working as expected"
+  }
+}
