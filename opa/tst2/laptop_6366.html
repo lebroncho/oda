@@ -74,6 +74,14 @@
 		width: 0;
 	}
 
+	#support-map input[type=text]{
+		background-color: #FFF !important;
+	}
+
+	#support-map input[type=text].disabled{
+		background-color: transparent !important;
+	}
+
 	.d-none {
 		display: none;
 	}
@@ -705,33 +713,33 @@
 				<div class="col-sm">
 					<ul class="list-unstyled list-symptoms">
 						<li>
-							<p><input id="tab-5-sym1" name="case_symptoms[]" type="checkbox" value="0" /><label for="tab-5-sym1">Screen is cracked</label></p>
+							<p><input id="tab-5-sym1" name="case_symptoms[]" type="checkbox" value="17" /><label for="tab-5-sym1">Screen is cracked</label></p>
 						</li>
 						<li>
-							<p><input id="tab-5-sym2" name="case_symptoms[]" type="checkbox" value="1" /><label for="tab-5-sym2">Trackpad is cracked</label></p>
+							<p><input id="tab-5-sym2" name="case_symptoms[]" type="checkbox" value="18" /><label for="tab-5-sym2">Trackpad is cracked</label></p>
 						</li>
 						<li>
-							<p><input id="tab-5-sym3" name="case_symptoms[]" type="checkbox" value="2" /><label for="tab-5-sym3">Keyboard keycap has printing issue</label></p>
+							<p><input id="tab-5-sym3" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-5-sym3">Keyboard keycap has printing issue</label></p>
 						</li>
 						<li>
-							<p><input id="tab-5-sym4" name="case_symptoms[]" type="checkbox" value="3" /><label for="tab-5-sym4">Keyboard RGB is not working as expected (Uneven lighting)</label></p>
+							<p><input id="tab-5-sym4" name="case_symptoms[]" type="checkbox" value="20" /><label for="tab-5-sym4">Keyboard RGB is not working as expected (Uneven lighting)</label></p>
 						</li>
 					</ul>
 				</div>
 				<div class="col-sm">
 					<ul class="list-unstyled list-symptoms">
 						<li>
-							<p><input id="tab-5-sym5" name="case_symptoms[]" type="checkbox" value="4" /><label for="tab-5-sym5">Keyboard is not responsive/lagging</label></p>
+							<p><input id="tab-5-sym5" name="case_symptoms[]" type="checkbox" value="21" /><label for="tab-5-sym5">Keyboard is not responsive/lagging</label></p>
 						</li>
 						<li>
-							<p><input id="tab-5-sym6" name="case_symptoms[]" type="checkbox" value="5" /><label for="tab-5-sym6">USB port not detected or dented</label></p>
+							<p><input id="tab-5-sym6" name="case_symptoms[]" type="checkbox" value="22" /><label for="tab-5-sym6">USB port not detected or dented</label></p>
 						</li>
 						<li>
-							<p><input id="tab-5-sym7" name="case_symptoms[]" type="checkbox" value="6" /><label for="tab-5-sym7">Speakers are not working as expected</label></p>
+							<p><input id="tab-5-sym7" name="case_symptoms[]" type="checkbox" value="23" /><label for="tab-5-sym7">Speakers are not working as expected</label></p>
 						</li>
 						<li>
-							<p><input id="tab-5-sym8" name="case_symptoms[]" type="checkbox" value="7" /><label for="tab-5-sym8">Other cosmetic issue</label>
-							<input class="d-block w-50 m-0" type="text" placeholder="Kindly specify the issue"></p>
+							<p><input id="tab-5-sym8" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-5-sym8">Other cosmetic issue</label>
+							<input name="symptom_other" class="d-block w-75 p-2 m-0 disabled" type="text" placeholder="Kindly specify the issue" disabled></p>
 						</li>
 					</ul>
 				</div>
@@ -759,16 +767,12 @@
 				<li><a href="https://mysupport.razer.com/app/answers/detail/a_id/1798" target="_blank">Razer Blade does not have power, won't boot up or turn on</a></li>
 			</ul>
 
-			<div class="contact-supp mt-4">
-				<p><strong>Note:</strong> Please prepare a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">photo or video</a> that clearly shows the issue of your device before you contact our support team.</p>
-
-				<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
-			</div>
-
 		</div>
 	</div>
 </form>
 <script>
+	var curSym = 'unspecified';
+
 	// Shows the target section and scrolls down to it on mobile view
 	function showSection(target) {
 		document.querySelectorAll(".ts-section").forEach(elem => elem.classList.add("d-none"));
@@ -784,7 +788,7 @@
 			}, "slow");
 		}
 		// Bypasses the required count of solutions taken
-		if (target == "general-questions" || target == "cosmetic-issues") {
+		if (target == "general-questions") {
 			let contactBtn = document.querySelectorAll(".contact_support_Btn");
 			contactBtn.forEach(elem => elem.classList.remove("disabled"));
 			contactBtn.forEach(elem => elem.removeAttribute("disabled"));
@@ -825,11 +829,43 @@
 		}));
 	}
 
+	// Checks if at least the required count of symptoms have been taken
+	function checkSymptoms(section, reqCount) {
+		let symList = document.querySelectorAll("#" + section + " .list-symptoms input"),
+			otherSym = document.getElementsByName("symptom_other")[0],
+			contactBtn = document.querySelectorAll("#" + section + " .contact_support_Btn");
+		symList.forEach(elem => elem.addEventListener("change", function() {
+			let inCount = 0;
+			for (let i = 0; i < symList.length; i++) {
+				symList[i].checked ? inCount++ : inCount;
+			}
+			// console.log(inCount);
+			if (inCount >= reqCount) {
+				contactBtn.forEach(elem => elem.classList.remove("disabled"));
+				contactBtn.forEach(elem => elem.removeAttribute("disabled"));
+			} else {
+				contactBtn.forEach(elem => elem.classList.add("disabled"));
+				contactBtn.forEach(elem => elem.setAttribute("disabled", true));
+			}
+			if (symList[symList.length-2].checked){
+				otherSym.classList.remove("disabled");
+				otherSym.removeAttribute("disabled");
+			} else {
+				otherSym.classList.add("disabled");
+				otherSym.setAttribute("disabled", true);
+			}
+		}));
+	}
+
 	// Stores the checked field values in localStorage
 	function setCaseInfo() {
 		localStorage.setItem("case_category", document.getElementsByName("case_category")[0].value);
 		localStorage.setItem("case_reason", getValues("case_reason"));
-		localStorage.setItem("case_symptoms", getValues("case_symptoms[]", true));
+		if(getValues("case_reason") >= 4){
+			localStorage.setItem("case_symptoms", getValues("case_symptoms[]", true));
+		}else{
+			localStorage.setItem("case_symptoms", curSym);
+		}
 		localStorage.setItem("case_connection", getValues("case_connection"));
 		localStorage.setItem("case_solutions", getValues("case_solutions[]", true));
 	}
@@ -845,6 +881,9 @@
 				}
 			}
 		}
+		if (key == 'case_symptoms[]' && valArr.includes('24')){
+			valArr.push(document.getElementsByName("symptom_other")[0].value);
+		}
 		if (multiple) {
 			return JSON.stringify(valArr);
 		}
@@ -852,11 +891,27 @@
 	}
 
 	document.addEventListener("DOMContentLoaded", function() {
+		// Sets the selected symptom based on the current viewed section
+		let symList = document.querySelectorAll('div[itemprop="mainEntity"] h3');
+		console.log('length: ' + symList.length);
+		symList.forEach((elem,i) => {
+			elem.addEventListener('click',function(){
+				curSym = i;
+				console.log('current: ' + curSym);
+				document.querySelectorAll(".list-solutions input").forEach(e => e.checked = false);
+				document.querySelectorAll(".contact_support_Btn").forEach(e => {
+					e.classList.add("disabled");
+					e.setAttribute("disabled", true);
+				});
+			});
+		});
+
 		// Inserts additional actions upon form submission
 		document.getElementById("support-map").addEventListener("submit", function(e) {
 			// e.preventDefault();
 			setCaseInfo();
 		});
+
 		// Initializes the required steps per section before enabling the contact support button
 		checkStepsTaken("display-issues-1", 4);
 		checkStepsTaken("display-issues-2", 4);
@@ -875,6 +930,7 @@
 		checkStepsTaken("software-issues-1", 1);
 		checkStepsTaken("software-issues-2", 2);
 		checkStepsTaken("software-issues-3", 1);
+		checkSymptoms("cosmetic-issues", 1);
 	});
 
 </script>
