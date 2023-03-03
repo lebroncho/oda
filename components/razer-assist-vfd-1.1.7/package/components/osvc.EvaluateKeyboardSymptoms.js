@@ -15,7 +15,7 @@
 
  const symptoms = require("../json/keyboardSymptoms.json");
  
- class EvaluateSymptoms {
+ class EvaluateKeyboardSymptoms {
    constructor() {
      //super();
    }
@@ -69,4 +69,4 @@
    }
  }
  
- module.exports = EvaluateSymptoms;
+ module.exports = EvaluateKeyboardSymptoms;
