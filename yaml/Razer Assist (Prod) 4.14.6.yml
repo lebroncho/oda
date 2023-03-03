@@ -1,5 +1,5 @@
 main: true
-name: SupportBot
+name: RazerAssist
 context:
   variables:
     iResult: "nlpresult"
@@ -137,7 +137,6 @@ states:
         RazerTurret: resolveTurret
         RazerSynapse: resolveSynapse
         BloatedBattery: batteryIssue
-        LaptopSupport: laptopFaqs
         TomahawkSupport: tomahawkFaqs
         CoreSupport: egpuFaqs
         MicSupport: micSupport
@@ -171,7 +170,6 @@ states:
         FanNoise: fanNoiseOutput
         HammerheadTrueWireless: hammerheadTWSOutput
         KrakenKitty: krakenKittyOutput
-        LaptopOverheating: laptopOverheatingOutput
         LegacyProduct: legacyProductOutput
         MilitaryDiscount: militaryDiscountOutput
         PaymentMethods: paymentMethodsOutput
@@ -207,21 +205,14 @@ states:
         SynapseCrashed: synapseCrashed
         MicSetDefault: micSetDefault
         SynapseDialKey: synapseDialKey
-        BladeDead: bladeDead
-        BladeDeadPixel: bladeDeadPixel
-        BladeWifiIssue: bladeWifiIssue
         ErrorBsod: errorBsod
         AnzuFAQ: anzuFAQ
         AnzuPairing: anzuPairing
         AnzuAudio: anzuAudio
         SynapseLightSettings: synapseLightSettings
-        BladeScreenTurnsBlack: bladeScreenTurnsBlack
-        BladeScreenFlickering: bladeScreenFlickering
         NariFAQ: nariFAQ
         BrokenDevice: brokenDevice
         OpusPairing: opusPairing
-        BladeRefreshRate: bladeRefreshRate
-        BladeLowStorage: bladeLowStorage
         SensitiveMic: sensitiveMic
         TomahawkFirmware: tomahawkFirmware
         BrokenReplacement: brokenReplacement
@@ -232,11 +223,9 @@ states:
         KiyoProFirmware: kiyoProFirmware
         CleanDevice: cleanDevice
         CreateMacro: createMacro
-        BladeLighting: bladeLighting
         LeviathanSupport: leviathanSupport
         KairaSupport: kairaSupport
         DisplayMenu: displayMenu
-        Blade14Activation: blade14Activation
         UnregisterDevice: unregisterDevice
         KeycapFit: keycapFit
         CoreSetup: coreSetup
@@ -254,17 +243,13 @@ states:
         AssignMacro: assignMacro
         SynapseReinstall: synapseReinstall
         ReplaceKeycap: replaceKeycap
-        BladeNotWakingUp: bladeNotWakingUp
         KeyBinding: keyBinding
         ThunderboltDockSupport: thunderboltDockSupport
         ASCIISymbols: asciiSymbols
-        BladeTrackpad: bladeTrackpad
         ChromaLightStrip: chromaLightStrip
         RipsawSetup: ripsawSetup
         GamingMode: gamingMode
         IskurAdjustLever: iskurAdjustLever
-        BladeSystemRecovery: bladeSystemRecovery
-        BladeMaxStorageMemory: bladeMaxStorageMemory
         PwmOverheating: pwmOverheating
         PwmNotSpinning: pwmNotSpinning
         ZephyrLighting: zephyrLighting
@@ -281,32 +266,14 @@ states:
         ChargingStandXbox: chargingStandXbox
         ChairCasterStuds: chairCasterStuds
         BatteryLife: batteryLife
-        BladeCrashing: bladeCrashing
-        BladeSkinInstall: bladeSkinInstall
-        BladeSkinRemoval: bladeSkinRemoval
         PhoneCoolerSetup: phoneCoolerSetup
         PhoneCoolerPairing: phoneCoolerPairing
         PhoneCoolerSettings: phoneCoolerSettings
         ZephyrReplaceStrap: zephyrReplaceStrap
         ZephyrReplaceFilter: zephyrReplaceFilter
-        LightBleed: lightBleed
-        ScreenBrightness: screenBrightness
-        DedicatedGpu: dedicatedGpu
-        NvidiaAdvancedOptimus: nvidiaAdvancedOptimus
-        DgpuBlankScreen: dgpuBlankScreen
-        MaximizeGpu: maximizeGpu
-        MonitorUsbSpecs: monitorUsbSpecs
-        UsbPort: usbPort
-        BladeThirdPartyCharge: bladeThirdPartyCharge
-        EthernetCable: ethernetCable
-        AccessBios: accessBios
-        BiosBoot: biosBoot
-        WobblingBlade: wobblingBlade
         ThxActivationCode: thxActivationCode
         ZephyrGap: zephyrGap
         WolverineDeadzone: wolverineDeadzone
-        BladeMonitor: bladeMonitor
-        BladeHdmi: bladeHdmi
         InstallHanbo: installHanbo
         RgbHanbo: rgbHanbo
         OverheatingHanbo: overheatingHanbo
@@ -318,15 +285,12 @@ states:
         HeadCushionChromaPairing: headCushionChromaPairing
         HeadCushionChromaLighting: headCushionChromaLighting
         RecycleDevice: recycleDevice
-        BladeGsync: bladeGsync
         AudioMixerSetup: audioMixerSetup
         AudioMixerUse: audioMixerUse
         AudioMixerSettings: audioMixerSettings
         KeyLightSetup: keyLightSetup
         KeyLightCustomization: keyLightCustomization
-        BladeOvercharge: bladeOvercharge
         SsdScrewSize: ssdScrewSize
-        LowerWattageBlade: lowerWattageBlade
         ModernStandby: modernStandby
         DeviceEncryption: deviceEncryption
         WatchWristbandSupport: watchWristbandSupport
@@ -344,15 +308,13 @@ states:
         PowerSurgeWarning: powerSurgeWarning
         RazerAxon: RazerAxon.quickAnswerTS1
         BlueScreen: blueScreen
-        HeadStrapSetup: headStrapSetup
-        BladeBootLoop: bladeBootLoop
 
-        #------ Order-related Intents -------#
+        #------ Order-related Intents ------#
         RazerComOrder: RazerComOrder.start
         RazerComReturnOrder: RazerComOrder.RO_quickAnswerCS
         RazerComCancelOrder: RazerComOrder.CO_quickAnswerCS
 
-        #------ Mouse-related Intents -------#
+        #------ Mouse-related Intents ------#
         MouseSupport: mousePath
         MouseSpamming: mousePath
         MouseProfile: mousePath
@@ -361,7 +323,7 @@ states:
         HypershiftMouse: mousePath
         DongleBasiliskViper: dongleBasiliskViper
 
-        #----- Headset-related Intents ------#
+        #----- Headset-related Intents -----#
         HeadsetSupport: headsetPath
         HeadsetAudioIssue: headsetPath
         HeadsetCracklingNoise: headsetPath
@@ -376,7 +338,7 @@ states:
         KeyboardDifferentColor: keyboardPath
         KeyboardDemoMode: keyboardDemoMode
 
-        #-------- Razer Edge Intents --------#
+        #---- Razer Edge-related Intents ----#
         RazerEdge: RazerEdge.start
         RazerEdgeSetup: RazerEdge.setup
         RazerEdgeSetupGoogle: RazerEdge.setupGoogle
@@ -385,6 +347,44 @@ states:
         RazerEdgeAudioIssues: RazerEdge.audioIssues
         RazerEdgeOverheatingIssues: RazerEdge.overheatingIssues
         RazerEdgeBTPCInternetIssues: RazerEdge.connectionIssues
+
+        #------ Laptop-related Intents ------#
+        BladeDead: bladeDead
+        BladeDeadPixel: bladeDeadPixel
+        BladeWifiIssue: bladeWifiIssue
+        BladeScreenTurnsBlack: bladeScreenTurnsBlack
+        BladeScreenFlickering: bladeScreenFlickering
+        BladeRefreshRate: bladeRefreshRate
+        BladeLowStorage: bladeLowStorage
+        BladeLighting: bladeLighting
+        Blade14Activation: blade14Activation
+        BladeNotWakingUp: bladeNotWakingUp
+        BladeTrackpad: bladeTrackpad
+        BladeSystemRecovery: bladeSystemRecovery
+        BladeMaxStorageMemory: bladeMaxStorageMemory
+        BladeCrashing: bladeCrashing
+        BladeSkinInstall: bladeSkinInstall
+        BladeSkinRemoval: bladeSkinRemoval
+        BladeThirdPartyCharge: bladeThirdPartyCharge
+        BladeMonitor: bladeMonitor
+        BladeHdmi: bladeHdmi
+        BladeGsync: bladeGsync
+        BladeOvercharge: bladeOvercharge
+        WobblingBlade: wobblingBlade
+        LowerWattageBlade: lowerWattageBlade
+        LaptopSupport: laptopFaqs
+        LaptopOverheating: laptopOverheatingOutput
+        AccessBios: accessBios
+        BiosBoot: biosBoot
+        LightBleed: lightBleed
+        ScreenBrightness: screenBrightness
+        DedicatedGpu: dedicatedGpu
+        NvidiaAdvancedOptimus: nvidiaAdvancedOptimus
+        DgpuBlankScreen: dgpuBlankScreen
+        MaximizeGpu: maximizeGpu
+        MonitorUsbSpecs: monitorUsbSpecs
+        UsbPort: usbPort
+        EthernetCable: ethernetCable
 
   #-------------------------------------------------------------------------------
   # Greeting ---------------------------------------------------------------------
@@ -591,12 +591,6 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
-  quickAnswerCSSetCaseCreationState:
-    component: System.SetVariable
-    properties:
-      variable: "caseCreationState"
-      value: "setCaseFirstName"
-
   quickAnswerCSTry:
     component: System.SetVariable
     properties:
@@ -744,6 +738,12 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
+  quickAnswerTSChairSetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
+
   quickTypeTSChair:
     component: System.SetVariable
     properties:
@@ -2685,6 +2685,14 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
+  # headsetPath:
+  #   component: System.Output
+  #   properties:
+  #     text: "${rb.audioSupport}"
+  #     keepTurn: true
+  #   transitions:
+  #     next: quickAnswerTS1
+
   headsetPath:
     component: System.SetVariable
     properties:
@@ -3647,24 +3655,32 @@ states:
     transitions:
       next: checkChatQueue
 
+  # setChatQueueTSEdge:
+  #   component: System.SetVariable
+  #   properties:
+  #     variable: chatQueue
+  #     value: "${system.config.incidentTs2Id}"
+  # setChatWebIncidentTSEdge:
+  #   component: System.SetVariable
+  #   properties:
+  #     variable: webIncident
+  #     value: "My Razer Edge Handheld"
+  # setChatTypeTSEdge:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: chatType
+  #     value: "${system.config.incidentTs2Id}"
+  #   transitions:
+  #     next: checkChatQueue
+
   setChatQueueTSEdge:
-    component: System.SetVariable
-    properties:
-      variable: chatQueue
-      value: "${system.config.incidentTs2Id}"
-  setChatWebIncidentTSEdge:
     component: System.SetVariable
     properties:
       variable: webIncident
       value: "My Razer Edge Handheld"
-  setChatTypeTSEdge:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: chatType
-      value: "${system.config.incidentTs2Id}"
     transitions:
-      next: checkChatQueue
+      next: setContactInfo
 
   checkChatQueue:
     component: "osvc.CheckChatQueue"
@@ -3674,7 +3690,7 @@ states:
       actions:
         chatAvailable: setContactInfo
         chatUnavailableMaxQueue: chatUnavailableMaxQueue
-        chatUnavailableHours: chatUnavailableHours
+        chatUnavailableHours: setContactInfo #chatUnavailableHours
         fail: timedOutMessage
 
   chatUnavailableMaxQueue:
@@ -3782,7 +3798,7 @@ states:
       chatSessionId: "${profile.contactInfo.value.sessionId}"
     transitions:
       actions:
-        questionUpdatedOnChat: "chatFindContact"
+        questionUpdatedOnChat: "agentTransfer"
         fail: "apiFailed"
 
   chatFindContact:
@@ -3818,6 +3834,7 @@ states:
         contactSetForChat: "agentTransfer"
         fail: "timedOutMessage"
 
+  # -- temp agent transfer
   agentTransfer:
     component: System.AgentTransfer
     properties:
@@ -4084,9 +4101,8 @@ states:
       next: setRmaTypeReplace
 
   #-------------------------------------------------------------------------------
-  # Intent Answers Start ---------------------------------------------------------
+  # Short Answers ----------------------------------------------------------------
   #-------------------------------------------------------------------------------
-
   caseStatus:
     component: System.SetVariable
     properties:
@@ -4164,13 +4180,13 @@ states:
     transitions:
       next: quickAnswerTS1
 
-  keyboardFaqs:
-    component: System.Output
-    properties:
-      text: "${rb.keyboardSupport}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
+  # keyboardFaqs:
+  #   component: System.Output
+  #   properties:
+  #     text: "${rb.keyboardSupport}"
+  #     keepTurn: true
+  #   transitions:
+  #     next: quickAnswerTS1
 
   matFaqs:
     component: System.Output
@@ -6648,18 +6664,6 @@ states:
     transitions:
       next: quickAnswerTS1
 
-  bladeBootLoop:
-    component: System.Output
-    properties:
-      text: "${rb.bladeBootLoop}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS2
-
-  #-------------------------------------------------------------------------------
-  # Intent Answers End -----------------------------------------------------------
-  #-------------------------------------------------------------------------------
-
   queryAnsweredSurroundSound1:
     component: System.CommonResponse
     properties:
@@ -6911,7 +6915,7 @@ states:
       variable: caseSSCategoryName
       value: "No code received"
     transitions:
-      next: quickAnswerTS1
+      next: queryAnsweredSurroundSound2
 
   surroundSoundTS3Scratched:
     component: System.SetVariable
@@ -6988,7 +6992,7 @@ states:
       variable: caseSSCategoryName
       value: "Headset model not supported"
     transitions:
-      next: quickAnswerTS1
+      next: queryAnsweredSurroundSound2
 
   surroundSoundCTS3CodeScratch:
     component: System.SetVariable
@@ -9861,7 +9865,7 @@ states:
     properties:
       variable: "caseCreationState"
       value: "setCaseFirstName"
-
+      
   RazerAxon.quickTypeTS1:
     component: System.SetVariable
     properties:
@@ -10597,6 +10601,12 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
+  quickAnswerCSSetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
+
   RazerComOrder.quickTypeCS:
     component: System.SetVariable
     properties:
