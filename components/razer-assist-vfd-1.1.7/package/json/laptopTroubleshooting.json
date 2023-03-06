@@ -39,7 +39,7 @@
     "- Make sure your laptop has the latest Graphics card update.",
     "- Check if a software is causing the issue by closing all Razer apps and software.",
     "- Connect to an external monitor.",
-    "- Ensure the power adapter is plugged in properly and laptop is charging.",
+    "- Ensure the original power adapter is plugged in properly and laptop is charging.",
     "- Perform a Pixel Test and look for any defective pixels. If any pixels are still defective, dead, or flickering after testing, the pixel is physically defective.",
     "- Follow this guide on How to reduce light bleed on the Razer Blade display.",
     "- Troubleshoot common Blue Screen of Death (BSOD) error codes.",
@@ -69,6 +69,8 @@
     "- Check out How to improve the image quality, color, and resolution on a Razer Blade display.",
     "- Ensure that there are no magnetic objects around your laptop screen or wrist rest.",
     "- Check out How to keep the Razer Blade at optimal temperature while gaming.",
-    "- Check out How to access the BIOS settings on the Razer Blade."
+    "- Check out How to access the BIOS settings on the Razer Blade.",
+    "- Connected to an external monitor and shows a display.",
+    "- Connected to an external monitor and does not show a display."
   ]
 }
