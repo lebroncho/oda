@@ -142,15 +142,14 @@
 
 						<ul class="list-unstyled list-solutions">
 							<li>
-								<p><input id="ext-monitor" name="case_solutions[]" type="checkbox" value="3" />Connect
-									to an external
-									monitor, does it show a display?</p>
+								<p><input id="ext-monitor" type="checkbox" value="3" />Connect
+									to an external monitor, does it show a display?</p>
 
 								<div class="ext-monitor-options d-none"><input id="with-display" name="case_solutions[]"
 										type="radio" value="35" /> <label
 										class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3"
-										for="with-display">Yes</label> <input id="without-display" name="case_solutions[]"
-										type="radio" value="36" /> <label
+										for="with-display">Yes</label> <input id="without-display"
+										name="case_solutions[]" type="radio" value="36" /> <label
 										class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto"
 										for="without-display">No</label></div>
 							</li>
@@ -1227,7 +1226,12 @@
 		let toggleParent = document.getElementById('ext-monitor'),
 			toggleChild = document.querySelector('.ext-monitor-options');
 		toggleParent.addEventListener('change', function () {
-			toggleParent.checked ? toggleChild.classList.remove('d-none') : toggleChild.classList.add('d-none');
+			if (toggleParent.checked) {
+				toggleChild.classList.remove('d-none')
+			} else {
+				toggleChild.classList.add('d-none');
+				document.querySelectorAll(".ext-monitor-options input").forEach(e => e.checked = false);
+			}
 		});
 
 		// Inserts additional actions upon form submission
@@ -1237,7 +1241,7 @@
 		});
 
 		// Initializes the required steps per section before enabling the contact support button
-		checkStepsTaken("display-issues-1", 4);
+		checkStepsTaken("display-issues-1", 5);
 		checkStepsTaken("display-issues-2", 4);
 		checkStepsTaken("display-issues-3", 4);
 		checkStepsTaken("display-issues-4", 3);
