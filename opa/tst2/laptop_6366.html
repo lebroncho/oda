@@ -16,6 +16,9 @@
 		text-transform: uppercase;
 		border: 1px solid var(--color-green);
 		color: var(--color-green);
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 
 	#support-map .rz_Btn:hover,
@@ -82,7 +85,7 @@
 		background-color: transparent !important;
 	}
 
-	#support-map .ext-monitor-options label.rz_Btn {
+	#support-map #ext-monitor label.rz_Btn {
 		width: 90px;
 	}
 
@@ -142,16 +145,18 @@
 
 						<ul class="list-unstyled list-solutions">
 							<li>
-								<p><input id="ext-monitor" type="checkbox" value="3" />Connect
-									to an external monitor, does it show a display?</p>
+								<p><input class="toggle" data-toggle="d-none" data-target="ext-monitor" type="checkbox"
+										value="3" notcounted />Connect to an external monitor, does it show a
+									display?</p>
 
-								<div class="ext-monitor-options d-none"><input id="with-display" name="case_solutions[]"
-										type="radio" value="35" /> <label
+								<div id="ext-monitor" class="d-none">
+									<input id="with-display" name="case_solutions[]" type="radio" value="35" /> <label
 										class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3"
 										for="with-display">Yes</label> <input id="without-display"
 										name="case_solutions[]" type="radio" value="36" /> <label
 										class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto"
-										for="without-display">No</label></div>
+										for="without-display">No</label>
+								</div>
 							</li>
 							<li>
 								<p><input name="case_solutions[]" type="checkbox" value="28" />Check out <a
@@ -1034,8 +1039,9 @@
 									for="tab-5-sym7">Speakers are not working as expected</label></p>
 						</li>
 						<li>
-							<p><input id="tab-5-sym8" name="case_symptoms[]" type="checkbox" value="24" /><label
-									for="tab-5-sym8">Other cosmetic issue</label> <input
+							<p><input id="tab-5-sym8" name="case_symptoms[]" type="checkbox" value="24" class="toggle"
+									data-toggle="disabled" data-target="symptom-other" /><label for="tab-5-sym8">Other
+									cosmetic issue</label> <input id="symptom-other"
 									class="d-block w-75 p-2 m-0 disabled" disabled="disabled" name="symptom_other"
 									placeholder="Kindly specify the issue" type="text" /></p>
 						</li>
@@ -1117,17 +1123,18 @@
 
 	// Checks if at least the required count of solutions have been taken
 	function checkStepsTaken(section, reqCount) {
-		let mandatorySol = true,
+		let mandatoryStep = true,
 			solList = document.querySelectorAll("#" + section + " .list-solutions input"),
 			contactBtn = document.querySelector("#" + section + " .contact_support_Btn");
 		solList.forEach(elem => elem.addEventListener("change", function () {
 			let inCount = 0;
 			for (let i = 0; i < solList.length; i++) {
-				if (solList[i].hasAttribute('mandatory')) mandatorySol = solList[i].checked;
-				solList[i].checked ? inCount++ : inCount;
+				if (!solList[i].hasAttribute('notcounted')) {
+					if (solList[i].hasAttribute('mandatory')) mandatoryStep = solList[i].checked;
+					solList[i].checked ? inCount++ : inCount;
+				}
 			}
-			// console.log('mandatory: ' + mandatorySol);
-			if (inCount >= reqCount && mandatorySol) {
+			if (inCount >= reqCount && mandatoryStep) {
 				contactBtn.classList.remove("disabled");
 				contactBtn.removeAttribute("disabled");
 			} else {
@@ -1140,7 +1147,6 @@
 	// Checks if at least the required count of symptoms have been taken
 	function checkSymptoms(section, reqCount) {
 		let symList = document.querySelectorAll("#" + section + " .list-symptoms input"),
-			otherSym = document.getElementsByName("symptom_other")[0],
 			contactBtn = document.querySelector("#" + section + " .contact_support_Btn");
 		symList.forEach(elem => elem.addEventListener("change", function () {
 			let inCount = 0;
@@ -1154,13 +1160,6 @@
 				contactBtn.classList.add("disabled");
 				contactBtn.setAttribute("disabled", true);
 			}
-			if (symList[symList.length - 2].checked) {
-				otherSym.classList.remove("disabled");
-				otherSym.removeAttribute("disabled");
-			} else {
-				otherSym.classList.add("disabled");
-				otherSym.setAttribute("disabled", true);
-			}
 		}));
 	}
 
@@ -1171,7 +1170,6 @@
 		if (getValues("case_reason") >= 4) {
 			localStorage.setItem("case_symptoms", getValues("case_symptoms[]", true));
 		} else {
-			console.log(JSON.stringify(curSym));
 			localStorage.setItem("case_symptoms", JSON.stringify(curSym));
 		}
 		localStorage.setItem("case_connection", getValues("case_connection"));
@@ -1190,7 +1188,8 @@
 			}
 		}
 		if (key == 'case_symptoms[]' && valArr.includes('24')) {
-			valArr.push(document.getElementsByName("symptom_other")[0].value);
+			// valArr.push(document.getElementsByName("symptom_other")[0].value);
+			valArr = valArr.concat(document.getElementsByName("symptom_other")[0].value.split(' '));
 		}
 		if (multiple) {
 			return JSON.stringify(valArr);
@@ -1199,39 +1198,59 @@
 	}
 
 	document.addEventListener("DOMContentLoaded", function () {
-		// Sets the selected symptom based on the current viewed section
-		let symList = document.querySelectorAll('div[itemprop="mainEntity"] h3'),
+		// Resets all fields if a different symptom is focused
+		let inFocus = 0,
+			symList = document.querySelectorAll('div[itemprop="mainEntity"]'),
 			btnList = document.querySelectorAll('.contact_support_Btn');
-		// console.log('Accordions: ' + symList.length);
-		// console.log('ContactBtns: ' + btnList.length);
-		symList.forEach((elem, i) => {
+		symList.forEach((elem, idx) => {
 			elem.addEventListener('click', function () {
-				curSym = [];
-				document.querySelectorAll(".list-solutions input").forEach(e => e.checked = false);
-				document.querySelectorAll(".contact_support_Btn").forEach(e => {
-					e.classList.add("disabled");
-					e.setAttribute("disabled", true);
-				});
-			});
-		});
-		btnList.forEach((elem, i) => {
-			elem.addEventListener('click', function () {
-				if (!elem.hasAttribute('disabled')) {
-					curSym[0] = i;
+				if (idx != inFocus) {
+					inFocus = idx;
+					document.querySelectorAll(".list-solutions input").forEach(elem => elem.checked = false);
+					document.querySelectorAll(".contact_support_Btn").forEach(elem => {
+						elem.classList.add("disabled");
+						elem.setAttribute("disabled", true);
+					});
 				}
 			});
 		});
 
-		// Toggle function for selected elements
-		let toggleParent = document.getElementById('ext-monitor'),
-			toggleChild = document.querySelector('.ext-monitor-options');
-		toggleParent.addEventListener('change', function () {
-			if (toggleParent.checked) {
-				toggleChild.classList.remove('d-none')
-			} else {
-				toggleChild.classList.add('d-none');
-				document.querySelectorAll(".ext-monitor-options input").forEach(e => e.checked = false);
-			}
+		// Sets the selected symptom based on the contact support button used
+		btnList.forEach((elem, idx) => {
+			elem.addEventListener('click', function () {
+				if (!elem.hasAttribute('disabled')) {
+					curSym[0] = idx;
+				}
+			});
+		});
+
+		// General toggle function
+		document.querySelectorAll('.toggle').forEach(elem => {
+			elem.addEventListener('change', function () {
+				let value = this.getAttribute('data-toggle'),
+					target = document.getElementById(this.getAttribute('data-target'));
+				switch (value) {
+					default:
+					case 'd-none':
+						if (this.checked) {
+							target.classList.remove(value);
+						} else {
+							target.classList.add(value);
+							document.querySelectorAll('#' + this.getAttribute('data-target') + ' input').forEach(elem => elem.checked = false);
+						}
+						break;
+					case 'disabled':
+						if (this.checked) {
+							target.classList.remove(value);
+							target.removeAttribute(value);
+						} else {
+							target.value = '';
+							target.classList.add(value);
+							target.setAttribute(value, true);
+						}
+						break;
+				}
+			});
 		});
 
 		// Inserts additional actions upon form submission
@@ -1241,7 +1260,7 @@
 		});
 
 		// Initializes the required steps per section before enabling the contact support button
-		checkStepsTaken("display-issues-1", 5);
+		checkStepsTaken("display-issues-1", 4);
 		checkStepsTaken("display-issues-2", 4);
 		checkStepsTaken("display-issues-3", 4);
 		checkStepsTaken("display-issues-4", 3);
