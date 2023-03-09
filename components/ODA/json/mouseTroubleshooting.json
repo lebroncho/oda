@@ -1,0 +1,64 @@
+{
+  "issues": [
+    "Buttons & Scroll Wheel Issues",
+    "Cosmetic & Physical Issues",
+    "Mouse Connection Issues",
+    "Power & Battery Issues",
+    "Tracking Sensor Issues",
+    "General Product Questions"
+  ],
+  "symptoms": [
+    "- Buttons double clicking",
+    "- Buttons spamming",
+    "- Buttons do not respond when pressed",
+    "- Buttons releasing while pressed",
+    "- Bouncing or skipping cursor while scrolling",
+    "- Disconnection issues",
+    "- Mouse does not work or is not detected",
+    "- Connection drops randomly",
+    "- Random freezing issues",
+    "- Mouse cannot pair",
+    "- Mouse does not charge",
+    "- Battery drains fast",
+    "- Poor battery life",
+    "- Stuck at X% while charging",
+    "- Mouse won't power on",
+    "- Erratic Cursor Movement",
+    "- Cursor is jumping or skipping",
+    "- Cursor does not move but buttons are working",
+    "- Cursor keeps disappearing",
+    "- Other symptom not listed"
+  ],
+  "connections": [
+    "Dongle",
+    "Bluetooth",
+    "Cable"
+  ],
+  "steps": [
+    "- Cleaned the affected button using a can of compressed air.",
+    "- Verified Windows is up to date.",
+    "- Connected the USB dongle directly to a PC's USB port and not a USB hub. Verified there is a clear line of sight from the mouse to the dongle.",
+    "- Updated the firmware on mouse if it is on the list.",
+    "- Checked if a software is causing the issue by closing all Razer apps and software.",
+    "- Reinstalled mouse drivers, and performed a clean reinstall of Razer Synapse.",
+    "- Check if the issue persists with a different PC.",
+    "- Performed troubleshooting of Windows Bluetooth Problems.",
+    "- Verified the mouse is fully charged.",
+    "- Made sure wireless mode is ON or the button is switched to the correct wireless mode.",
+    "- Downloaded and ran the Pairing Utility for mouse.",
+    "- Cleaned the pogo pins and the mouse charging pins using a Q-tip and alcohol.",
+    "- Resetted mouse's surface calibration in Razer Synapse 2.0 or Razer Synapse 3.",
+    "- Tested the mouse on a different surface.",
+    "- Agreed to the terms and conditions of the limited warranty.",
+    "- Cleaned the mouse sensor with a Q-tip lightly coated with alcohol while the mouse is unplugged."
+  ],
+  "model": [
+    "Razer Mouse",
+    "Razer Basilisk V3 Pro",
+    "Razer Viper V2 Pro"
+  ],
+  "dongle": [
+    "false",
+    "true"
+  ]
+}
