@@ -10143,6 +10143,63 @@ states:
         cancelOrder: "RazerComOrder.outputCancelOrder"
         technicalSupport: "RazerComOrder.technicalSupport"
 
+  RazerComOrder.technicalSupport:
+    component: "System.CommonResponse"
+    properties:
+      processUserMessage: true
+      keepTurn: false
+      transitionAfterMatch: true
+      maxPrompts: 2
+      autoNumberPostbackActions: false
+      metadata:
+        responseItems:
+          - text: "Please choose a product family"
+            type: "text"
+            actions:
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDMSE VFD"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Mouse"
+                type: postback
+                keyword: "mouse"
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDHDST"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Headset"
+                type: postback
+                keyword: "headset"
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDKBRD"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Keyboard"
+                type: postback
+                keyword: "keyboard"
+              - skipAutoNumber: true
+                payload:
+                  action: "others"
+                label: "Others"
+                type: postback
+                keyword: "others"
+    transitions:
+      next: "intent"
+      actions:
+        others: "RazerComOrder.productFamilyOthers"
+
   RazerComOrder.outputOrderStatus:
     component: "System.Output"
     properties:
@@ -10533,7 +10590,7 @@ states:
     transitions:
       next: "RazerComOrder.outputContactOptions"
 
-  RazerComOrder.technicalSupport:
+  RazerComOrder.productFamilyOthers:
     component: "System.Output"
     properties:
       keepTurn: true
