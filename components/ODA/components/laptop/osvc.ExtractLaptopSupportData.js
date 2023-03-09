@@ -38,7 +38,6 @@ function buildText(indexesString, reference, properties){
     for(const index of indexes){
         values.push(`${properties.prepend}${reference[index]}${properties.append}`);
     }
-
     const text = values.join(properties.joinChar);
     return text.trim();
 }
@@ -54,14 +53,12 @@ function buildSymptomsText(indexesString, reference, properties){
         let otherSymptoms = indexes.splice(otherSymptomIndex, indexes.length);
         let index24 = otherSymptoms.shift();
         let joinedText = otherSymptoms.join(' ');
-
         extraText = `${properties.prepend}${reference[index24]} ${joinedText}${properties.append}`;
     }
     text = buildText(indexes.join('_'), reference, properties);
+    if(text != '') text = extraText != ''? `${text}${properties.joinChar}${extraText}` : text;
+    else text = extraText;
 
-    text = text != ''? `${text}${properties.joinChar}` : text;
-    text = extraText != ''? `${text} ${extraText}` : text;
-    
     return text.trim();
 }
 
