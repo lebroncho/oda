@@ -147,7 +147,7 @@ states:
         ChairSupport: chairSupport
         NetworkSupport: networkFaqs
         PhoneSupport: phoneFaqs
-        ProductSupport: questionPath
+        ProductSupport: technicalSupport
         ConnectAgent: agentPrompt
         EndChat: endPrompt
         unresolvedIntent: errorOutput
@@ -166,7 +166,7 @@ states:
         DeviceNotDetected: deviceNotDetected
         EchoSound: echoSoundOutput
         ErrorCode43: errorCodeOutput
-        ExtendCoverage: extendCoverageOutput
+        RazerCare: razerCare
         FanNoise: fanNoiseOutput
         HammerheadTrueWireless: hammerheadTWSOutput
         KrakenKitty: krakenKittyOutput
@@ -308,6 +308,11 @@ states:
         PowerSurgeWarning: powerSurgeWarning
         RazerAxon: RazerAxon.quickAnswerTS1
         BlueScreen: blueScreen
+        HeadStrapSetup: headStrapSetup
+        BladeBootLoop: bladeBootLoop
+        BladeSetUpRAID: bladeSetUpRAID
+        BladeOverclocking: bladeOverclocking
+        # BladeSecureBoot: bladeSecureBoot
 
         #------ Order-related Intents -------#
         RazerComOrder: RazerComOrder.start
@@ -456,7 +461,7 @@ states:
                 keyword: "2,b,B,rma,status"
                 payload:
                   action: "status"
-              - label: "Product support issue"
+              - label: "Product Support"
                 type: postback
                 keyword: "3,c,C,product,support"
                 payload:
@@ -481,13 +486,93 @@ states:
       actions:
         activation: setRequestFromSurroundSound
         status: rmaStatus
-        question: questionPath
-        # order: orderPath
+        question: technicalSupport
         order: RazerComOrder.start
         accessory: menuGetAccessory
         registration: menuRegistrationFailed
         match: hiddenAction
         cancel: errorOutput
+
+  technicalSupport:
+    component: "System.CommonResponse"
+    properties:
+      processUserMessage: true
+      keepTurn: false
+      transitionAfterMatch: true
+      maxPrompts: 2
+      autoNumberPostbackActions: false
+      metadata:
+        responseItems:
+          - text: "Select your product"
+            type: "text"
+            actions:
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDMSE VFD"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Mouse"
+                type: postback
+                keyword: "mouse"
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDHDST"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Headset"
+                type: postback
+                keyword: "headset"
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDKBRD"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Keyboard"
+                type: postback
+                keyword: "keyboard"
+              - skipAutoNumber: true
+                payload:
+                  action: "other"
+                label: "Other"
+                type: postback
+                keyword: "other"
+    transitions:
+      next: "intent"
+      actions:
+        other: questionPath
+
+  questionPath:
+    component: System.Output
+    properties:
+      text: "Please enter your question"
+      keepTurn: false
+    transitions:
+      next: intent
+
+  rephraseQuestionPath:
+    component: System.Output
+    properties:
+      text: "I am sorry I didn't answer your question. Can you rephrase it?"
+      keepTurn: false
+    transitions:
+      next: intent
+
+  handleInvalidAttachment:
+    component: System.Output
+    properties:
+      text: "I am sorry I don't understand the context of your attachment. Can you tell me what it is for?"
+      keepTurn: false
+    transitions:
+      next: intent
 
   launchSurroundSound:
     component: System.SetVariable
@@ -591,6 +676,12 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
+  quickAnswerCSSetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
+
   quickAnswerCSTry:
     component: System.SetVariable
     properties:
@@ -3488,7 +3579,7 @@ states:
                 keyword: "2,b,B,rma,status"
                 payload:
                   action: "status"
-              - label: "Product support issue"
+              - label: "Product Support"
                 type: postback
                 keyword: "3,c,C,product,support"
                 payload:
@@ -3513,8 +3604,7 @@ states:
       actions:
         activation: setRequestFromSurroundSound
         status: rmaStatus
-        question: questionPath
-        # order: orderPath
+        question: technicalSupport
         order: RazerComOrder.start
         accessory: menuGetAccessory
         registration: menuRegistrationFailed
@@ -4268,10 +4358,10 @@ states:
     transitions:
       next: quickAnswerCS
 
-  extendCoverageOutput:
+  razerCare:
     component: System.Output
     properties:
-      text: "${rb.extendCoverage}"
+      text: "${rb.razerCare}"
       keepTurn: true
     transitions:
       next: quickAnswerCS
@@ -6316,30 +6406,6 @@ states:
     transitions:
       next: quickAnswerTS1
 
-  questionPath:
-    component: System.Output
-    properties:
-      text: "Please enter your question"
-      keepTurn: false
-    transitions:
-      next: intent
-
-  rephraseQuestionPath:
-    component: System.Output
-    properties:
-      text: "I am sorry I didn't answer your question. Can you rephrase your question below?"
-      keepTurn: false
-    transitions:
-      next: intent
-
-  handleInvalidAttachment:
-    component: System.Output
-    properties:
-      text: "I am sorry I don't understand the context of your attachment. Can you tell me what it is for?"
-      keepTurn: false
-    transitions:
-      next: intent
-
   installHanbo:
     component: System.Output
     properties:
@@ -6652,6 +6718,30 @@ states:
     component: System.Output
     properties:
       text: "${rb.bladeBootLoop}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS2
+
+  bladeSetUpRAID:
+    component: System.Output
+    properties:
+      text: "${rb.bladeSetUpRAID}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS2
+
+  bladeOverclocking:
+    component: System.Output
+    properties:
+      text: "${rb.bladeOverclocking}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS2
+
+  bladeSecureBoot:
+    component: System.Output
+    properties:
+      text: "${rb.bladeSecureBoot}"
       keepTurn: true
     transitions:
       next: quickAnswerTS2
@@ -8207,12 +8297,16 @@ states:
                 type: postback
                 keyword: "1,a,A,headset"
                 payload:
-                  action: "headset"
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDHDST"
               - label: "Keyboard"
                 type: postback
                 keyword: "2,b,B,keyboard"
                 payload:
-                  action: "keyboard"
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDKBRD"
               - label: "Mouse"
                 type: postback
                 keyword: "3,c,C,mouse"
@@ -10141,64 +10235,7 @@ states:
         orderStatus: "RazerComOrder.outputOrderStatus"
         refund: "RazerComOrder.askIsOrderFromRazer"
         cancelOrder: "RazerComOrder.outputCancelOrder"
-        technicalSupport: "RazerComOrder.technicalSupport"
-
-  RazerComOrder.technicalSupport:
-    component: "System.CommonResponse"
-    properties:
-      processUserMessage: true
-      keepTurn: false
-      transitionAfterMatch: true
-      maxPrompts: 2
-      autoNumberPostbackActions: false
-      metadata:
-        responseItems:
-          - text: "Please choose a product family"
-            type: "text"
-            actions:
-              - skipAutoNumber: true
-                payload:
-                  variables:
-                    system.text: "RPSVFDMSE VFD"
-                    user.journey: true
-                    user.secondTry: true
-                    user.chatType: "TS1"
-                  action: "system.textReceived"
-                label: "Mouse"
-                type: postback
-                keyword: "mouse"
-              - skipAutoNumber: true
-                payload:
-                  variables:
-                    system.text: "RPSVFDHDST"
-                    user.journey: true
-                    user.secondTry: true
-                    user.chatType: "TS1"
-                  action: "system.textReceived"
-                label: "Headset"
-                type: postback
-                keyword: "headset"
-              - skipAutoNumber: true
-                payload:
-                  variables:
-                    system.text: "RPSVFDKBRD"
-                    user.journey: true
-                    user.secondTry: true
-                    user.chatType: "TS1"
-                  action: "system.textReceived"
-                label: "Keyboard"
-                type: postback
-                keyword: "keyboard"
-              - skipAutoNumber: true
-                payload:
-                  action: "others"
-                label: "Others"
-                type: postback
-                keyword: "others"
-    transitions:
-      next: "intent"
-      actions:
-        others: "RazerComOrder.productFamilyOthers"
+        technicalSupport: "technicalSupport"
 
   RazerComOrder.outputOrderStatus:
     component: "System.Output"
@@ -10589,14 +10626,6 @@ states:
       value: "Return for refund"
     transitions:
       next: "RazerComOrder.outputContactOptions"
-
-  RazerComOrder.productFamilyOthers:
-    component: "System.Output"
-    properties:
-      keepTurn: true
-      text: "Please describe your issue"
-    transitions:
-      next: "intent"
 
   RazerComOrder.outputContactOptions:
     component: "System.CommonResponse"
