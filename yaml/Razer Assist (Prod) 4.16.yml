@@ -827,6 +827,12 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
+  quickAnswerTSChairSetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
+
   quickTypeTSChair:
     component: System.SetVariable
     properties:
@@ -10675,6 +10681,12 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
+  quickAnswerCSSetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
+
   RazerComOrder.quickTypeCS:
     component: System.SetVariable
     properties:
