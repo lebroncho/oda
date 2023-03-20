@@ -89,6 +89,11 @@ states:
     properties:
       variable: "casePrivateNotes"
       value: ""
+  setCaseCreationState:
+    component: "System.SetVariable"
+    properties:
+      variable: "caseCreationState"
+      value: ""
   setCurrentFlow:
     component: "System.SetVariable"
     properties:
@@ -679,7 +684,6 @@ states:
     properties:
       variable: "caseCreationState"
       value: "setCaseFirstName"
-
   quickAnswerCSTry:
     component: System.SetVariable
     properties:
@@ -734,7 +738,6 @@ states:
     properties:
       variable: "caseCreationState"
       value: "setCaseFirstName"
-  
   quickTypeTS1:
     component: System.SetVariable
     properties:
@@ -783,7 +786,6 @@ states:
     properties:
       variable: "caseCreationState"
       value: "setCaseFirstName"
-
   quickTypeTS2:
     component: System.SetVariable
     properties:
@@ -832,7 +834,6 @@ states:
     properties:
       variable: "caseCreationState"
       value: "setCaseFirstName"
-
   quickTypeTSChair:
     component: System.SetVariable
     properties:
@@ -881,7 +882,6 @@ states:
     properties:
       variable: "caseCreationState"
       value: "setCaseFirstName"
-
   quickTypeTSEdge:
     component: System.SetVariable
     properties:
@@ -2604,45 +2604,12 @@ states:
         cancel: errorOutput
 
   batteryIssue:
-    component: System.SetVariable
-    properties:
-      variable: user.chatType
-      value: "TS2"
-  batteryIssueOutput:
     component: System.Output
     properties:
       text: "${rb.bloatedBattery}"
       keepTurn: true
-  resolveBatteryIssue:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "Did I answer your question?"
-            actions:
-              - label: "Yes"
-                type: postback
-                keyword: "a,A,y,Y"
-                payload:
-                  action: "Yes"
-              - label: "No"
-                type: postback
-                keyword: "b,B,n,N"
-                payload:
-                  action: "No"
     transitions:
-      next: intent
-      actions:
-        Yes: queryResolved
-        No: checkTryCount
-        match: hiddenAction
-        cancel: errorOutput
+      next: quickAnswerTS2
 
   resolvePurchasedDays:
     component: System.CommonResponse
@@ -4956,51 +4923,12 @@ states:
       next: quickAnswerTS1
 
   headsetCracklingNoise:
-    component: System.SetVariable
-    properties:
-      variable: user.chatType
-      value: "TS1"
-  headsetCracklingNoiseOutput:
     component: System.Output
     properties:
       text: "${rb.headsetCracklingNoise}"
       keepTurn: true
-  resolveHeadsetIssue:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "Did I answer your question?"
-            actions:
-              - label: "Yes"
-                type: postback
-                keyword: "a,A,y,Y"
-                payload:
-                  action: "Yes"
-              - label: "No - Connect to agent"
-                type: postback
-                keyword: "b,B,agent"
-                payload:
-                  action: "agent"
-              - label: "Ask another question"
-                type: postback
-                keyword: "d,D,n,N"
-                payload:
-                  action: "No"
-    transitions:
-      next: intent
-      actions:
-        Yes: queryResolved
-        agent: startChat
-        No: resetConversation
-        match: hiddenAction
-        cancel: errorOutput
+  transitions:
+      next: quickAnswerTS1
 
   synapseDialKey:
     component: System.Output
@@ -5235,7 +5163,7 @@ states:
                 keyword: "b,B,n,N"
                 payload:
                   action: "No"
-              - label: "Connect to agent"
+              - label: "No - Connect to an agent"
                 type: postback
                 keyword: "c,C,agent"
                 payload:
@@ -7603,8 +7531,7 @@ states:
     transitions:
       actions:
         exists: caseAlreadyCreated
-        # -- PATCH FOR SPECIFIC CASE CREATION FOR DIFFERENT FLOWS -- #
-        notexists: "<#if caseCreationState?? && caseCreationState.value!=''>${caseCreationState.value}<#else>setCaseFirstName</#if>"
+        notexists: <#if caseCreationState?? && caseCreationState.value!=''>${caseCreationState.value}<#else>setCaseFirstName</#if>
 
   caseAlreadyCreated:
     component: System.CommonResponse
