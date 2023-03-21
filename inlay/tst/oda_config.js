@@ -238,7 +238,6 @@ function getcustomerInfo(fld) {
             default: r = '';
                 break;
         }
-        console.log(fld + ": " + r);
     }
     return r;
 }
