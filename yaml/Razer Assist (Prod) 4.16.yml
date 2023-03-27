@@ -9386,7 +9386,7 @@ states:
       fileLocalFName: "${caseFile.value}"
       fileUserFName: "${caseFileTitle.value}"
       fileContentType: "${caseFileType.value}"
-      privateNotes: "${casePrivateNotes.value}"
+      privateNotes: "${casePrivateNotes.value!''}"
     transitions:
       actions:
         fail: "apiFailed"
@@ -9410,7 +9410,7 @@ states:
       fileLocalFName: ""
       fileUserFName: ""
       fileContentType: ""
-      privateNotes: "${casePrivateNotes.value}"
+      privateNotes: "${(casePrivateNotes.value)!''}"
     transitions:
       actions:
         fail: "apiFailed"
