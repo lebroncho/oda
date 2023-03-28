@@ -288,27 +288,36 @@ function createMouseCaseNotes(
     $note .= "<b>Photo or video of the issue:</b> See Attached</br>";
   }
 
-  if (($rmaType != '') && ($rmaType != '<not set>')) {
-    $note .= "</br><b>Replacement Option:</b> " . $rmaType . "</br>";
-    $note .= "<b>Terms & Conditions:</b> Yes</br>";
-    $note .= "<b>Phone:</b> " . $rmaPhone . "</br>";
-    $note .= "<b>Shipping Address:</b> " . $rmaShippingAddress . "</br>";
-    $note .= "<b>Billing Address:</b> " . $rmaBillingAddress . "</br>";
-    $note .= "<b>Date of Purchase:</b> " . $rmaPurchaseDate . "</br>";
-    $note .= "<b>Place of Purchase:</b> " . $rmaPurchasePlace . "</br>";
-    if (!empty($rmaFileLocalFname) && ($rmaFileLocalFname != '<not set>')) {
-      $note .= "<b>Proof of Purchase:</b> See Attached";
-    }
-  }
+  // if (($rmaType != '') && ($rmaType != '<not set>')) {
+  //   $note .= "</br><b>Replacement Option:</b> " . $rmaType . "</br>";
+  //   $note .= "<b>Terms & Conditions:</b> Yes</br>";
+  //   $note .= "<b>Phone:</b> " . $rmaPhone . "</br>";
+  //   $note .= "<b>Shipping Address:</b> " . $rmaShippingAddress . "</br>";
+  //   $note .= "<b>Billing Address:</b> " . $rmaBillingAddress . "</br>";
+  //   $note .= "<b>Date of Purchase:</b> " . $rmaPurchaseDate . "</br>";
+  //   $note .= "<b>Place of Purchase:</b> " . $rmaPurchasePlace . "</br>";
+  //   if (!empty($rmaFileLocalFname) && ($rmaFileLocalFname != '<not set>')) {
+  //     $note .= "<b>Proof of Purchase:</b> See Attached";
+  //   }
+  // }
 
-  if (($rmaCity != '') && ($rmaCity != '<not set>')) {
-    $note .= "</br><b>Replacement Option:</b> Standard</br>";
+  // if (($rmaCity != '') && ($rmaCity != '<not set>')) {
+  //   $note .= "</br><b>Replacement Option:</b> Standard</br>";
+  //   $note .= "<b>Phone:</b> " . $rmaPhone . "</br>";
+  //   $note .= "<b>Street Address:</b> " . $rmaStreetAddress . "</br>";
+  //   $note .= "<b>City:</b> " . $rmaCity . "</br>";
+  //   $note .= "<b>State/Province:</b> " . $rmaStateProvince . "</br>";
+  //   $note .= "<b>Zip/Postal Code:</b> " . $rmaZipPostal . "</br>";
+  //   $note .= "<b>Country:</b> " . $rmaCountry . "</br>";
+  //   $note .= "<b>Date of Purchase:</b> " . $rmaPurchaseDate . "</br>";
+  //   $note .= "<b>Place of Purchase:</b> " . $rmaPurchasePlace . "</br>";
+  //   if (!empty($rmaFileLocalFname) && ($rmaFileLocalFname != '<not set>')) {
+  //     $note .= "<b>Proof of Purchase:</b> See Attached";
+  //   }
+  // }
+
+  if (($rmaPhone != '') && ($rmaPhone != '<not set>')) {
     $note .= "<b>Phone:</b> " . $rmaPhone . "</br>";
-    $note .= "<b>Street Address:</b> " . $rmaStreetAddress . "</br>";
-    $note .= "<b>City:</b> " . $rmaCity . "</br>";
-    $note .= "<b>State/Province:</b> " . $rmaStateProvince . "</br>";
-    $note .= "<b>Zip/Postal Code:</b> " . $rmaZipPostal . "</br>";
-    $note .= "<b>Country:</b> " . $rmaCountry . "</br>";
     $note .= "<b>Date of Purchase:</b> " . $rmaPurchaseDate . "</br>";
     $note .= "<b>Place of Purchase:</b> " . $rmaPurchasePlace . "</br>";
     if (!empty($rmaFileLocalFname) && ($rmaFileLocalFname != '<not set>')) {
@@ -488,7 +497,7 @@ try {
 } catch (\Exception $e) {
   $mm = new RNCPHP\MailMessage();
   $mm->To->EmailAddresses = array("josh.cabiles.ext@razer.com");
-  $mm->Subject = "odasupportcasebotprocessor";
+  $mm->Subject = "odasupportcasebotprocessor-TST";
   $mm->Body->Text = $e->getMessage();
   $mm->Options->IncludeOECustomHeaders = false;
   $mm->Options->HonorMarketingOptIn = false;
