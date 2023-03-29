@@ -77,6 +77,33 @@ function getIncidentType($problemID){
   return $typeID;
 }
 
+function getCountry($region){
+    $region = strtoupper($region);
+    return $region == 'NA' ? 'us' : NULL;
+}
+
+function getRegion($region){
+    $regionObject = NULL;
+    $regionId = NULL;
+    $region = strtoupper($region);
+
+    switch ($region) {
+        case 'AP':
+            $regionObject = RNCPHP\CO\Region::fetch(734);
+            $regionId = 734;
+            break;
+        case 'EU':
+            $regionObject = RNCPHP\CO\Region::fetch(733);
+            $regionId = 733;
+            break;
+        default: //Americas
+            $regionObject = RNCPHP\CO\Region::fetch(732);
+            $regionId = 732;
+    }
+
+    return $regionId;
+}
+
 /**************** LEGACY CODES END *********************/
 /*******************************************************/
 
@@ -168,7 +195,7 @@ function createContact($contactID){
 
 function createServiceCategory($problemID, $categoryID){
     $serviceCategory = NULL;
-    if ($problemId == 1341 && $categoryID != 'NULL') { //Surround Sound Activation
+    if ($problemID == 1341 && $categoryID != 'NULL') { //Surround Sound Activation
         $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryID));
     }
     return $serviceCategory;
@@ -195,7 +222,6 @@ function createContactReason($problemID, $issue){
     return $contactReason;
 }
 
-
 function assignSerialNumberToIncident($incident, $serialNumber){
     // set the serial number to uppercase; SysAtrrib length of field = 20
     if($serialNumber != NULL && !empty($serialNumber)){
@@ -211,6 +237,13 @@ function assignTypeAndSourceToIncident($incident, $type, $source){
 
     $incident->CustomFields->c->incident_source = new RNCPHP\NamedIDLabel();
     $incident->CustomFields->c->incident_source->id = $source;
+}
+
+function assignSourceCountryAndRegion($incident, $region){
+    $incident->CustomFields->c->web_country = getCountry($region);
+
+    $incident->CustomFields->c->region = new RNCPHP\NamedIDLabel();
+    $incident->CustomFields->c->region->id = getRegion($region);
 }
 
 function createMessage($content, $entryType, $contentType){
@@ -325,7 +358,7 @@ function sendEmail($subject, $content, $recipients){
 
 function main(){
     $payloadData = [];
-    $RECIPIENTS = [ 'darwin.sardual.ext@razer.com'];
+    $RECIPIENTS = ['darwin.sardual.ext@razer.com','josh.cabiles.ext@razer.com'];
 
     try{
         
@@ -351,6 +384,7 @@ function main(){
         assignTypeAndSourceToIncident($incident, $incidentType, $WEB_ODA_INCIDENT_SOURCE);
         assignOrderNumberToIncident($incident, $caseData['orderNumber']);
         assignSerialNumberToIncident($incident, $caseData['serialNumber']);
+        assignSourceCountryAndRegion($incident, $caseData['region']);
         
         /** NOTE: Not really sure if this is still useful */
         $product = NULL;
