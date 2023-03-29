@@ -132,7 +132,7 @@ function getSubject() {
             break;
         case 'mice':
         case 'mouse':
-            subject = 'lRps932' + createUtterance('ms');
+            subject = 'lRps932' + createUtterance();
             break;
         case 'system':
             subject = 'lRlt281' + createUtterance();
@@ -156,7 +156,7 @@ function createUtterance(key = '') {
     formData.push(getStoredData('case_reason'));
     formData.push(getStoredData('case_symptoms', true));
     formData.push(getStoredData('case_connection'));
-    if (key == 'ms') formData.push(getStoredData('case_dongle'));
+    if (key == 'ms') formData.push(getStoredData('case_dongle')); //optional parameter for dongle request
     formData.push(getStoredData('case_solutions', true));
 
     let phrase = formData.join("|");
@@ -237,6 +237,7 @@ function getcustomerInfo(fld) {
                 break;
             default: r = '';
                 break;
+
         }
     }
     return r;

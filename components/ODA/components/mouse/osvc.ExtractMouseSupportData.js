@@ -23,6 +23,7 @@ function metadata(){
             // SETTERS
             issueVar: { required: true, type: 'string' }, // sets var of type string
             symptomsVar: { required: true, type: 'string' }, // string
+            connectionVar: { required: true, type: 'string' }, // string
             troubleshootingStepsVar: { required: true, type: 'string' } // string
         },
         supportedActions: ['next', 'error']
@@ -67,7 +68,7 @@ async function invoke(context){
 
     try{
         const {
-            issueVar, symptomsVar,
+            issueVar, symptomsVar, connectionVar,
             troubleshootingStepsVar
         } = context.properties();
         const nlpResult = context.properties().nlpResult.toString();
@@ -101,6 +102,7 @@ async function invoke(context){
                         troubleshootingData['symptoms'],
                         symptomsBuildProperties
                     );
+                    let connection = buildText(selections[CONNECTIONS_INDEX], troubleshootingData['connections']);
                     let troubleshootingSteps = buildText(
                         selections[TROUBLESHOOTING_STEPS_INDEX],
                         troubleshootingData['steps'],
@@ -110,6 +112,7 @@ async function invoke(context){
 
                     context.variable(issueVar, issues);
                     context.variable(symptomsVar, symptoms);
+                    context.variable(connectionVar, connection);
                     context.variable(troubleshootingStepsVar, troubleshootingSteps);
                 }
             }
