@@ -35,7 +35,7 @@ class ValidateSerial {
   invoke(conversation, done) {
     conversation.logger().info("------ ValidateSerial Invoked ------");
 
-    let serial = conversation.properties().serial.toString().toLowerCase();
+    let serial = conversation.properties().serial.toString().trim().toLowerCase();
     let productId = conversation.properties().product.toString();
     let family = products[productId]["family"];
     conversation.logger().info("serial: " + serial);
