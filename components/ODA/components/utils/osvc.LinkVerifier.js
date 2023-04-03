@@ -20,15 +20,16 @@ async function invoke(context){
 
     try{
         const matches = validator.exec(input);
-        context.keepTurn(true);
 
-        if(matches.length > 0){
+        if(matches && matches.length > 0){
 
             context.logger().info('------ osvc.LinkVerifier: match success ------');
+            context.keepTurn(true);
             context.transition('success');
         }else{
 
             context.logger().info('------ osvc.LinkVerifier: match failed ------');
+            context.keepTurn(true);
             context.transition('failed');
         }
     }catch(error){
