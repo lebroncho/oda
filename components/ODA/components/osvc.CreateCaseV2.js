@@ -46,7 +46,8 @@ async function invoke(context){
         const {
             region, chatSessionID, contactID,
             orderNumber, serialNumber, categoryID,
-            productNumber, problemID, issue,
+            productNumber, productDescription,
+            problemID, issue,
             files, notes, rmaNumber,
             caseReferenceNumberVar, caseIncidentIDVar
 
@@ -60,7 +61,9 @@ async function invoke(context){
             contactID: contactID, subject: subject,
             problemID: problemID, categoryID: categoryID,
             region: region, chatSessionID: chatSessionID,
-            orderNumber: orderNumber, productNumber: productNumber,
+            orderNumber: orderNumber, 
+            productNumber: productNumber,
+            productDescription: productDescription,
             serialNumber: serialNumber, issue: issue,
             files: files, rmaNumber: rmaNumber,
             notes: notes

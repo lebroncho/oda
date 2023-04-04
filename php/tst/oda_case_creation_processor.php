@@ -130,7 +130,9 @@ function parseCaseDataFromPayload($input){
         "region" => $payloadData['region'], "chatSessionID" => $payloadData['chatSessionID'],
         "contactID" => $payloadData['contactID'], "orderNumber" => $payloadData['orderNumber'],
         "serialNumber" => $payloadData['serialNumber'], "categoryID" => $payloadData['categoryID'],
-        "subject" => $payloadData['subject'], "productNumber" => $payloadData['productNumber'],
+        "subject" => $payloadData['subject'], 
+        "productNumber" => $payloadData['productNumber'],
+        "productDescription" => $payloadData['productDescription'],
         "problemID" => $payloadData['problemID'], "issue" => $payloadData['issue'],
         "rmaNumber" => $payloadData['rmaNumber'], "files" => $payloadData['files'],
         "notes" => $payloadData['notes']
@@ -244,6 +246,19 @@ function assignSourceCountryAndRegion($incident, $region){
 
     $incident->CustomFields->c->region = new RNCPHP\NamedIDLabel();
     $incident->CustomFields->c->region->id = getRegion($region);
+}
+
+function mapProductNumberAndDescription($incident, $caseData){
+    $product = NULL;
+    $productNumber = $caseData['productNumber'];
+    if($productNumber != NULL && !empty($productNumber)){
+        $productNumber = strtoupper($productNumber);
+        $product = findProduct($productNumber);
+    }
+
+    $incident->CustomFields->CO1->Products->product_name = $product;
+    // $incident->CustomFields->c->chat_product_sku = $product;
+    // $incident->CustomFields->c->chat_product_desc = $caseData['productDescription'];
 }
 
 function createMessage($content, $entryType, $contentType){
@@ -385,16 +400,7 @@ function main(){
         assignOrderNumberToIncident($incident, $caseData['orderNumber']);
         assignSerialNumberToIncident($incident, $caseData['serialNumber']);
         assignSourceCountryAndRegion($incident, $caseData['region']);
-        
-        /** NOTE: Not really sure if this is still useful */
-        $product = NULL;
-        $productNumber = $caseData['productNumber'];
-        if($productNumber != NULL && !empty($productNumber)){
-            $productNumber = strtoupper($productNumber);
-            $product = findProduct($productNumber);
-        }
-        /********************************************* */
-
+        mapProductNumberAndDescription($incident, $caseData);
 
         /** ADD MESSAGES START */
         $message = createMessage($caseData['issue'], MessageEntryType::CUSTOM, MessageContentType::TEXT);
