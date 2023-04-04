@@ -156,7 +156,7 @@ function createUtterance(key = '') {
     formData.push(getStoredData('case_reason'));
     formData.push(getStoredData('case_symptoms', true));
     formData.push(getStoredData('case_connection'));
-    if (key == 'ms') formData.push(getStoredData('case_dongle')); //optional parameter for dongle request
+    // if (key == 'ms') formData.push(getStoredData('case_dongle')); //optional parameter for dongle request
     formData.push(getStoredData('case_solutions', true));
 
     let phrase = formData.join("|");

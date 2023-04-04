@@ -86,7 +86,7 @@ async function invoke(context){
             'orderNumber': orderNumber,
             'serialNumber': serialNumber,
             'categoryID': categoryID,
-            'subject': problemType,
+            'subject': `${problemType} - ${troubleshootingIssue}`,
             'productNumber': productNumber,
             'productDescription': productDescription,
             'problemID': problemID,
