@@ -6,6 +6,8 @@ initConnectAPI("api_integration", "H@%ttd9945HQ");
 
 use RightNow\Connect\v1_3 as RNCPHP;
 
+const MAX_STRING_LENGTH = 240;
+
 $input = file_get_contents('php://input');
 $data = json_decode($input);
 
@@ -212,6 +214,12 @@ function getCurrentTime()
     return date("Y-m-d H:i:s", $currtime);
 }
 
+function limitStringLength($str, $length)
+{
+    $ellipsis = '...';
+    return (strlen($str) >= $length ? substr($str, 0, $length - strlen($ellipsis)) . $ellipsis : $str);
+}
+
 $result = array();
 
 try {
@@ -220,7 +228,7 @@ try {
 
     $incident = new RNCPHP\Incident;
     $incident->PrimaryContact = $contact;
-    $incident->Subject = $caseSubject;
+    $incident->Subject = limitStringLength($caseSubject, MAX_STRING_LENGTH);   //max length 240
 
     $incident->Threads = new RNCPHP\ThreadArray();
 

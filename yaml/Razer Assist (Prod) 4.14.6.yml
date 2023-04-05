@@ -7531,9 +7531,10 @@ states:
       insightsInclude: false
       variable: user.caseCreated
     transitions:
+      next: setCaseFirstName
       actions:
         exists: caseAlreadyCreated
-        notexists: <#if caseCreationState?? && caseCreationState.value!=''>${caseCreationState.value}<#else>setCaseFirstName</#if>
+        notexists: "<#if caseCreationState?? && caseCreationState.value!=''>${caseCreationState.value}<#else>setCaseFirstName</#if>"
 
   caseAlreadyCreated:
     component: System.CommonResponse
