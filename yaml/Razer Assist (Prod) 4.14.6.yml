@@ -2043,7 +2043,7 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
-keyboardPath:
+  keyboardPath:
     component: System.SetVariable
     properties:
       variable: user.journey
