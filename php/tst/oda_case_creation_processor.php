@@ -250,15 +250,12 @@ function assignSourceCountryAndRegion($incident, $region){
 
 function mapProductNumberAndDescription($incident, $caseData){
     $product = NULL;
-    $productNumber = $caseData['productNumber'];
+    $productNumber = strval($caseData['productNumber']);
     if($productNumber != NULL && !empty($productNumber)){
         $productNumber = strtoupper($productNumber);
         $product = findProduct($productNumber);
     }
-
-    $incident->CustomFields->CO1->Products->product_name = $product;
-    // $incident->CustomFields->c->chat_product_sku = $product;
-    // $incident->CustomFields->c->chat_product_desc = $caseData['productDescription'];
+    $incident->CustomFields->CO->Products1 = $product;
 }
 
 function createMessage($content, $entryType, $contentType){
