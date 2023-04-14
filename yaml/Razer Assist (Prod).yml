@@ -370,7 +370,7 @@ states:
         MouseNotCharging: mousePath
         DirtyMouse: mousePath
         HypershiftMouse: mousePath
-        DongleBasiliskViper: dongleBasiliskViper
+        DongleBasiliskViper: mousePath
 
         #----- Headset-related Intents ------#
         HeadsetSupport: headsetPath
@@ -1944,7 +1944,7 @@ states:
       next: quickAnswerTS1
 
   #-------------------------------------------------------------------------------
-  # Task "Fix Mouse" -------------------------------------------------------------
+  # Maximus Flows ----------------------------------------------------------------
   #-------------------------------------------------------------------------------
   mousePath:
     component: System.SetVariable
@@ -2035,6 +2035,153 @@ states:
               - label: "No"
                 type: postback
                 keyword: "2,b,n"
+                payload:
+                  action: "No"
+    transitions:
+      next: intent
+      actions:
+        No: rephraseQuestionPath
+        match: hiddenAction
+        cancel: errorOutput
+
+  keyboardPath:
+    component: System.SetVariable
+    properties:
+      variable: user.journey
+      value: true
+  keyboardPath2:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.secondTry
+      value: true
+  setTypeKeyboard:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.chatType
+      value: "TS1"
+  resolveKeyboardPath:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Please confirm you need help with your keyboard"
+            actions:
+              - label: "Yes"
+                type: postback
+                keyword: "a,A,y,Y"
+                payload:
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDKBRD"
+              - label: "No"
+                type: postback
+                keyword: "b,B,n,N"
+                payload:
+                  action: "No"
+    transitions:
+      next: intent
+      actions:
+        No: rephraseQuestionPath
+        match: hiddenAction
+        cancel: errorOutput
+
+  headsetPath:
+    component: System.SetVariable
+    properties:
+      variable: user.journey
+      value: true
+  headsetPath2:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.secondTry
+      value: true
+  setTypeHeadset:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.chatType
+      value: "TS1"
+  resolveHeadsetPath:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Please confirm you need help with your headset"
+            actions:
+              - label: "Yes"
+                type: postback
+                keyword: "a,A,y,Y"
+                payload:
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDHDST"
+              - label: "No"
+                type: postback
+                keyword: "b,B,n,N"
+                payload:
+                  action: "No"
+    transitions:
+      next: intent
+      actions:
+        No: rephraseQuestionPath
+        match: hiddenAction
+        cancel: errorOutput
+
+  laptopPath:
+    component: System.SetVariable
+    properties:
+      variable: user.journey
+      value: true
+  laptopPath2:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.secondTry
+      value: true
+  setTypeLaptop:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.chatType
+      value: "TS2"
+  resolveLaptopPath:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Please confirm you need help with your laptop"
+            actions:
+              - label: "Yes"
+                type: postback
+                keyword: "a,A,y,Y"
+                payload:
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDLPTP"
+              - label: "No"
+                type: postback
+                keyword: "b,B,n,N"
                 payload:
                   action: "No"
     transitions:
@@ -2692,104 +2839,6 @@ states:
         ticket: initiateCaseCreation
         agent: startChat
         startOver: resetConversation
-        match: hiddenAction
-        cancel: errorOutput
-
-  keyboardPath:
-    component: System.SetVariable
-    properties:
-      variable: user.journey
-      value: true
-  keyboardPath2:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.secondTry
-      value: true
-  setTypeKeyboard:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.chatType
-      value: "TS1"
-  resolveKeyboardPath:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "Please confirm you need help with your keyboard"
-            actions:
-              - label: "Yes"
-                type: postback
-                keyword: "a,A,y,Y"
-                payload:
-                  action: "system.textReceived"
-                  variables:
-                    system.text: "RPSVFDKBRD"
-              - label: "No"
-                type: postback
-                keyword: "b,B,n,N"
-                payload:
-                  action: "No"
-    transitions:
-      next: intent
-      actions:
-        No: rephraseQuestionPath
-        match: hiddenAction
-        cancel: errorOutput
-
-  headsetPath:
-    component: System.SetVariable
-    properties:
-      variable: user.journey
-      value: true
-  headsetPath2:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.secondTry
-      value: true
-  setTypeHeadset:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.chatType
-      value: "TS1"
-  resolveHeadsetPath:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "Please confirm you need help with your headset"
-            actions:
-              - label: "Yes"
-                type: postback
-                keyword: "a,A,y,Y"
-                payload:
-                  action: "system.textReceived"
-                  variables:
-                    system.text: "RPSVFDHDST"
-              - label: "No"
-                type: postback
-                keyword: "b,B,n,N"
-                payload:
-                  action: "No"
-    transitions:
-      next: intent
-      actions:
-        No: rephraseQuestionPath
         match: hiddenAction
         cancel: errorOutput
 
@@ -4516,13 +4565,13 @@ states:
                 keyword: "a,A"
                 payload:
                   action: "pairingMouseViaDongle"
-              - label: "Connection issue via dongle with a Basilisk V3 Pro or Viper V2 Pro mouse"
-                type: "postback"
-                keyword: "b,B"
-                payload:
-                  action: "system.textReceived"
-                  variables:
-                    system.text: "BSLSKVPR"
+              # - label: "Connection issue via dongle with a Basilisk V3 Pro or Viper V2 Pro mouse"
+              #   type: "postback"
+              #   keyword: "b,B"
+              #   payload:
+              #     action: "system.textReceived"
+              #     variables:
+              #       system.text: "BSLSKVPR"
               - label: "Replace or buy a Razer Nari dongle"
                 type: "postback"
                 keyword: "c,C"

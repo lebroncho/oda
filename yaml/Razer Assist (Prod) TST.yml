@@ -313,11 +313,14 @@ states:
         PowerSurgeWarning: powerSurgeWarning
         RazerAxon: RazerAxon.quickAnswerTS1
         BlueScreen: blueScreen
-        HeadStrapSetup: headStrapSetup
         BladeBootLoop: bladeBootLoop
         BladeSetUpRAID: bladeSetUpRAID
         BladeOverclocking: bladeOverclocking
-        # BladeSecureBoot: bladeSecureBoot
+        BladeSecureBoot: bladeSecureBoot
+        NexusVirtualController: nexusVirtualController
+        HeadStrapSetup: headStrapSetup
+        HeadStrapAdjustment: headStrapAdjustment
+        FacialInterfaceSetup: facialInterfaceSetup
 
         #------ Order-related Intents -------#
         RazerComOrder: RazerComOrder.start
@@ -6623,14 +6626,6 @@ states:
     transitions:
       next: quickAnswerTS1
 
-  headStrapSetup:
-    component: System.Output
-    properties:
-      text: "${rb.headStrapSetup}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
   activationCode:
     component: System.CommonResponse
     properties:
@@ -6722,6 +6717,38 @@ states:
       keepTurn: true
     transitions:
       next: quickAnswerTS2
+
+  nexusVirtualController:
+    component: System.Output
+    properties:
+      text: "${rb.nexusVirtualController}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  headStrapSetup:
+    component: System.Output
+    properties:
+      text: "${rb.headStrapSetup}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  headStrapAdjustment:
+    component: System.Output
+    properties:
+      text: "${rb.headStrapAdjustment}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+  
+  facialInterfaceSetup:
+    component: System.Output
+    properties:
+      text: "${rb.facialInterfaceSetup}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
 
   #-------------------------------------------------------------------------------
   # Intent Answers End -----------------------------------------------------------
