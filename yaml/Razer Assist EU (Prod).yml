@@ -1,5 +1,5 @@
 main: true
-name: RazerAssist
+name: SupportBot
 context:
   variables:
     iResult: "nlpresult"
@@ -39,6 +39,8 @@ context:
     caseIncidentId: "int"
     rmaRequestedFromAnswer: "boolean"
     webIncident: "string"
+    webCountry: "string"
+    chatFromDistribution: "boolean"
     case: "CaseBag"
     hasCaseFile: "boolean"
     caseFile: "string"
@@ -59,21 +61,10 @@ context:
     caseCategoryId: "string"
     caseSSCategoryName: "string"
     caseSSCategoryResetAll: "string"
-    razerComOrderBag: "RazerComOrderBag"
     casePrivateNotes: "string"
-    currentFlow: "string"
-    caseCreationState: "string"
 
     ########### RAZER CORTEX VARIABLES ##########
     cortexIssue: "string"
-    #############################################
-
-    ######### RAZER COM ORDER VARIABLES #########
-    razerComOrder_issue: "string"
-    razerComOrder_fromUS: "boolean"
-    razerComOrder_postalCode: "string"
-    razerComOrder_reason: "string"
-    razerComOrder_orderNumber: "string"
     #############################################
 
     productModel: "string"
@@ -88,11 +79,6 @@ states:
     component: "System.SetVariable"
     properties:
       variable: "casePrivateNotes"
-      value: ""
-  setCurrentFlow:
-    component: "System.SetVariable"
-    properties:
-      variable: "currentFlow"
       value: ""
   setProductModel:
     component: "System.SetVariable"
@@ -116,7 +102,7 @@ states:
         HelpGuide: helpGuide
         StartOver: resetConversation
         RmaFlow: contactSupport
-        OrderStatus: RazerComOrder.start
+        OrderStatus: orderStatus
         RmaStatus: rmaStatus
         CaseStatus: caseStatus
         RefundStatus: refundStatus
@@ -125,8 +111,8 @@ states:
         CreditRejected: ccRejectedOutput
         FinancingOptions: financingOutput
         ItemAvailability: availabilityOutput
-        OrderCustoms: RazerComOrder.start
-        OrderCancel: RazerComOrder.outputCancelOrder
+        OrderCustoms: customsOutput
+        OrderCancel: cancelOrder
         TrackingNumber: shippingStatus
         ContactSupport: contactSupport
         NariPairing: nariPairing
@@ -137,6 +123,7 @@ states:
         RazerTurret: resolveTurret
         RazerSynapse: resolveSynapse
         BloatedBattery: batteryIssue
+        LaptopSupport: laptopFaqs
         TomahawkSupport: tomahawkFaqs
         CoreSupport: egpuFaqs
         MicSupport: micSupport
@@ -147,7 +134,7 @@ states:
         ChairSupport: chairSupport
         NetworkSupport: networkFaqs
         PhoneSupport: phoneFaqs
-        ProductSupport: questionPath
+        ProductSupport: technicalSupport
         ConnectAgent: agentPrompt
         EndChat: endPrompt
         unresolvedIntent: errorOutput
@@ -166,10 +153,10 @@ states:
         DeviceNotDetected: deviceNotDetected
         EchoSound: echoSoundOutput
         ErrorCode43: errorCodeOutput
-        ExtendCoverage: extendCoverageOutput
         FanNoise: fanNoiseOutput
         HammerheadTrueWireless: hammerheadTWSOutput
         KrakenKitty: krakenKittyOutput
+        LaptopOverheating: laptopOverheatingOutput
         LegacyProduct: legacyProductOutput
         MilitaryDiscount: militaryDiscountOutput
         PaymentMethods: paymentMethodsOutput
@@ -191,12 +178,12 @@ states:
         AuthSupport: authSupport
         UnhelpfulAnswer: unhelpfulAnswer
         ChatExpired: chatExpired
-        GetAccessory: getAccessoryOutput
-        OrderSupport: RazerComOrder.start
+        OrderSupport: orderSupport
         RmaChangeAddress: rmaChangeAddress
         RmaSla: rmaSla
-        OrderNotFound: RazerComOrder.start
-        OrderRefund: RazerComOrder.askFromUS
+        OrderNotFound: orderNotFound
+        OrderRefund: orderRefund
+        HeadsetAudioIssue: headsetAudioIssue
         KrakenAudioIssue: krakenAudioIssue
         RegistrationFailed: registrationFailed
         ThumbpadIssue: thumbpadIssue
@@ -205,14 +192,21 @@ states:
         SynapseCrashed: synapseCrashed
         MicSetDefault: micSetDefault
         SynapseDialKey: synapseDialKey
+        BladeDead: bladeDead
+        BladeDeadPixel: bladeDeadPixel
+        BladeWifiIssue: bladeWifiIssue
         ErrorBsod: errorBsod
         AnzuFAQ: anzuFAQ
         AnzuPairing: anzuPairing
         AnzuAudio: anzuAudio
         SynapseLightSettings: synapseLightSettings
+        BladeScreenTurnsBlack: bladeScreenTurnsBlack
+        BladeScreenFlickering: bladeScreenFlickering
         NariFAQ: nariFAQ
         BrokenDevice: brokenDevice
         OpusPairing: opusPairing
+        BladeRefreshRate: bladeRefreshRate
+        BladeLowStorage: bladeLowStorage
         SensitiveMic: sensitiveMic
         TomahawkFirmware: tomahawkFirmware
         BrokenReplacement: brokenReplacement
@@ -223,9 +217,11 @@ states:
         KiyoProFirmware: kiyoProFirmware
         CleanDevice: cleanDevice
         CreateMacro: createMacro
+        BladeLighting: bladeLighting
         LeviathanSupport: leviathanSupport
         KairaSupport: kairaSupport
         DisplayMenu: displayMenu
+        Blade14Activation: blade14Activation
         UnregisterDevice: unregisterDevice
         KeycapFit: keycapFit
         CoreSetup: coreSetup
@@ -243,13 +239,17 @@ states:
         AssignMacro: assignMacro
         SynapseReinstall: synapseReinstall
         ReplaceKeycap: replaceKeycap
+        BladeNotWakingUp: bladeNotWakingUp
         KeyBinding: keyBinding
         ThunderboltDockSupport: thunderboltDockSupport
         ASCIISymbols: asciiSymbols
+        BladeTrackpad: bladeTrackpad
         ChromaLightStrip: chromaLightStrip
         RipsawSetup: ripsawSetup
         GamingMode: gamingMode
         IskurAdjustLever: iskurAdjustLever
+        BladeSystemRecovery: bladeSystemRecovery
+        BladeMaxStorageMemory: bladeMaxStorageMemory
         PwmOverheating: pwmOverheating
         PwmNotSpinning: pwmNotSpinning
         ZephyrLighting: zephyrLighting
@@ -266,14 +266,32 @@ states:
         ChargingStandXbox: chargingStandXbox
         ChairCasterStuds: chairCasterStuds
         BatteryLife: batteryLife
+        BladeCrashing: bladeCrashing
+        BladeSkinInstall: bladeSkinInstall
+        BladeSkinRemoval: bladeSkinRemoval
         PhoneCoolerSetup: phoneCoolerSetup
         PhoneCoolerPairing: phoneCoolerPairing
         PhoneCoolerSettings: phoneCoolerSettings
         ZephyrReplaceStrap: zephyrReplaceStrap
         ZephyrReplaceFilter: zephyrReplaceFilter
+        LightBleed: lightBleed
+        ScreenBrightness: screenBrightness
+        DedicatedGpu: dedicatedGpu
+        NvidiaAdvancedOptimus: nvidiaAdvancedOptimus
+        DgpuBlankScreen: dgpuBlankScreen
+        MaximizeGpu: maximizeGpu
+        MonitorUsbSpecs: monitorUsbSpecs
+        UsbPort: usbPort
+        BladeThirdPartyCharge: bladeThirdPartyCharge
+        EthernetCable: ethernetCable
+        AccessBios: accessBios
+        BiosBoot: biosBoot
+        WobblingBlade: wobblingBlade
         ThxActivationCode: thxActivationCode
         ZephyrGap: zephyrGap
         WolverineDeadzone: wolverineDeadzone
+        BladeMonitor: bladeMonitor
+        BladeHdmi: bladeHdmi
         InstallHanbo: installHanbo
         RgbHanbo: rgbHanbo
         OverheatingHanbo: overheatingHanbo
@@ -285,12 +303,15 @@ states:
         HeadCushionChromaPairing: headCushionChromaPairing
         HeadCushionChromaLighting: headCushionChromaLighting
         RecycleDevice: recycleDevice
+        BladeGsync: bladeGsync
         AudioMixerSetup: audioMixerSetup
         AudioMixerUse: audioMixerUse
         AudioMixerSettings: audioMixerSettings
         KeyLightSetup: keyLightSetup
         KeyLightCustomization: keyLightCustomization
+        BladeOvercharge: bladeOvercharge
         SsdScrewSize: ssdScrewSize
+        LowerWattageBlade: lowerWattageBlade
         ModernStandby: modernStandby
         DeviceEncryption: deviceEncryption
         WatchWristbandSupport: watchWristbandSupport
@@ -308,11 +329,11 @@ states:
         PowerSurgeWarning: powerSurgeWarning
         RazerAxon: RazerAxon.quickAnswerTS1
         BlueScreen: blueScreen
-
-        #------ Order-related Intents -------#
-        RazerComOrder: RazerComOrder.start
-        RazerComReturnOrder: RazerComOrder.RO_quickAnswerCS
-        RazerComCancelOrder: RazerComOrder.CO_quickAnswerCS
+        HeadStrapSetup: headStrapSetup
+        BladeBootLoop: bladeBootLoop
+        BladeSetUpRAID: bladeSetUpRAID
+        BladeOverclocking: bladeOverclocking
+        # BladeSecureBoot: bladeSecureBoot
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -347,44 +368,6 @@ states:
         RazerEdgeAudioIssues: RazerEdge.audioIssues
         RazerEdgeOverheatingIssues: RazerEdge.overheatingIssues
         RazerEdgeBTPCInternetIssues: RazerEdge.connectionIssues
-
-        #------ Laptop-related Intents ------#
-        BladeDead: bladeDead
-        BladeDeadPixel: bladeDeadPixel
-        BladeWifiIssue: bladeWifiIssue
-        BladeScreenTurnsBlack: bladeScreenTurnsBlack
-        BladeScreenFlickering: bladeScreenFlickering
-        BladeRefreshRate: bladeRefreshRate
-        BladeLowStorage: bladeLowStorage
-        BladeLighting: bladeLighting
-        Blade14Activation: blade14Activation
-        BladeNotWakingUp: bladeNotWakingUp
-        BladeTrackpad: bladeTrackpad
-        BladeSystemRecovery: bladeSystemRecovery
-        BladeMaxStorageMemory: bladeMaxStorageMemory
-        BladeCrashing: bladeCrashing
-        BladeSkinInstall: bladeSkinInstall
-        BladeSkinRemoval: bladeSkinRemoval
-        BladeThirdPartyCharge: bladeThirdPartyCharge
-        BladeMonitor: bladeMonitor
-        BladeHdmi: bladeHdmi
-        BladeGsync: bladeGsync
-        BladeOvercharge: bladeOvercharge
-        WobblingBlade: wobblingBlade
-        LowerWattageBlade: lowerWattageBlade
-        LaptopSupport: laptopFaqs
-        LaptopOverheating: laptopOverheatingOutput
-        AccessBios: accessBios
-        BiosBoot: biosBoot
-        LightBleed: lightBleed
-        ScreenBrightness: screenBrightness
-        DedicatedGpu: dedicatedGpu
-        NvidiaAdvancedOptimus: nvidiaAdvancedOptimus
-        DgpuBlankScreen: dgpuBlankScreen
-        MaximizeGpu: maximizeGpu
-        MonitorUsbSpecs: monitorUsbSpecs
-        UsbPort: usbPort
-        EthernetCable: ethernetCable
 
   #-------------------------------------------------------------------------------
   # Greeting ---------------------------------------------------------------------
@@ -432,6 +415,12 @@ states:
     component: System.ResetVariables
     properties:
       variableList: "liveHelp,orderHelp,refundHelp,productHelp,laptopHelp,phoneHelp,peripheralHelp,support,prompt,rmaRequestedFromAnswer,selectedOption,requestFromSS,requestFromSSLaunch"
+  setWebCountry:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: webCountry
+      value: "<#list profile.contactInfo.value.customFields as p><#if p.name=='Web Country'>${p.value}</#if></#list>"
   resolveLiveHelp:
     component: System.CommonResponse
     properties:
@@ -456,7 +445,7 @@ states:
                 keyword: "2,b,B,rma,status"
                 payload:
                   action: "status"
-              - label: "Product support issue"
+              - label: "Product Support"
                 type: postback
                 keyword: "3,c,C,product,support"
                 payload:
@@ -466,14 +455,9 @@ states:
                 keyword: "4,d,D,order"
                 payload:
                   action: "order"
-              - label: "Buy spare part/accessory"
-                type: postback
-                keyword: "5,e,E,parts,accessory"
-                payload:
-                  action: "accessory"
               - label: "Product registration issue"
                 type: postback
-                keyword: "6,f,F,register"
+                keyword: "5,e,E,register"
                 payload:
                   action: "registration"
     transitions:
@@ -481,13 +465,92 @@ states:
       actions:
         activation: setRequestFromSurroundSound
         status: rmaStatus
-        question: questionPath
-        # order: orderPath
-        order: RazerComOrder.start
-        accessory: menuGetAccessory
+        question: technicalSupport
+        order: orderPath
         registration: menuRegistrationFailed
         match: hiddenAction
         cancel: errorOutput
+
+  technicalSupport:
+    component: "System.CommonResponse"
+    properties:
+      processUserMessage: true
+      keepTurn: false
+      transitionAfterMatch: true
+      maxPrompts: 2
+      autoNumberPostbackActions: false
+      metadata:
+        responseItems:
+          - text: "Select your product"
+            type: "text"
+            actions:
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDMSE VFD"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Mouse"
+                type: postback
+                keyword: "mouse"
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDHDST"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Headset"
+                type: postback
+                keyword: "headset"
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDKBRD"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Keyboard"
+                type: postback
+                keyword: "keyboard"
+              - skipAutoNumber: true
+                payload:
+                  action: "other"
+                label: "Other"
+                type: postback
+                keyword: "others"
+    transitions:
+      next: "intent"
+      actions:
+        other: questionPath
+
+  questionPath:
+    component: System.Output
+    properties:
+      text: "Please enter your question"
+      keepTurn: false
+    transitions:
+      next: intent
+
+  rephraseQuestionPath:
+    component: System.Output
+    properties:
+      text: "I am sorry I didn't answer your question. Can you rephrase it?"
+      keepTurn: false
+    transitions:
+      next: intent
+
+  handleInvalidAttachment:
+    component: System.Output
+    properties:
+      text: "I am sorry I don't understand the context of your attachment. Can you tell me what it is for?"
+      keepTurn: false
+    transitions:
+      next: intent
 
   launchSurroundSound:
     component: System.SetVariable
@@ -548,18 +611,6 @@ states:
   orderPath:
     component: System.SetVariable
     properties:
-      insightsInclude: false
-      variable: "contactInfo"
-      value: "${profile.contactInfo.value}"
-  initiatilizeSerialOrder:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: serialNumber
-      value: "<#list contactInfo.value.customFields as p><#if p.name=='Serial Number'><#if p.value!='unavailable'>${p.value}<#else>-</#if></#if></#list>"
-  orderProper:
-    component: System.SetVariable
-    properties:
       variable: user.journey
       value: true
   setTypeCS:
@@ -574,6 +625,23 @@ states:
       insightsInclude: false
       variable: selectedOption
       value: "OrderSupport"
+  checkDRGC:
+    component: "osvc.CheckDRGC"
+    properties:
+      countryCode: "${webCountry}"
+    transitions:
+      actions:
+        hasDRGC: orderSupportDRGC
+        noDRGC: orderSupport
+
+  orderSupportDRGC:
+    component: System.Output
+    properties:
+      text: "${rb.orderFAQDRGC}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerCS
+
   orderSupport:
     component: System.Output
     properties:
@@ -640,12 +708,6 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
-  quickAnswerTS1SetCaseCreationState:
-    component: System.SetVariable
-    properties:
-      variable: "caseCreationState"
-      value: "setCaseFirstName"
-  
   quickTypeTS1:
     component: System.SetVariable
     properties:
@@ -689,12 +751,6 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
-  quickAnswerTS2SetCaseCreationState:
-    component: System.SetVariable
-    properties:
-      variable: "caseCreationState"
-      value: "setCaseFirstName"
-
   quickTypeTS2:
     component: System.SetVariable
     properties:
@@ -732,67 +788,12 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
-  quickAnswerTSChair:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.journey
-      value: true
-  quickAnswerTSChairSetCaseCreationState:
-    component: System.SetVariable
-    properties:
-      variable: "caseCreationState"
-      value: "setCaseFirstName"
-
-  quickTypeTSChair:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.chatType
-      value: "TSChair"
-  resolveQuickAnswerTSChair:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "Did I answer your question?"
-            actions:
-              - label: "Yes"
-                type: postback
-                keyword: "a,A,y,Y"
-                payload:
-                  action: "Yes"
-              - label: "No"
-                type: postback
-                keyword: "b,B,n,N"
-                payload:
-                  action: "No"
-    transitions:
-      next: intent
-      actions:
-        Yes: queryResolved
-        No: checkTryCount
-        match: hiddenAction
-        cancel: errorOutput
-
   quickAnswerTSEdge:
     component: System.SetVariable
     properties:
       insightsInclude: false
       variable: user.journey
       value: true
-  quickAnswerTSEdgeSetCaseCreationState:
-    component: System.SetVariable
-    properties:
-      variable: "caseCreationState"
-      value: "setCaseFirstName"
-
   quickTypeTSEdge:
     component: System.SetVariable
     properties:
@@ -1102,29 +1103,18 @@ states:
       values:
         - "TS1"
         - "TS2"
-        - "TSChair"
     transitions:
       actions:
         TS1: setHoopsChatQueueTS1
         TS2: setHoopsChatQueueTS2
-        TSChair: setHoopsChatQueueTSChair
         NONE: setHoopsChatQueueTS1
-
-  setHoopsChatQueueTSChair:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: chatQueue
-      value: "${system.config.incidentTsChairId}"
-    transitions:
-      next: checkHoopsChatQueue
 
   setHoopsChatQueueTS2:
     component: System.SetVariable
     properties:
       insightsInclude: false
       variable: chatQueue
-      value: "${system.config.incidentTs2Id}"
+      value: "${system.config.chatQueueTs2Id}"
     transitions:
       next: checkHoopsChatQueue
 
@@ -1133,7 +1123,7 @@ states:
     properties:
       insightsInclude: false
       variable: chatQueue
-      value: "${system.config.incidentTs1Id}"
+      value: "${system.config.chatQueueTs1Id}"
     transitions:
       next: checkHoopsChatQueue
 
@@ -1255,7 +1245,63 @@ states:
       variable: rmaFromRazer
       value: false
     transitions:
-      next: proofPrompt
+      next: checkDistribution
+
+  checkDistribution:
+    component: "osvc.CheckDistribution"
+    properties:
+      countryCode: "${webCountry}"
+    transitions:
+      actions:
+        hasDistribution: contactDistributionQuery
+        noDistribution: proofPrompt
+
+  contactDistributionQuery:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "${rb.contactDistributionQuery}"
+            actions:
+              - label: "Yes"
+                type: postback
+                keyword: "a,A,y,Y"
+                payload:
+                  action: "Yes"
+              - label: "No"
+                type: postback
+                keyword: "b,B,n,N"
+                payload:
+                  action: "No"
+    transitions:
+      actions:
+        Yes: setChatSource
+        No: contactDistribution
+        match: hiddenAction
+        cancel: errorFallback
+
+  setChatSource:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: chatFromDistribution
+      value: true
+    transitions:
+      next: startChat
+
+  contactDistribution:
+    component: System.Output
+    properties:
+      text: "${rb.contactDistribution}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerCS
 
   #-------------------------------------------------------------------------------
   # Error Handling ---------------------------------------------------------------
@@ -1622,73 +1668,6 @@ states:
       actions:
         agent: startChat
         replace: setRmaTypeReplace
-        match: hiddenAction
-        cancel: errorOutput
-
-  #-------------------------------------------------------------------------------
-  # Task "Spare Parts Accessories" -----------------------------------------------
-  #-------------------------------------------------------------------------------
-  resetAccessory:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "What do you need?"
-            actions:
-              - label: Spare Parts
-                type: url
-                keyword: "a,A,spare,parts"
-                payload:
-                  url: "https://razercarestore.razer.com/"
-              - label: Accessories
-                type: postback
-                keyword: "b,B,accessory"
-                payload:
-                  action: accessory
-    transitions:
-      next: intent
-      actions:
-        accessory: resolveAccessory
-        match: hiddenAction
-        cancel: errorOutput
-
-  resolveAccessory:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "What type of accessory?"
-            actions:
-              - label: PC
-                type: url
-                keyword: "a,A,pc"
-                payload:
-                  url: "https://www.razer.com/shop/pc/gaming-pc-accessories"
-              - label: Peripheral
-                type: url
-                keyword: "b,B,peri"
-                payload:
-                  url: "https://www.razer.com/gaming-peripheral-accessories"
-              - label: Mobile
-                type: url
-                keyword: "c,C,mobile"
-                payload:
-                  url: "https://www.razer.com/shop/mobile/mobile-accessories"
-    transitions:
-      next: intent
-      actions:
         match: hiddenAction
         cancel: errorOutput
 
@@ -3488,7 +3467,7 @@ states:
                 keyword: "2,b,B,rma,status"
                 payload:
                   action: "status"
-              - label: "Product support issue"
+              - label: "Product Support"
                 type: postback
                 keyword: "3,c,C,product,support"
                 payload:
@@ -3498,14 +3477,9 @@ states:
                 keyword: "4,d,D,order"
                 payload:
                   action: "order"
-              - label: "Buy spare part/accessory"
-                type: postback
-                keyword: "5,e,E,parts,accessory"
-                payload:
-                  action: "accessory"
               - label: "Product registration issue"
                 type: postback
-                keyword: "6,f,F,register"
+                keyword: "5,e,E,register"
                 payload:
                   action: "registration"
     transitions:
@@ -3513,10 +3487,8 @@ states:
       actions:
         activation: setRequestFromSurroundSound
         status: rmaStatus
-        question: questionPath
-        # order: orderPath
-        order: RazerComOrder.start
-        accessory: menuGetAccessory
+        question: technicalSupport
+        order: orderPath
         registration: menuRegistrationFailed
         match: hiddenAction
         cancel: errorOutput
@@ -3560,14 +3532,12 @@ states:
         - "CS"
         - "TS1"
         - "TS2"
-        - "TSChair"
         - "TSEdge"
     transitions:
       actions:
         CS: setChatQueueCS
         TS1: setChatQueueTS1
         TS2: setChatQueueTS2
-        TSChair: setChatQueueTSChair
         TSEdge: setChatQueueTSEdge
         NONE: setChatQueueTS1
 
@@ -3586,7 +3556,7 @@ states:
     properties:
       insightsInclude: false
       variable: chatType
-      value: "${system.config.incidentCsId}"
+      value: "${system.config.chatQueueCsId}"
     transitions:
       next: checkChatQueue
 
@@ -3605,7 +3575,7 @@ states:
     properties:
       insightsInclude: false
       variable: chatType
-      value: "${system.config.incidentTs2Id}"
+      value: "${system.config.chatQueueTs2Id}"
     transitions:
       next: checkChatQueue
 
@@ -3624,55 +3594,28 @@ states:
     properties:
       insightsInclude: false
       variable: chatType
-      value: "${system.config.incidentTs1Id}"
+      value: "${system.config.chatQueueTs1Id}"
     transitions:
       next: checkChatQueue
-
-  setChatQueueTSChair:
-    component: System.SetVariable
-    properties:
-      variable: chatQueue
-      value: "${system.config.incidentTsChairId}"
-  setChatWebIncidentTSChair:
-    component: System.SetVariable
-    properties:
-      variable: webIncident
-      value: "My Razer Gaming Chair"
-  setChatTypeTSChair:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: chatType
-      value: "${system.config.incidentTsChairId}"
-    transitions:
-      next: checkChatQueue
-
-  # setChatQueueTSEdge:
-  #   component: System.SetVariable
-  #   properties:
-  #     variable: chatQueue
-  #     value: "${system.config.incidentTs2Id}"
-  # setChatWebIncidentTSEdge:
-  #   component: System.SetVariable
-  #   properties:
-  #     variable: webIncident
-  #     value: "My Razer Edge Handheld"
-  # setChatTypeTSEdge:
-  #   component: System.SetVariable
-  #   properties:
-  #     insightsInclude: false
-  #     variable: chatType
-  #     value: "${system.config.incidentTs2Id}"
-  #   transitions:
-  #     next: checkChatQueue
 
   setChatQueueTSEdge:
     component: System.SetVariable
     properties:
+      variable: chatQueue
+      value: "${system.config.incidentTs2Id}"
+  setChatWebIncidentTSEdge:
+    component: System.SetVariable
+    properties:
       variable: webIncident
       value: "My Razer Edge Handheld"
+  setChatTypeTSEdge:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: chatType
+      value: "${system.config.chatQueueTs2Id}"
     transitions:
-      next: setContactInfo
+      next: checkChatQueue
 
   checkChatQueue:
     component: "osvc.CheckChatQueue"
@@ -3682,22 +3625,65 @@ states:
       actions:
         chatAvailable: setContactInfo
         chatUnavailableMaxQueue: chatUnavailableMaxQueue
-        chatUnavailableHours: setContactInfo #chatUnavailableHours
+        chatUnavailableHours: chatUnavailableHours
         fail: timedOutMessage
 
   chatUnavailableMaxQueue:
+    component: System.ConditionExists
+    properties:
+      variable: chatFromDistribution
+    transitions:
+      actions:
+        exists: promptDistyMaxQueue
+        notexists: promptMaxQueue
+
+  promptDistyMaxQueue:
+    component: System.Output
+    properties:
+      text: "${rb.promptDistyMaxQueue}"
+      keepTurn: true
+    transitions:
+      next: resetChatSource
+
+  promptMaxQueue:
     component: System.Output
     properties:
       text: "All agents are currently busy. Please try again later."
       keepTurn: true
     transitions:
-      next: handleRejected
+      next: resetChatSource
 
   chatUnavailableHours:
+    component: System.ConditionExists
+    properties:
+      insightsInclude: false
+      variable: chatFromDistribution
+    transitions:
+      actions:
+        exists: promptDistyChatUnavailable
+        notexists: promptChatUnavailable
+
+  promptDistyChatUnavailable:
+    component: System.Output
+    properties:
+      text: "${rb.chatDistyUnavailable}"
+      keepTurn: true
+    transitions:
+      next: resetChatSource
+
+  promptChatUnavailable:
     component: System.Output
     properties:
       text: "${rb.chatUnavailable}"
       keepTurn: true
+    transitions:
+      next: resetChatSource
+
+  resetChatSource:
+    component: System.ResetVariables
+    properties:
+      insightsInclude: false
+      variableList: chatFromDistribution
     transitions:
       next: handleRejected
 
@@ -3790,7 +3776,7 @@ states:
       chatSessionId: "${profile.contactInfo.value.sessionId}"
     transitions:
       actions:
-        questionUpdatedOnChat: "agentTransfer"
+        questionUpdatedOnChat: "chatFindContact"
         fail: "apiFailed"
 
   chatFindContact:
@@ -3826,7 +3812,6 @@ states:
         contactSetForChat: "agentTransfer"
         fail: "timedOutMessage"
 
-  # -- temp agent transfer
   agentTransfer:
     component: System.AgentTransfer
     properties:
@@ -4143,7 +4128,7 @@ states:
 
   priceMatch:
     component: System.Output
-    properties: #todo: should I add a case ticket?
+    properties:
       text: "It looks like you may have found your Razer item(s) at a better price from somewhere else. In order to qualify for a price match, please provide us your original Razer Order Number, the link/screenshot or advertisement to the retailer/e-tailer offering the better price. Once you have this, please submit a ticket to ${rb.customerPortal}."
       keepTurn: true
     transitions:
@@ -4173,13 +4158,13 @@ states:
     transitions:
       next: quickAnswerTS1
 
-  # keyboardFaqs:
-  #   component: System.Output
-  #   properties:
-  #     text: "${rb.keyboardSupport}"
-  #     keepTurn: true
-  #   transitions:
-  #     next: quickAnswerTS1
+  keyboardFaqs:
+    component: System.Output
+    properties:
+      text: "${rb.keyboardSupport}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
 
   matFaqs:
     component: System.Output
@@ -4273,14 +4258,6 @@ states:
     component: System.Output
     properties:
       text: "${rb.razerAccount}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerCS
-
-  extendCoverageOutput:
-    component: System.Output
-    properties:
-      text: "${rb.extendCoverage}"
       keepTurn: true
     transitions:
       next: quickAnswerCS
@@ -4722,20 +4699,6 @@ states:
     transitions:
       next: quickAnswerCS
 
-  menuGetAccessory:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: selectedOption
-      value: "GetAccessory"
-  getAccessoryOutput:
-    component: System.Output
-    properties:
-      text: "${rb.getAccessory}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
   rmaChangeAddress:
     component: System.Output
     properties:
@@ -5127,7 +5090,7 @@ states:
     component: System.SetVariable
     properties:
       variable: user.chatType
-      value: "TSChair"
+      value: "TS1"
   chairRMAOutput:
     component: System.Output
     properties:
@@ -5459,7 +5422,7 @@ states:
       text: "${rb.disassembleRazerIskur}"
       keepTurn: true
     transitions:
-      next: quickAnswerTSChair
+      next: quickAnswerTS1
 
   disassembleRazerIskurX:
     component: System.Output
@@ -5467,7 +5430,7 @@ states:
       text: "${rb.disassembleRazerIskurX}"
       keepTurn: true
     transitions:
-      next: quickAnswerTSChair
+      next: quickAnswerTS1
 
   upgradeMemory:
     component: System.Output
@@ -5739,7 +5702,7 @@ states:
       text: "${rb.iskurAdjustLever}"
       keepTurn: true
     transitions:
-      next: quickAnswerTSChair
+      next: quickAnswerTS1
 
   bladeSystemRecovery:
     component: System.Output
@@ -5795,7 +5758,7 @@ states:
       text: "${rb.chairSupport}"
       keepTurn: true
     transitions:
-      next: quickAnswerTSChair
+      next: quickAnswerTS1
 
   pwmSetup:
     component: System.Output
@@ -5959,7 +5922,7 @@ states:
       text: "${rb.chairCasterStuds}"
       keepTurn: true
     transitions:
-      next: quickAnswerTSChair
+      next: quickAnswerTS1
 
   batteryLife:
     component: System.Output
@@ -6325,30 +6288,6 @@ states:
     transitions:
       next: quickAnswerTS1
 
-  questionPath:
-    component: System.Output
-    properties:
-      text: "Please enter your question"
-      keepTurn: false
-    transitions:
-      next: intent
-
-  rephraseQuestionPath:
-    component: System.Output
-    properties:
-      text: "I am sorry I didn't answer your question. Can you rephrase your question below?"
-      keepTurn: false
-    transitions:
-      next: intent
-
-  handleInvalidAttachment:
-    component: System.Output
-    properties:
-      text: "I am sorry I don't understand the context of your attachment. Can you tell me what it is for?"
-      keepTurn: false
-    transitions:
-      next: intent
-
   installHanbo:
     component: System.Output
     properties:
@@ -6661,6 +6600,30 @@ states:
     component: System.Output
     properties:
       text: "${rb.bladeBootLoop}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS2
+
+  bladeSetUpRAID:
+    component: System.Output
+    properties:
+      text: "${rb.bladeSetUpRAID}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS2
+
+  bladeOverclocking:
+    component: System.Output
+    properties:
+      text: "${rb.bladeOverclocking}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS2
+
+  bladeSecureBoot:
+    component: System.Output
+    properties:
+      text: "${rb.bladeSecureBoot}"
       keepTurn: true
     transitions:
       next: quickAnswerTS2
@@ -7524,8 +7487,7 @@ states:
     transitions:
       actions:
         exists: caseAlreadyCreated
-        # -- PATCH FOR SPECIFIC CASE CREATION FOR DIFFERENT FLOWS -- #
-        notexists: "<#if caseCreationState?? && caseCreationState.value!=''>${caseCreationState.value}<#else>setCaseFirstName</#if>"
+        notexists: setCaseFirstName
 
   caseAlreadyCreated:
     component: System.CommonResponse
@@ -8216,12 +8178,16 @@ states:
                 type: postback
                 keyword: "1,a,A,headset"
                 payload:
-                  action: "headset"
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDHDST"
               - label: "Keyboard"
                 type: postback
                 keyword: "2,b,B,keyboard"
                 payload:
-                  action: "keyboard"
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDKBRD"
               - label: "Mouse"
                 type: postback
                 keyword: "3,c,C,mouse"
@@ -9375,8 +9341,7 @@ states:
       chatSessionId: "${profile.contactInfo.value.sessionId}"
       fileLocalFName: "${caseFile.value}"
       fileUserFName: "${caseFileTitle.value}"
-      fileContentType: "${caseFileType.value}"
-      privateNotes: "${casePrivateNotes.value}"
+      fileContentType: "${caseFileType.value}"      
     transitions:
       actions:
         fail: "apiFailed"
@@ -9399,8 +9364,7 @@ states:
       chatSessionId: "${profile.contactInfo.value.sessionId}"
       fileLocalFName: ""
       fileUserFName: ""
-      fileContentType: ""
-      privateNotes: "${casePrivateNotes.value}"
+      fileContentType: ""  
     transitions:
       actions:
         fail: "apiFailed"
@@ -9582,11 +9546,6 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
-  RazerCortex.quickAnswerTS1SetCaseCreationState:
-    component: System.SetVariable
-    properties:
-      variable: "caseCreationState"
-      value: "setCaseFirstName"
   RazerCortex.quickTypeTS1:
     component: System.SetVariable
     properties:
@@ -9865,12 +9824,6 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
-  RazerAxon.quickAnswerTS1SetCaseCreationState:
-    component: System.SetVariable
-    properties:
-      variable: "caseCreationState"
-      value: "setCaseFirstName"
-
   RazerAxon.quickTypeTS1:
     component: System.SetVariable
     properties:
@@ -10104,830 +10057,9 @@ states:
   #############################################
 
   #############################################
-  ########### RAZER ORDER COM START ###########
-
-  RazerComOrder.start:
-    component: "System.CommonResponse"
-    properties:
-      processUserMessage: true
-      keepTurn: false
-      transitionAfterMatch: true
-      maxPrompts: 2
-      autoNumberPostbackActions: false
-      metadata:
-        responseItems:
-          - text: "How can we help you with your razer.com order?"
-            type: "text"
-            actions:
-              - skipAutoNumber: true
-                payload:
-                  action: "orderStatus"
-                label: "Order Status"
-                type: postback
-                keyword: "1"
-              - skipAutoNumber: true
-                payload:
-                  action: "refund"
-                label: "Return for refund"
-                type: postback
-                keyword: "2"
-              - skipAutoNumber: true
-                payload:
-                  action: "cancelOrder"
-                label: "Cancel or change my order"
-                type: postback
-                keyword: "3"
-              - skipAutoNumber: true
-                payload:
-                  action: "technicalSupport"
-                label: "Technical support for my product"
-                type: postback
-                keyword: "4"
-
-    transitions:
-      next: "intent"
-      actions:
-        orderStatus: "RazerComOrder.outputOrderStatus"
-        refund: "RazerComOrder.askIsOrderFromRazer"
-        cancelOrder: "RazerComOrder.outputCancelOrder"
-        technicalSupport: "RazerComOrder.technicalSupport"
-
-  RazerComOrder.outputOrderStatus:
-    component: "System.Output"
-    properties:
-      keepTurn: true
-      text: "You can get your order status from the link below <br /> <ul><li><a href='https://www.razer.com/my-account/orders' target='_blank'>Get razer.com order status</a></li></ul>"
-    transitions:
-      next: "RazerComOrder.askIsQuestionAnsweredForRefund"
-
-  RazerComOrder.outputCancelOrder:
-    component: "System.Output"
-    properties:
-      keepTurn: true
-      text: "${rb.cancelOrder}"
-    transitions:
-      next: "RazerComOrder.askIsQuestionAnsweredForCancel"
-
-  RazerComOrder.askIsQuestionAnsweredForRefund:
-    component: "System.CommonResponse"
-    properties:
-      processUserMessage: true
-      keepTurn: false
-      transitionAfterMatch: true
-      maxPrompts: 2
-      autoNumberPostbackActions: false
-      metadata:
-        responseItems:
-          - text: "Did I answer your question?"
-            type: text
-            actions:
-              - payload:
-                  action: "yes"
-                label: "Yes"
-                type: postback
-                keyword: "1"
-              - payload:
-                  action: "no"
-                label: "No"
-                type: postback
-                keyword: "2"
-    transitions:
-      next: "intent"
-      actions:
-        yes: "queryResolved"
-        no: "RazerComOrder.outputQueryNotResolved"
-
-  RazerComOrder.askIsQuestionAnsweredForCancel:
-    component: "System.CommonResponse"
-    properties:
-      processUserMessage: true
-      keepTurn: false
-      transitionAfterMatch: true
-      maxPrompts: 2
-      autoNumberPostbackActions: false
-      metadata:
-        responseItems:
-          - text: "Did I answer your question?"
-            type: text
-            actions:
-              - payload:
-                  action: "yes"
-                label: "Yes"
-                type: postback
-                keyword: "1"
-              - payload:
-                  action: "no"
-                label: "No"
-                type: postback
-                keyword: "2"
-    transitions:
-      next: "intent"
-      actions:
-        yes: "queryResolved"
-        no: "RazerComOrder.outputCancelNotice"
-
-  RazerComOrder.outputCancelNotice:
-    component: "System.Output"
-    properties:
-      keepTurn: true
-      text: "Before we connect you to an agent or create a support case, we'll need the order number and postal code used in the order."
-    transitions:
-      next: "RazerComOrder.askOrderNumberForCancel"
-
-  RazerComOrder.askOrderNumberForCancel:
-    component: "System.Text"
-    properties:
-      prompt: "Please enter your order number"
-      variable: "razerComOrder_orderNumber"
-    transitions:
-      next: "RazerComOrder.askPostalCodeForCancel"
-
-  RazerComOrder.askPostalCodeForCancel:
-    component: "System.Text"
-    properties:
-      prompt: "Please enter the postal code from the order"
-      variable: "razerComOrder_postalCode"
-    transitions:
-      next: "RazerComOrder.askCancelOrChange"
-
-  # RazerComOrder.askCancelOrChange:
-  #   component: "System.Text"
-  #   properties:
-  #     prompt: "Please indicate if you'd like to cancel or change your order"
-  #     variable: "razerComOrder_reason"
-  #   transitions:
-  #     next: "RazerComOrder.clearCasePrivateNotesForCancel"
-
-  RazerComOrder.askCancelOrChange:
-    component: "System.CommonResponse"
-    properties:
-      maxPrompts: 2
-      processUserMessage: true
-      keepTurn: false
-      metadata:
-        responseItems:
-          - type: "text"
-            text: "Please indicate if you'd like to cancel or change your order"
-            actions:
-              - label: "Cancel"
-                type: "postback"
-                keyword: "a,A"
-                payload:
-                  action: ""
-                  variables:
-                    razerComOrder_reason: "cancel"
-              - label: "Change"
-                type: "postback"
-                keyword: "b,B"
-                payload:
-                  action: ""
-                  variables:
-                    razerComOrder_reason: "change"
-    transitions:
-      next: "RazerComOrder.clearCasePrivateNotesForCancel"
-
-  RazerComOrder.clearCasePrivateNotesForCancel:
-    component: "System.SetVariable"
-    properties:
-      insightsInclude: false
-      variable: casePrivateNotes
-      value: ""
-
-  RazerComOrder.prefillCasePrivateNotesForCancel:
-    component: "System.SetVariable"
-    properties:
-      insightsInclude: false
-      variable: casePrivateNotes
-      value: "${casePrivateNotes} + User has read refund/return policy: Yes \n + User purchased from razer.com in: NA \n + Order Number: ${razerComOrder_orderNumber.value} \n + Postal Code: ${razerComOrder_postalCode.value} \n + Cancel or change your order: ${razerComOrder_reason.value}"
-
-  RazerComOrder.prefillIssueForCancel:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "case.issue"
-      value: "Cancel or change order"
-    transitions:
-      next: "RazerComOrder.outputContactOptions"
-
-  RazerComOrder.outputQueryNotResolved:
-    component: "System.CommonResponse"
-    properties:
-      processUserMessage: true
-      keepTurn: false
-      transitionAfterMatch: true
-      maxPrompts: 2
-      autoNumberPostbackActions: false
-      metadata:
-        responseItems:
-          - text: "I am sorry I wasn't able to answer your question. There are several ways to contact us for support. Please select an option below."
-            type: text
-            actions:
-              - skipAutoNumber: true
-                payload:
-                  action: ticket
-                label: Submit a support ticket
-                type: postback
-                keyword: "1"
-              - skipAutoNumber: true
-                payload:
-                  action: agent
-                label: Connect to an agent
-                type: postback
-                keyword: "2"
-              - skipAutoNumber: true
-                payload:
-                  action: askQuestion
-                label: Ask another question
-                type: postback
-                keyword: "3"
-
-    transitions:
-      next: "intent"
-      actions:
-        ticket: "initiateCaseCreation"
-        agent: "checkChatHoops"
-        askQuestion: "questionPath"
-
-  RazerComOrder.askIsOrderFromRazer:
-    component: "System.CommonResponse"
-    properties:
-      processUserMessage: true
-      keepTurn: false
-      transitionAfterMatch: true
-      maxPrompts: 2
-      autoNumberPostbackActions: false
-      metadata:
-        responseItems:
-          - text: "Is your order from razer.com?"
-            type: text
-            actions:
-              - skipAutoNumber: true
-                payload:
-                  action: "yes"
-                label: "Yes"
-                type: postback
-                keyword: "1"
-              - skipAutoNumber: true
-                payload:
-                  action: "no"
-                label: "No"
-                type: postback
-                keyword: "2"
-    transitions:
-      next: "intent"
-      actions:
-        yes: "RazerComOrder.askFromUS"
-        no: "RazerComOrder.outputOrderNotFromRazer"
-
-  RazerComOrder.outputOrderNotFromRazer:
-    component: "System.CommonResponse"
-    properties:
-      processUserMessage: true
-      keepTurn: false
-      transitionAfterMatch: true
-      maxPrompts: 2
-      autoNumberPostbackActions: false
-      metadata:
-        responseItems:
-          - text: "Our return and refund policies are different based on where you purchased your Razer product. Please see our <a href='https://www.razer.com/legal/returns-refunds' target='_blank'>return policy</a> for details. If you believe your product is defective, please contact us for assistance."
-            type: text
-            actions:
-              - skipAutoNumber: true
-                payload:
-                  url: "https://www.razer.com/legal/returns-refunds"
-                label: "View return policy"
-                type: "url"
-                keyword: "1"
-              - skipAutoNumber: true
-                payload:
-                  action: "agent"
-                label: "Connect to an agent"
-                type: postback
-                keyword: "2"
-              - skipAutoNumber: true
-                payload:
-                  action: "ticket"
-                label: "Submit a Support Ticket"
-                type: postback
-                keyword: "3"
-    transitions:
-      next: "intent"
-      actions:
-        return: "RazerComOrder.askFromUS"
-        agent: "RazerComOrder.quickAnswerCS"
-        ticket: "initiateCaseCreation"
-
-  RazerComOrder.askFromUS:
-    component: "System.CommonResponse"
-    properties:
-      processUserMessage: true
-      keepTurn: false
-      transitionAfterMatch: true
-      maxPrompts: 2
-      autoNumberPostbackActions: false
-      metadata:
-        responseItems:
-          - text: "Did you order from US or Canada?"
-            type: text
-            actions:
-              - skipAutoNumber: true
-                payload:
-                  action: "yes"
-                label: "Yes"
-                type: postback
-                keyword: "1"
-              - skipAutoNumber: true
-                payload:
-                  action: "no"
-                label: "No"
-                type: postback
-                keyword: "2"
-    transitions:
-      next: "intent"
-      actions:
-        yes: "RazerComOrder.askDaysAgo"
-        no: "RazerComOrder.askDaysAgo"
-
-  RazerComOrder.askDaysAgo:
-    component: "System.CommonResponse"
-    properties:
-      processUserMessage: true
-      keepTurn: false
-      transitionAfterMatch: true
-      maxPrompts: 2
-      autoNumberPostbackActions: false
-      metadata:
-        responseItems:
-          - text: "Did you receive the product more than 14 days ago?"
-            type: text
-            actions:
-              - skipAutoNumber: true
-                payload:
-                  action: "yes"
-                label: "Yes"
-                type: postback
-                keyword: "1"
-              - skipAutoNumber: true
-                payload:
-                  action: "no"
-                label: "No"
-                type: postback
-                keyword: "2"
-    transitions:
-      next: "intent"
-      actions:
-        yes: "RazerComOrder.outputMore14days"
-        no: "RazerComOrder.outputLess14days"
-
-  RazerComOrder.outputLess14days:
-    component: "System.Output"
-    properties:
-      keepTurn: true
-      text: "You can initiate your return from the link below. <br /> <ul><li><a href='https://returns.narvar.com/razer/returns' target='_blank'>Start Return for Refund</a></li></ul>"
-    transitions:
-      next: "RazerComOrder.askIsQuestionAnsweredForRefund"
-
-  RazerComOrder.outputMore14days:
-    component: "System.Output"
-    properties:
-      keepTurn: true
-      text: "To expedite your return/refund, we will need the order number and postal code for the order. In addition, please review  <a href='https://www.razer.com/warranty' target='_blank'>Razer's refund/return policy.<a/>"
-    transitions:
-      next: "RazerComOrder.askOrderNumber"
-
-  RazerComOrder.askOrderNumber:
-    component: "System.Text"
-    properties:
-      prompt: "Please enter your order number"
-      variable: "razerComOrder_orderNumber"
-    transitions:
-      next: "RazerComOrder.askPostalCode"
-
-  RazerComOrder.askPostalCode:
-    component: "System.Text"
-    properties:
-      prompt: "Please enter the postal code from the order"
-      variable: "razerComOrder_postalCode"
-    transitions:
-      next: "RazerComOrder.askReason"
-
-  RazerComOrder.askReason:
-    component: "System.Text"
-    properties:
-      prompt: "Please enter a reason for your return/refund"
-      variable: "razerComOrder_reason"
-    transitions:
-      next: "RazerComOrder.clearCasePrivateNotesForRefund"
-
-  RazerComOrder.clearCasePrivateNotesForRefund:
-    component: "System.SetVariable"
-    properties:
-      insightsInclude: false
-      variable: casePrivateNotes
-      value: ""
-
-  RazerComOrder.prefillCasePrivateNotesForRefund:
-    component: "System.SetVariable"
-    properties:
-      insightsInclude: false
-      variable: casePrivateNotes
-      value: "${casePrivateNotes.value} + User has read refund/return policy: Yes \n + User purchased from razer.com in: NA \n + Order Number: ${razerComOrder_orderNumber.value} \n + Postal Code: ${razerComOrder_postalCode.value} \n + Reason: ${razerComOrder_reason.value}"
-
-  RazerComOrder.prefillIssueForRefund:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "case.issue"
-      value: "Return for refund"
-    transitions:
-      next: "RazerComOrder.outputContactOptions"
-
-  RazerComOrder.technicalSupport:
-    component: "System.Output"
-    properties:
-      keepTurn: true
-      text: "Please describe your issue"
-    transitions:
-      next: "intent"
-
-  RazerComOrder.outputContactOptions:
-    component: "System.CommonResponse"
-    properties:
-      processUserMessage: true
-      keepTurn: false
-      transitionAfterMatch: true
-      maxPrompts: 2
-      autoNumberPostbackActions: false
-      metadata:
-        responseItems:
-          - text: "Please select the contact options below"
-            type: text
-            actions:
-              - skipAutoNumber: true
-                payload:
-                  action: ticket
-                label: Submit a support ticket
-                type: postback
-                keyword: "1"
-              - skipAutoNumber: true
-                payload:
-                  action: agent
-                label: Connect to an agent
-                type: postback
-                keyword: "2"
-    transitions:
-      next: "intent"
-      actions:
-        ticket: "RazerComOrder.checkCaseExists"
-        agent: "RazerComOrder.quickAnswerCS"
-
-  RazerComOrder.checkCaseExists:
-    component: System.ConditionExists
-    properties:
-      insightsInclude: false
-      variable: user.caseCreated
-    transitions:
-      actions:
-        exists: caseAlreadyCreated
-        notexists: "RazerComOrder.quickAnswerCSTry"
-
-  RazerComOrder.quickAnswerCSTry:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.secondTry
-      value: true
-    transitions:
-      next: "RazerComOrder.prefillSerialNumber"
-
-  RazerComOrder.quickAnswerCS:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.journey
-      value: true
-  quickAnswerCSSetCaseCreationState:
-    component: System.SetVariable
-    properties:
-      variable: "caseCreationState"
-      value: "setCaseFirstName"
-
-  RazerComOrder.quickTypeCS:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.chatType
-      value: "CS"
-    transitions:
-      next: "checkChatHoops"
-
-  RazerComOrder.prefillSerialNumber:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "case.serialNumber"
-      value: "na"
-  RazerComOrder.prefillProductNumber:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "case.productNumber"
-      value: "na"
-  RazerComOrder.prefillRMANumber:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "case.rmaNumber"
-      value: "na"
-  RazerComOrder.prefillOrderNumber:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "case.orderNumber"
-      value: "${razerComOrder_orderNumber}"
-  RazerComOrder.prefillSelectedOption:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "selectedOption"
-      value: "OrderSupport"
-  RazerComOrder.prefillFirstName:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "case.firstName"
-      value: "${profile.firstName.value}"
-  RazerComOrder.prefillLastName:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "case.lastName"
-      value: "${profile.lastName.value}"
-  RazerComOrder.prefillEmail:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "case.email"
-      value: "${profile.email.value}"
-  RazerComOrder.prefillContactInfo:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "contactInfo"
-      value: "${profile.contactInfo.value}"
-  RazerComOrder.prefillCaseCategoryId:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: case.category
-      value: "9"
-  RazerComOrder.disallowFileAttachmentPrompt:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: caseReset
-      value: true
-  RazerComOrder.prefillCaseCategory:
-    component: "System.SetVariable"
-    properties:
-      insightsInclude: false
-      variable: caseCategory
-      value: "Razer.com Order"
-    transitions:
-      next: "RazerComOrder.caseResolveEntities"
-
-  RazerComOrder.caseResolveEntities:
-    component: "System.ResolveEntities"
-    properties:
-      variable: case
-      nlpResultVariable: iResult
-      transitionAfterMatch: true
-      useFullEntityMatches: false
-    transitions:
-      next: "RazerComOrder.showCaseData"
-      actions:
-        match: "RazerComOrder.caseHiddenAction"
-
-  RazerComOrder.caseHiddenAction:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "caseEntity"
-      value: "${system.entityToResolve.value.name}"
-
-  RazerComOrder.showCaseData:
-    component: System.Output
-    properties:
-      text: "Name: ${case.value.firstName} ${case.value.lastName}<br />Email: ${case.value.email?lower_case}<br />Category: Razer.com Order<br /><#if case.value.orderNumber != 'null'>Order Number: ${case.value.orderNumber}</#if><br /><#if razerComOrder_postalCode.value != 'null'>Postal Code: ${razerComOrder_postalCode.value}<br /></#if>Description: ${case.value.issue}"
-      keepTurn: true
-    transitions:
-      next: "RazerComOrder.casePrompt"
-
-  RazerComOrder.casePrompt:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "Are the details above correct?"
-            actions:
-              - label: "Yes"
-                type: postback
-                keyword: "a,A,y,Y"
-                payload:
-                  action: "Yes"
-              - label: "No"
-                type: postback
-                keyword: "b,B,n,N"
-                payload:
-                  action: "No"
-    transitions:
-      next: intent
-      actions:
-        Yes: createCasePrompt
-        No: "RazerComOrder.caseResetOptions"
-        match: hiddenAction
-        cancel: errorOutput
-
-  RazerComOrder.caseResetOptions:
-    component: "System.List"
-    properties:
-      options: "Email, Order Number, Description, Reset"
-      prompt: "Which do you want to correct"
-    transitions:
-      next: intent
-      actions:
-        "Email": "RazerComOrder.resetEmail"
-        "Order Number": "RazerComOrder.resetOrderNumber"
-        # "Serial Number": "RazerComOrder.resetSerialNumber"
-        "Description": "RazerComOrder.resetDescription"
-        "Reset": "RazerComOrder.caseReset"
-
-  RazerComOrder.caseReset:
-    component: System.ResetVariables
-    properties:
-      variableList: "case.orderNumber, razerComOrder_orderNumber, razerComOrder_reason, razerComOrder_postalCode, casePrivateNotes"
-    transitions:
-      next: "RazerComOrder.start"
-
-  RazerComOrder.resetEmail:
-    component: System.ResetVariables
-    properties:
-      variableList: "case.email"
-    transitions:
-      next: "RazerComOrder.caseResolveEntities"
-
-  RazerComOrder.resetOrderNumber:
-    component: System.ResetVariables
-    properties:
-      variableList: "case.orderNumber"
-    transitions:
-      next: "RazerComOrder.caseResolveEntities"
-
-  # RazerComOrder.resetSerialNumber:
-  #   component: System.ResetVariables
-  #   properties:
-  #     variableList: "case.serialNumber"
-  #   transitions:
-  #     next: "RazerComOrder.caseResolveEntities"
-
-  RazerComOrder.resetDescription:
-    component: System.ResetVariables
-    properties:
-      variableList: "case.issue"
-    transitions:
-      next: "RazerComOrder.caseResolveEntities"
-
-  #-------- RETURN ORDER START ----------------#
-  RazerComOrder.RO_quickAnswerCS:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.journey
-      value: true
-  RazerComOrder.RO_quickTypeCS:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.chatType
-      value: "CS"
-  RazerComOrder.RO_quickAnswerCSTry:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.secondTry
-      value: true
-
-  RazerComOrder.RO_outputConfirmPrompt:
-    component: "System.CommonResponse"
-    properties:
-      processUserMessage: true
-      keepTurn: false
-      transitionAfterMatch: true
-      maxPrompts: 2
-      autoNumberPostbackActions: false
-      metadata:
-        responseItems:
-          - text: "Please confirm you are requesting to return a product you purchase from razer.com for a refund."
-            type: text
-            actions:
-              - skipAutoNumber: true
-                payload:
-                  action: "yes"
-                label: "Yes"
-                type: postback
-                keyword: "1"
-              - skipAutoNumber: true
-                payload:
-                  action: "no"
-                label: "No"
-                type: postback
-                keyword: "2"
-    transitions:
-      next: "intent"
-      actions:
-        yes: "RazerComOrder.outputMore14days"
-        no: "RazerComOrder.quickAnswerCS"
-
-  #--------- RETURN ORDER END -----------------#
-
-  #-------- CANCEL ORDER START ----------------#
-  RazerComOrder.CO_quickAnswerCS:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.journey
-      value: true
-  RazerComOrder.CO_quickTypeCS:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.chatType
-      value: "CS"
-  RazerComOrder.CO_quickAnswerCSTry:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.secondTry
-      value: true
-
-  RazerComOrder.CO_outputConfirmPrompt:
-    component: "System.CommonResponse"
-    properties:
-      processUserMessage: true
-      keepTurn: false
-      transitionAfterMatch: true
-      maxPrompts: 2
-      autoNumberPostbackActions: false
-      metadata:
-        responseItems:
-          - text: "Please confirm you are requesting to cancel or change your order from razer.com."
-            type: text
-            actions:
-              - skipAutoNumber: true
-                payload:
-                  action: "yes"
-                label: "Yes"
-                type: postback
-                keyword: "1"
-              - skipAutoNumber: true
-                payload:
-                  action: "no"
-                label: "No"
-                type: postback
-                keyword: "2"
-    transitions:
-      next: "intent"
-      actions:
-        yes: "RazerComOrder.outputCancelNotice"
-        no: "RazerComOrder.start"
-
-  #--------- CANCEL ORDER END -----------------#
-
-  ########### RAZER ORDER COM END #############
-  #############################################
-
-  #############################################
   ############ RAZER EDGE START ###############
 
   RazerEdge.start:
-    component: "System.SetVariable"
-    properties:
-      variable: "currentFlow"
-      value: "Razer Edge"
-  #-- PATCH FOR CASE CREATION SPECIFIC FLOWS --#
-  RazerEdge.setCaseCreationState:
-    component: "System.SetVariable"
-    properties:
-      variable: "caseCreationState"
-      value: "RazerEdge.checkCaseExists"
-
-  RazerEdge.startMenu:
     component: System.CommonResponse
     properties:
       processUserMessage: true
