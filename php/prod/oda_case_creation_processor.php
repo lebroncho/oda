@@ -462,7 +462,7 @@ function main(){
 
         /*********************************************** */
 
-        sendEmail('ODA Case Creation Processor', json_encode($payloadData), $RECIPIENTS);
+        // sendEmail('ODA Case Creation Processor', json_encode($payloadData), $RECIPIENTS);
     }catch(\Exception $e){
         $exceptionMessage = $e->getMessage();
         $payloadData = [
