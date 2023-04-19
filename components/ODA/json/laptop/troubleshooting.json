@@ -3,22 +3,22 @@
     "Display Issues",
     "Systems Performance Issues",
     "Power & Battery Issues",
-    "Driver/Software Issues",
+    "Driver or Software Issues",
     "Cosmetic & Physical Issues",
     "General Product Questions"
   ],
   "symptoms": [
     "Screen is not turning on but has power",
-    "Screen is sluggish/Slow refresh rate",
+    "Screen is having low refresh rate",
     "Screen has intermittent flickering",
-    "Screen colour is not accurate",
+    "Screen color is not accurate",
     "Backlight bleeding",
-    "Dead pixel/line on screen",
+    "Dead pixel or line on screen",
     "Blue screen appears intermittently",
-    "Unable to power on",
     "Unable to boot to Windows",
-    "Lag/Low refresh rate",
+    "Poor performance",
     "System overheating",
+    "Unable to power on",
     "Battery Swelling",
     "Battery is not charging or detected",
     "Battery life is short",
@@ -29,9 +29,10 @@
     "Trackpad is cracked",
     "Keyboard keycap has printing issue",
     "Keyboard RGB is not working as expected (Uneven lighting)",
-    "Keyboard is not responsive/lagging",
+    "Keyboard is not responsive or lagging",
     "USB port not detected or dented",
     "Speakers are not working as expected",
+    "Speaker grill detached from chassis",
     "Other cosmetic issue"
   ],
   "steps": [
@@ -44,7 +45,7 @@
     "Follow this guide on How to reduce light bleed on the Razer Blade display.",
     "Troubleshoot common Blue Screen of Death (BSOD) error codes.",
     "Attempt to remove the last software that you installed before the blue screens started to occur.",
-    "Record/Photograph down the Error code (e.g. 0x0000009F).",
+    "Take a photo of the Error code (e.g. 0x0000009F).",
     "Reset the Razer Blade to its factory default settings.",
     "Check if the power cable is plugged in properly and the LED indicator on the Power Charger is lit up.",
     "Check if LED lights up on the keyboard.",
@@ -71,6 +72,8 @@
     "Check out How to keep the Razer Blade at optimal temperature while gaming.",
     "Check out How to access the BIOS settings on the Razer Blade.",
     "Connected to an external monitor and shows a display.",
-    "Connected to an external monitor and does not show a display."
+    "Connected to an external monitor and does not show a display.",
+    "Check out How to adjust or change the display refresh rate on a Razer Blade.",
+    "Check out How to maximize GPU usage on the Razer Blade."
   ]
 }
