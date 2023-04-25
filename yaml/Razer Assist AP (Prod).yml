@@ -329,11 +329,14 @@ states:
         PowerSurgeWarning: powerSurgeWarning
         RazerAxon: RazerAxon.quickAnswerTS1
         BlueScreen: blueScreen
-        HeadStrapSetup: headStrapSetup
         BladeBootLoop: bladeBootLoop
         BladeSetUpRAID: bladeSetUpRAID
         BladeOverclocking: bladeOverclocking
-        # BladeSecureBoot: bladeSecureBoot
+        BladeSecureBoot: bladeSecureBoot
+        NexusVirtualController: nexusVirtualController
+        HeadStrapSetup: headStrapSetup
+        HeadStrapAdjustment: headStrapAdjustment
+        FacialInterfaceSetup: facialInterfaceSetup
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
