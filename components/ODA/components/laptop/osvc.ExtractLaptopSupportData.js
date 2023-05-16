@@ -7,7 +7,7 @@ const SYMPTOMS_INDEX = 1;
 const CONNECTIONS_INDEX = 2;
 const TROUBLESHOOTING_STEPS_INDEX = 3;
 
-const OTHER_COSMETIC_INDEX = 24;
+const OTHER_COSMETIC_INDEX = 25;
 const DEFAUT_BUILD_PROPERTIES = {
     prepend: '', append: '',
     joinChar: ''
