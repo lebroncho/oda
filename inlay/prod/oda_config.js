@@ -133,6 +133,9 @@ function getSubject() {
         case 'mouse':
             subject = 'lRps932' + createUtterance();
             break;
+        case 'system':
+            subject = 'lRlt281' + createUtterance();
+            break;
         case 'edge':
             subject = 'Razer Edge Handheld';
             break;

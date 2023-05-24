@@ -183,7 +183,6 @@ states:
         RmaSla: rmaSla
         OrderNotFound: orderNotFound
         OrderRefund: orderRefund
-        HeadsetAudioIssue: headsetAudioIssue
         KrakenAudioIssue: krakenAudioIssue
         RegistrationFailed: registrationFailed
         ThumbpadIssue: thumbpadIssue

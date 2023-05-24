@@ -1,5 +1,5 @@
 main: true
-name: RazerAssist
+name: SupportBot
 context:
   variables:
     iResult: "nlpresult"
@@ -4981,7 +4981,7 @@ states:
     properties:
       text: "${rb.headsetCracklingNoise}"
       keepTurn: true
-  transitions:
+    transitions:
       next: quickAnswerTS1
 
   synapseDialKey:
@@ -10687,7 +10687,7 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
-  quickAnswerCSSetCaseCreationState:
+  RazerComOrder.quickAnswerCSSetCaseCreationState:
     component: System.SetVariable
     properties:
       variable: "caseCreationState"

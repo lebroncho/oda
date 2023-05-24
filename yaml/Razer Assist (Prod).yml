@@ -142,7 +142,6 @@ states:
         RazerTurret: resolveTurret
         RazerSynapse: resolveSynapse
         BloatedBattery: batteryIssue
-        LaptopSupport: laptopFaqs
         TomahawkSupport: tomahawkFaqs
         CoreSupport: egpuFaqs
         MicSupport: micSupport
@@ -176,7 +175,6 @@ states:
         FanNoise: fanNoiseOutput
         HammerheadTrueWireless: hammerheadTWSOutput
         KrakenKitty: krakenKittyOutput
-        LaptopOverheating: laptopOverheatingOutput
         LegacyProduct: legacyProductOutput
         MilitaryDiscount: militaryDiscountOutput
         PaymentMethods: paymentMethodsOutput
@@ -212,21 +210,14 @@ states:
         SynapseCrashed: synapseCrashed
         MicSetDefault: micSetDefault
         SynapseDialKey: synapseDialKey
-        BladeDead: bladeDead
-        BladeDeadPixel: bladeDeadPixel
-        BladeWifiIssue: bladeWifiIssue
         ErrorBsod: errorBsod
         AnzuFAQ: anzuFAQ
         AnzuPairing: anzuPairing
         AnzuAudio: anzuAudio
         SynapseLightSettings: synapseLightSettings
-        BladeScreenTurnsBlack: bladeScreenTurnsBlack
-        BladeScreenFlickering: bladeScreenFlickering
         NariFAQ: nariFAQ
         BrokenDevice: brokenDevice
         OpusPairing: opusPairing
-        BladeRefreshRate: bladeRefreshRate
-        BladeLowStorage: bladeLowStorage
         SensitiveMic: sensitiveMic
         TomahawkFirmware: tomahawkFirmware
         BrokenReplacement: brokenReplacement
@@ -237,11 +228,9 @@ states:
         KiyoProFirmware: kiyoProFirmware
         CleanDevice: cleanDevice
         CreateMacro: createMacro
-        BladeLighting: bladeLighting
         LeviathanSupport: leviathanSupport
         KairaSupport: kairaSupport
         DisplayMenu: displayMenu
-        Blade14Activation: blade14Activation
         UnregisterDevice: unregisterDevice
         KeycapFit: keycapFit
         CoreSetup: coreSetup
@@ -259,17 +248,13 @@ states:
         AssignMacro: assignMacro
         SynapseReinstall: synapseReinstall
         ReplaceKeycap: replaceKeycap
-        BladeNotWakingUp: bladeNotWakingUp
         KeyBinding: keyBinding
         ThunderboltDockSupport: thunderboltDockSupport
         ASCIISymbols: asciiSymbols
-        BladeTrackpad: bladeTrackpad
         ChromaLightStrip: chromaLightStrip
         RipsawSetup: ripsawSetup
         GamingMode: gamingMode
         IskurAdjustLever: iskurAdjustLever
-        BladeSystemRecovery: bladeSystemRecovery
-        BladeMaxStorageMemory: bladeMaxStorageMemory
         PwmOverheating: pwmOverheating
         PwmNotSpinning: pwmNotSpinning
         ZephyrLighting: zephyrLighting
@@ -286,32 +271,14 @@ states:
         ChargingStandXbox: chargingStandXbox
         ChairCasterStuds: chairCasterStuds
         BatteryLife: batteryLife
-        BladeCrashing: bladeCrashing
-        BladeSkinInstall: bladeSkinInstall
-        BladeSkinRemoval: bladeSkinRemoval
         PhoneCoolerSetup: phoneCoolerSetup
         PhoneCoolerPairing: phoneCoolerPairing
         PhoneCoolerSettings: phoneCoolerSettings
         ZephyrReplaceStrap: zephyrReplaceStrap
         ZephyrReplaceFilter: zephyrReplaceFilter
-        LightBleed: lightBleed
-        ScreenBrightness: screenBrightness
-        DedicatedGpu: dedicatedGpu
-        NvidiaAdvancedOptimus: nvidiaAdvancedOptimus
-        DgpuBlankScreen: dgpuBlankScreen
-        MaximizeGpu: maximizeGpu
-        MonitorUsbSpecs: monitorUsbSpecs
-        UsbPort: usbPort
-        BladeThirdPartyCharge: bladeThirdPartyCharge
-        EthernetCable: ethernetCable
-        AccessBios: accessBios
-        BiosBoot: biosBoot
-        WobblingBlade: wobblingBlade
         ThxActivationCode: thxActivationCode
         ZephyrGap: zephyrGap
         WolverineDeadzone: wolverineDeadzone
-        BladeMonitor: bladeMonitor
-        BladeHdmi: bladeHdmi
         InstallHanbo: installHanbo
         RgbHanbo: rgbHanbo
         OverheatingHanbo: overheatingHanbo
@@ -323,15 +290,12 @@ states:
         HeadCushionChromaPairing: headCushionChromaPairing
         HeadCushionChromaLighting: headCushionChromaLighting
         RecycleDevice: recycleDevice
-        BladeGsync: bladeGsync
         AudioMixerSetup: audioMixerSetup
         AudioMixerUse: audioMixerUse
         AudioMixerSettings: audioMixerSettings
         KeyLightSetup: keyLightSetup
         KeyLightCustomization: keyLightCustomization
-        BladeOvercharge: bladeOvercharge
         SsdScrewSize: ssdScrewSize
-        LowerWattageBlade: lowerWattageBlade
         ModernStandby: modernStandby
         DeviceEncryption: deviceEncryption
         WatchWristbandSupport: watchWristbandSupport
@@ -396,6 +360,44 @@ states:
         RazerEdgeAudioIssues: RazerEdge.audioIssues
         RazerEdgeOverheatingIssues: RazerEdge.overheatingIssues
         RazerEdgeBTPCInternetIssues: RazerEdge.connectionIssues
+
+        #------ Laptop-related Intents ------#
+        BladeDead: laptopPath #bladeDead
+        BladeDeadPixel: laptopPath #bladeDeadPixel
+        BladeWifiIssue: laptopPath #bladeWifiIssue
+        BladeScreenTurnsBlack: laptopPath #bladeScreenTurnsBlack
+        BladeScreenFlickering: laptopPath #bladeScreenFlickering
+        BladeRefreshRate: laptopPath #bladeRefreshRate
+        BladeLowStorage: laptopPath #bladeLowStorage
+        BladeLighting: laptopPath #bladeLighting
+        Blade14Activation: blade14Activation
+        BladeNotWakingUp: laptopPath #bladeNotWakingUp
+        BladeTrackpad: laptopPath #bladeTrackpad
+        BladeSystemRecovery: bladeSystemRecovery
+        BladeMaxStorageMemory: bladeMaxStorageMemory
+        BladeCrashing: laptopPath #bladeCrashing
+        BladeSkinInstall: bladeSkinInstall
+        BladeSkinRemoval: bladeSkinRemoval
+        BladeThirdPartyCharge: bladeThirdPartyCharge
+        BladeMonitor: bladeMonitor
+        BladeHdmi: bladeHdmi
+        BladeGsync: bladeGsync
+        BladeOvercharge: bladeOvercharge
+        WobblingBlade: laptopPath #wobblingBlade
+        LowerWattageBlade: lowerWattageBlade
+        LaptopSupport: laptopPath #laptopFaqs
+        LaptopOverheating: laptopPath #laptopOverheatingOutput
+        AccessBios: accessBios
+        BiosBoot: biosBoot
+        LightBleed: laptopPath #lightBleed
+        ScreenBrightness: laptopPath #screenBrightness
+        DedicatedGpu: dedicatedGpu
+        NvidiaAdvancedOptimus: nvidiaAdvancedOptimus
+        DgpuBlankScreen: laptopPath #dgpuBlankScreen
+        MaximizeGpu: maximizeGpu
+        MonitorUsbSpecs: monitorUsbSpecs
+        UsbPort: usbPort
+        EthernetCable: ethernetCable
 
   #-------------------------------------------------------------------------------
   # Greeting ---------------------------------------------------------------------
@@ -4979,7 +4981,7 @@ states:
     properties:
       text: "${rb.headsetCracklingNoise}"
       keepTurn: true
-  transitions:
+    transitions:
       next: quickAnswerTS1
 
   synapseDialKey:
@@ -10685,7 +10687,7 @@ states:
       insightsInclude: false
       variable: user.journey
       value: true
-  quickAnswerCSSetCaseCreationState:
+  RazerComOrder.quickAnswerCSSetCaseCreationState:
     component: System.SetVariable
     properties:
       variable: "caseCreationState"
