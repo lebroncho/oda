@@ -1,7 +1,7 @@
 'use strict';
 
-const troubleshootingData = require("../../json/mouse/troubleshooting.json");
-const symptomsIndexMap = require("../../json/mouse/symptoms-index-map.json");
+const troubleshootingData = require("../../json/keyboard/troubleshooting.json");
+const symptomsIndexMap = require("../../json/keyboard/symptoms-index-map.json");
 
 const SYMPTOMS_INDEX = 1;
 const ALL_OF_THE_ABOVE_INDEX = -1;
@@ -14,7 +14,7 @@ const DEFAUT_BUILD_PROPERTIES = {
 
 function metadata(){
   return {
-    name: 'osvc.EvaluateMouseSymptoms',
+    name: 'osvc.EvaluateKeyboardSymptoms',
     properties: {
         // GETTERS
         issueKeyword: { required: true, type: 'string' },
@@ -46,20 +46,20 @@ function buildText(indexesString, reference, properties){
 }
 
 async function invoke(context){
-    context.logger().info("------ EVALUATE MOUSE SYMPTOMS START ------");
+    context.logger().info("------ EVALUATE KEYBOARD SYMPTOMS START ------");
     try{
         const {
             issueKeyword, input,
             symptomsVar
         } = context.properties();
 
-        context.logger().info(`osvc.EvaluateMouseSymptoms: issue keyword ${issueKeyword}`);
-        context.logger().info(`osvc.EvaluateMouseSymptoms: input ${input}`);
+        context.logger().info(`osvc.EvaluateKeyboardSymptoms: issue keyword ${issueKeyword}`);
+        context.logger().info(`osvc.EvaluateKeyboardSymptoms: input ${input}`);
 
         let sanitizedInput= input.replace(/[,;\-\.]/g,' ').trim();
         let selections = sanitizedInput.split(' ');
 
-        context.logger().info(`osvc.EvaluateMouseSymptoms: selections ${selections}`);
+        context.logger().info(`osvc.EvaluateKeyboardSymptoms: selections ${selections}`);
 
         selections = selections.sort(stringIntegerSort);
         
@@ -100,7 +100,7 @@ async function invoke(context){
         context.transition("error");
     }
 
-    context.logger().info("------ EVALUATE MOUSE SYMPTOMS END ------");
+    context.logger().info("------ EVALUATE KEYBOARD SYMPTOMS END ------");
     return;
 }
 

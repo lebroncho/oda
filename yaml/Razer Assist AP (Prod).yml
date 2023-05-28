@@ -183,7 +183,6 @@ states:
         RmaSla: rmaSla
         OrderNotFound: orderNotFound
         OrderRefund: orderRefund
-        HeadsetAudioIssue: headsetAudioIssue
         KrakenAudioIssue: krakenAudioIssue
         RegistrationFailed: registrationFailed
         ThumbpadIssue: thumbpadIssue
@@ -252,16 +251,12 @@ states:
         BladeMaxStorageMemory: bladeMaxStorageMemory
         PwmOverheating: pwmOverheating
         PwmNotSpinning: pwmNotSpinning
-        ZephyrLighting: zephyrLighting
-        ZephyrPairing: zephyrPairing
         PwmSetup: pwmSetup
         KunaiSetup: kunaiSetup
         KishiFirmware: kishiFirmware
         CreateSynapseAccount: createSynapseAccount
         ProductRegistration: productRegistration
         TomahawkStorage: tomahawkStorage
-        ZephyrUsage: zephyrUsage
-        ZephyrOrder: zephyrOrder
         ObsMixAudio: obsMixAudio
         ChargingStandXbox: chargingStandXbox
         ChairCasterStuds: chairCasterStuds
@@ -272,8 +267,6 @@ states:
         PhoneCoolerSetup: phoneCoolerSetup
         PhoneCoolerPairing: phoneCoolerPairing
         PhoneCoolerSettings: phoneCoolerSettings
-        ZephyrReplaceStrap: zephyrReplaceStrap
-        ZephyrReplaceFilter: zephyrReplaceFilter
         LightBleed: lightBleed
         ScreenBrightness: screenBrightness
         DedicatedGpu: dedicatedGpu
@@ -288,7 +281,6 @@ states:
         BiosBoot: biosBoot
         WobblingBlade: wobblingBlade
         ThxActivationCode: thxActivationCode
-        ZephyrGap: zephyrGap
         WolverineDeadzone: wolverineDeadzone
         BladeMonitor: bladeMonitor
         BladeHdmi: bladeHdmi
@@ -337,6 +329,8 @@ states:
         HeadStrapSetup: headStrapSetup
         HeadStrapAdjustment: headStrapAdjustment
         FacialInterfaceSetup: facialInterfaceSetup
+        NommoV2PowerSaving: nommoV2PowerSaving
+        NommoV2Switching: nommoV2Switching
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -4863,7 +4857,7 @@ states:
     properties:
       text: "${rb.headsetCracklingNoise}"
       keepTurn: true
-  transitions:
+    transitions:
       next: quickAnswerTS1
 
   synapseDialKey:
@@ -5716,22 +5710,6 @@ states:
     transitions:
       next: quickAnswerTS2
 
-  zephyrLighting:
-    component: System.Output
-    properties:
-      text: "${rb.zephyrLighting}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
-  zephyrPairing:
-    component: System.Output
-    properties:
-      text: "${rb.zephyrPairing}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
   chairSupport:
     component: System.Output
     properties:
@@ -5864,22 +5842,6 @@ states:
     transitions:
       next: quickAnswerTS1
 
-  zephyrOrder:
-    component: System.Output
-    properties:
-      text: "${rb.zephyrOrder}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
-  zephyrUsage:
-    component: System.Output
-    properties:
-      text: "${rb.zephyrUsage}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
   obsMixAudio:
     component: System.Output
     properties:
@@ -5956,22 +5918,6 @@ states:
     component: System.Output
     properties:
       text: "${rb.phoneCoolerSettings}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
-  zephyrReplaceStrap:
-    component: System.Output
-    properties:
-      text: "${rb.zephyrReplaceStrap}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
-  zephyrReplaceFilter:
-    component: System.Output
-    properties:
-      text: "${rb.zephyrReplaceFilter}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
@@ -6084,14 +6030,6 @@ states:
     component: System.Output
     properties:
       text: "${rb.thxActivationCode}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
-  zephyrGap:
-    component: System.Output
-    properties:
-      text: "${rb.zephyrGap}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
@@ -6628,6 +6566,22 @@ states:
     component: System.Output
     properties:
       text: "${rb.facialInterfaceSetup}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  nommoV2PowerSaving:
+    component: System.Output
+    properties:
+      text: "${rb.nommoV2PowerSaving}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  nommoV2Switching:
+    component: System.Output
+    properties:
+      text: "${rb.nommoV2Switching}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
