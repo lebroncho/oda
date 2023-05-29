@@ -27,6 +27,7 @@
     "Windows OS is corrupted",
     "Screen is cracked",
     "Trackpad is cracked",
+    "Trackpad is not responsive or lagging",
     "Keyboard keycap has printing issue",
     "Keyboard RGB is not working as expected (Uneven lighting)",
     "Keyboard is not responsive or lagging",
@@ -74,6 +75,6 @@
     "Connected to an external monitor and shows a display.",
     "Connected to an external monitor and does not show a display.",
     "Check out How to adjust or change the display refresh rate on a Razer Blade.",
-    "Check out How to maximize GPU usage on the Razer Blade."
+    "Check out How to fix my Razer Blade when it freezes or locks up."
   ]
 }
