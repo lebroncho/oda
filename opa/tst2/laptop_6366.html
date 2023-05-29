@@ -746,13 +746,13 @@ Physical Issues</label></div>
 <p><input id="tab-5-sym2" name="case_symptoms[]" type="checkbox" value="18" /><label for="tab-5-sym2">Trackpad is cracked</label></p>
 </li>
 <li>
-<p><input id="tab-5-sym3" name="case_symptoms[]" type="checkbox" value="18" /><label for="tab-5-sym3">Trackpad is not responsive or lagging</label></p>
+<p><input id="tab-5-sym3" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-5-sym3">Trackpad is not responsive or lagging</label></p>
 </li>
 <li>
-<p><input id="tab-5-sym4" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-5-sym4">Keyboard keycap has printing issue</label></p>
+<p><input id="tab-5-sym4" name="case_symptoms[]" type="checkbox" value="20" /><label for="tab-5-sym4">Keyboard keycap has printing issue</label></p>
 </li>
 <li>
-<p><input id="tab-5-sym5" name="case_symptoms[]" type="checkbox" value="20" /><label for="tab-5-sym5">Keyboard RGB is not working as expected (Uneven lighting)</label></p>
+<p><input id="tab-5-sym5" name="case_symptoms[]" type="checkbox" value="21" /><label for="tab-5-sym5">Keyboard RGB is not working as expected (Uneven lighting)</label></p>
 </li>
 </ul>
 </div>
@@ -760,19 +760,19 @@ Physical Issues</label></div>
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
 <li>
-<p><input id="tab-5-sym6" name="case_symptoms[]" type="checkbox" value="21" /><label for="tab-5-sym6">Keyboard is not responsive or lagging</label></p>
+<p><input id="tab-5-sym6" name="case_symptoms[]" type="checkbox" value="22" /><label for="tab-5-sym6">Keyboard is not responsive or lagging</label></p>
 </li>
 <li>
-<p><input id="tab-5-sym7" name="case_symptoms[]" type="checkbox" value="22" /><label for="tab-5-sym7">USB port not detected or dented</label></p>
+<p><input id="tab-5-sym7" name="case_symptoms[]" type="checkbox" value="23" /><label for="tab-5-sym7">USB port not detected or dented</label></p>
 </li>
 <li>
-<p><input id="tab-5-sym8" name="case_symptoms[]" type="checkbox" value="23" /><label for="tab-5-sym8">Speakers are not working as expected</label></p>
+<p><input id="tab-5-sym8" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-5-sym8">Speakers are not working as expected</label></p>
 </li>
 <li>
-<p><input id="tab-5-sym9" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-5-sym9">Speaker grill detached from chassis</label></p>
+<p><input id="tab-5-sym9" name="case_symptoms[]" type="checkbox" value="25" /><label for="tab-5-sym9">Speaker grill detached from chassis</label></p>
 </li>
 <li>
-<p><input class="toggle" data-target="symptom-other" data-toggle="disabled" id="tab-5-sym10" name="case_symptoms[]" type="checkbox" value="25" /><label for="tab-5-sym10">Other cosmetic issue</label> <input class="d-block w-75 p-2 m-0 disabled" disabled="disabled" id="symptom-other" name="symptom_other" placeholder="Kindly specify the issue" type="text" /></p>
+<p><input class="toggle" data-target="symptom-other" data-toggle="disabled" id="tab-5-sym10" name="case_symptoms[]" type="checkbox" value="26" /><label for="tab-5-sym10">Other cosmetic issue</label> <input class="d-block w-75 p-2 m-0 disabled" disabled="disabled" id="symptom-other" name="symptom_other" placeholder="Kindly specify the issue" type="text" /></p>
 </li>
 </ul>
 </div>
@@ -806,7 +806,7 @@ var curSym = [];
 // Shows the target section and scrolls down to it on mobile view
 function showSection(target) {
 	document.querySelectorAll(".ts-section").forEach(elem => elem.classList.add("d-none"));
-	document.querySelectorAll(".contact_support_Btn").forEach(function (elem) {
+	document.querySelectorAll(".contact_support_Btn").forEach(elem => {
 		elem.classList.add("disabled");
 		elem.setAttribute("disabled", true);
 	});
@@ -831,7 +831,7 @@ function showSubItem(target) {
 	document.querySelectorAll(".ts-sub-item").forEach(elem => elem.classList.add("d-none"));
 	document.querySelectorAll(".list-solutions input").forEach(elem => elem.checked = false);
 	document.querySelectorAll(".contact-supp").forEach(elem => elem.classList.remove("d-none"));
-	document.querySelectorAll(".contact_support_Btn").forEach(function (elem) {
+	document.querySelectorAll(".contact_support_Btn").forEach(elem => {
 		elem.classList.add("disabled");
 		elem.setAttribute("disabled", true);
 	});
@@ -839,20 +839,35 @@ function showSubItem(target) {
 	return false;
 }
 
+// Checks if all mandatory steps have been fulfilled
+function checkMandatorySteps(itemList) {
+	let mandatoryItems = 0, mandatoryChecked = 0;
+	itemList.forEach(elem => {
+		if (elem.hasAttribute('mandatory')) {
+			mandatoryItems++;
+			if (elem.checked) mandatoryChecked++;
+		}
+	});
+	if (mandatoryItems == mandatoryChecked) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 // Checks if at least the required count of solutions have been taken
 function checkStepsTaken(section, reqCount) {
-	let mandatoryStep = true,
+	let mandatorySteps = true,
 		solList = document.querySelectorAll("#" + section + " .list-solutions input"),
 		contactBtn = document.querySelector("#" + section + " .contact_support_Btn");
 	solList.forEach(elem => elem.addEventListener("change", function () {
 		let inCount = 0;
 		for (let i = 0; i < solList.length; i++) {
 			if (!solList[i].hasAttribute('notcounted')) {
-				if (solList[i].hasAttribute('mandatory')) mandatoryStep = solList[i].checked;
 				solList[i].checked ? inCount++ : inCount;
 			}
 		}
-		if (inCount >= reqCount && mandatoryStep) {
+		if (inCount >= reqCount && checkMandatorySteps(solList)) {
 			contactBtn.classList.remove("disabled");
 			contactBtn.removeAttribute("disabled");
 		} else {
@@ -905,8 +920,7 @@ function getValues(key, multiple = false) {
 			}
 		}
 	}
-	if (key == 'case_symptoms[]' && valArr.includes('25')) {
-		// valArr.push(document.getElementsByName("symptom_other")[0].value);
+	if (key == 'case_symptoms[]' && valArr.includes('26')) {
 		valArr = valArr.concat(document.getElementsByName("symptom_other")[0].value.split(' '));
 	}
 	if (multiple) {
