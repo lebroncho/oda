@@ -368,7 +368,7 @@ Physical Issues</label></div>
 <p><input name="case_solutions[]" type="checkbox" value="0" />Make sure your laptop has the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
 </li>
 <li>
-<p><input name="case_solutions[]" type="checkbox" value="26" />Make sure your laptop has the latest BIOS update. Download the latest BIOS updater from our <a href="https://support.razer.com/pc/gaming-laptops" target="_blank">Laptop Support page</a> or by searching your Razer Blade model in the search bar.</p>
+<p><input name="case_solutions[]" type="checkbox" value="26" />Download your laptop's latest BIOS updater on our <a href="https://support.razer.com/pc/gaming-laptops" target="_blank">Laptop Support Page</a>. Search for your Razer laptop model in the search bar.</p>
 </li>
 <li>
 <p><input name="case_solutions[]" type="checkbox" value="1" />Make sure your laptop has the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1705" target="_blank">Graphics card update</a>.</p>
@@ -410,7 +410,7 @@ Physical Issues</label></div>
 <p><input name="case_solutions[]" type="checkbox" value="17" />Unplug ALL peripherals connected to your laptop before powering on.</p>
 </li>
 <li>
-<p><input name="case_solutions[]" type="checkbox" value="18" />Restore BIOS to default settings.</p>
+<p><input name="case_solutions[]" type="checkbox" value="18" />Restore BIOS to default settings. Please refer to the "Software Changes" of <a href="https://mysupport.razer.com/app/answers/detail/a_id/3221" target="_blank">this article</a> for instructions on how to restore BIOS to default settings.</p>
 </li>
 </ul>
 
@@ -481,7 +481,7 @@ Physical Issues</label></div>
 <p><input name="case_solutions[]" type="checkbox" value="0" />Make sure your laptop has the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
 </li>
 <li>
-<p><input name="case_solutions[]" type="checkbox" value="18" />Restore BIOS to default settings. Please refer to the "Software changes" of <a href="https://mysupport.razer.com/app/answers/detail/a_id/3221" target="_blank">this article</a> for instructions on how to restore BIOS to default settings.</p>
+<p><input name="case_solutions[]" type="checkbox" value="18" />Restore BIOS to default settings. Please refer to the "Software Changes" of <a href="https://mysupport.razer.com/app/answers/detail/a_id/3221" target="_blank">this article</a> for instructions on how to restore BIOS to default settings.</p>
 </li>
 <li>
 <p><input name="case_solutions[]" type="checkbox" value="20" />Clean air vents.</p>
@@ -594,7 +594,7 @@ Physical Issues</label></div>
 <p><input name="case_solutions[]" type="checkbox" value="0" />Make sure your laptop has the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
 </li>
 <li>
-<p><input name="case_solutions[]" type="checkbox" value="26" />Make sure your laptop has the latest BIOS update. Download the latest BIOS updater from our <a href="https://support.razer.com/pc/gaming-laptops" target="_blank">Laptop Support page</a> or by searching your Razer Blade model in the search bar.</p>
+<p><input name="case_solutions[]" type="checkbox" value="26" />Download your laptop's latest BIOS updater on our <a href="https://support.razer.com/pc/gaming-laptops" target="_blank">Laptop Support Page</a>. Search for your Razer laptop model in the search bar.</p>
 </li>
 <li>
 <p><input name="case_solutions[]" type="checkbox" value="25" />Check for any physical damage on the charging adapter and cables.</p>
@@ -630,7 +630,7 @@ Physical Issues</label></div>
 <p><input name="case_solutions[]" type="checkbox" value="0" />Make sure your laptop has the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
 </li>
 <li>
-<p><input name="case_solutions[]" type="checkbox" value="26" />Make sure your laptop has the latest BIOS update. Download the latest BIOS updater from our <a href="https://support.razer.com/pc/gaming-laptops" target="_blank">Laptop Support page</a> or by searching your Razer Blade model in the search bar.</p>
+<p><input name="case_solutions[]" type="checkbox" value="26" />Download your laptop's latest BIOS updater on our <a href="https://support.razer.com/pc/gaming-laptops" target="_blank">Laptop Support Page</a>. Search for your Razer laptop model in the search bar.</p>
 </li>
 <li>
 <p><input name="case_solutions[]" type="checkbox" value="25" />Check for any physical damage on the charging adapter and cables.</p>
@@ -690,7 +690,7 @@ Physical Issues</label></div>
 <p><input name="case_solutions[]" type="checkbox" value="34" />Check out <a href="https://mysupport.razer.com/app/answers/detail/a_id/1541" target="_blank">How to access the BIOS settings on the Razer Blade</a>.</p>
 </li>
 <li>
-<p><input name="case_solutions[]" type="checkbox" value="26" />Make sure your laptop has the latest BIOS update. Download the latest BIOS updater from our <a href="https://support.razer.com/pc/gaming-laptops" target="_blank">Laptop Support page</a> or by searching your Razer Blade model in the search bar.</p>
+<p><input name="case_solutions[]" type="checkbox" value="26" />Download your laptop's latest BIOS updater on our <a href="https://support.razer.com/pc/gaming-laptops" target="_blank">Laptop Support Page</a>. Search for your Razer laptop model in the search bar.</p>
 </li>
 </ul>
 
@@ -857,8 +857,7 @@ function checkMandatorySteps(itemList) {
 
 // Checks if at least the required count of solutions have been taken
 function checkStepsTaken(section, reqCount) {
-	let mandatorySteps = true,
-		solList = document.querySelectorAll("#" + section + " .list-solutions input"),
+	let solList = document.querySelectorAll("#" + section + " .list-solutions input"),
 		contactBtn = document.querySelector("#" + section + " .contact_support_Btn");
 	solList.forEach(elem => elem.addEventListener("change", function () {
 		let inCount = 0;
