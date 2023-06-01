@@ -70,7 +70,7 @@ async function invoke(context){
 
         const allOfTheAboveIndex = indexes.indexOf(ALL_OF_THE_ABOVE_INDEX);
         if(allOfTheAboveIndex > - 1){
-            symptomKeys = symptomsIndexMap[issueKeyword].keys();
+            let symptomKeys = symptomsIndexMap[issueKeyword].keys();
             symptomKeys.sort(integerSort);
 
             symptomKeys.splice(0, symptomKeys.length - 1);
