@@ -978,10 +978,12 @@ document.addEventListener("DOMContentLoaded", function () {
 					if (this.checked) {
 						target.classList.remove(value);
 						target.removeAttribute(value);
+						target.setAttribute('required', true);
 					} else {
 						target.value = '';
 						target.classList.add(value);
 						target.setAttribute(value, true);
+						target.setAttribute('required', false);
 					}
 					break;
 			}
