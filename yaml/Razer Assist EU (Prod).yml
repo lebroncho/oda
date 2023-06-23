@@ -151,11 +151,8 @@ states:
         CustomsFees: customsFees
         DebitRejected: debitRejectedOutput
         DeviceNotDetected: deviceNotDetected
-        EchoSound: echoSoundOutput
         ErrorCode43: errorCodeOutput
         FanNoise: fanNoiseOutput
-        HammerheadTrueWireless: hammerheadTWSOutput
-        KrakenKitty: krakenKittyOutput
         LaptopOverheating: laptopOverheatingOutput
         LegacyProduct: legacyProductOutput
         MilitaryDiscount: militaryDiscountOutput
@@ -183,7 +180,6 @@ states:
         RmaSla: rmaSla
         OrderNotFound: orderNotFound
         OrderRefund: orderRefund
-        KrakenAudioIssue: krakenAudioIssue
         RegistrationFailed: registrationFailed
         ThumbpadIssue: thumbpadIssue
         LowFPS: lowFps
@@ -201,12 +197,10 @@ states:
         SynapseLightSettings: synapseLightSettings
         BladeScreenTurnsBlack: bladeScreenTurnsBlack
         BladeScreenFlickering: bladeScreenFlickering
-        NariFAQ: nariFAQ
         BrokenDevice: brokenDevice
         OpusPairing: opusPairing
         BladeRefreshRate: bladeRefreshRate
         BladeLowStorage: bladeLowStorage
-        SensitiveMic: sensitiveMic
         TomahawkFirmware: tomahawkFirmware
         BrokenReplacement: brokenReplacement
         DownloadFirmware: downloadFirmware
@@ -331,6 +325,8 @@ states:
         FacialInterfaceSetup: facialInterfaceSetup
         NommoV2PowerSaving: nommoV2PowerSaving
         NommoV2Switching: nommoV2Switching
+        HammerheadProDryOff: hammerheadProDryOff
+        RetroSuperFuture: retroSuperFuture
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -347,6 +343,12 @@ states:
         HeadsetCracklingNoise: headsetPath
         HeadsetEarCushions: headsetPath
         HeadsetNotDetected: headsetPath
+        EchoSound: headsetPath #echoSoundOutput
+        HammerheadTrueWireless: headsetPath #hammerheadTWSOutput
+        KrakenKitty: headsetPath #krakenKittyOutput
+        KrakenAudioIssue: headsetPath #krakenAudioIssue
+        NariFAQ: headsetPath #nariFAQ
+        SensitiveMic: headsetPath #sensitiveMic
 
         #----- Keyboard-related Intents -----#
         KeyboardSupport: keyboardPath
@@ -6582,6 +6584,22 @@ states:
     component: System.Output
     properties:
       text: "${rb.nommoV2Switching}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  hammerheadProDryOff:
+    component: System.Output
+    properties:
+      text: "${rb.hammerheadProDryOff}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  retroSuperFuture:
+    component: System.Output
+    properties:
+      text: "${rb.retroSuperFuture}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
