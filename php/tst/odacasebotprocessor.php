@@ -139,7 +139,8 @@ function getQueue($problemId)
     // $repair = [87, 97];
     $order = [9, 35, 73, 90, 98];
     $l1 = [1220, 856, 891, 932, 691, 725, 916, 1073, 129, 2003, 1035, 284, 101, 2494];
-    $l15 = [281, 1827, 277, 88, 2678];
+    $l15 = [1827, 277, 88, 2678];
+    $laptop = [281];
     $software = [1284, 567, 671, 1323, 1585, 663, 1268];
     $chair = [1609];
 
@@ -149,6 +150,8 @@ function getQueue($problemId)
         $queue = 69;
     } else if (in_array($problemId, $l15)) {
         $queue = 78;
+    } else if (in_array($problemId, $laptop)) {
+        $queue = 334;
     } else if (in_array($problemId, $chair)) {
         $queue = 327;
     } else {

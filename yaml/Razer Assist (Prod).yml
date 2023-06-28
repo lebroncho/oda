@@ -823,6 +823,54 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
+  quickAnswerLaptop:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.journey
+      value: true
+  quickAnswerLaptopSetCaseCreationState:
+    component: System.SetVariable
+    properties:
+      variable: "caseCreationState"
+      value: "setCaseFirstName"
+  quickTypeLaptop:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.chatType
+      value: "TSLaptop"
+  resolvequickAnswerLaptop:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Did I answer your question?"
+            actions:
+              - label: "Yes"
+                type: postback
+                keyword: "a,A,y,Y"
+                payload:
+                  action: "Yes"
+              - label: "No"
+                type: postback
+                keyword: "b,B,n,N"
+                payload:
+                  action: "No"
+    transitions:
+      next: intent
+      actions:
+        Yes: queryResolved
+        No: checkTryCount
+        match: hiddenAction
+        cancel: errorOutput
+
   quickAnswerTSChair:
     component: System.SetVariable
     properties:
@@ -1922,7 +1970,7 @@ states:
       text: "${rb.razerWebcamBlade}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   razerRipsaw:
     component: System.Output
@@ -2155,7 +2203,7 @@ states:
     properties:
       insightsInclude: false
       variable: user.chatType
-      value: "TS2"
+      value: "TSLaptop"
   resolveLaptopPath:
     component: System.CommonResponse
     properties:
@@ -2756,7 +2804,7 @@ states:
       text: "${rb.bloatedBattery}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   resolvePurchasedDays:
     component: System.CommonResponse
@@ -2877,7 +2925,7 @@ states:
       text: "${rb.micBladeSupport}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   micHeadsetSupport:
     component: System.Output
@@ -3664,6 +3712,7 @@ states:
         - "CS"
         - "TS1"
         - "TS2"
+        - "TSLaptop"
         - "TSChair"
         - "TSEdge"
     transitions:
@@ -3671,6 +3720,7 @@ states:
         CS: setChatQueueCS
         TS1: setChatQueueTS1
         TS2: setChatQueueTS2
+        TSLaptop: setChatQueueLaptop
         TSChair: setChatQueueTSChair
         TSEdge: setChatQueueTSEdge
         NONE: setChatQueueTS1
@@ -3694,25 +3744,6 @@ states:
     transitions:
       next: checkChatQueue
 
-  setChatQueueTS2:
-    component: System.SetVariable
-    properties:
-      variable: chatQueue
-      value: "${system.config.incidentTs2Id}"
-  setChatWebIncidentTS2:
-    component: System.SetVariable
-    properties:
-      variable: webIncident
-      value: "My Razer Laptop"
-  setChatTypeTS2:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: chatType
-      value: "${system.config.incidentTs2Id}"
-    transitions:
-      next: checkChatQueue
-
   setChatQueueTS1:
     component: System.SetVariable
     properties:
@@ -3729,6 +3760,44 @@ states:
       insightsInclude: false
       variable: chatType
       value: "${system.config.incidentTs1Id}"
+    transitions:
+      next: checkChatQueue
+
+  setChatQueueTS2:
+    component: System.SetVariable
+    properties:
+      variable: chatQueue
+      value: "${system.config.incidentTs2Id}"
+  setChatWebIncidentTS2:
+    component: System.SetVariable
+    properties:
+      variable: webIncident
+      value: "My Razer Desktop & Components"
+  setChatTypeTS2:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: chatType
+      value: "${system.config.incidentTs2Id}"
+    transitions:
+      next: checkChatQueue
+
+  setChatQueueLaptop:
+    component: System.SetVariable
+    properties:
+      variable: chatQueue
+      value: "${system.config.incidentTs2Id}"
+  setChatWebIncidentLaptop:
+    component: System.SetVariable
+    properties:
+      variable: webIncident
+      value: "My Razer Laptop"
+  setChatTypeLaptop:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: chatType
+      value: "${system.config.incidentTs2Id}"
     transitions:
       next: checkChatQueue
 
@@ -4306,7 +4375,7 @@ states:
       text: "${rb.laptopSupport}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   tomahawkFaqs:
     component: System.Output
@@ -4330,7 +4399,7 @@ states:
       text: "${rb.monitorSupport}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS1
+      next: quickAnswerTS2
 
   phoneFaqs:
     component: System.Output
@@ -4354,7 +4423,7 @@ states:
       text: "${rb.errorCode43}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   privacyPolicyOutput:
     component: System.Output
@@ -4426,7 +4495,7 @@ states:
       text: "${rb.fanNoise}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   serialNumberOutput:
     component: System.Output
@@ -4703,7 +4772,7 @@ states:
       text: "${rb.windowsHello}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   shippingAddressOutput:
     component: System.Output
@@ -4735,7 +4804,7 @@ states:
       text: "${rb.laptopOverheating}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   militaryDiscountOutput:
     component: System.Output
@@ -4937,7 +5006,7 @@ states:
       text: "${rb.lowFps}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   powerAdapterIssue:
     component: System.Output
@@ -4945,7 +5014,7 @@ states:
       text: "${rb.powerAdapterIssue}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   synapseCrashed:
     component: System.Output
@@ -5001,7 +5070,7 @@ states:
       text: "${rb.bladeDead}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeDeadPixel:
     component: System.Output
@@ -5009,7 +5078,7 @@ states:
       text: "${rb.bladeDeadPixel}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeWifiIssue:
     component: System.Output
@@ -5017,7 +5086,7 @@ states:
       text: "${rb.bladeWifiIssue}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   mouseNotCharging:
     component: System.Output
@@ -5033,7 +5102,7 @@ states:
       text: "${rb.errorBsod}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   anzuFAQ:
     component: System.Output
@@ -5073,7 +5142,7 @@ states:
       text: "${rb.bladeScreenTurnsBlack}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeScreenFlickering:
     component: System.Output
@@ -5081,7 +5150,7 @@ states:
       text: "${rb.bladeScreenFlickering}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   mouseSpamming:
     component: System.Output
@@ -5121,7 +5190,7 @@ states:
       text: "${rb.bladeRefreshRate}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeLowStorage:
     component: System.Output
@@ -5129,7 +5198,7 @@ states:
       text: "${rb.bladeLowStorage}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   sensitiveMic:
     component: System.Output
@@ -5306,7 +5375,7 @@ states:
       text: "${rb.bladeLighting}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   leviathanSupport:
     component: System.Output
@@ -5338,7 +5407,7 @@ states:
       text: "${rb.blade14Activation}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   unregisterDevice:
     component: System.Output
@@ -5531,7 +5600,7 @@ states:
       text: "${rb.upgradeMemory}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   upgradeStorage:
     component: System.Output
@@ -5539,7 +5608,7 @@ states:
       text: "${rb.upgradeStorage}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   hypershiftMouse:
     component: System.Output
@@ -5555,7 +5624,7 @@ states:
       text: "${rb.windows11Install}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   windows11Difference:
     component: System.Output
@@ -5563,7 +5632,7 @@ states:
       text: "${rb.windows11Difference}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   windows11Accessories:
     component: System.Output
@@ -5571,7 +5640,7 @@ states:
       text: "${rb.windows11Accessories}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   windows11Upgrade:
     component: System.Output
@@ -5579,7 +5648,7 @@ states:
       text: "${rb.windows11Upgrade}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   windows11Requirements:
     component: System.Output
@@ -5587,7 +5656,7 @@ states:
       text: "${rb.windows11Requirements}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   synapseMac:
     component: System.Output
@@ -5723,7 +5792,7 @@ states:
       text: "${rb.bladeNotWakingUp}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   keyBinding:
     component: System.Output
@@ -5755,7 +5824,7 @@ states:
       text: "${rb.bladeTrackpad}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   chromaLightStrip:
     component: System.Output
@@ -5779,7 +5848,7 @@ states:
       text: "${rb.gamingMode}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   keyboardDemoMode:
     component: System.Output
@@ -5803,7 +5872,7 @@ states:
       text: "${rb.bladeSystemRecovery}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeMaxStorageMemory:
     component: System.Output
@@ -5811,7 +5880,7 @@ states:
       text: "${rb.bladeMaxStorageMemory}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   pwmOverheating:
     component: System.Output
@@ -5991,7 +6060,7 @@ states:
       text: "${rb.batteryLife}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeCrashing:
     component: System.Output
@@ -5999,7 +6068,7 @@ states:
       text: "${rb.bladeCrashing}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeSkinInstall:
     component: System.Output
@@ -6007,7 +6076,7 @@ states:
       text: "${rb.bladeSkinInstall}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeSkinRemoval:
     component: System.Output
@@ -6015,7 +6084,7 @@ states:
       text: "${rb.bladeSkinRemoval}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   phoneCoolerSetup:
     component: System.Output
@@ -6047,7 +6116,7 @@ states:
       text: "${rb.lightBleed}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   screenBrightness:
     component: System.Output
@@ -6055,7 +6124,7 @@ states:
       text: "${rb.screenBrightness}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   dedicatedGpu:
     component: System.Output
@@ -6063,7 +6132,7 @@ states:
       text: "${rb.dedicatedGpu}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   nvidiaAdvancedOptimus:
     component: System.Output
@@ -6071,7 +6140,7 @@ states:
       text: "${rb.nvidiaAdvancedOptimus}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   dgpuBlankScreen:
     component: System.Output
@@ -6079,7 +6148,7 @@ states:
       text: "${rb.dgpuBlankScreen}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   maximizeGpu:
     component: System.Output
@@ -6087,7 +6156,7 @@ states:
       text: "${rb.maximizeGpu}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   monitorUsbSpecs:
     component: System.Output
@@ -6103,7 +6172,7 @@ states:
       text: "${rb.usbPort}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeThirdPartyCharge:
     component: System.Output
@@ -6111,7 +6180,7 @@ states:
       text: "${rb.bladeThirdPartyCharge}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   ethernetCable:
     component: System.Output
@@ -6119,7 +6188,7 @@ states:
       text: "${rb.ethernetCable}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   accessBios:
     component: System.Output
@@ -6127,7 +6196,7 @@ states:
       text: "${rb.accessBios}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   biosBoot:
     component: System.Output
@@ -6135,7 +6204,7 @@ states:
       text: "${rb.biosBoot}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   wobblingBlade:
     component: System.Output
@@ -6143,7 +6212,7 @@ states:
       text: "${rb.wobblingBlade}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   thxActivationCode:
     component: System.Output
@@ -6175,7 +6244,7 @@ states:
       text: "${rb.bladeMonitor}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeHdmi:
     component: System.Output
@@ -6183,7 +6252,7 @@ states:
       text: "${rb.bladeHdmi}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   watchWristbandSupport:
     component: System.CommonResponse
@@ -6419,7 +6488,7 @@ states:
       text: "${rb.bladeGsync}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   audioMixerSetup:
     component: System.Output
@@ -6467,7 +6536,7 @@ states:
       text: "${rb.bladeOvercharge}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   ssdScrewSize:
     component: System.Output
@@ -6475,7 +6544,7 @@ states:
       text: "${rb.ssdScrewSize}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   lowerWattageBlade:
     component: System.Output
@@ -6483,7 +6552,7 @@ states:
       text: "${rb.lowerWattageBlade}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   modernStandby:
     component: System.Output
@@ -6491,7 +6560,7 @@ states:
       text: "${rb.modernStandby}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   deviceEncryption:
     component: System.Output
@@ -6499,7 +6568,7 @@ states:
       text: "${rb.deviceEncryption}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   streamControllerSupport:
     component: System.CommonResponse
@@ -6631,7 +6700,7 @@ states:
       text: "${rb.bladeBootLoop}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeSetUpRAID:
     component: System.Output
@@ -6639,7 +6708,7 @@ states:
       text: "${rb.bladeSetUpRAID}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeOverclocking:
     component: System.Output
@@ -6647,7 +6716,7 @@ states:
       text: "${rb.bladeOverclocking}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   bladeSecureBoot:
     component: System.Output
@@ -6655,7 +6724,7 @@ states:
       text: "${rb.bladeSecureBoot}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS2
+      next: quickAnswerLaptop
 
   nexusVirtualController:
     component: System.Output

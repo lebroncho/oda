@@ -4235,7 +4235,7 @@ states:
       text: "${rb.monitorSupport}"
       keepTurn: true
     transitions:
-      next: quickAnswerTS1
+      next: quickAnswerTS2
 
   phoneFaqs:
     component: System.Output
