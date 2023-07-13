@@ -1,0 +1,52 @@
+{
+  "issues": [
+    "Joystick/Controller Issues",
+    "Power & Connection Issues",
+    "Cosmetic & Physical Issues",
+    "General Product Questions"
+  ],
+  "symptoms": [
+    "Ghost movement/drifting",
+    "Lag/Erratic movement",
+    "No response",
+    "Physically stuck in pressed position",
+    "Not detected",
+    "Detected but not recognized",
+    "Disconnected periodically",
+    "Not pairing",
+    "Not broadcasting",
+    "Not turning on",
+    "Hard to press keys/buttons",
+    "Incomplete/Request spare parts",
+    "No power",
+    "Other issues not listed"
+  ],
+  "connections": [
+    "PC (wired/wireless)",
+    "Gaming Console (wired/wireless)",
+    "Gaming Console via Bluetooth"
+  ],
+  "steps": [
+    "Clean the controller.",
+    "Power is important. Make sure your controller is fully charged.",
+    "Switch wireless mode ON. Check your product user guide to configure device accordingly.",
+    "Check controller compatibility.",
+    "Connect your controller directly to your PC's USB port and not a USB hub.",
+    "Connect it to a different USB port.",
+    "Get the latest Windows update.",
+    "Update the firmware of your controller if it is on the list.",
+    "Reinstall your controller driver and restart your PC.",
+    "Connect wirelessly and test your controller.",
+    "Connect and test your Razer controller on a different gaming console or PC.",
+    "Connect your controller directly to your gaming console's USB port and not a USB hub.",
+    "Check gaming console's firmware update.",
+    "Download and install console's new firmware update.",
+    "Power cycle your gaming console.",
+    "Connect your controller to the console with a USB cable.",
+    "Update your controller through the gaming console's settings/dashboard.",
+    "Press the controller's gaming console's wireless/pairing button for 3 seconds and release.",
+    "Turn Bluetooth ON and scan for nearby available Bluetooth devices.",
+    "From the list of devices found, select your gaming console wireless controller.",
+    "I have reviewed and agreed to the terms and conditions of the Limited Warranty as specified in Razer's warranty policy."
+  ]
+}
