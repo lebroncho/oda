@@ -115,6 +115,10 @@ function getSubject() {
                 subject = 'Order Support';
             }
             break;
+        case 'controller':
+        case 'controllers':
+            subject = 'lRct725' + createUtterance();
+            break;
         case 'audio':
         case 'headset':
         case 'headsets':
