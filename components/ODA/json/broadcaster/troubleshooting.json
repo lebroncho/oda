@@ -4,7 +4,7 @@
       "Audio & Mic Issue",
       "Video Issue",
       "Non-quality Issues",
-      "General Inquiry",
+      "General Inquiry"
     ],
     "symptoms": [
         "Detected but Not Recognized",
@@ -25,48 +25,48 @@
         "Firmware update request",
         "General Information",
         "Incompatibility",
-        "Other Issues Not Listed",
+        "Other Issues Not Listed"
         
     ],
     "connections": [
       "USB Cable",
       "3.5 Cable",
-      "Bluetooth via Phone/Console",
+      "Bluetooth via Phone/Console"
     ],
     "steps": [
-        "Remove other peripherals not needed during troubleshooting except for the primary keyboard and mouse."
-        "Unplug and re-plug broadcaster device and connect it directly to a PC’s USB port and not a USB Hub"
-        "Connect it to a different USB Port"
-        "Get the latest Windows update."
-        "Allow camera access for video issues"
-        "Make sure your apps can access the mic for audio concern"
-        "Device should be compatible with Synapse or check device product user  guide to configure device accordingly."
-        "Update the firmware of your broadcaster if it is on the list."
-        "Rule out software issue. Close all broadcaster related software including Razer Synapse."
-        "If closing Razer Synapse fixed the issue, reinstall your broadcaster drivers, and perform a clean reinstall of Razer Synapse. Restart your computer then test your keyboard"
-        "Connect and Test your Razer broadcaster device using a different computer."
-        "Check the audio ports and audio jack for any dirt or debris."
-        "Confirm that the audio jack is plugged in properly. If you are using a splitter cable, check to see if the splitter cable is causing the issue."
-        "Fix sound or audio problems in Windows "
-        "Ensure that the systems onboard audio playback device (e.g., Realtek High-Definition Audio) is set as default."
-        "Rule out software issues. Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists."
-        "If closing audio enhancing software fixed your issue, reinstall your headset drivers including Razer Synapse, Razer 7.1 Surround Sound or THX Spatial. Restart your computer then test your headset."
-        "Test your Razer headset with a different PC."
-        "Make sure your phone/console is compatible with your Razer broadcaster."
-        "Clean the attached silicone tips with a soft cloth lightly saturated with warm water."
-        "Power is important. Broadcaster device must be fully charged and turned on. Check your product user guide for best practices."
-        "Update your device to the latest firmware via the Razer Audio app for iOS or Android if connected to phone"
-        "Remove and re-pair the Bluetooth headset to your phone/console."
-        "Test your Razer broadcaster device with a different Phone/console."
-        "Clean the broadcaster device  "
-        "Do not place the microphone directly in front of your mouth."
-        "Position the microphone off to the side so that the air from your mouth does not directly hit the microphone when you speak."
-        "Ensure that there are no fans or air-conditioning units blowing directly onto your microphone"
-        "Check device product user guide to configure device accordingly."
-        "Open/download video streaming apps (OBS or XSplit) and make necessary adjustments based on desired output"
-        "Test your Razer broadcaster device with a PC "
-        "Open your video streaming app (OBS or XSplit) and configure camera settings:" 
-        "Adjust Advance Camera settings in Synapse"
+        "Remove other peripherals not needed during troubleshooting except for the primary keyboard and mouse.",
+        "Unplug and re-plug broadcaster device and connect it directly to a PC’s USB port and not a USB Hub",
+        "Connect it to a different USB Port",
+        "Get the latest Windows update.",
+        "Allow camera access for video issues",
+        "Make sure your apps can access the mic for audio concern",
+        "Device should be compatible with Synapse or check device product user  guide to configure device accordingly.",
+        "Update the firmware of your broadcaster if it is on the list.",
+        "Rule out software issue. Close all broadcaster related software including Razer Synapse.",
+        "If closing Razer Synapse fixed the issue, reinstall your broadcaster drivers, and perform a clean reinstall of Razer Synapse. Restart your computer then test your keyboard",
+        "Connect and Test your Razer broadcaster device using a different computer.",
+        "Check the audio ports and audio jack for any dirt or debris.",
+        "Confirm that the audio jack is plugged in properly. If you are using a splitter cable, check to see if the splitter cable is causing the issue.",
+        "Fix sound or audio problems in Windows",
+        "Ensure that the systems onboard audio playback device (e.g., Realtek High-Definition Audio) is set as default.",
+        "Rule out software issues. Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists.",
+        "If closing audio enhancing software fixed your issue, reinstall your headset drivers including Razer Synapse, Razer 7.1 Surround Sound or THX Spatial. Restart your computer then test your headset.",
+        "Test your Razer headset with a different PC.",
+        "Make sure your phone/console is compatible with your Razer broadcaster.",
+        "Clean the attached silicone tips with a soft cloth lightly saturated with warm water.",
+        "Power is important. Broadcaster device must be fully charged and turned on. Check your product user guide for best practices.",
+        "Update your device to the latest firmware via the Razer Audio app for iOS or Android if connected to phone",
+        "Remove and re-pair the Bluetooth headset to your phone/console.",
+        "Test your Razer broadcaster device with a different Phone/console.",
+        "Clean the broadcaster device",
+        "Do not place the microphone directly in front of your mouth.",
+        "Position the microphone off to the side so that the air from your mouth does not directly hit the microphone when you speak.",
+        "Ensure that there are no fans or air-conditioning units blowing directly onto your microphone",
+        "Check device product user guide to configure device accordingly.",
+        "Open/download video streaming apps (OBS or XSplit) and make necessary adjustments based on desired output",
+        "Test your Razer broadcaster device with a PC ",
+        "Open your video streaming app (OBS or XSplit) and configure camera settings:",
+        "Adjust Advance Camera settings in Synapse",
         "Test your Razer broadcaster device using a different a PC"        
     ]
   }
