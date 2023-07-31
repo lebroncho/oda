@@ -109,9 +109,11 @@ function getSubject() {
         case 'order':
         case 'orders':
             let data = getStoredData('case_reason');
-            if (data > 0 && data != '') {
-                subject = 'lRos9 ~' + data + '~';
-            } else {
+            if(data == '1')
+                subject = 'return my order'
+            else if(data == '2')
+                subject = 'cancel or change my order'
+            else{
                 subject = 'Order Support';
             }
             break;
