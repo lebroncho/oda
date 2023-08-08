@@ -82,6 +82,7 @@ async function invoke(context){
             'email': sessionData.email,
             'region': sessionData.region,
             'chatSessionID': sessionData.chatSessionID,
+            'country': sessionData.country,
             'issue': `${problemType} ${troubleshootingIssue}`,
             'rmaNumber': rmaNumber,
             'orderNumber': orderNumber,
