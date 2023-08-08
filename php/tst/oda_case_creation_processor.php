@@ -53,7 +53,7 @@ function findProduct($productNumber){
 }
 
 function getIncidentType($problemID){
-  $typeId = null;
+  $typeID = null;
   $software = [1284, 567, 671, 1323, 1585, 663, 1268, 1341];
   $mobile = [284, 2003];
   $networking = [129];
@@ -75,11 +75,6 @@ function getIncidentType($problemID){
   }
 
   return $typeID;
-}
-
-function getCountry($region){
-    $region = strtoupper($region);
-    return $region == 'NA' ? 'us' : NULL;
 }
 
 function getRegion($region){
@@ -124,8 +119,8 @@ class MessageContentType{
 function parseCaseDataFromPayload($input){
     $payloadData = json_decode($input, true);
 
-    // note = ['content' => 'sample', 'id' => 'troubleshooting', 'entry_type' => 'private-note', 'content_type': 'text']
-    // file = ['name' => 'sample', 'path' => '/tmp', 'content_type': '']
+    // note = ['content' => 'sample', 'id' => 'troubleshooting', 'entryType' => 'private-note', 'contentType': 'text']
+    // file = ['name' => 'sample', 'path' => '/tmp', 'contentType': '']
     $caseData = [
         "region" => $payloadData['region'], "chatSessionID" => $payloadData['chatSessionID'],
         "contactID" => $payloadData['contactID'], "orderNumber" => $payloadData['orderNumber'],
@@ -137,6 +132,10 @@ function parseCaseDataFromPayload($input){
         "rmaNumber" => $payloadData['rmaNumber'], "files" => $payloadData['files'],
         "notes" => $payloadData['notes']
     ];
+
+    if(array_key_exists('country', $payloadData)){
+        $caseData["country"] = $payloadData['country'];
+    }
 
     return $caseData;
 }
@@ -241,8 +240,8 @@ function assignTypeAndSourceToIncident($incident, $type, $source){
     $incident->CustomFields->c->incident_source->id = $source;
 }
 
-function assignSourceCountryAndRegion($incident, $region){
-    $incident->CustomFields->c->web_country = getCountry($region);
+function assignSourceCountryAndRegion($incident, $country, $region){
+    $incident->CustomFields->c->web_country = $country
 
     $incident->CustomFields->c->region = new RNCPHP\NamedIDLabel();
     $incident->CustomFields->c->region->id = getRegion($region);
@@ -396,7 +395,7 @@ function main(){
         assignTypeAndSourceToIncident($incident, $incidentType, $WEB_ODA_INCIDENT_SOURCE);
         assignOrderNumberToIncident($incident, $caseData['orderNumber']);
         assignSerialNumberToIncident($incident, $caseData['serialNumber']);
-        assignSourceCountryAndRegion($incident, $caseData['region']);
+        assignSourceCountryAndRegion($incident, $caseData['country'], $caseData['region']);
         mapProductNumberAndDescription($incident, $caseData);
 
         /** ADD MESSAGES START */

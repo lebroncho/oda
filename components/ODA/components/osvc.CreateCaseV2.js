@@ -10,6 +10,7 @@ function metadata(){
         // READS THE FOLLOWING PROPERTIES
         region: { required: true, type: 'string' },
         chatSessionID: { required: true, type: 'string' },
+        country: { required: true, type: 'string' },
         contactID: { required: true, type: 'int' },
 
         issue: { required: true, type: 'string' },
@@ -49,6 +50,7 @@ async function invoke(context){
             productNumber, productDescription,
             problemID, issue,
             files, notes, rmaNumber,
+            country,
             caseReferenceNumberVar, caseIncidentIDVar
 
         } = context.properties();
@@ -61,7 +63,7 @@ async function invoke(context){
             contactID: contactID, subject: subject,
             problemID: problemID, categoryID: categoryID,
             region: region, chatSessionID: chatSessionID,
-            orderNumber: orderNumber, 
+            country: country, orderNumber: orderNumber, 
             productNumber: productNumber,
             productDescription: productDescription,
             serialNumber: serialNumber, issue: issue,
