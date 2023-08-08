@@ -62,7 +62,7 @@ function getIncidentType($problemID)
     $software = [1284, 567, 671, 1323, 1585, 663, 1268, 1341];
     $mobile = [284, 2003];
     $networking = [129];
-    $peripherals = [1220, 856, 891, 932, 691, 725, 916, 1073, 129, 1609, 1035, 101, 2494];
+    $peripherals = [1220, 856, 891, 932, 691, 725, 916, 1073, 1609, 1035, 101, 2494];
     $system = [281, 1827, 277, 88, 2678];
 
     if (in_array($problemID, $software)) {
@@ -86,10 +86,11 @@ function getWebIncidentType($problemID)
 {
     $typeID = null;
     $software = [1284, 567, 671, 1323, 1585, 663, 1268, 1341];
-    $mobile = [284, 2003];
+    $mobile = [284];
     $networking = [129];
-    $peripherals = [1220, 856, 891, 932, 691, 725, 916, 1073, 129, 1609, 1035, 101, 2494];
-    $system = [281, 1827, 277, 88, 2678];
+    $peripherals = [856, 891, 932, 691, 725, 916, 1073, 1609, 2003, 1035, 101, 2494];
+    $laptop = [281];
+    $desktop = [1827, 1220, 277, 88, 2678];
 
     if (in_array($problemID, $software)) {
         $typeID = 425;  // My Razer Software
@@ -99,8 +100,10 @@ function getWebIncidentType($problemID)
         $typeID = 419;  // My Razer Network & Monitor
     } else if (in_array($problemID, $peripherals)) {
         $typeID = 413;  // My Peripheral (mouse, keyboard, headset)
-    } else if (in_array($problemID, $system)) {
+    } else if (in_array($problemID, $laptop)) {
         $typeID = 418;  // My Razer Laptop
+    } else if (in_array($problemID, $desktop)) {
+        $typeID = 431;  // My Razer Desktop & Components
     } else {
         $typeID = 410;  // My Order from Razer.com
     }
@@ -117,26 +120,26 @@ function getCountry($region)
 function getRegion($region)
 {
     $regionObject = NULL;
-    $regionId = NULL;
+    $regionID = NULL;
     $region = strtoupper($region);
 
     switch ($region) {
         case 'AP':
         case 'ODAAP':
             $regionObject = RNCPHP\CO\Region::fetch(734);
-            $regionId = 734;
+            $regionID = 734;
             break;
         case 'EU':
         case 'ODAEU':
             $regionObject = RNCPHP\CO\Region::fetch(733);
-            $regionId = 733;
+            $regionID = 733;
             break;
         default: //Americas
             $regionObject = RNCPHP\CO\Region::fetch(732);
-            $regionId = 732;
+            $regionID = 732;
     }
 
-    return $regionId;
+    return $regionID;
 }
 
 /**************** LEGACY CODES END *********************/
@@ -280,10 +283,15 @@ function assignSerialNumberToIncident($incident, $serialNumber)
     }
 }
 
-function assignTypeAndSourceToIncident($incident, $type, $source)
+function assignTypeAndSourceToIncident($incident, $problemID, $source)
 {
+    $problemID = intval($problemID);
+
     $incident->CustomFields->c->incident_type = new RNCPHP\NamedIDLabel();
-    $incident->CustomFields->c->incident_type->id = $type;
+    $incident->CustomFields->c->incident_type->id = getIncidentType($problemID);
+
+    $incident->CustomFields->c->web_incident_type = new RNCPHP\NamedIDLabel();
+    $incident->CustomFields->c->web_incident_type->id = getWebIncidentType($problemID);
 
     $incident->CustomFields->c->incident_source = new RNCPHP\NamedIDLabel();
     $incident->CustomFields->c->incident_source->id = $source;
@@ -458,8 +466,7 @@ function main()
         $incident->Product = createServiceProduct($caseData['problemID']);
         $incident->Category = createServiceCategory($caseData['problemID'], $caseData['categoryID']);
 
-        $incidentType = getIncidentType(intval($caseData['problemID']));
-        assignTypeAndSourceToIncident($incident, $incidentType, $WEB_ODA_INCIDENT_SOURCE);
+        assignTypeAndSourceToIncident($incident, $caseData['problemID'], $WEB_ODA_INCIDENT_SOURCE);
         assignOrderNumberToIncident($incident, $caseData['orderNumber']);
         assignSerialNumberToIncident($incident, $caseData['serialNumber']);
         assignSourceCountryAndRegion($incident, $caseData['region']);
