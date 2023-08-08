@@ -53,7 +53,7 @@ function findProduct($productNumber){
 }
 
 function getIncidentType($problemID){
-  $typeId = null;
+  $typeID = null;
   $software = [1284, 567, 671, 1323, 1585, 663, 1268, 1341];
   $mobile = [284, 2003];
   $networking = [129];
@@ -84,24 +84,24 @@ function getCountry($region){
 
 function getRegion($region){
     $regionObject = NULL;
-    $regionId = NULL;
+    $regionID = NULL;
     $region = strtoupper($region);
 
     switch ($region) {
         case 'AP':
             $regionObject = RNCPHP\CO\Region::fetch(734);
-            $regionId = 734;
+            $regionID = 734;
             break;
         case 'EU':
             $regionObject = RNCPHP\CO\Region::fetch(733);
-            $regionId = 733;
+            $regionID = 733;
             break;
         default: //Americas
             $regionObject = RNCPHP\CO\Region::fetch(732);
-            $regionId = 732;
+            $regionID = 732;
     }
 
-    return $regionId;
+    return $regionID;
 }
 
 /**************** LEGACY CODES END *********************/
