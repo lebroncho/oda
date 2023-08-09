@@ -514,6 +514,17 @@ states:
               - skipAutoNumber: true
                 payload:
                   variables:
+                    system.text: "RPSVFDLPTP"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS2"
+                  action: "system.textReceived"
+                label: "Laptop"
+                type: postback
+                keyword: "laptop,blade"
+              - skipAutoNumber: true
+                payload:
+                  variables:
                     system.text: "RPSVFDMSE VFD"
                     user.journey: true
                     user.secondTry: true
@@ -525,17 +536,6 @@ states:
               - skipAutoNumber: true
                 payload:
                   variables:
-                    system.text: "RPSVFDHDST"
-                    user.journey: true
-                    user.secondTry: true
-                    user.chatType: "TS1"
-                  action: "system.textReceived"
-                label: "Headset"
-                type: postback
-                keyword: "headset"
-              - skipAutoNumber: true
-                payload:
-                  variables:
                     system.text: "RPSVFDKBRD"
                     user.journey: true
                     user.secondTry: true
@@ -544,6 +544,17 @@ states:
                 label: "Keyboard"
                 type: postback
                 keyword: "keyboard"
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDHDST"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Headset"
+                type: postback
+                keyword: "headset"
               - skipAutoNumber: true
                 payload:
                   action: "other"
