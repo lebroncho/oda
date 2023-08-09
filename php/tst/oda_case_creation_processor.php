@@ -120,17 +120,17 @@ function getRegion($region)
     switch ($region) {
         case 'AP':
         case 'ODAAP':
-            $regionObject = RNCPHP\CO\Region::fetch(734);
-            $regionID = 734;
+            // $regionObject = RNCPHP\CO\Region::fetch(734);
+            $regionID = 20;
             break;
         case 'EU':
         case 'ODAEU':
-            $regionObject = RNCPHP\CO\Region::fetch(733);
-            $regionID = 733;
+            // $regionObject = RNCPHP\CO\Region::fetch(733);
+            $regionID = 21;
             break;
-        default: //Americas
-            $regionObject = RNCPHP\CO\Region::fetch(732);
-            $regionID = 732;
+        default: 
+            // $regionObject = RNCPHP\CO\Region::fetch(732);
+            $regionID = 22; // Americas
     }
 
     return $regionID;
@@ -296,7 +296,11 @@ function assignTypeAndSourceToIncident($incident, $problemID, $source)
 }
 
 function assignSourceCountryAndRegion($incident, $country, $region){
-    $incident->CustomFields->c->web_country = $country
+    // Default web_country value for skills without country in their payload
+    if(empty($country) || $country == ''){
+        $country = 'us';
+    }
+    $incident->CustomFields->c->web_country = $country;
 
     $incident->CustomFields->c->region = new RNCPHP\NamedIDLabel();
     $incident->CustomFields->c->region->id = getRegion($region);
