@@ -53,7 +53,7 @@ function buildSymptomsText(indexesString, reference, properties){
         let otherSymptoms = indexes.splice(otherSymptomIndex, indexes.length);
         let index24 = otherSymptoms.shift();
         let joinedText = otherSymptoms.join(' ');
-        extraText = `${properties.prepend}${reference[index24]} ${joinedText}${properties.append}`;
+        extraText = `${properties.prepend}${reference[index24]}: ${joinedText}${properties.append}`;
     }
     text = buildText(indexes.join('_'), reference, properties);
     if(text != '') text = extraText != ''? `${text}${properties.joinChar}${extraText}` : text;
