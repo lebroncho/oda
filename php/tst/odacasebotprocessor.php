@@ -238,10 +238,10 @@ try {
     $serviceProduct = RNCPHP\ServiceProduct::fetch(intval($problemId));
     $incident->Product = $serviceProduct;
 
-    if ($problemId == 1341 && $categoryId != 'NULL') { //Surround Sound Activation
-        $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryId));
-        $incident->Category = $serviceCategory;
-    }
+    // if ($problemId == 1341 && $categoryId != 'NULL') { //Surround Sound Activation
+    //     $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryId));
+    //     $incident->Category = $serviceCategory;
+    // }
 
     $contactReason = RNCPHP\CO1\Contact_Reason::fetch(getContactReason(intval($problemId)));
     $incident->CustomFields->CO1->contact_reason = $contactReason;

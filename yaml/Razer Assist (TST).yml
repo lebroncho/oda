@@ -489,7 +489,7 @@ states:
     transitions:
       next: intent
       actions:
-        activation: setRequestFromSurroundSound
+        activation: surroundSoundTs
         status: rmaStatus
         question: technicalSupport
         order: RazerComOrder.start
@@ -3677,7 +3677,7 @@ states:
     transitions:
       next: intent
       actions:
-        activation: setRequestFromSurroundSound
+        activation: surroundSoundTs
         status: rmaStatus
         question: technicalSupport
         order: RazerComOrder.start
@@ -6838,12 +6838,12 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
-  setRequestFromSurroundSound:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: requestFromSS
-      value: "surroundSound"
+  # setRequestFromSurroundSound:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: requestFromSS
+  #     value: "surroundSound"
   surroundSoundTs:
     component: System.CommonResponse
     properties:
@@ -6877,7 +6877,7 @@ states:
       actions:
         SsTs1: surroundSoundHelpActivate
         SsTs2: surroundSoundTs2
-        SsTs3: surroundSoundTs3
+        # SsTs3: surroundSoundTs3
         match: hiddenAction
         cancel: errorOutput
 
@@ -6903,12 +6903,12 @@ states:
       next: surroundSoundSerial
 
   surroundSoundTs2:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: requestFromSS
-      value: "surroundSound"
-  surroundSoundTs2Prompt:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: requestFromSS
+  #     value: "surroundSound"
+  # surroundSoundTs2Prompt:
     component: System.CommonResponse
     properties:
       processUserMessage: true
@@ -7459,12 +7459,12 @@ states:
         cancel: errorOutput
 
   ssLaunchHelp:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: requestFromSS
-      value: "surroundSoundLaunch"
-  ssLaunchHelpPrompt:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: requestFromSS
+  #     value: "surroundSoundLaunch"
+  # ssLaunchHelpPrompt:
     component: System.CommonResponse
     properties:
       processUserMessage: true
@@ -7757,15 +7757,13 @@ states:
     properties:
       insightsInclude: false
       variable: "caseProductId"
-      # value: "1323"
-      value: "1341"
+      value: "1323"
   setCaseSurroundSound:
     component: System.SetVariable
     properties:
       insightsInclude: false
       variable: "case.category"
-      # value: "1323"
-      value: "1341"
+      value: "1323"
   setCaseIssueSurroundSound:
     component: System.SetVariable
     properties:
