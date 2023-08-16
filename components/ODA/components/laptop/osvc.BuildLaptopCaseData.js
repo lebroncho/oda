@@ -74,15 +74,14 @@ async function invoke(context){
             }
         }
 
-    
         context.logger().info("------ osvc.BuildLaptopCaseData: build case data ------");
         let caseData = {
             'firstname': sessionData.firstname,
             'lastname': sessionData.lastname,
             'email': sessionData.email,
             'region': sessionData.region,
-            'chatSessionID': sessionData.chatSessionID,
             'country': sessionData.country,
+            'chatSessionID': sessionData.chatSessionID,
             'issue': `${problemType} ${troubleshootingIssue}`,
             'rmaNumber': rmaNumber,
             'orderNumber': orderNumber,

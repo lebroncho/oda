@@ -80,6 +80,7 @@ async function invoke(context){
             'lastname': sessionData.lastname,
             'email': sessionData.email,
             'region': sessionData.region,
+            'country': sessionData.country,
             'chatSessionID': sessionData.chatSessionID,
             'issue': `${problemType} ${troubleshootingIssue}`,
             'rmaNumber': rmaNumber,
