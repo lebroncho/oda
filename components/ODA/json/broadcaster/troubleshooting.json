@@ -66,6 +66,11 @@
     "Test your Razer broadcaster device with a PC ",
     "Open your video streaming app (OBS or XSplit) and configure camera settings:",
     "Adjust Advance Camera settings in Synapse",
-    "Test your Razer broadcaster device using a different a PC"        
+    "Test your Razer broadcaster device using a different a PC",
+    "Unplug and re-plug broadcaster device and connect it directly to a PC’s USB port and not a USB Hub.",
+    "Connect it to a different USB Port.",
+    "Check device product user guide to configure device accordingly.",
+    "Open/download video streaming apps (OBS or XSplit) and make necessary adjustments based on desired output.",
+    "If closing Razer Synapse fixed the issue, reinstall your keyboard drivers</a>, and perform a clean reinstall of Razer Synapse. Restart your computer then test your broadcaster device."      
   ]
 }
