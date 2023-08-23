@@ -70,10 +70,10 @@ async function invoke(context){
 
         const allOfTheAboveIndex = indexes.indexOf(ALL_OF_THE_ABOVE_INDEX);
         if(allOfTheAboveIndex > - 1){
-            symptomKeys = symptomsIndexMap[issueKeyword].keys();
-            symptomKeys.sort(integerSort);
+            let symptomKeys = Object.keys(symptomsIndexMap[issueKeyword]);
+            symptomKeys.sort(stringIntegerSort);
 
-            symptomKeys.splice(0, symptomKeys.length - 1);
+            symptomKeys = symptomKeys.splice(0, symptomKeys.length - 1);
             indexes = [];
             for(const symptomKey of symptomKeys){
                 indexes.push(symptomsIndexMap[issueKeyword][symptomKey]);

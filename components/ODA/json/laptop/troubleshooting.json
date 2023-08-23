@@ -4,7 +4,7 @@
     "Systems Performance Issues",
     "Power & Battery Issues",
     "Driver or Software Issues",
-    "Cosmetic & Physical Issues",
+    "Cosmetic, Physical & Other Issues",
     "General Product Questions"
   ],
   "symptoms": [
@@ -34,7 +34,7 @@
     "USB port not detected or dented",
     "Speakers are not working as expected",
     "Speaker grill detached from chassis",
-    "Other cosmetic issue"
+    "Other issue"
   ],
   "steps": [
     "Make sure your laptop has the latest Windows update.",

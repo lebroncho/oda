@@ -123,7 +123,6 @@ states:
         RazerTurret: resolveTurret
         RazerSynapse: resolveSynapse
         BloatedBattery: batteryIssue
-        LaptopSupport: laptopFaqs
         TomahawkSupport: tomahawkFaqs
         CoreSupport: egpuFaqs
         MicSupport: micSupport
@@ -153,7 +152,6 @@ states:
         DeviceNotDetected: deviceNotDetected
         ErrorCode43: errorCodeOutput
         FanNoise: fanNoiseOutput
-        LaptopOverheating: laptopOverheatingOutput
         LegacyProduct: legacyProductOutput
         MilitaryDiscount: militaryDiscountOutput
         PaymentMethods: paymentMethodsOutput
@@ -187,20 +185,13 @@ states:
         SynapseCrashed: synapseCrashed
         MicSetDefault: micSetDefault
         SynapseDialKey: synapseDialKey
-        BladeDead: bladeDead
-        BladeDeadPixel: bladeDeadPixel
-        BladeWifiIssue: bladeWifiIssue
         ErrorBsod: errorBsod
         AnzuFAQ: anzuFAQ
         AnzuPairing: anzuPairing
         AnzuAudio: anzuAudio
         SynapseLightSettings: synapseLightSettings
-        BladeScreenTurnsBlack: bladeScreenTurnsBlack
-        BladeScreenFlickering: bladeScreenFlickering
         BrokenDevice: brokenDevice
         OpusPairing: opusPairing
-        BladeRefreshRate: bladeRefreshRate
-        BladeLowStorage: bladeLowStorage
         TomahawkFirmware: tomahawkFirmware
         BrokenReplacement: brokenReplacement
         DownloadFirmware: downloadFirmware
@@ -210,11 +201,9 @@ states:
         KiyoProFirmware: kiyoProFirmware
         CleanDevice: cleanDevice
         CreateMacro: createMacro
-        BladeLighting: bladeLighting
         LeviathanSupport: leviathanSupport
         KairaSupport: kairaSupport
         DisplayMenu: displayMenu
-        Blade14Activation: blade14Activation
         UnregisterDevice: unregisterDevice
         KeycapFit: keycapFit
         CoreSetup: coreSetup
@@ -232,17 +221,13 @@ states:
         AssignMacro: assignMacro
         SynapseReinstall: synapseReinstall
         ReplaceKeycap: replaceKeycap
-        BladeNotWakingUp: bladeNotWakingUp
         KeyBinding: keyBinding
         ThunderboltDockSupport: thunderboltDockSupport
         ASCIISymbols: asciiSymbols
-        BladeTrackpad: bladeTrackpad
         ChromaLightStrip: chromaLightStrip
         RipsawSetup: ripsawSetup
         GamingMode: gamingMode
         IskurAdjustLever: iskurAdjustLever
-        BladeSystemRecovery: bladeSystemRecovery
-        BladeMaxStorageMemory: bladeMaxStorageMemory
         PwmOverheating: pwmOverheating
         PwmNotSpinning: pwmNotSpinning
         PwmSetup: pwmSetup
@@ -255,29 +240,11 @@ states:
         ChargingStandXbox: chargingStandXbox
         ChairCasterStuds: chairCasterStuds
         BatteryLife: batteryLife
-        BladeCrashing: bladeCrashing
-        BladeSkinInstall: bladeSkinInstall
-        BladeSkinRemoval: bladeSkinRemoval
         PhoneCoolerSetup: phoneCoolerSetup
         PhoneCoolerPairing: phoneCoolerPairing
         PhoneCoolerSettings: phoneCoolerSettings
-        LightBleed: lightBleed
-        ScreenBrightness: screenBrightness
-        DedicatedGpu: dedicatedGpu
-        NvidiaAdvancedOptimus: nvidiaAdvancedOptimus
-        DgpuBlankScreen: dgpuBlankScreen
-        MaximizeGpu: maximizeGpu
-        MonitorUsbSpecs: monitorUsbSpecs
-        UsbPort: usbPort
-        BladeThirdPartyCharge: bladeThirdPartyCharge
-        EthernetCable: ethernetCable
-        AccessBios: accessBios
-        BiosBoot: biosBoot
-        WobblingBlade: wobblingBlade
         ThxActivationCode: thxActivationCode
         WolverineDeadzone: wolverineDeadzone
-        BladeMonitor: bladeMonitor
-        BladeHdmi: bladeHdmi
         InstallHanbo: installHanbo
         RgbHanbo: rgbHanbo
         OverheatingHanbo: overheatingHanbo
@@ -289,15 +256,12 @@ states:
         HeadCushionChromaPairing: headCushionChromaPairing
         HeadCushionChromaLighting: headCushionChromaLighting
         RecycleDevice: recycleDevice
-        BladeGsync: bladeGsync
         AudioMixerSetup: audioMixerSetup
         AudioMixerUse: audioMixerUse
         AudioMixerSettings: audioMixerSettings
         KeyLightSetup: keyLightSetup
         KeyLightCustomization: keyLightCustomization
-        BladeOvercharge: bladeOvercharge
         SsdScrewSize: ssdScrewSize
-        LowerWattageBlade: lowerWattageBlade
         ModernStandby: modernStandby
         DeviceEncryption: deviceEncryption
         WatchWristbandSupport: watchWristbandSupport
@@ -367,6 +331,44 @@ states:
         RazerEdgeAudioIssues: RazerEdge.audioIssues
         RazerEdgeOverheatingIssues: RazerEdge.overheatingIssues
         RazerEdgeBTPCInternetIssues: RazerEdge.connectionIssues
+
+        #------ Laptop-related Intents ------#
+        BladeDead: laptopPath #bladeDead
+        BladeDeadPixel: laptopPath #bladeDeadPixel
+        BladeWifiIssue: laptopPath #bladeWifiIssue
+        BladeScreenTurnsBlack: laptopPath #bladeScreenTurnsBlack
+        BladeScreenFlickering: laptopPath #bladeScreenFlickering
+        BladeRefreshRate: laptopPath #bladeRefreshRate
+        BladeLowStorage: laptopPath #bladeLowStorage
+        BladeLighting: laptopPath #bladeLighting
+        Blade14Activation: blade14Activation
+        BladeNotWakingUp: laptopPath #bladeNotWakingUp
+        BladeTrackpad: laptopPath #bladeTrackpad
+        BladeSystemRecovery: bladeSystemRecovery
+        BladeMaxStorageMemory: bladeMaxStorageMemory
+        BladeCrashing: laptopPath #bladeCrashing
+        BladeSkinInstall: bladeSkinInstall
+        BladeSkinRemoval: bladeSkinRemoval
+        BladeThirdPartyCharge: bladeThirdPartyCharge
+        BladeMonitor: bladeMonitor
+        BladeHdmi: bladeHdmi
+        BladeGsync: bladeGsync
+        BladeOvercharge: bladeOvercharge
+        WobblingBlade: laptopPath #wobblingBlade
+        LowerWattageBlade: lowerWattageBlade
+        LaptopSupport: laptopPath #laptopFaqs
+        LaptopOverheating: laptopPath #laptopOverheatingOutput
+        AccessBios: accessBios
+        BiosBoot: biosBoot
+        LightBleed: laptopPath #lightBleed
+        ScreenBrightness: laptopPath #screenBrightness
+        DedicatedGpu: dedicatedGpu
+        NvidiaAdvancedOptimus: nvidiaAdvancedOptimus
+        DgpuBlankScreen: laptopPath #dgpuBlankScreen
+        MaximizeGpu: maximizeGpu
+        MonitorUsbSpecs: monitorUsbSpecs
+        UsbPort: usbPort
+        EthernetCable: ethernetCable
 
   #-------------------------------------------------------------------------------
   # Greeting ---------------------------------------------------------------------
@@ -462,7 +464,7 @@ states:
     transitions:
       next: intent
       actions:
-        activation: setRequestFromSurroundSound
+        activation: surroundSoundTs
         status: rmaStatus
         question: technicalSupport
         order: orderPath
@@ -486,6 +488,17 @@ states:
               - skipAutoNumber: true
                 payload:
                   variables:
+                    system.text: "RPSVFDLPTP"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS2"
+                  action: "system.textReceived"
+                label: "Laptop"
+                type: postback
+                keyword: "laptop,blade"
+              - skipAutoNumber: true
+                payload:
+                  variables:
                     system.text: "RPSVFDMSE VFD"
                     user.journey: true
                     user.secondTry: true
@@ -497,17 +510,6 @@ states:
               - skipAutoNumber: true
                 payload:
                   variables:
-                    system.text: "RPSVFDHDST"
-                    user.journey: true
-                    user.secondTry: true
-                    user.chatType: "TS1"
-                  action: "system.textReceived"
-                label: "Headset"
-                type: postback
-                keyword: "headset"
-              - skipAutoNumber: true
-                payload:
-                  variables:
                     system.text: "RPSVFDKBRD"
                     user.journey: true
                     user.secondTry: true
@@ -516,6 +518,17 @@ states:
                 label: "Keyboard"
                 type: postback
                 keyword: "keyboard"
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDHDST"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Headset"
+                type: postback
+                keyword: "headset"
               - skipAutoNumber: true
                 payload:
                   action: "other"
@@ -3500,7 +3513,7 @@ states:
     transitions:
       next: intent
       actions:
-        activation: setRequestFromSurroundSound
+        activation: surroundSoundTs
         status: rmaStatus
         question: technicalSupport
         order: orderPath
@@ -6639,12 +6652,12 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
-  setRequestFromSurroundSound:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: requestFromSS
-      value: "surroundSound"
+  # setRequestFromSurroundSound:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: requestFromSS
+  #     value: "surroundSound"
   surroundSoundTs:
     component: System.CommonResponse
     properties:
@@ -6678,7 +6691,7 @@ states:
       actions:
         SsTs1: surroundSoundHelpActivate
         SsTs2: surroundSoundTs2
-        SsTs3: surroundSoundTs3
+        # SsTs3: surroundSoundTs3
         match: hiddenAction
         cancel: errorOutput
 
@@ -6704,12 +6717,12 @@ states:
       next: surroundSoundSerial
 
   surroundSoundTs2:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: requestFromSS
-      value: "surroundSound"
-  surroundSoundTs2Prompt:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: requestFromSS
+  #     value: "surroundSound"
+  # surroundSoundTs2Prompt:
     component: System.CommonResponse
     properties:
       processUserMessage: true
@@ -7260,12 +7273,12 @@ states:
         cancel: errorOutput
 
   ssLaunchHelp:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: requestFromSS
-      value: "surroundSoundLaunch"
-  ssLaunchHelpPrompt:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: requestFromSS
+  #     value: "surroundSoundLaunch"
+  # ssLaunchHelpPrompt:
     component: System.CommonResponse
     properties:
       processUserMessage: true
@@ -7557,15 +7570,13 @@ states:
     properties:
       insightsInclude: false
       variable: "caseProductId"
-      # value: "1323"
-      value: "1341"
+      value: "1323"
   setCaseSurroundSound:
     component: System.SetVariable
     properties:
       insightsInclude: false
       variable: "case.category"
-      # value: "1323"
-      value: "1341"
+      value: "1323"
   setCaseIssueSurroundSound:
     component: System.SetVariable
     properties:

@@ -32,7 +32,7 @@ async function invoke(context){
 
         let anotherIssue = '';
         if(issue == 'Power & Battery Issues' && symptoms == 'Unable to power on'){
-            anotherIssue = 'Cosmetic & Physical Issues';
+            anotherIssue = 'Cosmetic, Physical & Other Issues';
         }else if(issue == 'Systems Performance Issues' && symptoms == 'Blue screen appears intermittently'){
             anotherIssue = 'BSOD Issues'
         }
