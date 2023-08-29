@@ -291,6 +291,10 @@ states:
         NommoV2Switching: nommoV2Switching
         HammerheadProDryOff: hammerheadProDryOff
         RetroSuperFuture: retroSuperFuture
+        AutoCancelledOrder: autoCancelledOrder
+        KeyboardMechSwitchReplacement: keyboardMechSwitchReplacement
+        KishiV2ProVirtualController: kishiV2ProVirtualController
+        KishiV2ProAudioHaptic: kishiV2ProAudioHaptic
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -6613,6 +6617,38 @@ states:
     component: System.Output
     properties:
       text: "${rb.retroSuperFuture}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  autoCancelledOrder:
+    component: System.Output
+    properties:
+      text: "${rb.autoCancelledOrder}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerCS
+
+  keyboardMechSwitchReplacement:
+    component: System.Output
+    properties:
+      text: "${rb.keyboardMechSwitchReplacement}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  kishiV2ProVirtualController:
+    component: System.Output
+    properties:
+      text: "${rb.kishiV2ProVirtualController}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  kishiV2ProAudioHaptic:
+    component: System.Output
+    properties:
+      text: "${rb.kishiV2ProAudioHaptic}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
