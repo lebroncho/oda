@@ -145,8 +145,6 @@ states:
         TomahawkSupport: tomahawkFaqs
         CoreSupport: egpuFaqs
         MicSupport: micSupport
-        StreamingSupport: streamingFaqs
-        ControllerSupport: controllerFaqs
         MatSupport: matFaqs
         MonitorSupport: monitorFaqs
         ChairSupport: chairSupport
@@ -312,6 +310,10 @@ states:
         NommoV2Switching: nommoV2Switching
         HammerheadProDryOff: hammerheadProDryOff
         RetroSuperFuture: retroSuperFuture
+        AutoCancelledOrder: autoCancelledOrder
+        KeyboardMechSwitchReplacement: keyboardMechSwitchReplacement
+        KishiV2ProVirtualController: kishiV2ProVirtualController
+        KishiV2ProAudioHaptic: kishiV2ProAudioHaptic
 
         #------ Order-related Intents -------#
         RazerComOrder: RazerComOrder.start
@@ -395,6 +397,12 @@ states:
         MonitorUsbSpecs: monitorUsbSpecs
         UsbPort: usbPort
         EthernetCable: ethernetCable
+
+        #----- Controller-related Intents -----#
+        ControllerSupport: controllerPath
+
+        #----- Broadcaster-related Intents -----#
+        StreamingSupport: broadcasterPath
 
   #-------------------------------------------------------------------------------
   # Greeting ---------------------------------------------------------------------
@@ -555,6 +563,28 @@ states:
                 label: "Headset"
                 type: postback
                 keyword: "headset"
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDCTRL"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Controller"
+                type: postback
+                keyword: "controller"
+              - skipAutoNumber: true
+                payload:
+                  variables:
+                    system.text: "RPSVFDBRDCST"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS1"
+                  action: "system.textReceived"
+                label: "Broadcaster"
+                type: postback
+                keyword: "Broadcaster"
               - skipAutoNumber: true
                 payload:
                   action: "other"
@@ -2053,55 +2083,6 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
-  dongleBasiliskViper:
-    component: System.SetVariable
-    properties:
-      variable: user.journey
-      value: true
-  dongleBasiliskViper1:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.secondTry
-      value: true
-  dongleBasiliskViper2:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.chatType
-      value: "TS1"
-  dongleBasiliskViper3:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "Please confirm you need help with your mouse dongle"
-            actions:
-              - label: "Yes"
-                type: postback
-                keyword: "1,a,y"
-                payload:
-                  action: "system.textReceived"
-                  variables:
-                    system.text: "BSLSKVPR"
-              - label: "No"
-                type: postback
-                keyword: "2,b,n"
-                payload:
-                  action: "No"
-    transitions:
-      next: intent
-      actions:
-        No: rephraseQuestionPath
-        match: hiddenAction
-        cancel: errorOutput
-
   keyboardPath:
     component: System.SetVariable
     properties:
@@ -2237,6 +2218,104 @@ states:
                   action: "system.textReceived"
                   variables:
                     system.text: "RPSVFDLPTP"
+              - label: "No"
+                type: postback
+                keyword: "b,B,n,N"
+                payload:
+                  action: "No"
+    transitions:
+      next: intent
+      actions:
+        No: rephraseQuestionPath
+        match: hiddenAction
+        cancel: errorOutput
+
+  controllerPath:
+    component: System.SetVariable
+    properties:
+      variable: user.journey
+      value: true
+  controllerPath2:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.secondTry
+      value: true
+  setTypeController:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.chatType
+      value: "TS1"
+  resolveControllerPath:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Please confirm you need help with your controller"
+            actions:
+              - label: "Yes"
+                type: postback
+                keyword: "a,A,y,Y"
+                payload:
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDCTRL"
+              - label: "No"
+                type: postback
+                keyword: "b,B,n,N"
+                payload:
+                  action: "No"
+    transitions:
+      next: intent
+      actions:
+        No: rephraseQuestionPath
+        match: hiddenAction
+        cancel: errorOutput
+
+  broadcasterPath:
+    component: System.SetVariable
+    properties:
+      variable: user.journey
+      value: true
+  broadcasterPath2:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.secondTry
+      value: true
+  setTypeBroadcaster:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.chatType
+      value: "TS1"
+  resolveBroadcasterPath:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Please confirm you need help with your broadcaster device"
+            actions:
+              - label: "Yes"
+                type: postback
+                keyword: "a,A,y,Y"
+                payload:
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDBRDCST"
               - label: "No"
                 type: postback
                 keyword: "b,B,n,N"
@@ -3860,7 +3939,7 @@ states:
       actions:
         chatAvailable: setContactInfo
         chatUnavailableMaxQueue: chatUnavailableMaxQueue
-        chatUnavailableHours: setContactInfo #chatUnavailableHours
+        chatUnavailableHours: chatUnavailableHours
         fail: timedOutMessage
 
   chatUnavailableMaxQueue:
@@ -6803,6 +6882,38 @@ states:
     transitions:
       next: quickAnswerTS1
 
+  autoCancelledOrder:
+    component: System.Output
+    properties:
+      text: "${rb.autoCancelledOrder}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerCS
+
+  keyboardMechSwitchReplacement:
+    component: System.Output
+    properties:
+      text: "${rb.keyboardMechSwitchReplacement}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  kishiV2ProVirtualController:
+    component: System.Output
+    properties:
+      text: "${rb.kishiV2ProVirtualController}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  kishiV2ProAudioHaptic:
+    component: System.Output
+    properties:
+      text: "${rb.kishiV2ProAudioHaptic}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
   #-------------------------------------------------------------------------------
   # Intent Answers End -----------------------------------------------------------
   #-------------------------------------------------------------------------------
@@ -8369,16 +8480,20 @@ states:
                   action: "system.textReceived"
                   variables:
                     system.text: "RPSVFDMSE VFD"
-              - label: "Broadcaster"
-                type: postback
-                keyword: "4,d,D,broadcaster"
-                payload:
-                  action: "broadcaster"
               - label: "Controller"
                 type: postback
-                keyword: "5,e,E,controller"
+                keyword: "4,d,D,controller"
                 payload:
-                  action: "controller"
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDCTRL"
+              - label: "Broadcaster"
+                type: postback
+                keyword: "5,e,E,broadcaster"
+                payload:
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDBRDCST"
               - label: "Mats"
                 type: postback
                 keyword: "6,f,F,mats"

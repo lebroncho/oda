@@ -22,6 +22,13 @@ function getSubject() {
                 subject = 'Order Support';
             }
             break;
+        case 'broadcaster':
+            subject = 'lRbrdcst691' + createUtterance();
+            break;
+        case 'controller':
+        case 'controllers':
+            subject = 'lRct725' + createUtterance();
+            break;
         case 'audio':
         case 'headset':
         case 'headsets':
@@ -42,11 +49,7 @@ function getSubject() {
             subject = 'lRps932' + createUtterance();
             break;
         case 'system':
-            if (region == 'odaap' || region == 'odaeu') {
-                subject = 'lRlt281' + createUtterance();
-            } else {
-                subject = 'Hello Support';
-            }
+            subject = 'lRlt281' + createUtterance();
             break;
         case 'edge':
             subject = 'Razer Edge Handheld';

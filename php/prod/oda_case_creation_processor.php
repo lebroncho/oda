@@ -121,16 +121,16 @@ function getRegion($region)
         case 'AP':
         case 'ODAAP':
             // $regionObject = RNCPHP\CO\Region::fetch(734);
-            $regionID = 20;
+            $regionID = 734;
             break;
         case 'EU':
         case 'ODAEU':
             // $regionObject = RNCPHP\CO\Region::fetch(733);
-            $regionID = 21;
+            $regionID = 733;
             break;
         default: 
             // $regionObject = RNCPHP\CO\Region::fetch(732);
-            $regionID = 22; // Americas
+            $regionID = 732; // Americas
     }
 
     return $regionID;
