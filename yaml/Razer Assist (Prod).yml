@@ -352,6 +352,9 @@ states:
         KeyboardMechSwitchReplacement: keyboardMechSwitchReplacement
         KishiV2ProVirtualController: kishiV2ProVirtualController
         KishiV2ProAudioHaptic: kishiV2ProAudioHaptic
+        BladeScrewSizes: bladeScrewSizes
+        WirelessControlPod: wirelessControlPod
+        WirelessControlPodSupportedDevices: wirelessControlPodSupportedDevices
 
         #------ Order-related Intents -------#
         RazerComOrder: RazerComOrder.start
@@ -6822,6 +6825,30 @@ states:
     component: System.Output
     properties:
       text: "${rb.kishiV2ProAudioHaptic}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  bladeScrewSizes:
+    component: System.Output
+    properties:
+      text: "${rb.bladeScrewSizes}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  wirelessControlPod:
+    component: System.Output
+    properties:
+      text: "${rb.wirelessControlPod}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  wirelessControlPodSupportedDevices:
+    component: System.Output
+    properties:
+      text: "${rb.wirelessControlPodSupportedDevices}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
