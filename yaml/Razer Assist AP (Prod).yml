@@ -296,6 +296,7 @@ states:
         BladeScrewSizes: bladeScrewSizes
         WirelessControlPod: wirelessControlPod
         WirelessControlPodSupportedDevices: wirelessControlPodSupportedDevices
+        AudioMixerMuteButton: audioMixerMuteButton
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -6751,6 +6752,14 @@ states:
     component: System.Output
     properties:
       text: "${rb.wirelessControlPodSupportedDevices}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  audioMixerMuteButton:
+    component: System.Output
+    properties:
+      text: "${rb.audioMixerMuteButton}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
