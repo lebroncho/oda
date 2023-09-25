@@ -128,7 +128,6 @@ states:
         MicSupport: micSupport
         MatSupport: matFaqs
         MonitorSupport: monitorFaqs
-        ChairSupport: chairSupport
         NetworkSupport: networkFaqs
         PhoneSupport: phoneFaqs
         ProductSupport: technicalSupport
@@ -193,7 +192,6 @@ states:
         TomahawkFirmware: tomahawkFirmware
         BrokenReplacement: brokenReplacement
         DownloadFirmware: downloadFirmware
-        ChairRMA: chairRMA
         AnzuBTIssue: anzuBTIssue
         SeirenSupport: seirenSupport
         KiyoProFirmware: kiyoProFirmware
@@ -206,7 +204,6 @@ states:
         KeycapFit: keycapFit
         CoreSetup: coreSetup
         VesaInstallation: vesaInstallation
-        DisassembleIskur: disassembleIskur
         UpgradeStorage: upgradeStorage
         UpgradeMemory: upgradeMemory
         Windows11Install: windows11Install
@@ -225,7 +222,6 @@ states:
         ChromaLightStrip: chromaLightStrip
         RipsawSetup: ripsawSetup
         GamingMode: gamingMode
-        IskurAdjustLever: iskurAdjustLever
         PwmOverheating: pwmOverheating
         PwmNotSpinning: pwmNotSpinning
         PwmSetup: pwmSetup
@@ -236,7 +232,6 @@ states:
         TomahawkStorage: tomahawkStorage
         ObsMixAudio: obsMixAudio
         ChargingStandXbox: chargingStandXbox
-        ChairCasterStuds: chairCasterStuds
         BatteryLife: batteryLife
         PhoneCoolerSetup: phoneCoolerSetup
         PhoneCoolerPairing: phoneCoolerPairing
@@ -264,7 +259,6 @@ states:
         DeviceEncryption: deviceEncryption
         WatchWristbandSupport: watchWristbandSupport
         PairingUtility: pairingUtility
-        EnkiProFunctions: enkiProFunctions
         BarracudaUsbCPair: barracudaUsbCPair
         StreamControllerSupport: streamControllerSupport
         SetupKatana: setupKatana
@@ -381,6 +375,18 @@ states:
 
         #----- Broadcaster-related Intents -----#
         StreamingSupport: broadcasterPath
+
+        #------- Chair-related Intents -------#
+        ChairRMA: chairRMA
+        ChairCasterStuds: chairCasterStuds
+        ChairSupport: chairSupport
+        IskurAssembly: iskurAssemblyPrompt
+        IskurDisassembly: iskurDisassemblyPrompt
+        IskurAdjustLever: iskurAdjustLever
+        EnkiAssembly: enkiAssemblyPrompt
+        EnkiDisassembly: enkiDisassemblyPrompt
+        EnkiProFunctions: enkiProFunctions
+        FujinAssembly: fujinAssembly
 
   #-------------------------------------------------------------------------------
   # Greeting ---------------------------------------------------------------------
@@ -5457,53 +5463,6 @@ states:
     transitions:
       next: quickAnswerTS1
 
-  disassembleIskur:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "${rb.disassembleIskur}"
-            actions:
-              - label: "Razer Iskur"
-                type: postback
-                keyword: "a,A,razer iskur,iskur"
-                payload:
-                  action: "iskur"
-              - label: "Razer Iskur X"
-                type: postback
-                keyword: "b,B,razer iskur x,iskur x"
-                payload:
-                  action: "iskurX"
-    transitions:
-      next: intent
-      actions:
-        iskur: disassembleRazerIskur
-        iskurX: disassembleRazerIskurX
-        match: hiddenAction
-        cancel: errorOutput
-
-  disassembleRazerIskur:
-    component: System.Output
-    properties:
-      text: "${rb.disassembleRazerIskur}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
-  disassembleRazerIskurX:
-    component: System.Output
-    properties:
-      text: "${rb.disassembleRazerIskurX}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
   upgradeMemory:
     component: System.Output
     properties:
@@ -5768,14 +5727,6 @@ states:
     transitions:
       next: quickAnswerTS1
 
-  iskurAdjustLever:
-    component: System.Output
-    properties:
-      text: "${rb.iskurAdjustLever}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
   bladeSystemRecovery:
     component: System.Output
     properties:
@@ -5807,11 +5758,312 @@ states:
       keepTurn: true
     transitions:
       next: quickAnswerTS2
-
+  
   chairSupport:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "You have a question about your Razer chair. Which one do you need help with?"
+            actions:
+              - label: "Razer Iskur"
+                type: postback
+                keyword: "a,A,razer iskur,iskur"
+                payload:
+                  action: "iskur"
+              - label: "Razer Enki"
+                type: postback
+                keyword: "b,B,razer enki,enki"
+                payload:
+                  action: "enki"
+              - label: "Razer Fujin"
+                type: postback
+                keyword: "c,C,razer fujin,fujin"
+                payload:
+                  action: "fujin"
+    transitions:
+      next: intent
+      actions:
+        iskur: razerIskur
+        enki: razerEnki
+        fujin: fujinAssembly
+        match: hiddenAction
+        cancel: errorOutput
+
+  razerIskur:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "What do you need help with?"
+            actions:
+              - label: "Chair Assembly"
+                type: postback
+                keyword: "a,A,assembly"
+                payload:
+                  action: "assembly"
+              - label: "Chair Disassembly"
+                type: postback
+                keyword: "b,B,disassembly"
+                payload:
+                  action: "disassembly"
+              - label: "Lumbar Support Lever Adjustment"
+                type: postback
+                keyword: "c,C,lumbar support,lumbar"
+                payload:
+                  action: "adjustLever"
+    transitions:
+      next: intent
+      actions:
+        assembly: iskurAssemblyPrompt
+        disassembly: iskurDisassemblyPrompt
+        adjustLever: iskurAdjustLever
+        match: hiddenAction
+        cancel: errorOutput
+
+  iskurAssemblyPrompt:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Which Razer Iskur do you have?"
+            actions:
+              - label: "Razer Iskur"
+                type: postback
+                keyword: "a,A,razer iskur,iskur"
+                payload:
+                  action: "iskur"
+              - label: "Razer Iskur X"
+                type: postback
+                keyword: "b,B,razer iskur x,iskur x"
+                payload:
+                  action: "iskurX"
+    transitions:
+      next: intent
+      actions:
+        iskur: iskurAssembly
+        iskurX: iskurXAssembly
+        match: hiddenAction
+        cancel: errorOutput
+
+  iskurAssembly:
     component: System.Output
     properties:
-      text: "${rb.chairSupport}"
+      text: "${rb.iskurAssembly}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  iskurXAssembly:
+    component: System.Output
+    properties:
+      text: "${rb.iskurXAssembly}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  iskurDisassemblyPrompt:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Which Razer Iskur do you have?"
+            actions:
+              - label: "Razer Iskur"
+                type: postback
+                keyword: "a,A,razer iskur,iskur"
+                payload:
+                  action: "iskur"
+              - label: "Razer Iskur X"
+                type: postback
+                keyword: "b,B,razer iskur x,iskur x"
+                payload:
+                  action: "iskurX"
+    transitions:
+      next: intent
+      actions:
+        iskur: iskurDisassembly
+        iskurX: iskurXDisassembly
+        match: hiddenAction
+        cancel: errorOutput
+
+  iskurDisassembly:
+    component: System.Output
+    properties:
+      text: "${rb.iskurDisassembly}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  iskurXDisassembly:
+    component: System.Output
+    properties:
+      text: "${rb.iskurXDisassembly}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  iskurAdjustLever:
+    component: System.Output
+    properties:
+      text: "${rb.iskurAdjustLever}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  razerEnki:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "What do you need help with?"
+            actions:
+              - label: "Chair Assembly"
+                type: postback
+                keyword: "a,A,assembly"
+                payload:
+                  action: "assembly"
+              - label: "Chair Disassembly"
+                type: postback
+                keyword: "b,B,disassembly"
+                payload:
+                  action: "disassembly"
+    transitions:
+      next: intent
+      actions:
+        assembly: enkiAssemblyPrompt
+        disassembly: enkiDisassemblyPrompt
+        match: hiddenAction
+        cancel: errorOutput
+
+  enkiAssemblyPrompt:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Which Razer Enki do you have?"
+            actions:
+              - label: "Razer Enki"
+                type: postback
+                keyword: "a,A,razer enki,enki"
+                payload:
+                  action: "enki"
+              - label: "Razer Enki X"
+                type: postback
+                keyword: "b,B,razer enki x,enki x"
+                payload:
+                  action: "enkiX"
+    transitions:
+      next: intent
+      actions:
+        enki: enkiAssembly
+        enkiX: enkiXAssembly
+        match: hiddenAction
+        cancel: errorOutput
+
+  enkiAssembly:
+    component: System.Output
+    properties:
+      text: "${rb.enkiAssembly}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  enkiXAssembly:
+    component: System.Output
+    properties:
+      text: "${rb.enkiXAssembly}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  enkiDisassemblyPrompt:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Which Razer Enki do you have?"
+            actions:
+              - label: "Razer Enki"
+                type: postback
+                keyword: "a,A,razer enki,enki"
+                payload:
+                  action: "enki"
+              - label: "Razer Enki Pro"
+                type: postback
+                keyword: "b,B,razer enki pro,enki pro"
+                payload:
+                  action: "enkiPro"
+    transitions:
+      next: intent
+      actions:
+        enki: enkiDisassembly
+        enkiPro: enkiProDisassembly
+        match: hiddenAction
+        cancel: errorOutput
+
+  enkiDisassembly:
+    component: System.Output
+    properties:
+      text: "${rb.enkiDisassembly}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  enkiProDisassembly:
+    component: System.Output
+    properties:
+      text: "${rb.enkiProDisassembly}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  fujinAssembly:
+    component: System.Output
+    properties:
+      text: "${rb.fujinAssembly}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
@@ -10773,3 +11025,4 @@ states:
       
   ############ RAZER EDGE END #################
   #############################################
+ 
