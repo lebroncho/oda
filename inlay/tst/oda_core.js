@@ -24,9 +24,25 @@ function getSurveyData(chatId, source) {
 
 const INLAY_ID = INLAY_ID_EMBEDDED;
 const INLAY_CONTAINER_ID = "razer-oda-chat";
-const allowedPages = ['contact-support','answers'];
-const visitorBrowsingCurrentPageView = window.location.pathname.split('/').slice(2,3)[0];
+// const allowedPages = ['contact-support', 'answers', 'warranty-support-dev', 'contact-support-dev'];
+// const visitorBrowsingCurrentPageView = window.location.pathname.split('/').slice(2, 3)[0];
 const upload_type = ['.bmp', '.gif', '.jpeg', '.jpg', '.pdf', '.png', '.BMP', '.GIF', '.JPEG', '.JPG', '.PDF', '.PNG', '.mp4', '.avi', '.mov', '.mkv'];
+
+const isChatAllowed = () => {
+    const allowedPages = {
+        'tst2.dev.mysupport.razer.com': ['contact-support', 'answers', 'contact-support-dev', 'warranty-support-dev'],
+        'tst2.dev.mysupport-pt.razer.com': ['contact-support'],
+        'tst2.dev.mysupport-jp.razer.com': ['contact-support']
+    }
+    const visitorBrowsingCurrentPageView = window.location.pathname.split('/').slice(2, 3)[0];
+
+    if (Object.keys(allowedPages).includes(location.hostname) && allowedPages[location.hostname].includes(visitorBrowsingCurrentPageView)) {
+        console.log('chat allowed');
+        return true;
+    }
+    console.error('chat disallowed');
+    return false;
+}
 
 const addInlayToUx = () => {
 
@@ -91,8 +107,21 @@ const addInlayToUx = () => {
                 "name": "c$chat_product_desc",
                 "required": false,
                 "value": getWarrantyInfo('product')
+            },
+            {
+                "hidden": true,
+                "name": "c$razer_care",
+                "required": false,
+                "value": getWarrantyInfo('razer_care')
             }
             ];
+
+            // Check if the serial number is empty or "Unavaialable"
+            if (launchFormFields[3].value == "Unavailable" || launchFormFields[3].value == "") {
+                if(document.getElementById("serial_number")){
+                    launchFormFields[3].value = document.getElementById("serial_number").value;
+                }
+            }
 
             /**
             * Embedded Chat Inlay element
@@ -114,11 +143,11 @@ const addInlayToUx = () => {
             let chatInlayLoader = document.createElement('script');
             chatInlayLoader.setAttribute("id", "oit-loader");
             chatInlayLoader.setAttribute("data-oit-lazy", true);
-            chatInlayLoader.setAttribute("src", "https://razer.widget.custhelp.com/s/oit/latest/common/v0/libs/oit/loader.js?v="+Date.now());
+            chatInlayLoader.setAttribute("src", "https://tst2.dev.mysupport.razer.com/s/oit/latest/common/v0/libs/oit/loader.js?v=" + Date.now());
             chatInlayLoader.setAttribute("data-oit-config-url", "https://tst2.dev.mysupport.razer.com/euf/assets/chat/inlays/oit-config.json");
             chatInlayLoader.setAttribute("async", "");
             document.body.appendChild(chatInlayLoader);
-        
+
             showChatInlay();
         }
     }, 100); // check every 100ms
@@ -126,7 +155,7 @@ const addInlayToUx = () => {
 
 // 1. Wait for the OIT API to load
 const showChatInlay = () => {
-    (window.oit && oit.inlayIsLoaded) 
+    (window.oit && oit.inlayIsLoaded)
         ? waitForChatInlay()
         : document.addEventListener('oit-loaded', waitForChatInlay);
 }
@@ -138,8 +167,8 @@ const waitForChatInlay = () => {
         window.oit.load();
 
         (oit.inlayIsLoaded(INLAY_ID))
-        ? fireChatInlayShowEvent()
-        : document.addEventListener('inlay-oracle-chat-embedded-loaded', fireChatInlayShowEvent);
+            ? fireChatInlayShowEvent()
+            : document.addEventListener('inlay-oracle-chat-embedded-loaded', fireChatInlayShowEvent);
 
     }, 2500);
 }
@@ -167,13 +196,13 @@ const fireChatInlayShowEvent = () => {
         link.rel = "stylesheet";
         link.href = "https://tst2.dev.mysupport.razer.com/euf/assets/chat/inlays/oda.css?v=" + Date.now();
         link.type = "text/css";
-        
+
         inlayHead.appendChild(link);
 
         let scriptTag = document.createElement("script");
         scriptTag.innerHTML =
             'var s_ajaxListener=new Object;s_ajaxListener.tempOpen=XMLHttpRequest.prototype.open,s_ajaxListener.tempSend=XMLHttpRequest.prototype.send,s_ajaxListener.callback=function(){},XMLHttpRequest.prototype.open=function(e,t){if(!e)e="";if(!t)t="";s_ajaxListener.tempOpen.apply(this,arguments),s_ajaxListener.method=e,s_ajaxListener.url=t,"get"==e.toLowerCase()&&(s_ajaxListener.data=t.split("?"),s_ajaxListener.data=s_ajaxListener.data[1])},XMLHttpRequest.prototype.send=function(e,t){if(!e)e="";if(!t)t="";s_ajaxListener.tempSend.apply(this,arguments),this.addEventListener("load",function(){s_ajaxListener.url.includes("/requestEngagement")&&(console.log("engagementId",JSON.parse(this.responseText).engagementId),parent.window.engagementId=JSON.parse(this.responseText).engagementId)},!1),"post"==s_ajaxListener.method.toLowerCase()&&(s_ajaxListener.data=e),s_ajaxListener.callback()};';
-        
+
         chatEmbeddedInlay.body.append(scriptTag);
 
         const storageEventHandler = (event) => {
@@ -181,28 +210,28 @@ const fireChatInlayShowEvent = () => {
                 let status = JSON.parse(event.newValue);
 
                 if (!isEmpty(status.chatStatus)) {
-    
+
                     if (status.chatStatus === "connected") {
                         var surv = chatEmbeddedInlay.getElementById("chatSurvey");
                         if (surv) {
                             surv.remove();
                         }
                     }
-    
+
                     if (status.chatStatus === "disconnected") {
-    
+
                         setTimeout(function () {
                             var getSurveyDataPromise = getSurveyData(window.engagementId, "core");
-    
+
                             getSurveyDataPromise.then(function (response) {
-    
+
                                 var _accountID = response.agentId;
                                 var _surveyBaseUrl = response.surveyUrl;
-    
+
                                 var surveyUrl = (_accountID > 0) ? _surveyBaseUrl +
                                     `?chat_id=${window.engagementId}&p_acct_id=${_accountID}` : _surveyBaseUrl +
-                                    `?chat_id=${window.engagementId}`;
-    
+                                `?chat_id=${window.engagementId}`;
+
                                 var iframe = document.createElement('iframe');
                                 iframe.id = "chatSurvey";
                                 iframe.setAttribute("name", "chatSurvey");
@@ -215,17 +244,17 @@ const fireChatInlayShowEvent = () => {
                                 iframe.style.width = "100%";
                                 iframe.style.left = "0";
                                 iframe.style.top = "0";
-    
+
                                 var iframeDiv = document.createElement('div');
                                 iframeDiv.style.position = "initial";
                                 iframeDiv.style.overflow = "hidden";
-    
+
                                 iframeDiv.appendChild(iframe);
-    
+
                                 var target = chatEmbeddedInlay.getElementsByClassName("oit-inlay-body")[2]
                                     .getElementsByClassName("transcript-message-container")[0];
                                 target.appendChild(iframeDiv);
-    
+
                                 // scroll the container
                                 var objDiv = chatEmbeddedInlay.getElementsByClassName("oit-inlay-body")[2];
                                 objDiv.scrollTop = objDiv.scrollHeight;
@@ -244,7 +273,7 @@ const fireChatInlayShowEvent = () => {
 
 const runChatInlayLogic = () => {
     console.log("000 ready-1");
-    if (isCorePage() && allowedPages.includes(visitorBrowsingCurrentPageView)) {
+    if (isCorePage() && isChatAllowed()) {
         console.log("000 ready-2");
         addInlayToUx();
         console.log("000 addInlayToUx OK");
@@ -260,3 +289,7 @@ const ready = (fn) => {
 }
 
 ready(runChatInlayLogic);
+
+function getSerialFromInput() {
+    return document.getElementById("serial_number").value;
+}
