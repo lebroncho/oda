@@ -297,6 +297,7 @@ states:
         WirelessControlPod: wirelessControlPod
         WirelessControlPodSupportedDevices: wirelessControlPodSupportedDevices
         AudioMixerMuteButton: audioMixerMuteButton
+        RazerCare: razerCare
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -6763,6 +6764,14 @@ states:
       keepTurn: true
     transitions:
       next: quickAnswerTS1
+
+  razerCare:
+    component: System.Output
+    properties:
+      text: "${rb.razerCare}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerCS
 
   #-------------------------------------------------------------------------------
   # Intent Answers End -----------------------------------------------------------
