@@ -2,6 +2,17 @@ let countryCookie = getCookie('country');
 let countryRegion = getCookie('region');
 var INLAY_ID_EMBEDDED = "inlay-oracle-chat-embedded";
 var chatEmbeddedInlay = null;
+var uniWarranty = {
+    inWarranty: undefined,
+    family: undefined,
+    serial: undefined,
+    product: undefined,
+    problem_type: undefined,
+    product_code: undefined,
+    product_category: undefined,
+    razer_care: undefined,
+    willing_to_pay: undefined
+};; // Used in the Project Opera setup. This global is populated in the contact support page.
 
 function isEmpty(str) {
     return (!str || 0 === str.length || str === undefined);
@@ -107,13 +118,25 @@ const addInlayToUx = () => {
                 "name": "c$chat_product_desc",
                 "required": false,
                 "value": getWarrantyInfo('product')
-            },
-            {
-                "hidden": true,
-                "name": "c$razer_care",
-                "required": false,
-                "value": getWarrantyInfo('razer_care')
             }
+            // {
+            //     "hidden": true,
+            //     "name": "c$razer_care",
+            //     "required": false,
+            //     "value": getWarrantyInfo('razer_care')
+            // }
+            // {
+            //     "hidden": false,
+            //     "name": "c$razer_care_type",
+            //     "required": false,
+            //     "value": getWarrantyInfo('razer_care_type')
+            // },
+            // {
+            //     "hidden": false,
+            //     "name": "c$pay_repair_fee",
+            //     "required": false,
+            //     "value": getWarrantyInfo('pay_repair_fee')
+            // }
             ];
 
             // Check if the serial number is empty or "Unavaialable"
@@ -292,4 +315,86 @@ ready(runChatInlayLogic);
 
 function getSerialFromInput() {
     return document.getElementById("serial_number").value;
+}
+
+
+// Initially these functions were not in this script.
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+
+    if (cname == 'serial_number') {
+        return '-';
+    }
+
+    return "";
+}
+
+function getWarrantyInfo(key) {
+    if (key == 'family')
+        return uniWarranty.product_category;
+
+    // Return the serial number
+    if (key == 'serial'){
+        if(uniWarranty.serial == undefined || uniWarranty.serial == null){
+            return ''
+        }
+        else{
+            return uniWarranty.serial;
+        }
+    }
+
+    // Return the product code
+    if (key == 'productCode') {
+        if (uniWarranty.product_code == undefined || 
+            uniWarranty.product_code == null || 
+            uniWarranty.product_code == ""
+        ) 
+        {
+            return 'Not Specified';
+        }
+        else {
+            return uniWarranty.product_code;
+        }
+    }
+
+    // Return the product description
+    if (key == 'product') {
+        if (uniWarranty.product == undefined || uniWarranty.product == null) {
+            return 'Not Specified';
+        }
+        else {
+            return uniWarranty.product;
+        }
+    }
+
+    // Return razer care information.
+    if (key == 'razer_care')
+        return uniWarranty.razer_care;
+    if (key == 'pay_repair_fee') {
+        if (uniWarranty.willing_to_pay == true) {
+            return willing_to_pay_ids.willing_to_pay;
+        }
+        else if (uniWarranty.razer_care == true) {
+            return willing_to_pay_ids.razer_care;
+        }
+        else {
+            return willing_to_pay_ids.default;
+        }
+    }
+
+    // Catch all
+    if (key == '' || key == null)
+        return uniWarranty;
 }

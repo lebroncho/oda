@@ -108,6 +108,7 @@ function getSubject() {
             break;
         case 'order':
         case 'orders':
+        case 'razer_orders':
             let data = getStoredData('case_reason');
             if(data == '1')
                 subject = 'return my order'
@@ -222,17 +223,17 @@ function getCookie(cname) {
     return "";
 }
 
-function getWarrantyInfo(key) {
-    let value = 'Unavailable';
-    const warrantyInfo = JSON.parse(window.localStorage.getItem('warranty'));
-    if (warrantyInfo) {
-        const warrantyKeys = Object.keys(warrantyInfo);
-        if (warrantyKeys.includes(key)) {
-            value = warrantyInfo[key];
-        }
-    }
-    return value.replace('unavailable', 'Unavailable');
-}
+// function getWarrantyInfo(key) {
+//     let value = 'Unavailable';
+//     const warrantyInfo = JSON.parse(window.localStorage.getItem('warranty'));
+//     if (warrantyInfo) {
+//         const warrantyKeys = Object.keys(warrantyInfo);
+//         if (warrantyKeys.includes(key)) {
+//             value = warrantyInfo[key];
+//         }
+//     }
+//     return value.replace('unavailable', 'Unavailable');
+// }
 
 function getcustomerInfo(fld) {
     let r = '';
