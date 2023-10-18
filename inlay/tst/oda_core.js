@@ -118,25 +118,13 @@ const addInlayToUx = () => {
                 "name": "c$chat_product_desc",
                 "required": false,
                 "value": getWarrantyInfo('product')
+            },
+            {
+                "hidden": true,
+                "name": "c$pay_repair_fee",
+                "required": false,
+                "value": getWarrantyInfo('pay_repair_fee')
             }
-            // {
-            //     "hidden": true,
-            //     "name": "c$razer_care",
-            //     "required": false,
-            //     "value": getWarrantyInfo('razer_care')
-            // }
-            // {
-            //     "hidden": false,
-            //     "name": "c$razer_care_type",
-            //     "required": false,
-            //     "value": getWarrantyInfo('razer_care_type')
-            // },
-            // {
-            //     "hidden": false,
-            //     "name": "c$pay_repair_fee",
-            //     "required": false,
-            //     "value": getWarrantyInfo('pay_repair_fee')
-            // }
             ];
 
             // Check if the serial number is empty or "Unavaialable"
