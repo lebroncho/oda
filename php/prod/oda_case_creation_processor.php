@@ -304,6 +304,8 @@ function assignSourceCountryAndRegion($incident, $country, $region){
 
     $incident->CustomFields->c->region = new RNCPHP\NamedIDLabel();
     $incident->CustomFields->c->region->id = getRegion($region);
+
+    $incident->CustomFields->c->chat_region = $region;
 }
 
 function mapProductNumberAndDescription($incident, $caseData)
