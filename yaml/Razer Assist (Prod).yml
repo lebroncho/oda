@@ -141,7 +141,6 @@ states:
         RazerRipsaw: razerRipsaw
         RazerTurret: resolveTurret
         RazerSynapse: resolveSynapse
-        BloatedBattery: batteryIssue
         TomahawkSupport: tomahawkFaqs
         CoreSupport: egpuFaqs
         MicSupport: micSupport
@@ -253,7 +252,6 @@ states:
         TomahawkStorage: tomahawkStorage
         ObsMixAudio: obsMixAudio
         ChargingStandXbox: chargingStandXbox
-        BatteryLife: batteryLife
         PhoneCoolerSetup: phoneCoolerSetup
         PhoneCoolerPairing: phoneCoolerPairing
         PhoneCoolerSettings: phoneCoolerSettings
@@ -395,6 +393,8 @@ states:
         MonitorUsbSpecs: monitorUsbSpecs
         UsbPort: usbPort
         EthernetCable: ethernetCable
+        BloatedBattery: laptopPath #batteryIssue
+        BatteryLife: laptopPath #batteryLife
 
         #----- Controller-related Intents -----#
         ControllerSupport: controllerPath
@@ -915,7 +915,12 @@ states:
                 type: postback
                 keyword: "b,B,n,N"
                 payload:
-                  action: "No"
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RPSVFDLPTP"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "TS2"
     transitions:
       next: intent
       actions:
