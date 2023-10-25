@@ -368,8 +368,8 @@ states:
         MonitorUsbSpecs: monitorUsbSpecs
         UsbPort: usbPort
         EthernetCable: ethernetCable
-        BloatedBattery: laptopPath #batteryIssue
-        BatteryLife: laptopPath #batteryLife
+        BloatedBattery: bloatedBattery
+        BatteryLife: batteryLife
 
         #----- Controller-related Intents -----#
         ControllerSupport: controllerPath
@@ -875,17 +875,12 @@ states:
                 type: postback
                 keyword: "b,B,n,N"
                 payload:
-                  action: "system.textReceived"
-                  variables:
-                    system.text: "RPSVFDLPTP"
-                    user.journey: true
-                    user.secondTry: true
-                    user.chatType: "TS2"
+                  action: "No"
     transitions:
       next: intent
       actions:
         Yes: queryResolved
-        No: checkTryCount
+        No: unresolvedActions
         match: hiddenAction
         cancel: errorOutput
 
@@ -2838,7 +2833,7 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
-  batteryIssue:
+  bloatedBattery:
     component: System.Output
     properties:
       text: "${rb.bloatedBattery}"
