@@ -129,7 +129,7 @@ const addInlayToUx = () => {
 
             // Check if the serial number is empty or "Unavaialable"
             if (launchFormFields[3].value == "Unavailable" || launchFormFields[3].value == "") {
-                if(document.getElementById("serial_number")){
+                if (document.getElementById("serial_number")) {
                     launchFormFields[3].value = document.getElementById("serial_number").value;
                 }
             }
@@ -189,6 +189,7 @@ const fireChatInlayShowEvent = () => {
     console.log("inlay-oracle-chat-embedded-loaded OK");
     const showFn = () => {
 
+        // Two buttons are used for triggering the chat.
         if (document.getElementById("chat_button") !== null) {
             $('#chat_button, #chat_button button').attr('disabled', false);
             document.getElementById("chat_button").addEventListener("click", () => {
@@ -197,6 +198,25 @@ const fireChatInlayShowEvent = () => {
                 }));
             });
         }
+
+        if (document.getElementById("chat_button_acc") !== null) {
+            $('#chat_button_acc, #chat_button_acc button').attr('disabled', false);
+            document.getElementById("chat_button_acc").addEventListener("click", () => {
+                window.oit.fire(new oit.CustomEvent('inlay-oracle-chat-embedded-show', {
+                    detail: { id: INLAY_ID }
+                }));
+            });
+        }
+
+        // Add a click event listener to each of the chat button
+        const chatButtons = document.querySelectorAll('button[name="chat_button"]');
+        chatButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                window.oit.fire(new oit.CustomEvent('inlay-oracle-chat-embedded-show', {
+                    detail: { id: INLAY_ID }
+                }));
+            });
+        });
 
         const inlayLaunchForm = window.document.getElementById(INLAY_ID);
         const chatEmbeddedInlay = inlayLaunchForm.contentDocument || inlayLaunchForm.contentWindow.document;
@@ -334,22 +354,21 @@ function getWarrantyInfo(key) {
         return uniWarranty.product_category;
 
     // Return the serial number
-    if (key == 'serial'){
-        if(uniWarranty.serial == undefined || uniWarranty.serial == null){
+    if (key == 'serial') {
+        if (uniWarranty.serial == undefined || uniWarranty.serial == null) {
             return ''
         }
-        else{
+        else {
             return uniWarranty.serial;
         }
     }
 
     // Return the product code
     if (key == 'productCode') {
-        if (uniWarranty.product_code == undefined || 
-            uniWarranty.product_code == null || 
+        if (uniWarranty.product_code == undefined ||
+            uniWarranty.product_code == null ||
             uniWarranty.product_code == ""
-        ) 
-        {
+        ) {
             return 'Not Specified';
         }
         else {
