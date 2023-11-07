@@ -168,6 +168,7 @@ function parseCaseDataFromPayload($input)
         "subject" => $payloadData['subject'],
         "productNumber" => $payloadData['productNumber'],
         "productDescription" => $payloadData['productDescription'],
+        "payRepairFeeID" => $payloadData['payRepairFeeID'],
         "problemID" => $payloadData['problemID'], "issue" => $payloadData['issue'],
         "rmaNumber" => $payloadData['rmaNumber'], "files" => $payloadData['files'],
         "notes" => $payloadData['notes']
@@ -317,6 +318,16 @@ function mapProductNumberAndDescription($incident, $caseData)
         $product = findProduct($productNumber);
     }
     $incident->CustomFields->CO->Products1 = $product;
+}
+
+function setRazerCareInfo($incident, $payRepairFeeID)
+{
+    if ($payRepairFeeID != 0) {
+        $incident->CustomFields->c->pay_repair_fee = new RNCPHP\NamedIDLabel();
+        $incident->CustomFields->c->pay_repair_fee->id = $payRepairFeeID;
+
+        $incident->CustomFields->CO1->razercare_purchased = ($payRepairFeeID == 472) ? true : false;
+    }
 }
 
 function createMessage($content, $entryType, $contentType)
@@ -474,6 +485,7 @@ function main()
         assignSerialNumberToIncident($incident, $caseData['serialNumber']);
         assignSourceCountryAndRegion($incident, $caseData['country'], $caseData['region']);
         mapProductNumberAndDescription($incident, $caseData);
+        setRazerCareInfo($incident, $caseData['payRepairFeeID']);
 
         /** ADD MESSAGES START */
         $message = createMessage($caseData['issue'], MessageEntryType::CUSTOM, MessageContentType::TEXT);

@@ -9,8 +9,8 @@ function metadata(){
         
         // READS THE FOLLOWING PROPERTIES
         region: { required: true, type: 'string' },
-        chatSessionID: { required: true, type: 'string' },
         country: { required: true, type: 'string' },
+        chatSessionID: { required: true, type: 'string' },
         contactID: { required: true, type: 'int' },
 
         issue: { required: true, type: 'string' },
@@ -22,6 +22,7 @@ function metadata(){
         productNumber: { required: true, type: 'string' },
         productDescription: { required: true, type: 'string' },
         problemID: { required: true, type: 'string' },
+        payRepairFeeID: { required: true, type: 'int' },
         files: { required: true, type: 'list' },
         notes: { required: true, type: 'list' },
 
@@ -45,12 +46,12 @@ async function invoke(context){
 
         context.logger().info("------ osvc.CreateCaseV2: extract parameters ------");
         const {
-            region, chatSessionID, contactID,
+            contactID, region, country,
+            chatSessionID, payRepairFeeID,
             orderNumber, serialNumber, categoryID,
             productNumber, productDescription,
             problemID, issue,
             files, notes, rmaNumber,
-            country,
             caseReferenceNumberVar, caseIncidentIDVar
 
         } = context.properties();
@@ -62,10 +63,12 @@ async function invoke(context){
         let caseData = {
             contactID: contactID, subject: subject,
             problemID: problemID, categoryID: categoryID,
-            region: region, chatSessionID: chatSessionID,
-            country: country, orderNumber: orderNumber, 
+            region: region, country: country,
+            chatSessionID: chatSessionID,
+            orderNumber: orderNumber, 
             productNumber: productNumber,
             productDescription: productDescription,
+            payRepairFeeID: payRepairFeeID,
             serialNumber: serialNumber, issue: issue,
             files: files, rmaNumber: rmaNumber,
             notes: notes
