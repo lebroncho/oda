@@ -14,6 +14,7 @@ function metadata(){
             problemType: { required: true, type: 'string' },
             productNumber: { required: true, type: 'string' },
             productDescription: { required: true, type: 'string' },
+            payRepairFeeID: { required: true, type: 'string' },
 
             sessionData: { required: true, type: 'map' },
             troubleshootingIssue: { required: true, type: 'string' },
@@ -42,6 +43,7 @@ async function invoke(context){
             serialNumber:serialNumber, categoryID: categoryID,
             problemID: problemID, problemType: problemType,
             productNumber: productNumber, productDescription: productDescription,
+            payRepairFeeID: payRepairFeeID,
             sessionData: sessionData, troubleshootingNote: troubleshootingNote,
             troubleshootingIssue: troubleshootingIssue, dataCollectionFile: dataCollectionFile,
             dataCollectionNote: dataCollectionNote, rmaFile: rmaFile,
@@ -91,6 +93,7 @@ async function invoke(context){
             'productNumber': productNumber,
             'productDescription': productDescription,
             'problemID': problemID,
+            'payRepairFeeID': payRepairFeeID,
             'notes': notes,
             'files': files
         };
