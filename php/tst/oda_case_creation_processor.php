@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once(get_cfg_var('doc_root') . "/ConnectPHP/Connect_init.php");
 
 use RightNow\Connect\v1_3 as RNCPHP;
@@ -322,11 +322,13 @@ function mapProductNumberAndDescription($incident, $caseData)
 
 function setRazerCareInfo($incident, $payRepairFeeID)
 {
+    $payRepairFeeID = intval($payRepairFeeID);
     if ($payRepairFeeID != 0) {
+        // Sets RazerCare coverage to Yes if pay repair fee is set to Razer Care (472)
+        $incident->CustomFields->CO1->razercare_purchased = ($payRepairFeeID == 472) ? true : false;
+
         $incident->CustomFields->c->pay_repair_fee = new RNCPHP\NamedIDLabel();
         $incident->CustomFields->c->pay_repair_fee->id = $payRepairFeeID;
-
-        $incident->CustomFields->CO1->razercare_purchased = ($payRepairFeeID == 472) ? true : false;
     }
 }
 
@@ -453,11 +455,10 @@ function sendEmail($subject, $content, $recipients)
     $mailMessage->send();
 }
 
-
 function main()
 {
     $payloadData = [];
-    $RECIPIENTS = ['darwin.sardual.ext@razer.com', 'josh.cabiles.ext@razer.com'];
+    $RECIPIENTS = ['darwin.sardual.ext@razer.com', 'josh.cabiles.ext@razer.com', 'jericho.farolan.ext@razer.com'];
 
     try {
 
