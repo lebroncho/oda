@@ -310,6 +310,8 @@ states:
         WirelessControlPod: wirelessControlPod
         WirelessControlPodSupportedDevices: wirelessControlPodSupportedDevices
         AudioMixerMuteButton: audioMixerMuteButton
+        BlackWidowV4Stabilizers: blackWidowV4Stabilizers
+        BladeGamingHacks: bladeGamingHacks
 
         #------ Order-related Intents -------#
         RazerComOrder: RazerComOrder.start
@@ -7198,6 +7200,22 @@ states:
     component: System.Output
     properties:
       text: "${rb.audioMixerMuteButton}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  blackWidowV4Stabilizers:
+    component: System.Output
+    properties:
+      text: "${rb.blackWidowV4Stabilizers}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  bladeGamingHacks:
+    component: System.Output
+    properties:
+      text: "${rb.bladeGamingHacks}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
