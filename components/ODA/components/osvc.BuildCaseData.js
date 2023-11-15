@@ -13,6 +13,7 @@ function metadata(){
             problemID: { required: true, type: 'string' },
             productNumber: { required: true, type: 'string' },
             productDescription: { required: true, type: 'string' },
+            payRepairFeeID: { required: true, type: 'string' },
 
             sessionData: { required: true, type: 'map' },
             issue: { required: true, type: 'string' },
