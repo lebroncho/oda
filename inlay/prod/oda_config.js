@@ -15,6 +15,7 @@ function getSubject() {
             break;
         case 'order':
         case 'orders':
+        case 'razer_orders':
             let data = getStoredData('case_reason');
             if (data > 0 && data != '') {
                 subject = 'lRos9 ~' + data + '~';
