@@ -112,7 +112,7 @@ function getSubject() {
             let data = getStoredData('case_reason');
             if (data == '1') {
                 // subject = 'return my order';
-                subject = 'lRos9 ~' + getStoredData('case_reason') + '|' + getStoredData('case_region') + '|' + getStoredData('case_warranty') + '~';
+                subject = 'lRos9 ~' + data + '|' + getStoredData('case_region') + '|' + getStoredData('case_warranty') + '~';
             } else if (data == '2') {
                 subject = 'cancel or change my order';
             } else {
