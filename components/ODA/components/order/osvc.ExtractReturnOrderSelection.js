@@ -23,13 +23,13 @@ async function invoke(context){
         const ORDER_FROM_INDEX = 1;
         const DAYS_RECEIVED_INDEX = 2;
         const orderFromMapping = {
-            '0': 'Order from US or Canada: No',
-            '1': 'Order from US or Canada: Yes',
+            '0': '<b>Order from US or Canada</b>: No',
+            '1': '<b>Order from US or Canada:</b> Yes',
         };
 
         const daysReceivedMapping = {
-            '0': 'Received more than 14 days: No',
-            '1': 'Received more than 14 days: Yes',
+            '0': '<b>Received more than 14 days</b>: No',
+            '1': '<b>Received more than 14 days</b>: Yes',
         }
 
         const { utterance, orderFromVar, daysReceivedVar } = context.properties();
