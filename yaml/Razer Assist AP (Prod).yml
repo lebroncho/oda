@@ -292,6 +292,7 @@ states:
         AudioMixerMuteButton: audioMixerMuteButton
         BlackWidowV4Stabilizers: blackWidowV4Stabilizers
         BladeGamingHacks: bladeGamingHacks
+        BladeTouchpad: bladeTouchpad
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -7149,6 +7150,14 @@ states:
     component: System.Output
     properties:
       text: "${rb.bladeGamingHacks}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  bladeTouchpad:
+    component: System.Output
+    properties:
+      text: "${rb.bladeTouchpad}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1

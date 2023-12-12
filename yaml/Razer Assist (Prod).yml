@@ -312,6 +312,7 @@ states:
         AudioMixerMuteButton: audioMixerMuteButton
         BlackWidowV4Stabilizers: blackWidowV4Stabilizers
         BladeGamingHacks: bladeGamingHacks
+        BladeTouchpad: bladeTouchpad
 
         #------ Order-related Intents -------#
         RazerComOrder: RazerComOrder.start
@@ -7216,6 +7217,14 @@ states:
     component: System.Output
     properties:
       text: "${rb.bladeGamingHacks}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  bladeTouchpad:
+    component: System.Output
+    properties:
+      text: "${rb.bladeTouchpad}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
