@@ -12,7 +12,7 @@ var uniWarranty = {
     product_category: undefined,
     razer_care: undefined,
     willing_to_pay: undefined
-};; // Used in the Project Opera setup. This global is populated in the contact support page.
+}; // Used in the Project Opera setup. This global is populated in the contact support page.
 
 function isEmpty(str) {
     return (!str || 0 === str.length || str === undefined);
@@ -41,7 +41,7 @@ const upload_type = ['.bmp', '.gif', '.jpeg', '.jpg', '.pdf', '.png', '.BMP', '.
 
 const isChatAllowed = () => {
     const allowedPages = {
-        'tst2.dev.mysupport.razer.com': ['contact-support', 'answers', 'contact-support-dev', 'warranty-support-dev'],
+        'tst2.dev.mysupport.razer.com': ['contact-support', 'answers', 'warranty-support'],
         'tst2.dev.mysupport-pt.razer.com': ['contact-support'],
         'tst2.dev.mysupport-jp.razer.com': ['contact-support']
     }
@@ -210,6 +210,12 @@ const fireChatInlayShowEvent = () => {
 
         // Add a click event listener to each of the chat button
         const chatButtons = document.querySelectorAll('button[name="chat_button"]');
+
+        // Enable the buttons when the inlay is loaded.
+        chatButtons.forEach(button => {
+            button.removeAttribute('disabled');
+        });
+        
         chatButtons.forEach(button => {
             button.addEventListener('click', function () {
                 window.oit.fire(new oit.CustomEvent('inlay-oracle-chat-embedded-show', {
@@ -304,7 +310,8 @@ const fireChatInlayShowEvent = () => {
 
 const runChatInlayLogic = () => {
     console.log("000 ready-1");
-    if (isCorePage() && isChatAllowed()) {
+    // if (isCorePage() && isChatAllowed()) {
+    if (isChatAllowed()) {
         console.log("000 ready-2");
         addInlayToUx();
         console.log("000 addInlayToUx OK");
@@ -320,7 +327,6 @@ const ready = (fn) => {
 }
 
 ready(runChatInlayLogic);
-
 function getSerialFromInput() {
     return document.getElementById("serial_number").value;
 }
@@ -405,3 +411,93 @@ function getWarrantyInfo(key) {
     if (key == '' || key == null)
         return uniWarranty;
 }
+
+/** Functions added from the oda_config js. */
+function getcustomerInfo(fld) {
+    let r = '';
+    if (RightNow) {
+        switch (fld) {
+            case 'fname': r = RightNow.Profile.firstName();
+                break;
+            case 'lname': r = RightNow.Profile.lastName();
+                break;
+            case 'email': r = RightNow.Profile.emailAddress();
+                break;
+            default: r = '';
+                break;
+
+        }
+    }
+    return r;
+}
+
+//generates the initial subject for ODA skill and intent routing
+function getSubject() {
+    var subject = '';
+    var reason = getWarrantyInfo('family');
+    console.log(reason);
+
+    switch (reason) {
+        case '7.1 surround sound':
+            subject = 'lss71';
+            break;
+        case 'order':
+        case 'orders':
+        case 'razer_orders':
+            let data = getStoredData('case_reason');
+            if (data == '1') {
+                // subject = 'return my order';
+                subject = 'lRos9 ~' + data + '|' + getStoredData('case_region') + '|' + getStoredData('case_warranty') + '~';
+            } else if (data == '2') {
+                subject = 'cancel or change my order';
+            } else {
+                subject = 'Order Support';
+            }
+            break;
+        case 'broadcaster':
+            subject = 'lRbrdcst691' + createUtterance();
+            break;
+        case 'controller':
+        case 'controllers':
+            subject = 'lRct725' + createUtterance();
+            break;
+        case 'audio':
+        case 'headset':
+        case 'headsets':
+        case 'earphone':
+        case 'earphones':
+        case 'headphone':
+        case 'headphones':
+            subject = 'lRhs856' + createUtterance();
+            break;
+        case 'keypad':
+        case 'keypads':
+        case 'keyboard':
+        case 'keyboards':
+            subject = 'lRkb891' + createUtterance();
+            break;
+        case 'mice':
+        case 'mouse':
+            subject = 'lRps932' + createUtterance();
+            break;
+        case 'system':
+            subject = 'lRlt281' + createUtterance();
+            break;
+        case 'edge':
+            subject = 'Razer Edge Handheld';
+            break;
+        default:
+            subject = 'Hello Support';
+            break;
+    }
+
+    console.log(subject);
+    return subject;
+}
+
+var isCookieSet = function () {
+    if (getWarrantyInfo("serial") != "" || getCookie("serial_number") != "") {
+        return true;
+    }
+    return false;
+};

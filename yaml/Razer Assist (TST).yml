@@ -121,7 +121,7 @@ states:
         HelpGuide: helpGuide
         StartOver: resetConversation
         RmaFlow: contactSupport
-        OrderStatus: RazerComOrder.start
+        OrderStatus: orderPath #RazerComOrder.start
         RmaStatus: rmaStatus
         CaseStatus: caseStatus
         RefundStatus: refundStatus
@@ -130,7 +130,7 @@ states:
         CreditRejected: ccRejectedOutput
         FinancingOptions: financingOutput
         ItemAvailability: availabilityOutput
-        OrderCustoms: RazerComOrder.start
+        OrderCustoms: orderPath #RazerComOrder.start
         OrderCancel: RazerComOrder.outputCancelOrder
         TrackingNumber: shippingStatus
         ContactSupport: contactSupport
@@ -141,7 +141,6 @@ states:
         RazerRipsaw: razerRipsaw
         RazerTurret: resolveTurret
         RazerSynapse: resolveSynapse
-        BloatedBattery: batteryIssue
         TomahawkSupport: tomahawkFaqs
         CoreSupport: egpuFaqs
         MicSupport: micSupport
@@ -191,10 +190,10 @@ states:
         UnhelpfulAnswer: unhelpfulAnswer
         ChatExpired: chatExpired
         GetAccessory: getAccessoryOutput
-        OrderSupport: RazerComOrder.start
+        OrderSupport: orderPath #RazerComOrder.start
         RmaChangeAddress: rmaChangeAddress
         RmaSla: rmaSla
-        OrderNotFound: RazerComOrder.start
+        OrderNotFound: orderPath #RazerComOrder.start
         OrderRefund: RazerComOrder.askFromUS
         RegistrationFailed: registrationFailed
         ThumbpadIssue: thumbpadIssue
@@ -253,7 +252,6 @@ states:
         TomahawkStorage: tomahawkStorage
         ObsMixAudio: obsMixAudio
         ChargingStandXbox: chargingStandXbox
-        BatteryLife: batteryLife
         PhoneCoolerSetup: phoneCoolerSetup
         PhoneCoolerPairing: phoneCoolerPairing
         PhoneCoolerSettings: phoneCoolerSettings
@@ -312,9 +310,11 @@ states:
         WirelessControlPod: wirelessControlPod
         WirelessControlPodSupportedDevices: wirelessControlPodSupportedDevices
         AudioMixerMuteButton: audioMixerMuteButton
+        BlackWidowV4Stabilizers: blackWidowV4Stabilizers
+        BladeGamingHacks: bladeGamingHacks
 
         #------ Order-related Intents -------#
-        RazerComOrder: RazerComOrder.start
+        RazerComOrder: orderPath #RazerComOrder.start
         RazerComReturnOrder: RazerComOrder.RO_quickAnswerCS
         RazerComCancelOrder: RazerComOrder.CO_quickAnswerCS
 
@@ -395,6 +395,8 @@ states:
         MonitorUsbSpecs: monitorUsbSpecs
         UsbPort: usbPort
         EthernetCable: ethernetCable
+        BloatedBattery: bloatedBattery
+        BatteryLife: batteryLife
 
         #----- Controller-related Intents -----#
         ControllerSupport: controllerPath
@@ -493,7 +495,12 @@ states:
                 type: postback
                 keyword: "4,d,D,order"
                 payload:
-                  action: "order"
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RZRORDRVFD"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "CS"
               - label: "Buy spare part/accessory"
                 type: postback
                 keyword: "5,e,E,parts,accessory"
@@ -510,7 +517,7 @@ states:
         activation: surroundSoundTs
         status: rmaStatus
         question: technicalSupport
-        order: RazerComOrder.start
+        order: orderPath #RazerComOrder.start
         accessory: menuGetAccessory
         registration: menuRegistrationFailed
         match: hiddenAction
@@ -686,42 +693,42 @@ states:
   #-------------------------------------------------------------------------------
   # Order FAQ --------------------------------------------------------------------
   #-------------------------------------------------------------------------------
-  orderPath:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "contactInfo"
-      value: "${profile.contactInfo.value}"
-  initiatilizeSerialOrder:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: serialNumber
-      value: "<#list contactInfo.value.customFields as p><#if p.name=='Serial Number'><#if p.value!='unavailable'>${p.value}<#else>-</#if></#if></#list>"
-  orderProper:
-    component: System.SetVariable
-    properties:
-      variable: user.journey
-      value: true
-  setTypeCS:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.chatType
-      value: "CS"
-  setOrderCaseCategory:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: selectedOption
-      value: "OrderSupport"
-  orderSupport:
-    component: System.Output
-    properties:
-      text: "${rb.orderFAQ}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerCS
+  # orderPath:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: "contactInfo"
+  #     value: "${profile.contactInfo.value}"
+  # initiatilizeSerialOrder:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: serialNumber
+  #     value: "<#list contactInfo.value.customFields as p><#if p.name=='Serial Number'><#if p.value!='unavailable'>${p.value}<#else>-</#if></#if></#list>"
+  # orderProper:
+  #   component: System.SetVariable
+  #   properties:
+  #     variable: user.journey
+  #     value: true
+  # setTypeCS:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: user.chatType
+  #     value: "CS"
+  # setOrderCaseCategory:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: selectedOption
+  #     value: "OrderSupport"
+  # orderSupport:
+  #   component: System.Output
+  #   properties:
+  #     text: "${rb.orderFAQ}"
+  #     keepTurn: true
+  #   transitions:
+  #     next: quickAnswerCS
 
   #-------------------------------------------------------------------------------
   # Question Answered ------------------------------------------------------------
@@ -771,12 +778,17 @@ states:
                 type: postback
                 keyword: "b,B,n,N"
                 payload:
-                  action: "No"
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RZRORDRVFD"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "CS"
     transitions:
       next: intent
       actions:
         Yes: queryResolved
-        No: checkTryCount
+        No: unresolvedActions
         match: hiddenAction
         cancel: errorOutput
 
@@ -920,7 +932,7 @@ states:
       next: intent
       actions:
         Yes: queryResolved
-        No: checkTryCount
+        No: unresolvedActions
         match: hiddenAction
         cancel: errorOutput
 
@@ -2338,6 +2350,55 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
+  orderPath:
+    component: System.SetVariable
+    properties:
+      variable: user.journey
+      value: true
+  orderPath2:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.secondTry
+      value: true
+  setTypeOrder:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.chatType
+      value: "CS"
+  resolveOrderPath:
+    component: System.CommonResponse
+    properties:
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Please confirm you need help with your Razer order"
+            actions:
+              - label: "Yes"
+                type: postback
+                keyword: "a,A,y,Y"
+                payload:
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RZRORDRVFD"
+              - label: "No"
+                type: postback
+                keyword: "b,B,n,N"
+                payload:
+                  action: "No"
+    transitions:
+      next: intent
+      actions:
+        No: rephraseQuestionPath
+        match: hiddenAction
+        cancel: errorOutput
+
   #-------------------------------------------------------------------------------
   # Task "Proof of purchase" -----------------------------------------------------
   #-------------------------------------------------------------------------------
@@ -2900,7 +2961,7 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
-  batteryIssue:
+  bloatedBattery:
     component: System.Output
     properties:
       text: "${rb.bloatedBattery}"
@@ -3752,7 +3813,12 @@ states:
                 type: postback
                 keyword: "4,d,D,order"
                 payload:
-                  action: "order"
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RZRORDRVFD"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "CS"
               - label: "Buy spare part/accessory"
                 type: postback
                 keyword: "5,e,E,parts,accessory"
@@ -3769,7 +3835,7 @@ states:
         activation: surroundSoundTs
         status: rmaStatus
         question: technicalSupport
-        order: RazerComOrder.start
+        order: orderPath #RazerComOrder.start
         accessory: menuGetAccessory
         registration: menuRegistrationFailed
         match: hiddenAction
@@ -7198,6 +7264,22 @@ states:
     component: System.Output
     properties:
       text: "${rb.audioMixerMuteButton}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  blackWidowV4Stabilizers:
+    component: System.Output
+    properties:
+      text: "${rb.blackWidowV4Stabilizers}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  bladeGamingHacks:
+    component: System.Output
+    properties:
+      text: "${rb.bladeGamingHacks}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1

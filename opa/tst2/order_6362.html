@@ -87,8 +87,6 @@
 		}
 	}
 </style>
-<div class="mb-3">$oda_ts_notice</div>
-
 <form action="https://tst2.dev.mysupport.razer.com/app/contact-support" id="support-map" method="POST"><input
 		name="case_category" type="hidden" value="order" />
 	<p class="mb-3">If you purchased your product from a Razer retail store or an authorized Razer reseller, visit <a
@@ -309,11 +307,14 @@
 					multiple ? valArr.push(data[i].value) : value = data[i].value;
 				}
 			}
-		}
+		} 
 		if (multiple) {
 			return JSON.stringify(valArr);
+		} else if (value == 'unspecified') {
+			return 0;
+		} else {
+			return value;
 		}
-		return value;
 	}
 
 	document.addEventListener("DOMContentLoaded", function () {
@@ -326,7 +327,6 @@
 
 		// Initializes the required steps per section before enabling the contact support button
 		checkStepsTaken("region-not-na", 2);
-		// checkStepsTaken("in-warranty", 2);
 		checkStepsTaken("out-of-warranty", 2);
 		checkStepsTaken("order-cancel", 2);
 
@@ -340,7 +340,7 @@
 			button.addEventListener('click', function (event) {
 				event.preventDefault();
 				setCaseInfo();	// Stores the troubleshooting page selection to the local storage for a contact page script to compile and pass those values to ODA
-				window.location.href = "/app/contact-support-dev/params/" + paramsValue + "/sig/" + sigValue;
+				window.location.href = "/app/contact-support/params/" + paramsValue + "/sig/" + sigValue;
 			});
 		});
 
