@@ -168,6 +168,7 @@ function parseCaseDataFromPayload($input)
         "subject" => $payloadData['subject'],
         "productNumber" => $payloadData['productNumber'],
         "productDescription" => $payloadData['productDescription'],
+        "payRepairFeeID" => $payloadData['payRepairFeeID'],
         "problemID" => $payloadData['problemID'], "issue" => $payloadData['issue'],
         "rmaNumber" => $payloadData['rmaNumber'], "files" => $payloadData['files'],
         "notes" => $payloadData['notes']
@@ -319,6 +320,18 @@ function mapProductNumberAndDescription($incident, $caseData)
     $incident->CustomFields->CO->Products1 = $product;
 }
 
+function setRazerCareInfo($incident, $payRepairFeeID)
+{
+    $payRepairFeeID = intval($payRepairFeeID);
+    if ($payRepairFeeID != 0) {
+        // Sets RazerCare coverage to Yes if pay repair fee is set to Razer Care (472)
+        $incident->CustomFields->CO1->razercare_purchased = ($payRepairFeeID == 472) ? true : false;
+
+        $incident->CustomFields->c->pay_repair_fee = new RNCPHP\NamedIDLabel();
+        $incident->CustomFields->c->pay_repair_fee->id = $payRepairFeeID;
+    }
+}
+
 function createMessage($content, $entryType, $contentType)
 {
     $message = [
@@ -442,11 +455,10 @@ function sendEmail($subject, $content, $recipients)
     $mailMessage->send();
 }
 
-
 function main()
 {
     $payloadData = [];
-    $RECIPIENTS = ['darwin.sardual.ext@razer.com', 'josh.cabiles.ext@razer.com'];
+    $RECIPIENTS = ['darwin.sardual.ext@razer.com', 'josh.cabiles.ext@razer.com', 'jericho.farolan.ext@razer.com'];
 
     try {
 
@@ -474,6 +486,7 @@ function main()
         assignSerialNumberToIncident($incident, $caseData['serialNumber']);
         assignSourceCountryAndRegion($incident, $caseData['country'], $caseData['region']);
         mapProductNumberAndDescription($incident, $caseData);
+        setRazerCareInfo($incident, $caseData['payRepairFeeID']);
 
         /** ADD MESSAGES START */
         $message = createMessage($caseData['issue'], MessageEntryType::CUSTOM, MessageContentType::TEXT);

@@ -1,18 +1,10 @@
-var countryCookie = getCookie('country');
-var countryRegion = getCookie('region');
+let countryCookie = getCookie('country');
+let countryRegion = getCookie('region');
 var INLAY_ID_EMBEDDED = "inlay-oracle-chat-embedded";
 var chatEmbeddedInlay = null;
 var uniWarranty = {
-    inWarranty: undefined,
-    family: undefined,
-    serial: undefined,
-    product: undefined,
-    problem_type: undefined,
-    product_code: undefined,
-    product_category: undefined,
-    razer_care: undefined,
-    willing_to_pay: undefined
-}; // Used in the Project Opera setup. This global is populated in the contact support page.
+    serial: ""
+};
 
 function isEmpty(str) {
     return (!str || 0 === str.length || str === undefined);
@@ -35,23 +27,23 @@ function getSurveyData(chatId, source) {
 
 const INLAY_ID = INLAY_ID_EMBEDDED;
 const INLAY_CONTAINER_ID = "razer-oda-chat";
-// const allowedPages = ['contact-support', 'answers', 'warranty-support-dev', 'contact-support-dev'];
-// const visitorBrowsingCurrentPageView = window.location.pathname.split('/').slice(2, 3)[0];
+// const allowedPages = ['contact-support','answers'];
+// const visitorBrowsingCurrentPageView = window.location.pathname.split('/').slice(2,3)[0];
 const upload_type = ['.bmp', '.gif', '.jpeg', '.jpg', '.pdf', '.png', '.BMP', '.GIF', '.JPEG', '.JPG', '.PDF', '.PNG', '.mp4', '.avi', '.mov', '.mkv'];
 
 const isChatAllowed = () => {
     const allowedPages = {
-        'tst2.dev.mysupport.razer.com': ['contact-support', 'answers', 'warranty-support'],
-        'tst2.dev.mysupport-pt.razer.com': ['contact-support'],
-        'tst2.dev.mysupport-jp.razer.com': ['contact-support']
+        'mysupport.razer.com': ['contact-support', 'answers', 'warranty-support', 'mysupport.razer.com'],
+        'mysupport-pt.razer.com': ['contact-support'],
+        'mysupport-jp.razer.com': ['contact-support']
     }
     const visitorBrowsingCurrentPageView = window.location.pathname.split('/').slice(2, 3)[0];
 
-    if (Object.keys(allowedPages).includes(location.hostname) && allowedPages[location.hostname].includes(visitorBrowsingCurrentPageView)) {
+    if (Object.keys(allowedPages).includes(location.hostname) || allowedPages[location.hostname].includes(visitorBrowsingCurrentPageView)) {
         console.log('chat allowed');
         return true;
     }
-    console.error('chat disallowed');
+    console.log('chat disallowed');
     return false;
 }
 
@@ -90,49 +82,42 @@ const addInlayToUx = () => {
                 "value": getWarrantyInfo('serial') || getCookie('serial_number') //fetching the stored values
             },
             {
-                "hidden": false,
+                "hidden": true,
                 "name": "SUBJECT",
                 "required": false,
                 "value": getSubject()
             },
             {
-                "hidden": false,
+                "hidden": true,
                 "name": "c$chat_region",
                 "required": false,
                 "value": getCookie('region')
             },
             {
-                "hidden": false,
+                "hidden": true,
                 "name": "c$web_country",
                 "required": false,
                 "value": getCookie('country')
             },
             {
-                "hidden": false,
+                "hidden": true,
                 "name": "c$chat_product_sku",
                 "required": false,
                 "value": getWarrantyInfo('productCode')
             },
             {
-                "hidden": false,
+                "hidden": true,
                 "name": "c$chat_product_desc",
                 "required": false,
                 "value": getWarrantyInfo('product')
             },
             {
-                "hidden": false,
+                "hidden": true,
                 "name": "c$pay_repair_fee",
                 "required": false,
                 "value": getWarrantyInfo('pay_repair_fee')
             }
             ];
-
-            // Check if the serial number is empty or "Unavaialable"
-            if (launchFormFields[3].value == "Unavailable" || launchFormFields[3].value == "") {
-                if (document.getElementById("serial_number")) {
-                    launchFormFields[3].value = document.getElementById("serial_number").value;
-                }
-            }
 
             /**
             * Embedded Chat Inlay element
@@ -141,12 +126,13 @@ const addInlayToUx = () => {
             chatInlayElemEmbed.setAttribute("id", INLAY_ID);
             chatInlayElemEmbed.setAttribute("class", "inlay");
             chatInlayElemEmbed.setAttribute("site-type", "b2c-service");
-            chatInlayElemEmbed.setAttribute("site-url", "razer--tst2.widget.custhelp.com");
+            chatInlayElemEmbed.setAttribute("site-url", "razer.widget.custhelp.com");
             chatInlayElemEmbed.setAttribute("file-upload-valid-types", JSON.stringify(upload_type));
             if (isCookieSet()) {
                 chatInlayElemEmbed.setAttribute("launch-form-fields", JSON.stringify(launchFormFields));
             }
-            document.getElementById(INLAY_CONTAINER_ID).appendChild(chatInlayElemEmbed);
+            //document.getElementById(INLAY_CONTAINER_ID).appendChild(chatInlayElemEmbed);
+            document.body.appendChild(chatInlayElemEmbed);
 
             /**
             * OIT Loader Script
@@ -154,8 +140,8 @@ const addInlayToUx = () => {
             let chatInlayLoader = document.createElement('script');
             chatInlayLoader.setAttribute("id", "oit-loader");
             chatInlayLoader.setAttribute("data-oit-lazy", true);
-            chatInlayLoader.setAttribute("src", "https://tst2.dev.mysupport.razer.com/s/oit/latest/common/v0/libs/oit/loader.js?v=" + Date.now());
-            chatInlayLoader.setAttribute("data-oit-config-url", "https://tst2.dev.mysupport.razer.com/euf/assets/chat/inlays/oit-config.json");
+            chatInlayLoader.setAttribute("src", "https://razer.widget.custhelp.com/s/oit/latest/common/v0/libs/oit/loader.js?v=" + Date.now());
+            chatInlayLoader.setAttribute("data-oit-config-url", "https://mysupport.razer.com/euf/assets/chat/inlays/oit-config.json");
             chatInlayLoader.setAttribute("async", "");
             document.body.appendChild(chatInlayLoader);
 
@@ -189,7 +175,6 @@ const fireChatInlayShowEvent = () => {
     console.log("inlay-oracle-chat-embedded-loaded OK");
     const showFn = () => {
 
-        // Two buttons are used for triggering the chat.
         if (document.getElementById("chat_button") !== null) {
             $('#chat_button, #chat_button button').attr('disabled', false);
             document.getElementById("chat_button").addEventListener("click", () => {
@@ -199,30 +184,17 @@ const fireChatInlayShowEvent = () => {
             });
         }
 
-        if (document.getElementById("chat_button_acc") !== null) {
-            $('#chat_button_acc, #chat_button_acc button').attr('disabled', false);
-            document.getElementById("chat_button_acc").addEventListener("click", () => {
+        var buttons = document.getElementsByName('chat_button');
+
+        // Iterate through the buttons and add event listeners
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', function () {
+                // Your event handling code here
                 window.oit.fire(new oit.CustomEvent('inlay-oracle-chat-embedded-show', {
                     detail: { id: INLAY_ID }
                 }));
             });
         }
-
-        // Add a click event listener to each of the chat button
-        const chatButtons = document.querySelectorAll('button[name="chat_button"]');
-
-        // Enable the buttons when the inlay is loaded.
-        chatButtons.forEach(button => {
-            button.removeAttribute('disabled');
-        });
-        
-        chatButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                window.oit.fire(new oit.CustomEvent('inlay-oracle-chat-embedded-show', {
-                    detail: { id: INLAY_ID }
-                }));
-            });
-        });
 
         const inlayLaunchForm = window.document.getElementById(INLAY_ID);
         const chatEmbeddedInlay = inlayLaunchForm.contentDocument || inlayLaunchForm.contentWindow.document;
@@ -231,7 +203,7 @@ const fireChatInlayShowEvent = () => {
         // inject custom styling overrides
         let link = document.createElement('link');
         link.rel = "stylesheet";
-        link.href = "https://tst2.dev.mysupport.razer.com/euf/assets/chat/inlays/oda.css?v=" + Date.now();
+        link.href = "https://mysupport.razer.com/euf/assets/chat/inlays/oda.css?v=" + Date.now();
         link.type = "text/css";
 
         inlayHead.appendChild(link);
@@ -310,8 +282,7 @@ const fireChatInlayShowEvent = () => {
 
 const runChatInlayLogic = () => {
     console.log("000 ready-1");
-    // if (isCorePage() && isChatAllowed()) {
-    if (isChatAllowed()) {
+    if (isCorePage() && isChatAllowed()) {
         console.log("000 ready-2");
         addInlayToUx();
         console.log("000 addInlayToUx OK");
@@ -324,35 +295,6 @@ const ready = (fn) => {
     } else {
         document.addEventListener('DOMContentLoaded', fn);
     }
-}
-
-ready(runChatInlayLogic);
-function getSerialFromInput() {
-    return document.getElementById("serial_number").value;
-}
-
-
-// Initially these functions were not in this script.
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-
-    if (cname == 'serial_number') {
-        return '-';
-    }
-
-    return "";
 }
 
 function getWarrantyInfo(key) {
@@ -412,92 +354,26 @@ function getWarrantyInfo(key) {
         return uniWarranty;
 }
 
-/** Functions added from the oda_config js. */
-function getcustomerInfo(fld) {
-    let r = '';
-    if (RightNow) {
-        switch (fld) {
-            case 'fname': r = RightNow.Profile.firstName();
-                break;
-            case 'lname': r = RightNow.Profile.lastName();
-                break;
-            case 'email': r = RightNow.Profile.emailAddress();
-                break;
-            default: r = '';
-                break;
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
 
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
         }
     }
-    return r;
-}
 
-//generates the initial subject for ODA skill and intent routing
-function getSubject() {
-    var subject = '';
-    var reason = getWarrantyInfo('family');
-    console.log(reason);
-
-    switch (reason) {
-        case '7.1 surround sound':
-            subject = 'lss71';
-            break;
-        case 'order':
-        case 'orders':
-        case 'razer_orders':
-            let data = getStoredData('case_reason');
-            if (data == '1') {
-                // subject = 'return my order';
-                subject = 'lRos9 ~' + data + '|' + getStoredData('case_region') + '|' + getStoredData('case_warranty') + '~';
-            } else if (data == '2') {
-                subject = 'cancel or change my order';
-            } else {
-                subject = 'Order Support';
-            }
-            break;
-        case 'broadcaster':
-            subject = 'lRbrdcst691' + createUtterance();
-            break;
-        case 'controller':
-        case 'controllers':
-            subject = 'lRct725' + createUtterance();
-            break;
-        case 'audio':
-        case 'headset':
-        case 'headsets':
-        case 'earphone':
-        case 'earphones':
-        case 'headphone':
-        case 'headphones':
-            subject = 'lRhs856' + createUtterance();
-            break;
-        case 'keypad':
-        case 'keypads':
-        case 'keyboard':
-        case 'keyboards':
-            subject = 'lRkb891' + createUtterance();
-            break;
-        case 'mice':
-        case 'mouse':
-            subject = 'lRps932' + createUtterance();
-            break;
-        case 'system':
-            subject = 'lRlt281' + createUtterance();
-            break;
-        case 'edge':
-            subject = 'Razer Edge Handheld';
-            break;
-        default:
-            subject = 'Hello Support';
-            break;
+    if (cname == 'serial_number') {
+        return '-';
     }
 
-    console.log(subject);
-    return subject;
+    return "";
 }
 
-var isCookieSet = function () {
-    if (getWarrantyInfo("serial") != "" || getCookie("serial_number") != "") {
-        return true;
-    }
-    return false;
-};
+ready(runChatInlayLogic);
