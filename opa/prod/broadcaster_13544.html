@@ -664,6 +664,31 @@ document.addEventListener("DOMContentLoaded", function () {
 	checkStepsTaken("audio-mic-issue", 4);
 	checkStepsTaken("video-issue", 4);
 	checkStepsTaken("nq-issues", 0);
+	
+	// This is a drop-in functionality that does the necessary processing related to the Project Opera pages
+	const paramsValue = getUrlSegment(6);
+	const sigValue = getUrlSegment(8);
+
+	const buttons = document.querySelectorAll('.contact_support_Btn');
+	buttons.forEach(button => {
+		button.addEventListener('click', function (event) {
+			event.preventDefault();
+			setCaseInfo();	// Stores the troubleshooting page selection to the local storage for a contact page script to compile and pass those values to ODA
+
+			window.location.href = "/app/contact-support/params/" + paramsValue + "/sig/" + sigValue;
+		});
+	});
 });
+
+function getUrlSegment(index) {
+	const url = window.location.pathname;
+	const segments = url.split('/').filter(segment => segment !== '');
+
+	if (index >= 0 && index < segments.length) {
+		return segments[index];
+	} else {
+		return null;
+	}
+}
 
 </script></div>

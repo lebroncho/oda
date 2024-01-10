@@ -1,5 +1,5 @@
-let countryCookie = getCookie('country');
-let countryRegion = getCookie('region');
+var countryCookie = getCookie('country');
+var countryRegion = getCookie('region');
 var INLAY_ID_EMBEDDED = "inlay-oracle-chat-embedded";
 var chatEmbeddedInlay = null;
 var uniWarranty = {
@@ -90,37 +90,37 @@ const addInlayToUx = () => {
                 "value": getWarrantyInfo('serial') || getCookie('serial_number') //fetching the stored values
             },
             {
-                "hidden": true,
+                "hidden": false,
                 "name": "SUBJECT",
                 "required": false,
                 "value": getSubject()
             },
             {
-                "hidden": true,
+                "hidden": false,
                 "name": "c$chat_region",
                 "required": false,
                 "value": getCookie('region')
             },
             {
-                "hidden": true,
+                "hidden": false,
                 "name": "c$web_country",
                 "required": false,
                 "value": getCookie('country')
             },
             {
-                "hidden": true,
+                "hidden": false,
                 "name": "c$chat_product_sku",
                 "required": false,
                 "value": getWarrantyInfo('productCode')
             },
             {
-                "hidden": true,
+                "hidden": false,
                 "name": "c$chat_product_desc",
                 "required": false,
                 "value": getWarrantyInfo('product')
             },
             {
-                "hidden": true,
+                "hidden": false,
                 "name": "c$pay_repair_fee",
                 "required": false,
                 "value": getWarrantyInfo('pay_repair_fee')
