@@ -33,9 +33,9 @@ const upload_type = ['.bmp', '.gif', '.jpeg', '.jpg', '.pdf', '.png', '.BMP', '.
 
 const isChatAllowed = () => {
     const allowedPages = {
-        'mysupport.razer.com': ['contact-support', 'answers', 'warranty-support', 'mysupport.razer.com'],
-        'mysupport-pt.razer.com': ['contact-support'],
-        'mysupport-jp.razer.com': ['contact-support']
+        'tst2.dev.mysupport.razer.com': ['contact-support', 'answers', 'warranty-support'],
+        'tst2.dev.mysupport-pt.razer.com': ['contact-support'],
+        'tst2.dev.mysupport-jp.razer.com': ['contact-support']
     }
     const visitorBrowsingCurrentPageView = window.location.pathname.split('/').slice(2, 3)[0];
 
@@ -126,6 +126,7 @@ const addInlayToUx = () => {
             chatInlayElemEmbed.setAttribute("id", INLAY_ID);
             chatInlayElemEmbed.setAttribute("class", "inlay");
             chatInlayElemEmbed.setAttribute("site-type", "b2c-service");
+            chatInlayElemEmbed.setAttribute("site-url", "razer--tst2.widget.custhelp.com");
             chatInlayElemEmbed.setAttribute("site-url", "razer.widget.custhelp.com");
             chatInlayElemEmbed.setAttribute("file-upload-valid-types", JSON.stringify(upload_type));
             if (isCookieSet()) {
@@ -140,8 +141,8 @@ const addInlayToUx = () => {
             let chatInlayLoader = document.createElement('script');
             chatInlayLoader.setAttribute("id", "oit-loader");
             chatInlayLoader.setAttribute("data-oit-lazy", true);
-            chatInlayLoader.setAttribute("src", "https://razer.widget.custhelp.com/s/oit/latest/common/v0/libs/oit/loader.js?v=" + Date.now());
-            chatInlayLoader.setAttribute("data-oit-config-url", "https://mysupport.razer.com/euf/assets/chat/inlays/oit-config.json");
+            chatInlayLoader.setAttribute("src", "https://tst2.dev.mysupport.razer.com/s/oit/latest/common/v0/libs/oit/loader.js?v=" + Date.now());
+            chatInlayLoader.setAttribute("data-oit-config-url", "https://tst2.dev.mysupport.razer.com/euf/assets/chat/inlays/oit-config.json");
             chatInlayLoader.setAttribute("async", "");
             document.body.appendChild(chatInlayLoader);
 
@@ -203,7 +204,7 @@ const fireChatInlayShowEvent = () => {
         // inject custom styling overrides
         let link = document.createElement('link');
         link.rel = "stylesheet";
-        link.href = "https://mysupport.razer.com/euf/assets/chat/inlays/oda.css?v=" + Date.now();
+        link.href = "https://tst2.dev.mysupport.razer.com/euf/assets/chat/inlays/oda.css?v=" + Date.now();
         link.type = "text/css";
 
         inlayHead.appendChild(link);
