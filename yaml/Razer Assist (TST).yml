@@ -121,7 +121,6 @@ states:
         HelpGuide: helpGuide
         StartOver: resetConversation
         RmaFlow: contactSupport
-        OrderStatus: orderPath #RazerComOrder.start
         RmaStatus: rmaStatus
         CaseStatus: caseStatus
         RefundStatus: refundStatus
@@ -130,8 +129,6 @@ states:
         CreditRejected: ccRejectedOutput
         FinancingOptions: financingOutput
         ItemAvailability: availabilityOutput
-        OrderCustoms: orderPath #RazerComOrder.start
-        OrderCancel: RazerComOrder.outputCancelOrder
         TrackingNumber: shippingStatus
         ContactSupport: contactSupport
         NariPairing: nariPairing
@@ -190,11 +187,8 @@ states:
         UnhelpfulAnswer: unhelpfulAnswer
         ChatExpired: chatExpired
         GetAccessory: getAccessoryOutput
-        OrderSupport: orderPath #RazerComOrder.start
         RmaChangeAddress: rmaChangeAddress
         RmaSla: rmaSla
-        OrderNotFound: orderPath #RazerComOrder.start
-        OrderRefund: RazerComOrder.askFromUS
         RegistrationFailed: registrationFailed
         ThumbpadIssue: thumbpadIssue
         LowFPS: lowFps
@@ -311,12 +305,21 @@ states:
         WirelessControlPodSupportedDevices: wirelessControlPodSupportedDevices
         AudioMixerMuteButton: audioMixerMuteButton
         BlackWidowV4Stabilizers: blackWidowV4Stabilizers
-        BladeGamingHacks: bladeGamingHacks
+        CalmanVerifiedDisplay: calmanVerifiedDisplay
+        NewSynapseSupportedDevices: newSynapseSupportedDevices
+        NewSynapseSupport: newSynapseSupport
+        ChromaAppSupport: chromaAppSupport
 
         #------ Order-related Intents -------#
         RazerComOrder: orderPath #RazerComOrder.start
-        RazerComReturnOrder: RazerComOrder.RO_quickAnswerCS
-        RazerComCancelOrder: RazerComOrder.CO_quickAnswerCS
+        RazerComReturnOrder: orderPath #RazerComOrder.RO_quickAnswerCS
+        RazerComCancelOrder: orderPath #RazerComOrder.CO_quickAnswerCS
+        OrderRefund: orderPath #RazerComOrder.askFromUS
+        OrderCancel: orderPath #RazerComOrder.outputCancelOrder
+        OrderStatus: orderPath #RazerComOrder.start
+        OrderCustoms: orderPath #RazerComOrder.start
+        OrderSupport: orderPath #RazerComOrder.start
+        OrderNotFound: orderPath #RazerComOrder.start
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -397,6 +400,8 @@ states:
         EthernetCable: ethernetCable
         BloatedBattery: bloatedBattery
         BatteryLife: batteryLife
+        BladeGamingHacks: bladeGamingHacks
+        BladeTouchpad: bladeTouchpad
 
         #----- Controller-related Intents -----#
         ControllerSupport: controllerPath
@@ -689,46 +694,6 @@ states:
         No: resetLiveHelp
         match: hiddenAction
         cancel: errorOutput
-
-  #-------------------------------------------------------------------------------
-  # Order FAQ --------------------------------------------------------------------
-  #-------------------------------------------------------------------------------
-  # orderPath:
-  #   component: System.SetVariable
-  #   properties:
-  #     insightsInclude: false
-  #     variable: "contactInfo"
-  #     value: "${profile.contactInfo.value}"
-  # initiatilizeSerialOrder:
-  #   component: System.SetVariable
-  #   properties:
-  #     insightsInclude: false
-  #     variable: serialNumber
-  #     value: "<#list contactInfo.value.customFields as p><#if p.name=='Serial Number'><#if p.value!='unavailable'>${p.value}<#else>-</#if></#if></#list>"
-  # orderProper:
-  #   component: System.SetVariable
-  #   properties:
-  #     variable: user.journey
-  #     value: true
-  # setTypeCS:
-  #   component: System.SetVariable
-  #   properties:
-  #     insightsInclude: false
-  #     variable: user.chatType
-  #     value: "CS"
-  # setOrderCaseCategory:
-  #   component: System.SetVariable
-  #   properties:
-  #     insightsInclude: false
-  #     variable: selectedOption
-  #     value: "OrderSupport"
-  # orderSupport:
-  #   component: System.Output
-  #   properties:
-  #     text: "${rb.orderFAQ}"
-  #     keepTurn: true
-  #   transitions:
-  #     next: quickAnswerCS
 
   #-------------------------------------------------------------------------------
   # Question Answered ------------------------------------------------------------
@@ -6155,11 +6120,17 @@ states:
                 keyword: "b,B,razer iskur x,iskur x"
                 payload:
                   action: "iskurX"
+              - label: "Razer Iskur V2"
+                type: postback
+                keyword: "c,C,razer iskur v2,iskur v2"
+                payload:
+                  action: "iskurV2"  
     transitions:
       next: intent
       actions:
         iskur: iskurDisassembly
         iskurX: iskurXDisassembly
+        iskurV2: iskurV2Disassembly
         match: hiddenAction
         cancel: errorOutput
 
@@ -6175,6 +6146,14 @@ states:
     component: System.Output
     properties:
       text: "${rb.iskurXDisassembly}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTSChair
+
+  iskurV2Disassembly:
+    component: System.Output
+    properties:
+      text: "${rb.iskurV2Disassembly}"
       keepTurn: true
     transitions:
       next: quickAnswerTSChair
@@ -7280,6 +7259,46 @@ states:
     component: System.Output
     properties:
       text: "${rb.bladeGamingHacks}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  bladeTouchpad:
+    component: System.Output
+    properties:
+      text: "${rb.bladeTouchpad}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerLaptop
+
+  calmanVerifiedDisplay:
+    component: System.Output
+    properties:
+      text: "${rb.calmanVerifiedDisplay}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  newSynapseSupportedDevices:
+    component: System.Output
+    properties:
+      text: "${rb.newSynapseSupportedDevices}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  newSynapseSupport:
+    component: System.Output
+    properties:
+      text: "${rb.newSynapseSupport}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  chromaAppSupport:
+    component: System.Output
+    properties:
+      text: "${rb.chromaAppSupport}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
@@ -12014,7 +12033,7 @@ states:
       insightsInclude: false
       variable: caseCategory
       value: "Razer Edge"
-  RazerComOrder.prefillCasePrivateNotes:
+  RazerEdge.prefillCasePrivateNotes:
     component: "System.SetVariable"
     properties:
       insightsInclude: false
