@@ -291,8 +291,10 @@ states:
         WirelessControlPodSupportedDevices: wirelessControlPodSupportedDevices
         AudioMixerMuteButton: audioMixerMuteButton
         BlackWidowV4Stabilizers: blackWidowV4Stabilizers
-        BladeGamingHacks: bladeGamingHacks
-        BladeTouchpad: bladeTouchpad
+        CalmanVerifiedDisplay: calmanVerifiedDisplay
+        NewSynapseSupportedDevices: newSynapseSupportedDevices
+        NewSynapseSupport: newSynapseSupport
+        ChromaAppSupport: chromaAppSupport
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -373,6 +375,8 @@ states:
         EthernetCable: ethernetCable
         BloatedBattery: bloatedBattery
         BatteryLife: batteryLife
+        BladeGamingHacks: bladeGamingHacks
+        BladeTouchpad: bladeTouchpad
 
         #----- Controller-related Intents -----#
         ControllerSupport: controllerPath
@@ -6025,11 +6029,17 @@ states:
                 keyword: "b,B,razer iskur x,iskur x"
                 payload:
                   action: "iskurX"
+              - label: "Razer Iskur V2"
+                type: postback
+                keyword: "c,C,razer iskur v2,iskur v2"
+                payload:
+                  action: "iskurV2"
     transitions:
       next: intent
       actions:
         iskur: iskurDisassembly
         iskurX: iskurXDisassembly
+        iskurV2: iskurV2Disassembly
         match: hiddenAction
         cancel: errorOutput
 
@@ -6048,6 +6058,14 @@ states:
       keepTurn: true
     transitions:
       next: quickAnswerTS1
+
+  iskurV2Disassembly:
+    component: System.Output
+    properties:
+      text: "${rb.iskurV2Disassembly}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTSChair
 
   iskurAdjustLever:
     component: System.Output
@@ -7158,6 +7176,38 @@ states:
     component: System.Output
     properties:
       text: "${rb.bladeTouchpad}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerLaptop
+
+  calmanVerifiedDisplay:
+    component: System.Output
+    properties:
+      text: "${rb.calmanVerifiedDisplay}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  newSynapseSupportedDevices:
+    component: System.Output
+    properties:
+      text: "${rb.newSynapseSupportedDevices}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  newSynapseSupport:
+    component: System.Output
+    properties:
+      text: "${rb.newSynapseSupport}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  chromaAppSupport:
+    component: System.Output
+    properties:
+      text: "${rb.chromaAppSupport}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
