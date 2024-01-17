@@ -121,7 +121,6 @@ states:
         HelpGuide: helpGuide
         StartOver: resetConversation
         RmaFlow: contactSupport
-        OrderStatus: RazerComOrder.start
         RmaStatus: rmaStatus
         CaseStatus: caseStatus
         RefundStatus: refundStatus
@@ -130,8 +129,6 @@ states:
         CreditRejected: ccRejectedOutput
         FinancingOptions: financingOutput
         ItemAvailability: availabilityOutput
-        OrderCustoms: RazerComOrder.start
-        OrderCancel: RazerComOrder.outputCancelOrder
         TrackingNumber: shippingStatus
         ContactSupport: contactSupport
         NariPairing: nariPairing
@@ -190,11 +187,8 @@ states:
         UnhelpfulAnswer: unhelpfulAnswer
         ChatExpired: chatExpired
         GetAccessory: getAccessoryOutput
-        OrderSupport: RazerComOrder.start
         RmaChangeAddress: rmaChangeAddress
         RmaSla: rmaSla
-        OrderNotFound: RazerComOrder.start
-        OrderRefund: RazerComOrder.askFromUS
         RegistrationFailed: registrationFailed
         ThumbpadIssue: thumbpadIssue
         LowFPS: lowFps
@@ -320,6 +314,12 @@ states:
         RazerComOrder: RazerComOrder.start
         RazerComReturnOrder: RazerComOrder.RO_quickAnswerCS
         RazerComCancelOrder: RazerComOrder.CO_quickAnswerCS
+        OrderRefund: RazerComOrder.askFromUS
+        OrderCancel: RazerComOrder.outputCancelOrder
+        OrderStatus: RazerComOrder.start
+        OrderCustoms: RazerComOrder.start
+        OrderSupport: RazerComOrder.start
+        OrderNotFound: RazerComOrder.start
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -689,46 +689,6 @@ states:
         No: resetLiveHelp
         match: hiddenAction
         cancel: errorOutput
-
-  #-------------------------------------------------------------------------------
-  # Order FAQ --------------------------------------------------------------------
-  #-------------------------------------------------------------------------------
-  orderPath:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: "contactInfo"
-      value: "${profile.contactInfo.value}"
-  initiatilizeSerialOrder:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: serialNumber
-      value: "<#list contactInfo.value.customFields as p><#if p.name=='Serial Number'><#if p.value!='unavailable'>${p.value}<#else>-</#if></#if></#list>"
-  orderProper:
-    component: System.SetVariable
-    properties:
-      variable: user.journey
-      value: true
-  setTypeCS:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.chatType
-      value: "CS"
-  setOrderCaseCategory:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: selectedOption
-      value: "OrderSupport"
-  orderSupport:
-    component: System.Output
-    properties:
-      text: "${rb.orderFAQ}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerCS
 
   #-------------------------------------------------------------------------------
   # Question Answered ------------------------------------------------------------
@@ -2344,6 +2304,92 @@ states:
         No: rephraseQuestionPath
         match: hiddenAction
         cancel: errorOutput
+
+  orderPath:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: "contactInfo"
+      value: "${profile.contactInfo.value}"
+  initiatilizeSerialOrder:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: serialNumber
+      value: "<#list contactInfo.value.customFields as p><#if p.name=='Serial Number'><#if p.value!='unavailable'>${p.value}<#else>-</#if></#if></#list>"
+  orderProper:
+    component: System.SetVariable
+    properties:
+      variable: user.journey
+      value: true
+  setTypeCS:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.chatType
+      value: "CS"
+  setOrderCaseCategory:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: selectedOption
+      value: "OrderSupport"
+  orderSupport:
+    component: System.Output
+    properties:
+      text: "${rb.orderFAQ}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerCS
+
+  # orderPath:
+  #   component: System.SetVariable
+  #   properties:
+  #     variable: user.journey
+  #     value: true
+  # orderPath2:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: user.secondTry
+  #     value: true
+  # setTypeOrder:
+  #   component: System.SetVariable
+  #   properties:
+  #     insightsInclude: false
+  #     variable: user.chatType
+  #     value: "CS"
+  # resolveOrderPath:
+  #   component: System.CommonResponse
+  #   properties:
+  #     processUserMessage: true
+  #     nlpResultVariable: iResult
+  #     transitionAfterMatch: "true"
+  #     autoNumberPostbackActions: "false"
+  #     maxPrompts: 2
+  #     metadata:
+  #       responseItems:
+  #         - type: text
+  #           text: "Please confirm you need help with your Razer order"
+  #           actions:
+  #             - label: "Yes"
+  #               type: postback
+  #               keyword: "a,A,y,Y"
+  #               payload:
+  #                 action: "system.textReceived"
+  #                 variables:
+  #                   system.text: "RZRORDRVFD"
+  #             - label: "No"
+  #               type: postback
+  #               keyword: "b,B,n,N"
+  #               payload:
+  #                 action: "No"
+  #   transitions:
+  #     next: intent
+  #     actions:
+  #       No: rephraseQuestionPath
+  #       match: hiddenAction
+  #       cancel: errorOutput
 
   #-------------------------------------------------------------------------------
   # Task "Proof of purchase" -----------------------------------------------------
@@ -6096,11 +6142,6 @@ states:
                 keyword: "b,B,razer iskur x,iskur x"
                 payload:
                   action: "iskurX"
-              - label: "Razer Iskur V2"
-                type: postback
-                keyword: "c,C,razer iskur v2,iskur v2"
-                payload:
-                  action: "iskurV2"
     transitions:
       next: intent
       actions:
@@ -12009,7 +12050,7 @@ states:
       insightsInclude: false
       variable: caseCategory
       value: "Razer Edge"
-  RazerComOrder.prefillCasePrivateNotes:
+  RazerEdge.prefillCasePrivateNotes:
     component: "System.SetVariable"
     properties:
       insightsInclude: false
