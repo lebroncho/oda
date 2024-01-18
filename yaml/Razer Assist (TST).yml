@@ -6124,7 +6124,7 @@ states:
                 type: postback
                 keyword: "c,C,razer iskur v2,iskur v2"
                 payload:
-                  action: "iskurV2"  
+                  action: "iskurV2"
     transitions:
       next: intent
       actions:

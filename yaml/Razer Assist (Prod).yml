@@ -311,15 +311,15 @@ states:
         ChromaAppSupport: chromaAppSupport
 
         #------ Order-related Intents -------#
-        RazerComOrder: RazerComOrder.start
-        RazerComReturnOrder: RazerComOrder.RO_quickAnswerCS
-        RazerComCancelOrder: RazerComOrder.CO_quickAnswerCS
-        OrderRefund: RazerComOrder.askFromUS
-        OrderCancel: RazerComOrder.outputCancelOrder
-        OrderStatus: RazerComOrder.start
-        OrderCustoms: RazerComOrder.start
-        OrderSupport: RazerComOrder.start
-        OrderNotFound: RazerComOrder.start
+        RazerComOrder: orderPath #RazerComOrder.start
+        RazerComReturnOrder: orderPath #RazerComOrder.RO_quickAnswerCS
+        RazerComCancelOrder: orderPath #RazerComOrder.CO_quickAnswerCS
+        OrderRefund: orderPath #RazerComOrder.askFromUS
+        OrderCancel: orderPath #RazerComOrder.outputCancelOrder
+        OrderStatus: orderPath #RazerComOrder.start
+        OrderCustoms: orderPath #RazerComOrder.start
+        OrderSupport: orderPath #RazerComOrder.start
+        OrderNotFound: orderPath #RazerComOrder.start
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -500,7 +500,12 @@ states:
                 type: postback
                 keyword: "4,d,D,order"
                 payload:
-                  action: "order"
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RZRORDRVFD"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "CS"
               - label: "Buy spare part/accessory"
                 type: postback
                 keyword: "5,e,E,parts,accessory"
@@ -517,7 +522,7 @@ states:
         activation: surroundSoundTs
         status: rmaStatus
         question: technicalSupport
-        order: RazerComOrder.start
+        order: orderPath #RazerComOrder.start
         accessory: menuGetAccessory
         registration: menuRegistrationFailed
         match: hiddenAction
@@ -738,12 +743,17 @@ states:
                 type: postback
                 keyword: "b,B,n,N"
                 payload:
-                  action: "No"
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RZRORDRVFD"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "CS"
     transitions:
       next: intent
       actions:
         Yes: queryResolved
-        No: checkTryCount
+        No: unresolvedActions
         match: hiddenAction
         cancel: errorOutput
 
@@ -2308,88 +2318,51 @@ states:
   orderPath:
     component: System.SetVariable
     properties:
-      insightsInclude: false
-      variable: "contactInfo"
-      value: "${profile.contactInfo.value}"
-  initiatilizeSerialOrder:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: serialNumber
-      value: "<#list contactInfo.value.customFields as p><#if p.name=='Serial Number'><#if p.value!='unavailable'>${p.value}<#else>-</#if></#if></#list>"
-  orderProper:
-    component: System.SetVariable
-    properties:
       variable: user.journey
       value: true
-  setTypeCS:
+  orderPath2:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.secondTry
+      value: true
+  setTypeOrder:
     component: System.SetVariable
     properties:
       insightsInclude: false
       variable: user.chatType
       value: "CS"
-  setOrderCaseCategory:
-    component: System.SetVariable
+  resolveOrderPath:
+    component: System.CommonResponse
     properties:
-      insightsInclude: false
-      variable: selectedOption
-      value: "OrderSupport"
-  orderSupport:
-    component: System.Output
-    properties:
-      text: "${rb.orderFAQ}"
-      keepTurn: true
+      processUserMessage: true
+      nlpResultVariable: iResult
+      transitionAfterMatch: "true"
+      autoNumberPostbackActions: "false"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+          - type: text
+            text: "Please confirm you need help with your Razer order"
+            actions:
+              - label: "Yes"
+                type: postback
+                keyword: "a,A,y,Y"
+                payload:
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RZRORDRVFD"
+              - label: "No"
+                type: postback
+                keyword: "b,B,n,N"
+                payload:
+                  action: "No"
     transitions:
-      next: quickAnswerCS
-
-  # orderPath:
-  #   component: System.SetVariable
-  #   properties:
-  #     variable: user.journey
-  #     value: true
-  # orderPath2:
-  #   component: System.SetVariable
-  #   properties:
-  #     insightsInclude: false
-  #     variable: user.secondTry
-  #     value: true
-  # setTypeOrder:
-  #   component: System.SetVariable
-  #   properties:
-  #     insightsInclude: false
-  #     variable: user.chatType
-  #     value: "CS"
-  # resolveOrderPath:
-  #   component: System.CommonResponse
-  #   properties:
-  #     processUserMessage: true
-  #     nlpResultVariable: iResult
-  #     transitionAfterMatch: "true"
-  #     autoNumberPostbackActions: "false"
-  #     maxPrompts: 2
-  #     metadata:
-  #       responseItems:
-  #         - type: text
-  #           text: "Please confirm you need help with your Razer order"
-  #           actions:
-  #             - label: "Yes"
-  #               type: postback
-  #               keyword: "a,A,y,Y"
-  #               payload:
-  #                 action: "system.textReceived"
-  #                 variables:
-  #                   system.text: "RZRORDRVFD"
-  #             - label: "No"
-  #               type: postback
-  #               keyword: "b,B,n,N"
-  #               payload:
-  #                 action: "No"
-  #   transitions:
-  #     next: intent
-  #     actions:
-  #       No: rephraseQuestionPath
-  #       match: hiddenAction
-  #       cancel: errorOutput
+      next: intent
+      actions:
+        No: rephraseQuestionPath
+        match: hiddenAction
+        cancel: errorOutput
 
   #-------------------------------------------------------------------------------
   # Task "Proof of purchase" -----------------------------------------------------
@@ -3805,7 +3778,12 @@ states:
                 type: postback
                 keyword: "4,d,D,order"
                 payload:
-                  action: "order"
+                  action: "system.textReceived"
+                  variables:
+                    system.text: "RZRORDRVFD"
+                    user.journey: true
+                    user.secondTry: true
+                    user.chatType: "CS"
               - label: "Buy spare part/accessory"
                 type: postback
                 keyword: "5,e,E,parts,accessory"
@@ -3822,7 +3800,7 @@ states:
         activation: surroundSoundTs
         status: rmaStatus
         question: technicalSupport
-        order: RazerComOrder.start
+        order: orderPath #RazerComOrder.start
         accessory: menuGetAccessory
         registration: menuRegistrationFailed
         match: hiddenAction
@@ -6142,6 +6120,11 @@ states:
                 keyword: "b,B,razer iskur x,iskur x"
                 payload:
                   action: "iskurX"
+              - label: "Razer Iskur V2"
+                type: postback
+                keyword: "c,C,razer iskur v2,iskur v2"
+                payload:
+                  action: "iskurV2"  
     transitions:
       next: intent
       actions:
