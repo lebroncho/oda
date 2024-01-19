@@ -1,4 +1,7 @@
-<style type="text/css">#support-map .rz_Btn {
+<style type="text/css">
+.rn_ContentDetail .rn_RecordDetail .rn_AnswerInfo { display: none; }
+
+#support-map .rz_Btn {
 	display: block;
 	width: 100%;
 	max-width: 230px;
@@ -77,30 +80,30 @@
 	display: none;
 }
 </style>
-$oda_ts_notice
+<div>$oda_ts_notice
 <form action="https://mysupport.razer.com/app/contact-support" id="support-map" method="POST"><input name="case_category" type="hidden" value="keyboard" />
 <div class="row mt-5">
-<div class="col-sm-3"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" onclick="showSection('input-issues')">Key Input<br />
+<div class="col-sm-3"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" tabindex="0" onclick="showSection('input-issues')">Key Input<br />
 Issues</label></div>
 
-<div class="col-sm-3"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" onclick="showSection('connection-issues')">Connection<br />
+<div class="col-sm-3"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" tabindex="0" onclick="showSection('connection-issues')">Connection<br />
 Issues</label></div>
 
-<div class="col-sm-3"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" onclick="showSection('multimedia-issues')">Multimedia Keys<br />
+<div class="col-sm-3"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" tabindex="0" onclick="showSection('multimedia-issues')">Multimedia Keys<br />
 &amp; Audio Issues</label></div>
 
-<div class="col-sm-3"><input id="main-tab-4" name="case_reason" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-4" onclick="showSection('lighting-issues')">Lighting<br />
+<div class="col-sm-3"><input id="main-tab-4" name="case_reason" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-4" tabindex="0" onclick="showSection('lighting-issues')">Lighting<br />
 Issues</label></div>
 </div>
 
 <div class="row mb-5">
-<div class="col-sm-3"><input id="main-tab-5" name="case_reason" type="radio" value="4" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-5" onclick="showSection('power-issues')">Power &amp;<br />
+<div class="col-sm-3"><input id="main-tab-5" name="case_reason" type="radio" value="4" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-5" tabindex="0" onclick="showSection('power-issues')">Power &amp;<br />
 Battery Issues</label></div>
 
-<div class="col-sm-3"><input id="main-tab-6" name="case_reason" type="radio" value="5" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-6" onclick="showSection('cosmetic-issues')">Cosmetic<br />
+<div class="col-sm-3"><input id="main-tab-6" name="case_reason" type="radio" value="5" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-6" tabindex="0" onclick="showSection('cosmetic-issues')">Cosmetic<br />
 Issues</label></div>
 
-<div class="col-sm-3"><input id="main-tab-7" name="case_reason" type="radio" value="6" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-7" onclick="showSection('general-questions')">General Product Questions</label></div>
+<div class="col-sm-3"><input id="main-tab-7" name="case_reason" type="radio" value="6" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-7" tabindex="0" onclick="showSection('general-questions')">General Product Questions</label></div>
 </div>
 
 <div class="ts-section d-none mb-5" id="input-issues">
@@ -113,26 +116,26 @@ Issues</label></div>
 <div class="row">
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-1-sym1" name="case_symptoms[]" type="checkbox" value="0" /><label for="tab-1-sym1">Keys not responding</label></p>
-</li>
-<li>
-<p><input id="tab-1-sym2" name="case_symptoms[]" type="checkbox" value="1" /><label for="tab-1-sym2">Delayed response</label></p>
-</li>
-<li>
-<p><input id="tab-1-sym3" name="case_symptoms[]" type="checkbox" value="2" /><label for="tab-1-sym3">Keys spamming</label></p>
-</li>
+	<li>
+	<p><input id="tab-1-sym1" name="case_symptoms[]" type="checkbox" value="0" /><label for="tab-1-sym1">Keys not responding</label></p>
+	</li>
+	<li>
+	<p><input id="tab-1-sym2" name="case_symptoms[]" type="checkbox" value="1" /><label for="tab-1-sym2">Delayed response</label></p>
+	</li>
+	<li>
+	<p><input id="tab-1-sym3" name="case_symptoms[]" type="checkbox" value="2" /><label for="tab-1-sym3">Keys spamming</label></p>
+	</li>
 </ul>
 </div>
 
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-1-sym4" name="case_symptoms[]" type="checkbox" value="3" /><label for="tab-1-sym4">Wrong key input</label></p>
-</li>
-<li>
-<p><input id="tab-1-sym5" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-1-sym5">Other issues not listed</label></p>
-</li>
+	<li>
+	<p><input id="tab-1-sym4" name="case_symptoms[]" type="checkbox" value="3" /><label for="tab-1-sym4">Wrong key input</label></p>
+	</li>
+	<li>
+	<p><input id="tab-1-sym5" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-1-sym5">Other issues not listed</label></p>
+	</li>
 </ul>
 </div>
 </div>
@@ -142,11 +145,11 @@ Issues</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-1-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-usb" onclick="showSubItem('input-cable')">USB Cable</label></div>
+<div class="col-sm"><input id="tab-1-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-usb" tabindex="0" onclick="showSubItem('input-cable')">USB Cable</label></div>
 
-<div class="col-sm"><input id="tab-1-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-bt" onclick="showSubItem('input-bt')">Bluetooth</label></div>
+<div class="col-sm"><input id="tab-1-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-bt" tabindex="0" onclick="showSubItem('input-bt')">Bluetooth</label></div>
 
-<div class="col-sm"><input id="tab-1-dongle" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-dongle" onclick="showSubItem('input-dongle')">USB Dongle</label></div>
+<div class="col-sm"><input id="tab-1-dongle" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-dongle" tabindex="0" onclick="showSubItem('input-dongle')">USB Dongle</label></div>
 </div>
 </fieldset>
 
@@ -156,32 +159,32 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="0" /> <a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">Clean your keyboard from dirt or debris</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" /> Connect your keyboard directly to the PC and not a USB hub.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" /> Test your keyboard with a different USB Port.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="0" /> <a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">Clean your keyboard from dirt or debris</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" /> Connect your keyboard directly to the PC and not a USB hub.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" /> Test your keyboard with a different USB Port.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -191,35 +194,35 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="0" /><a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">Clean your keyboard from dirt or debris</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" /><strong>Power is important.</strong> Make sure your keyboard is fully charged.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the keyboard is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-keyboards-and-keypads" target="_blank">product user guide</a> on how to configure the wireless mode of your keyboard.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="7" />Troubleshoot <a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Windows Bluetooth Problems</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="0" /><a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">Clean your keyboard from dirt or debris</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" /><strong>Power is important.</strong> Make sure your keyboard is fully charged.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the keyboard is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-keyboards-and-keypads" target="_blank">product user guide</a> on how to configure the wireless mode of your keyboard.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="7" />Troubleshoot <a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Windows Bluetooth Problems</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -229,38 +232,38 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="0" /><a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">Clean your keyboard from dirt or debris</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" /><strong>Power is important.</strong> Make sure your keyboard is fully charged.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the keyboard is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-keyboards-and-keypads" target="_blank">product user guide</a> on how to configure the wireless mode of your keyboard.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="8" />Connect your USB Dongle/Transceiver directly to the PC and not a USB hub.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="11" />Download and run the <a href="https://mysupport.razer.com/app/answers/detail/a_id/3874" target="_blank">Pairing Utility</a> for your keyboard. If your device is not listed, skip this step.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="0" /><a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">Clean your keyboard from dirt or debris</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" /><strong>Power is important.</strong> Make sure your keyboard is fully charged.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the keyboard is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-keyboards-and-keypads" target="_blank">product user guide</a> on how to configure the wireless mode of your keyboard.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="8" />Connect your USB Dongle/Transceiver directly to the PC and not a USB hub.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="11" />Download and run the <a href="https://mysupport.razer.com/app/answers/detail/a_id/3874" target="_blank">Pairing Utility</a> for your keyboard. If your device is not listed, skip this step.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -282,32 +285,32 @@ Issues</label></div>
 <div class="row">
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-2-sym1" name="case_symptoms[]" type="checkbox" value="4" /><label for="tab-2-sym1">Not detected</label></p>
-</li>
-<li>
-<p><input id="tab-2-sym2" name="case_symptoms[]" type="checkbox" value="5" /><label for="tab-2-sym2">Detected but not in Razer Synapse</label></p>
-</li>
-<li>
-<p><input id="tab-2-sym3" name="case_symptoms[]" type="checkbox" value="6" /><label for="tab-2-sym3">Connection drops randomly</label></p>
-</li>
-<li>
-<p><input id="tab-2-sym4" name="case_symptoms[]" type="checkbox" value="7" /><label for="tab-2-sym4">Bluetooth not broadcasting</label></p>
-</li>
+	<li>
+	<p><input id="tab-2-sym1" name="case_symptoms[]" type="checkbox" value="4" /><label for="tab-2-sym1">Not detected</label></p>
+	</li>
+	<li>
+	<p><input id="tab-2-sym2" name="case_symptoms[]" type="checkbox" value="5" /><label for="tab-2-sym2">Detected but not in Razer Synapse</label></p>
+	</li>
+	<li>
+	<p><input id="tab-2-sym3" name="case_symptoms[]" type="checkbox" value="6" /><label for="tab-2-sym3">Connection drops randomly</label></p>
+	</li>
+	<li>
+	<p><input id="tab-2-sym4" name="case_symptoms[]" type="checkbox" value="7" /><label for="tab-2-sym4">Bluetooth not broadcasting</label></p>
+	</li>
 </ul>
 </div>
 
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-2-sym5" name="case_symptoms[]" type="checkbox" value="8" /><label for="tab-2-sym5">Dongle pairing issue</label></p>
-</li>
-<li>
-<p><input id="tab-2-sym6" name="case_symptoms[]" type="checkbox" value="9" /><label for="tab-2-sym6">Bluetooth pairing issue</label></p>
-</li>
-<li>
-<p><input id="tab-2-sym7" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-2-sym7">Other issues not listed</label></p>
-</li>
+	<li>
+	<p><input id="tab-2-sym5" name="case_symptoms[]" type="checkbox" value="8" /><label for="tab-2-sym5">Dongle pairing issue</label></p>
+	</li>
+	<li>
+	<p><input id="tab-2-sym6" name="case_symptoms[]" type="checkbox" value="9" /><label for="tab-2-sym6">Bluetooth pairing issue</label></p>
+	</li>
+	<li>
+	<p><input id="tab-2-sym7" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-2-sym7">Other issues not listed</label></p>
+	</li>
 </ul>
 </div>
 </div>
@@ -317,11 +320,11 @@ Issues</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-2-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-usb" onclick="showSubItem('connection-cable')">USB Cable</label></div>
+<div class="col-sm"><input id="tab-2-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-usb" tabindex="0" onclick="showSubItem('connection-cable')">USB Cable</label></div>
 
-<div class="col-sm"><input id="tab-2-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-bt" onclick="showSubItem('connection-bt')">Bluetooth</label></div>
+<div class="col-sm"><input id="tab-2-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-bt" tabindex="0" onclick="showSubItem('connection-bt')">Bluetooth</label></div>
 
-<div class="col-sm"><input id="tab-2-dongle" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-dongle" onclick="showSubItem('connection-dongle')">USB Dongle</label></div>
+<div class="col-sm"><input id="tab-2-dongle" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-dongle" tabindex="0" onclick="showSubItem('connection-dongle')">USB Dongle</label></div>
 </div>
 </fieldset>
 
@@ -331,29 +334,29 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Connect your keyboard directly to the PC and not a USB hub.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Test your keyboard with a different USB Port.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Connect your keyboard directly to the PC and not a USB hub.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Test your keyboard with a different USB Port.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -363,32 +366,32 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" /><strong>Power is important.</strong> Make sure your keyboard is fully charged.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the keyboard is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-keyboards-and-keypads" target="_blank">product user guide</a> on how to configure the wireless mode of your keyboard.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Troubleshoot <a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Windows Bluetooth Problems</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" /><strong>Power is important.</strong> Make sure your keyboard is fully charged.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the keyboard is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-keyboards-and-keypads" target="_blank">product user guide</a> on how to configure the wireless mode of your keyboard.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Troubleshoot <a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Windows Bluetooth Problems</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -398,35 +401,35 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" /><strong>Power is important.</strong> Make sure your keyboard is fully charged.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the keyboard is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-keyboards-and-keypads" target="_blank">product user guide</a> on how to configure the wireless mode of your keyboard.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="8" />Connect your USB Dongle/Transceiver directly to the PC and not a USB hub.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="11" />Download and run the <a href="https://mysupport.razer.com/app/answers/detail/a_id/3874" target="_blank">Pairing Utility</a> for your keyboard. If your device is not listed, skip this step.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" /><strong>Power is important.</strong> Make sure your keyboard is fully charged.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the keyboard is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-keyboards-and-keypads" target="_blank">product user guide</a> on how to configure the wireless mode of your keyboard.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="8" />Connect your USB Dongle/Transceiver directly to the PC and not a USB hub.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="11" />Download and run the <a href="https://mysupport.razer.com/app/answers/detail/a_id/3874" target="_blank">Pairing Utility</a> for your keyboard. If your device is not listed, skip this step.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC. If the issue happens with the dongle but not with the USB cable, it is likely that your USB dongle is defective.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC. If the issue happens with the dongle but not with the USB cable, it is likely that your USB dongle is defective.</p>
+	</li>
 </ul>
 </div>
 
@@ -448,29 +451,29 @@ Issues</label></div>
 <div class="row">
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-3-sym1" name="case_symptoms[]" type="checkbox" value="10" /><label for="tab-3-sym1">Volume knob incorrect response</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym2" name="case_symptoms[]" type="checkbox" value="11" /><label for="tab-3-sym2">Volume knob no response</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym3" name="case_symptoms[]" type="checkbox" value="12" /><label for="tab-3-sym3">No mic function</label></p>
-</li>
+	<li>
+	<p><input id="tab-3-sym1" name="case_symptoms[]" type="checkbox" value="10" /><label for="tab-3-sym1">Volume knob incorrect response</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym2" name="case_symptoms[]" type="checkbox" value="11" /><label for="tab-3-sym2">Volume knob no response</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym3" name="case_symptoms[]" type="checkbox" value="12" /><label for="tab-3-sym3">No mic function</label></p>
+	</li>
 </ul>
 </div>
 
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-3-sym4" name="case_symptoms[]" type="checkbox" value="13" /><label for="tab-3-sym4">No audio function</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym5" name="case_symptoms[]" type="checkbox" value="14" /><label for="tab-3-sym5">Multimedia keys wrong response</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym6" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-3-sym6">Other issues not listed</label></p>
-</li>
+	<li>
+	<p><input id="tab-3-sym4" name="case_symptoms[]" type="checkbox" value="13" /><label for="tab-3-sym4">No audio function</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym5" name="case_symptoms[]" type="checkbox" value="14" /><label for="tab-3-sym5">Multimedia keys wrong response</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym6" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-3-sym6">Other issues not listed</label></p>
+	</li>
 </ul>
 </div>
 </div>
@@ -480,11 +483,11 @@ Issues</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-3-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-usb" onclick="showSubItem('multimedia-cable')">USB Cable</label></div>
+<div class="col-sm"><input id="tab-3-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-usb" tabindex="0" onclick="showSubItem('multimedia-cable')">USB Cable</label></div>
 
-<div class="col-sm"><input id="tab-3-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-bt" onclick="showSubItem('multimedia-bt')">Bluetooth</label></div>
+<div class="col-sm"><input id="tab-3-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-bt" tabindex="0" onclick="showSubItem('multimedia-bt')">Bluetooth</label></div>
 
-<div class="col-sm"><input id="tab-3-dongle" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-dongle" onclick="showSubItem('multimedia-dongle')">USB Dongle</label></div>
+<div class="col-sm"><input id="tab-3-dongle" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-dongle" tabindex="0" onclick="showSubItem('multimedia-dongle')">USB Dongle</label></div>
 </div>
 </fieldset>
 
@@ -494,49 +497,49 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Connect your keyboard directly to the PC and not a USB hub.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Test your keyboard with a different USB Port.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Connect your keyboard directly to the PC and not a USB hub.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Test your keyboard with a different USB Port.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
 </ul>
 
 <p class="my-3"><strong>For audio related issues</strong></p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="16" />Check the audio ports and audio jack for any dirt or debris.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="17" /><a href="https://mysupport.razer.com/app/answers/detail/a_id/4002" target="_blank">Confirm that the audio jack is plugged in properly</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="18" /><a href="https://support.microsoft.com/en-us/windows/fix-sound-or-audio-problems-in-windows-73025246-b61c-40fb-671a-2535c7cd56c8" target="_blank">Fix sound or audio problems in Windows</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="19" /><a href="https://mysupport.razer.com/app/answers/detail/a_id/581" target="_blank">Fix connection related issues</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="20" />Confirm correct playback device is set.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
-</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="16" />Check the audio ports and audio jack for any dirt or debris.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="17" /><a href="https://mysupport.razer.com/app/answers/detail/a_id/4002" target="_blank">Confirm that the audio jack is plugged in properly</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="18" /><a href="https://support.microsoft.com/en-us/windows/fix-sound-or-audio-problems-in-windows-73025246-b61c-40fb-671a-2535c7cd56c8" target="_blank">Fix sound or audio problems in Windows</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="19" /><a href="https://mysupport.razer.com/app/answers/detail/a_id/581" target="_blank">Fix connection related issues</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="20" />Confirm correct playback device is set.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -546,32 +549,32 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" /><strong>Power is important.</strong> Make sure your keyboard is fully charged.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the keyboard is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-keyboards-and-keypads" target="_blank">product user guide</a> on how to configure the wireless mode of your keyboard.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Troubleshoot <a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Windows Bluetooth Problems</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" /><strong>Power is important.</strong> Make sure your keyboard is fully charged.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the keyboard is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-keyboards-and-keypads" target="_blank">product user guide</a> on how to configure the wireless mode of your keyboard.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Troubleshoot <a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Windows Bluetooth Problems</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -581,32 +584,32 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" /><strong>Power is important.</strong> Make sure your keyboard is fully charged.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the keyboard is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-keyboards-and-keypads" target="_blank">product user guide</a> on how to configure the wireless mode of your keyboard.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="8" />Connect your USB Dongle/Transceiver directly to the PC and not a USB hub.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" /><strong>Power is important.</strong> Make sure your keyboard is fully charged.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the keyboard is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-keyboards-and-keypads" target="_blank">product user guide</a> on how to configure the wireless mode of your keyboard.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="8" />Connect your USB Dongle/Transceiver directly to the PC and not a USB hub.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC. If the issue happens with the dongle but not with the USB cable, it is likely that your USB dongle is defective.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC. If the issue happens with the dongle but not with the USB cable, it is likely that your USB dongle is defective.</p>
+	</li>
 </ul>
 </div>
 
@@ -628,29 +631,29 @@ Issues</label></div>
 <div class="row">
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-4-sym1" name="case_symptoms[]" type="checkbox" value="15" /><label for="tab-4-sym1">Flickering</label></p>
-</li>
-<li>
-<p><input id="tab-4-sym2" name="case_symptoms[]" type="checkbox" value="16" /><label for="tab-4-sym2">Lights are too dim</label></p>
-</li>
-<li>
-<p><input id="tab-4-sym3" name="case_symptoms[]" type="checkbox" value="17" /><label for="tab-4-sym3">Lights are uneven</label></p>
-</li>
+	<li>
+	<p><input id="tab-4-sym1" name="case_symptoms[]" type="checkbox" value="15" /><label for="tab-4-sym1">Flickering</label></p>
+	</li>
+	<li>
+	<p><input id="tab-4-sym2" name="case_symptoms[]" type="checkbox" value="16" /><label for="tab-4-sym2">Lights are too dim</label></p>
+	</li>
+	<li>
+	<p><input id="tab-4-sym3" name="case_symptoms[]" type="checkbox" value="17" /><label for="tab-4-sym3">Lights are uneven</label></p>
+	</li>
 </ul>
 </div>
 
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-4-sym4" name="case_symptoms[]" type="checkbox" value="18" /><label for="tab-4-sym4">Wrong color</label></p>
-</li>
-<li>
-<p><input id="tab-4-sym5" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-4-sym5">Colors not syncing</label></p>
-</li>
-<li>
-<p><input id="tab-4-sym6" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-4-sym6">Other issues not listed</label></p>
-</li>
+	<li>
+	<p><input id="tab-4-sym4" name="case_symptoms[]" type="checkbox" value="18" /><label for="tab-4-sym4">Wrong color</label></p>
+	</li>
+	<li>
+	<p><input id="tab-4-sym5" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-4-sym5">Colors not syncing</label></p>
+	</li>
+	<li>
+	<p><input id="tab-4-sym6" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-4-sym6">Other issues not listed</label></p>
+	</li>
 </ul>
 </div>
 </div>
@@ -660,11 +663,11 @@ Issues</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-4-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-4-usb" onclick="showSubItem('lighting-cable')">USB Cable</label></div>
+<div class="col-sm"><input id="tab-4-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-4-usb" tabindex="0" onclick="showSubItem('lighting-cable')">USB Cable</label></div>
 
-<div class="col-sm"><input id="tab-4-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-4-bt" onclick="showSubItem('lighting-bt')">Bluetooth</label></div>
+<div class="col-sm"><input id="tab-4-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-4-bt" tabindex="0" onclick="showSubItem('lighting-bt')">Bluetooth</label></div>
 
-<div class="col-sm"><input id="tab-4-dongle" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-4-dongle" onclick="showSubItem('lighting-dongle')">USB Dongle</label></div>
+<div class="col-sm"><input id="tab-4-dongle" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-4-dongle" tabindex="0" onclick="showSubItem('lighting-dongle')">USB Dongle</label></div>
 </div>
 </fieldset>
 
@@ -674,40 +677,40 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Connect your keyboard directly to the PC and not a USB hub.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Test your keyboard with a different USB Port.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="9" />Test if the issue happens with other <a href="https://mysupport.razer.com/app/answers/detail/a_id/852" target="_blank">color configuration</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="10" />Reset your keyboard's Razer Synapse profile.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Connect your keyboard directly to the PC and not a USB hub.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Test your keyboard with a different USB Port.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="9" />Test if the issue happens with other <a href="https://mysupport.razer.com/app/answers/detail/a_id/852" target="_blank">color configuration</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="10" />Reset your keyboard's Razer Synapse profile.</p>
 
-<p><img alt="Reset profile in Synapse" src="https://dl.razerzone.com/src/opa/8-en-v1.png" style="width: 600px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<p><img alt="Reset profile in Synapse" src="https://dl.razerzone.com/src/opa/8-en-v1.png" style="width: 600px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="21" />Check if the issue happens using a different Razer ID.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="21" />Check if the issue happens using a different Razer ID.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -717,37 +720,37 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="9" />Test if the issue happens with other <a href="https://mysupport.razer.com/app/answers/detail/a_id/852" target="_blank">color configuration</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="10" />Reset your keyboard's Razer Synapse profile.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="9" />Test if the issue happens with other <a href="https://mysupport.razer.com/app/answers/detail/a_id/852" target="_blank">color configuration</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="10" />Reset your keyboard's Razer Synapse profile.</p>
 
-<p><img alt="Reset profile in Synapse" src="https://dl.razerzone.com/src/opa/8-en-v1.png" style="width: 600px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="7" />Troubleshoot <a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Windows Bluetooth Problems</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<p><img alt="Reset profile in Synapse" src="https://dl.razerzone.com/src/opa/8-en-v1.png" style="width: 600px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="7" />Troubleshoot <a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Windows Bluetooth Problems</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="21" />Check if the issue happens using a different Razer ID.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="21" />Check if the issue happens using a different Razer ID.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -757,40 +760,40 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="8" />Connect your USB Dongle/Transceiver directly to the PC and not a USB hub.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="9" />Test if the issue happens with other <a href="https://mysupport.razer.com/app/answers/detail/a_id/852" target="_blank">color configuration</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="10" />Reset your keyboard's Razer Synapse profile.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="8" />Connect your USB Dongle/Transceiver directly to the PC and not a USB hub.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="9" />Test if the issue happens with other <a href="https://mysupport.razer.com/app/answers/detail/a_id/852" target="_blank">color configuration</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="10" />Reset your keyboard's Razer Synapse profile.</p>
 
-<p><img alt="Reset profile in Synapse" src="https://dl.razerzone.com/src/opa/8-en-v1.png" style="width: 600px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="11" />Download and run the <a href="https://mysupport.razer.com/app/answers/detail/a_id/3874" target="_blank">Pairing Utility</a> for your keyboard. If your device is not listed, skip this step.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<p><img alt="Reset profile in Synapse" src="https://dl.razerzone.com/src/opa/8-en-v1.png" style="width: 600px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="11" />Download and run the <a href="https://mysupport.razer.com/app/answers/detail/a_id/3874" target="_blank">Pairing Utility</a> for your keyboard. If your device is not listed, skip this step.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="21" />Check if the issue happens using a different Razer ID.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="21" />Check if the issue happens using a different Razer ID.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -812,26 +815,26 @@ Issues</label></div>
 <div class="row">
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-5-sym1" name="case_symptoms[]" type="checkbox" value="20" /><label for="tab-5-sym1">Stuck at X% while charging</label></p>
-</li>
-<li>
-<p><input id="tab-5-sym2" name="case_symptoms[]" type="checkbox" value="21" /><label for="tab-5-sym2">Poor battery life</label></p>
-</li>
-<li>
-<p><input id="tab-5-sym3" name="case_symptoms[]" type="checkbox" value="22" /><label for="tab-5-sym3">Charging too slow</label></p>
-</li>
+	<li>
+	<p><input id="tab-5-sym1" name="case_symptoms[]" type="checkbox" value="20" /><label for="tab-5-sym1">Stuck at X% while charging</label></p>
+	</li>
+	<li>
+	<p><input id="tab-5-sym2" name="case_symptoms[]" type="checkbox" value="21" /><label for="tab-5-sym2">Poor battery life</label></p>
+	</li>
+	<li>
+	<p><input id="tab-5-sym3" name="case_symptoms[]" type="checkbox" value="22" /><label for="tab-5-sym3">Charging too slow</label></p>
+	</li>
 </ul>
 </div>
 
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-5-sym4" name="case_symptoms[]" type="checkbox" value="23" /><label for="tab-5-sym4">Keyboard does not charge</label></p>
-</li>
-<li>
-<p><input id="tab-5-sym5" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-5-sym5">Other issues not listed</label></p>
-</li>
+	<li>
+	<p><input id="tab-5-sym4" name="case_symptoms[]" type="checkbox" value="23" /><label for="tab-5-sym4">Keyboard does not charge</label></p>
+	</li>
+	<li>
+	<p><input id="tab-5-sym5" name="case_symptoms[]" type="checkbox" value="24" /><label for="tab-5-sym5">Other issues not listed</label></p>
+	</li>
 </ul>
 </div>
 </div>
@@ -842,29 +845,29 @@ Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Connect your keyboard directly to the PC and not a USB hub.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Test your keyboard with a different USB Port.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Connect your keyboard directly to the PC and not a USB hub.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Test your keyboard with a different USB Port.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your keyboard if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Check if a software is causing the issue by closing all Razer apps and other keyboard configuration software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your keyboard drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 
 <p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">picture/video</a> of the issue. Please have this before you contact our support team.</p>
@@ -879,26 +882,26 @@ Issues</label></div>
 <p><a href="https://www.razer.com/shop/replacement-parts/replacement-parts-keyboards" target="_blank">Spare parts</a> are made available online (for US &amp; Canada). If you wish to contact support, please make sure to have the information below in the event an RMA for a replacement is needed.</p>
 
 <ul>
-<li>
-<p>When and how the issue occurred.</p>
-</li>
-<li>
-<p><a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">Prepare a photo or video</a> that shows the issue of the product.</p>
-</li>
-<li>
-<p>Proof of purchase. For online purchases (e.g. Amazon, BestBuy, etc.), please print/export a PDF copy of the receipt.</p>
-</li>
-<li>
-<p>Shipping and billing address.</p>
-</li>
+	<li>
+	<p>When and how the issue occurred.</p>
+	</li>
+	<li>
+	<p><a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">Prepare a photo or video</a> that shows the issue of the product.</p>
+	</li>
+	<li>
+	<p>Proof of purchase. For online purchases (e.g. Amazon, BestBuy, etc.), please print/export a PDF copy of the receipt.</p>
+	</li>
+	<li>
+	<p>Shipping and billing address.</p>
+	</li>
 </ul>
 
 <p>In order to move forward, we require you to review and agree on the terms and conditions of the limited warranty from our warranty policy.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="15" />I have reviewed and agreed to the terms and conditions of the Limited Warranty as specified in <a href="https://www.razer.com/warranty" target="_blank">Razer's warranty policy</a>.</p>
-</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="15" />I have reviewed and agreed to the terms and conditions of the Limited Warranty as specified in <a href="https://www.razer.com/warranty" target="_blank">Razer's warranty policy</a>.</p>
+	</li>
 </ul>
 
 <p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
@@ -1044,4 +1047,4 @@ function getUrlSegment(index) {
 	}
 }
 
-</script>
+</script></div>

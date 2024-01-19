@@ -1,4 +1,7 @@
-<style type="text/css">#support-map .rz_Btn {
+<style type="text/css">
+.rn_ContentDetail .rn_RecordDetail .rn_AnswerInfo { display: none; }
+
+#support-map .rz_Btn {
 	display: block;
 	width: 100%;
 	max-width: 230px;
@@ -77,24 +80,24 @@
 	display: none;
 }
 </style>
-$oda_ts_notice
+<div>$oda_ts_notice
 <form action="https://mysupport.razer.com/app/contact-support" id="support-map" method="POST"><input name="case_category" type="hidden" value="headset" />
 <div class="row mt-5">
-<div class="col-sm-4"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" onclick="showSection('asc-issues')">Audio, Sound, &amp;<br />
+<div class="col-sm-4"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" tabindex="0" onclick="showSection('asc-issues')">Audio, Sound, &amp;<br />
 Connection Issues</label></div>
 
-<div class="col-sm-4"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" onclick="showSection('cosmetic-issues')">Cosmetic &amp;<br />
+<div class="col-sm-4"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" tabindex="0" onclick="showSection('cosmetic-issues')">Cosmetic &amp;<br />
 Physical Issues</label></div>
 
-<div class="col-sm-4"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" onclick="showSection('microphone-issues')">Microphone<br />
+<div class="col-sm-4"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" tabindex="0" onclick="showSection('microphone-issues')">Microphone<br />
 Issues</label></div>
 </div>
 
 <div class="row mb-5">
-<div class="col-sm-4 offset-sm-2"><input id="main-tab-4" name="case_reason" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-4" onclick="showSection('power-issues')">Power &amp;<br />
+<div class="col-sm-4 offset-sm-2"><input id="main-tab-4" name="case_reason" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-4" tabindex="0" onclick="showSection('power-issues')">Power &amp;<br />
 Battery Issues</label></div>
 
-<div class="col-sm-4"><input id="main-tab-5" name="case_reason" type="radio" value="4" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-5" onclick="showSection('general-questions')">General Product Questions</label></div>
+<div class="col-sm-4"><input id="main-tab-5" name="case_reason" type="radio" value="4" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-5" tabindex="0" onclick="showSection('general-questions')">General Product Questions</label></div>
 </div>
 
 <div class="ts-section d-none mb-5" id="asc-issues">
@@ -107,32 +110,32 @@ Battery Issues</label></div>
 <div class="row">
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-1-sym1" name="case_symptoms[]" type="checkbox" value="0" /><label for="tab-1-sym1">No audio or sound</label></p>
-</li>
-<li>
-<p><input id="tab-1-sym2" name="case_symptoms[]" type="checkbox" value="1" /><label for="tab-1-sym2">Crackling, rattling, distorted, static, buzzing</label></p>
-</li>
-<li>
-<p><input id="tab-1-sym3" name="case_symptoms[]" type="checkbox" value="2" /><label for="tab-1-sym3">Audio balance issue</label></p>
-</li>
-<li>
-<p><input id="tab-1-sym4" name="case_symptoms[]" type="checkbox" value="3" /><label for="tab-1-sym4">Audio cutting out or dropping</label></p>
-</li>
+	<li>
+	<p><input id="tab-1-sym1" name="case_symptoms[]" type="checkbox" value="0" /><label for="tab-1-sym1">No audio or sound</label></p>
+	</li>
+	<li>
+	<p><input id="tab-1-sym2" name="case_symptoms[]" type="checkbox" value="1" /><label for="tab-1-sym2">Crackling, rattling, distorted, static, buzzing</label></p>
+	</li>
+	<li>
+	<p><input id="tab-1-sym3" name="case_symptoms[]" type="checkbox" value="2" /><label for="tab-1-sym3">Audio balance issue</label></p>
+	</li>
+	<li>
+	<p><input id="tab-1-sym4" name="case_symptoms[]" type="checkbox" value="3" /><label for="tab-1-sym4">Audio cutting out or dropping</label></p>
+	</li>
 </ul>
 </div>
 
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-1-sym5" name="case_symptoms[]" type="checkbox" value="4" /><label for="tab-1-sym5">No sound from one earbud/earpiece</label></p>
-</li>
-<li>
-<p><input id="tab-1-sym6" name="case_symptoms[]" type="checkbox" value="5" /><label for="tab-1-sym6">Low audio</label></p>
-</li>
-<li>
-<p><input id="tab-1-sym7" name="case_symptoms[]" type="checkbox" value="17" /><label for="tab-1-sym7">Other issues not listed</label></p>
-</li>
+	<li>
+	<p><input id="tab-1-sym5" name="case_symptoms[]" type="checkbox" value="4" /><label for="tab-1-sym5">No sound from one earbud/earpiece</label></p>
+	</li>
+	<li>
+	<p><input id="tab-1-sym6" name="case_symptoms[]" type="checkbox" value="5" /><label for="tab-1-sym6">Low audio</label></p>
+	</li>
+	<li>
+	<p><input id="tab-1-sym7" name="case_symptoms[]" type="checkbox" value="17" /><label for="tab-1-sym7">Other issues not listed</label></p>
+	</li>
 </ul>
 </div>
 </div>
@@ -142,19 +145,19 @@ Battery Issues</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-1-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-usb" onclick="showSubItem('audio-usb')">USB<br />
+<div class="col-sm"><input id="tab-1-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-usb" tabindex="0" onclick="showSubItem('audio-usb')">USB<br />
 Cable</label></div>
 
-<div class="col-sm"><input id="tab-1-jack" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-jack" onclick="showSubItem('audio-jack')">3.5mm<br />
+<div class="col-sm"><input id="tab-1-jack" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-jack" tabindex="0" onclick="showSubItem('audio-jack')">3.5mm<br />
 Audio Cable</label></div>
 
-<div class="col-sm"><input id="tab-1-mobile" name="case_connection" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-mobile" onclick="showSubItem('audio-mobile')">Bluetooth<br />
+<div class="col-sm"><input id="tab-1-mobile" name="case_connection" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-mobile" tabindex="0" onclick="showSubItem('audio-mobile')">Bluetooth<br />
 via Phone</label></div>
 
-<div class="col-sm"><input id="tab-1-pc" name="case_connection" type="radio" value="4" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-pc" onclick="showSubItem('audio-pc')">Bluetooth<br />
+<div class="col-sm"><input id="tab-1-pc" name="case_connection" type="radio" value="4" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-pc" tabindex="0" onclick="showSubItem('audio-pc')">Bluetooth<br />
 via PC</label></div>
 
-<div class="col-sm"><input id="tab-1-dongle" name="case_connection" type="radio" value="5" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-dongle" onclick="showSubItem('audio-dongle')">USB<br />
+<div class="col-sm"><input id="tab-1-dongle" name="case_connection" type="radio" value="5" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-dongle" tabindex="0" onclick="showSubItem('audio-dongle')">USB<br />
 Dongle</label></div>
 </div>
 </fieldset>
@@ -165,34 +168,34 @@ Dongle</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Connect your headset directly to the PC and not a USB hub. Also try another USB port.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your headset if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" /><a href="https://support.microsoft.com/en-us/windows/fix-sound-or-audio-problems-in-windows-73025246-b61c-40fb-671a-2535c7cd56c8" target="_blank">Fix sound or audio problems in Windows</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Ensure that your headset is set as the default playback device.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Connect your headset directly to the PC and not a USB hub. Also try another USB port.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your headset if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" /><a href="https://support.microsoft.com/en-us/windows/fix-sound-or-audio-problems-in-windows-73025246-b61c-40fb-671a-2535c7cd56c8" target="_blank">Fix sound or audio problems in Windows</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Ensure that your headset is set as the default playback device.</p>
 
-<p><img alt="Default playback device" src="https://dl.razerzone.com/src/opa/1-en-v2.png" style="width: 400px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="24" />Rule out software issues. Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists.</p>
+	<p><img alt="Default playback device" src="https://dl.razerzone.com/src/opa/1-en-v2.png" style="width: 400px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="24" />Rule out software issues. Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="25" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-au/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your headset drivers</a>, including <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">Razer Synapse</a>, <a href="https://www.razer.com/71-surround-sound" target="_blank">Razer 7.1 Surround Sound</a> or THX Spatial Audio. Restart your PC then test your headset.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="27" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="25" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-au/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your headset drivers</a>, including <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">Razer Synapse</a>, <a href="https://www.razer.com/71-surround-sound" target="_blank">Razer 7.1 Surround Sound</a> or THX Spatial Audio. Restart your PC then test your headset.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="27" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -202,37 +205,37 @@ Dongle</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" />Check the audio ports and audio jack for any dirt or debris.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" /><a href="https://mysupport.razer.com/app/answers/detail/a_id/4002" target="_blank">Confirm the audio jack is plugged in properly</a>. If you are using a splitter cable, check if the splitter cable is causing the issue.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your headset if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" /><a href="https://support.microsoft.com/en-us/windows/fix-sound-or-audio-problems-in-windows-73025246-b61c-40fb-671a-2535c7cd56c8" target="_blank">Fix sound or audio problems in Windows</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="7" />Ensure the systems onboard audio playback device (e.g., Realtek High-Definition Audio) is set as default.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" />Check the audio ports and audio jack for any dirt or debris.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" /><a href="https://mysupport.razer.com/app/answers/detail/a_id/4002" target="_blank">Confirm the audio jack is plugged in properly</a>. If you are using a splitter cable, check if the splitter cable is causing the issue.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your headset if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" /><a href="https://support.microsoft.com/en-us/windows/fix-sound-or-audio-problems-in-windows-73025246-b61c-40fb-671a-2535c7cd56c8" target="_blank">Fix sound or audio problems in Windows</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="7" />Ensure the systems onboard audio playback device (e.g., Realtek High-Definition Audio) is set as default.</p>
 
-<p><img alt="Default playback device" src="https://dl.razerzone.com/src/opa/1-en-v2.png" style="width: 400px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="24" />Rule out software issues. Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists.</p>
+	<p><img alt="Default playback device" src="https://dl.razerzone.com/src/opa/1-en-v2.png" style="width: 400px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="24" />Rule out software issues. Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="25" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-au/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your headset drivers</a>, including <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">Razer Synapse</a>, <a href="https://www.razer.com/71-surround-sound" target="_blank">Razer 7.1 Surround Sound</a> or THX Spatial Audio. Restart your PC then test your headset.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="27" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="25" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-au/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your headset drivers</a>, including <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">Razer Synapse</a>, <a href="https://www.razer.com/71-surround-sound" target="_blank">Razer 7.1 Surround Sound</a> or THX Spatial Audio. Restart your PC then test your headset.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="27" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -242,24 +245,24 @@ Dongle</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="8" />Make sure your phone is compatible with your Razer headset.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="9" />Clean the attached silicone tips with a soft cloth lightly saturated with warm water.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="10" />Power is important. Verify earbuds are fully charged and turned on. Check your <a href="https://support.razer.com/pc/gaming-headsets-and-audio" target="_blank">product user guide</a> for best practices.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="11" />Update your device to the latest firmware via the Razer Audio app for <a href="https://apps.apple.com/us/app/razer-audio/id1525531841" target="_blank">iOS</a> or <a href="https://play.google.com/store/apps/details?id=com.razer.audiocompanion&amp;hl=en_US&amp;gl=US" target="_blank">Android</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Remove and re-pair the Bluetooth headset to your phone.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />Test your headset with a different phone.</p>
-</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="8" />Make sure your phone is compatible with your Razer headset.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="9" />Clean the attached silicone tips with a soft cloth lightly saturated with warm water.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="10" />Power is important. Verify earbuds are fully charged and turned on. Check your <a href="https://support.razer.com/pc/gaming-headsets-and-audio" target="_blank">product user guide</a> for best practices.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="11" />Update your device to the latest firmware via the Razer Audio app for <a href="https://apps.apple.com/us/app/razer-audio/id1525531841" target="_blank">iOS</a> or <a href="https://play.google.com/store/apps/details?id=com.razer.audiocompanion&amp;hl=en_US&amp;gl=US" target="_blank">Android</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Remove and re-pair the Bluetooth headset to your phone.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />Test your headset with a different phone.</p>
+	</li>
 </ul>
 </div>
 
@@ -269,37 +272,37 @@ Dongle</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" /><strong>Power is important.</strong> Make sure your headset is fully charged before troubleshooting.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="15" /><strong>Switch it ON.</strong> Make sure the wireless mode is ON or the button is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-headsets-and-audio" target="_blank">product user guide</a> on how to configure the wireless mode of your headset.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your headset if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" /><a href="https://support.microsoft.com/en-us/windows/fix-sound-or-audio-problems-in-windows-73025246-b61c-40fb-671a-2535c7cd56c8" target="_blank">Fix sound or audio problems in Windows</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Ensure that your headset is set as the default playback device.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" /><strong>Power is important.</strong> Make sure your headset is fully charged before troubleshooting.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="15" /><strong>Switch it ON.</strong> Make sure the wireless mode is ON or the button is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-headsets-and-audio" target="_blank">product user guide</a> on how to configure the wireless mode of your headset.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your headset if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" /><a href="https://support.microsoft.com/en-us/windows/fix-sound-or-audio-problems-in-windows-73025246-b61c-40fb-671a-2535c7cd56c8" target="_blank">Fix sound or audio problems in Windows</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Ensure that your headset is set as the default playback device.</p>
 
-<p><img alt="Default playback device" src="https://dl.razerzone.com/src/opa/1-en-v2.png" style="width: 400px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="24" />Rule out software issues. Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists.</p>
+	<p><img alt="Default playback device" src="https://dl.razerzone.com/src/opa/1-en-v2.png" style="width: 400px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="24" />Rule out software issues. Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="25" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-au/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your headset drivers</a>, including <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">Razer Synapse</a>, <a href="https://www.razer.com/71-surround-sound" target="_blank">Razer 7.1 Surround Sound</a> or THX Spatial Audio. Restart your PC then test your headset.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="27" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="25" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-au/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your headset drivers</a>, including <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">Razer Synapse</a>, <a href="https://www.razer.com/71-surround-sound" target="_blank">Razer 7.1 Surround Sound</a> or THX Spatial Audio. Restart your PC then test your headset.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="27" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -309,40 +312,40 @@ Dongle</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" /><strong>Power is important.</strong> Make sure your headset is fully charged before troubleshooting.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="15" /><strong>Switch it ON.</strong> Make sure the wireless mode is ON or the button is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-headsets-and-audio" target="_blank">product user guide</a> on how to configure the wireless mode of your headset.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your headset if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="16" />Download and run the <a href="https://mysupport.razer.com/app/answers/detail/a_id/5994" target="_blank">Pairing Utility</a> of your headset. If your device is not listed, skip this step.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" /><a href="https://support.microsoft.com/en-us/windows/fix-sound-or-audio-problems-in-windows-73025246-b61c-40fb-671a-2535c7cd56c8" target="_blank">Fix sound or audio problems in Windows</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Ensure your headset is set as the default playback device.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" /><strong>Power is important.</strong> Make sure your headset is fully charged before troubleshooting.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="15" /><strong>Switch it ON.</strong> Make sure the wireless mode is ON or the button is switched to the correct wireless mode. Check your <a href="https://support.razer.com/pc/gaming-headsets-and-audio" target="_blank">product user guide</a> on how to configure the wireless mode of your headset.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your headset if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="16" />Download and run the <a href="https://mysupport.razer.com/app/answers/detail/a_id/5994" target="_blank">Pairing Utility</a> of your headset. If your device is not listed, skip this step.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" /><a href="https://support.microsoft.com/en-us/windows/fix-sound-or-audio-problems-in-windows-73025246-b61c-40fb-671a-2535c7cd56c8" target="_blank">Fix sound or audio problems in Windows</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Ensure your headset is set as the default playback device.</p>
 
-<p><img alt="Default playback device" src="https://dl.razerzone.com/src/opa/1-en-v2.png" style="width: 400px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="24" />Rule out software issues. Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists.</p>
+	<p><img alt="Default playback device" src="https://dl.razerzone.com/src/opa/1-en-v2.png" style="width: 400px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="24" />Rule out software issues. Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="25" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-au/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your headset drivers</a>, including <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">Razer Synapse</a>, <a href="https://www.razer.com/71-surround-sound" target="_blank">Razer 7.1 Surround Sound</a> or THX Spatial Audio. Restart your PC then test your headset.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="27" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="25" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-au/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your headset drivers</a>, including <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">Razer Synapse</a>, <a href="https://www.razer.com/71-surround-sound" target="_blank">Razer 7.1 Surround Sound</a> or THX Spatial Audio. Restart your PC then test your headset.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="27" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -360,26 +363,26 @@ Dongle</label></div>
 <p><a href="https://www.razer.com/shop/replacement-parts/replacement-parts-audio" target="_blank">Spare parts</a> are made available online (for US &amp; Canada). If you wish to contact support, please make sure to have the information below in the event an RMA for a replacement is needed.</p>
 
 <ul>
-<li>
-<p>When and how the issue occurred.</p>
-</li>
-<li>
-<p><a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">Prepare a photo or video</a> that shows the issue of the product.</p>
-</li>
-<li>
-<p>Proof of purchase. For online purchases (e.g. Amazon, BestBuy, etc.), please print/export a PDF copy of the receipt.</p>
-</li>
-<li>
-<p>Shipping and billing address.</p>
-</li>
+	<li>
+	<p>When and how the issue occurred.</p>
+	</li>
+	<li>
+	<p><a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">Prepare a photo or video</a> that shows the issue of the product.</p>
+	</li>
+	<li>
+	<p>Proof of purchase. For online purchases (e.g. Amazon, BestBuy, etc.), please print/export a PDF copy of the receipt.</p>
+	</li>
+	<li>
+	<p>Shipping and billing address.</p>
+	</li>
 </ul>
 
 <p>In order to move forward, we require you to review and agree on the terms and conditions of the limited warranty from our warranty policy.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="28" />I have reviewed and agreed to the terms and conditions of the Limited Warranty as specified in <a href="https://www.razer.com/warranty" target="_blank">Razer’s warranty policy</a>.</p>
-</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="28" />I have reviewed and agreed to the terms and conditions of the Limited Warranty as specified in <a href="https://www.razer.com/warranty" target="_blank">Razer’s warranty policy</a>.</p>
+	</li>
 </ul>
 
 <p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
@@ -395,35 +398,35 @@ Dongle</label></div>
 <div class="row">
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-3-sym1" name="case_symptoms[]" type="checkbox" value="6" /><label for="tab-3-sym1">Mic does not pick up sound</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym2" name="case_symptoms[]" type="checkbox" value="7" /><label for="tab-3-sym2">Muffled voice</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym3" name="case_symptoms[]" type="checkbox" value="8" /><label for="tab-3-sym3">Mic too sensitive</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym4" name="case_symptoms[]" type="checkbox" value="9" /><label for="tab-3-sym4">Distorted sound</label></p>
-</li>
+	<li>
+	<p><input id="tab-3-sym1" name="case_symptoms[]" type="checkbox" value="6" /><label for="tab-3-sym1">Mic does not pick up sound</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym2" name="case_symptoms[]" type="checkbox" value="7" /><label for="tab-3-sym2">Muffled voice</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym3" name="case_symptoms[]" type="checkbox" value="8" /><label for="tab-3-sym3">Mic too sensitive</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym4" name="case_symptoms[]" type="checkbox" value="9" /><label for="tab-3-sym4">Distorted sound</label></p>
+	</li>
 </ul>
 </div>
 
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-3-sym5" name="case_symptoms[]" type="checkbox" value="10" /><label for="tab-3-sym5">Crackling sound</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym6" name="case_symptoms[]" type="checkbox" value="11" /><label for="tab-3-sym6">Low volume</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym7" name="case_symptoms[]" type="checkbox" value="12" /><label for="tab-3-sym7">Fading sound</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym8" name="case_symptoms[]" type="checkbox" value="17" /><label for="tab-3-sym8">Other issues not listed</label></p>
-</li>
+	<li>
+	<p><input id="tab-3-sym5" name="case_symptoms[]" type="checkbox" value="10" /><label for="tab-3-sym5">Crackling sound</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym6" name="case_symptoms[]" type="checkbox" value="11" /><label for="tab-3-sym6">Low volume</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym7" name="case_symptoms[]" type="checkbox" value="12" /><label for="tab-3-sym7">Fading sound</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym8" name="case_symptoms[]" type="checkbox" value="17" /><label for="tab-3-sym8">Other issues not listed</label></p>
+	</li>
 </ul>
 </div>
 </div>
@@ -433,13 +436,13 @@ Dongle</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-3-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-usb" onclick="showSubItem('mic-ts')">USB Cable</label></div>
+<div class="col-sm"><input id="tab-3-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-usb" tabindex="0" onclick="showSubItem('mic-ts')">USB Cable</label></div>
 
-<div class="col-sm"><input id="tab-3-jack" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-jack" onclick="showSubItem('mic-ts')">3.5mm Audio Cable</label></div>
+<div class="col-sm"><input id="tab-3-jack" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-jack" tabindex="0" onclick="showSubItem('mic-ts')">3.5mm Audio Cable</label></div>
 
-<div class="col-sm"><input id="tab-3-mobile" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-mobile" onclick="showSubItem('mic-ts')">Bluetooth</label></div>
+<div class="col-sm"><input id="tab-3-mobile" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-mobile" tabindex="0" onclick="showSubItem('mic-ts')">Bluetooth</label></div>
 
-<div class="col-sm"><input id="tab-3-dongle" name="case_connection" type="radio" value="5" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-dongle" onclick="showSubItem('mic-ts')">USB Dongle</label></div>
+<div class="col-sm"><input id="tab-3-dongle" name="case_connection" type="radio" value="5" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-dongle" tabindex="0" onclick="showSubItem('mic-ts')">USB Dongle</label></div>
 </div>
 </fieldset>
 
@@ -449,61 +452,61 @@ Dongle</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="18" />Clean dirt or debris that may obstruct the vents or diaphragm of your mic.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="19" />Ensure the audio ports and jacks are clean and the headset mic is properly attached.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="20" />Make sure the mic diaphragm is in front and the air vent is facing away from your mouth.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="18" />Clean dirt or debris that may obstruct the vents or diaphragm of your mic.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="19" />Ensure the audio ports and jacks are clean and the headset mic is properly attached.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="20" />Make sure the mic diaphragm is in front and the air vent is facing away from your mouth.</p>
 
-<p><img alt="Mic diaphragm and air vent" src="https://dl.razerzone.com/src/opa/5-en-v1.png" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="21" /><a href="https://support.microsoft.com/en-us/windows/fix-microphone-problems-5f230348-106d-bfa4-1db5-336f35576011" target="_blank">Make sure your apps can access the mic</a>.</p>
+	<p><img alt="Mic diaphragm and air vent" src="https://dl.razerzone.com/src/opa/5-en-v1.png" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="0" />Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="21" /><a href="https://support.microsoft.com/en-us/windows/fix-microphone-problems-5f230348-106d-bfa4-1db5-336f35576011" target="_blank">Make sure your apps can access the mic</a>.</p>
 
-<p><img alt="Allow app mic access" src="https://dl.razerzone.com/src/opa/6-en-v2.png" style="width: 400px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="22" />Ensure your headset is set as the default recording device.</p>
+	<p><img alt="Allow app mic access" src="https://dl.razerzone.com/src/opa/6-en-v2.png" style="width: 400px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="22" />Ensure your headset is set as the default recording device.</p>
 
-<p><img alt="Task bar sounds" src="https://dl.razerzone.com/src/opa/3-en-v1.png" /></p>
+	<p><img alt="Task bar sounds" src="https://dl.razerzone.com/src/opa/3-en-v1.png" /></p>
 
-<p><img alt="Default recording device" src="https://dl.razerzone.com/src/opa/4-en-v2.png" style="width: 400px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="23" />Set Windows microphone level and microphone boost to values that works well for your setup.</p>
+	<p><img alt="Default recording device" src="https://dl.razerzone.com/src/opa/4-en-v2.png" style="width: 400px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="23" />Set Windows microphone level and microphone boost to values that works well for your setup.</p>
 
-<p><strong>Note:</strong> Higher levels can cause mic to be more sensitive.</p>
+	<p><strong>Note:</strong> Higher levels can cause mic to be more sensitive.</p>
 
-<p><img alt="Task bar sounds" src="https://dl.razerzone.com/src/opa/3-en-v1.png" /></p>
+	<p><img alt="Task bar sounds" src="https://dl.razerzone.com/src/opa/3-en-v1.png" /></p>
 
-<p><img alt="Sound properties" class="mr-2" src="https://dl.razerzone.com/src/opa/7-en-v1.png" style="width: 400px;" /> <img alt="Set mic level and mic boost" src="https://dl.razerzone.com/src/opa/7-en-v2.png" style="width: 400px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your headset if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="16" />Download and run the <a href="https://mysupport.razer.com/app/answers/detail/a_id/5994" target="_blank">Pairing Utility</a> of your headset. If your device is not listed, skip this step.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="24" />Rule out software issues. Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists.</p>
+	<p><img alt="Sound properties" class="mr-2" src="https://dl.razerzone.com/src/opa/7-en-v1.png" style="width: 400px;" /> <img alt="Set mic level and mic boost" src="https://dl.razerzone.com/src/opa/7-en-v2.png" style="width: 400px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your headset if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="16" />Download and run the <a href="https://mysupport.razer.com/app/answers/detail/a_id/5994" target="_blank">Pairing Utility</a> of your headset. If your device is not listed, skip this step.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="24" />Rule out software issues. Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="25" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-au/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your headset drivers</a>, including <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">Razer Synapse</a>, <a href="https://www.razer.com/71-surround-sound" target="_blank">Razer 7.1 Surround Sound</a> or THX Spatial Audio. Restart your PC then test your headset.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="26" />If the issue only happens while Razer Synapse is running, logout from Razer Synapse and test with another Razer account.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="27" />Check if the issue persists with a different PC.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/opa/2-en-v2.png" style="width: 320px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="25" />If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-au/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your headset drivers</a>, including <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">Razer Synapse</a>, <a href="https://www.razer.com/71-surround-sound" target="_blank">Razer 7.1 Surround Sound</a> or THX Spatial Audio. Restart your PC then test your headset.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="26" />If the issue only happens while Razer Synapse is running, logout from Razer Synapse and test with another Razer account.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="27" />Check if the issue persists with a different PC.</p>
+	</li>
 </ul>
 </div>
 
@@ -525,26 +528,26 @@ Dongle</label></div>
 <div class="row">
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-4-sym1" name="case_symptoms[]" type="checkbox" value="13" /><label for="tab-4-sym1">Headset does not charge</label></p>
-</li>
-<li>
-<p><input id="tab-4-sym2" name="case_symptoms[]" type="checkbox" value="14" /><label for="tab-4-sym2">Battery drains fast</label></p>
-</li>
-<li>
-<p><input id="tab-4-sym3" name="case_symptoms[]" type="checkbox" value="15" /><label for="tab-4-sym3">Poor battery life</label></p>
-</li>
+	<li>
+	<p><input id="tab-4-sym1" name="case_symptoms[]" type="checkbox" value="13" /><label for="tab-4-sym1">Headset does not charge</label></p>
+	</li>
+	<li>
+	<p><input id="tab-4-sym2" name="case_symptoms[]" type="checkbox" value="14" /><label for="tab-4-sym2">Battery drains fast</label></p>
+	</li>
+	<li>
+	<p><input id="tab-4-sym3" name="case_symptoms[]" type="checkbox" value="15" /><label for="tab-4-sym3">Poor battery life</label></p>
+	</li>
 </ul>
 </div>
 
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-4-sym5" name="case_symptoms[]" type="checkbox" value="16" /><label for="tab-4-sym5">Headset won't power on</label></p>
-</li>
-<li>
-<p><input id="tab-4-sym6" name="case_symptoms[]" type="checkbox" value="17" /><label for="tab-4-sym6">Other issues not listed</label></p>
-</li>
+	<li>
+	<p><input id="tab-4-sym5" name="case_symptoms[]" type="checkbox" value="16" /><label for="tab-4-sym5">Headset won't power on</label></p>
+	</li>
+	<li>
+	<p><input id="tab-4-sym6" name="case_symptoms[]" type="checkbox" value="17" /><label for="tab-4-sym6">Other issues not listed</label></p>
+	</li>
 </ul>
 </div>
 </div>
@@ -553,31 +556,31 @@ Dongle</label></div>
 <h3><strong>Solutions</strong></h3>
 
 <ol>
-<li>
-<p>Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
-</li>
-<li>
-<p>Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your headset if it is on the list.</p>
-</li>
-<li>
-<p>Charge your headset directly to your PCs USB port using the cable that came with your device.</p>
-</li>
-<li>
-<p>Make sure to fully charge your headset as indicated in your <a href="https://support.razer.com/pc/gaming-headsets-and-audio" target="_blank">product user guide</a>.</p>
-</li>
+	<li>
+	<p>Get the latest <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows update</a>.</p>
+	</li>
+	<li>
+	<p>Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your headset if it is on the list.</p>
+	</li>
+	<li>
+	<p>Charge your headset directly to your PCs USB port using the cable that came with your device.</p>
+	</li>
+	<li>
+	<p>Make sure to fully charge your headset as indicated in your <a href="https://support.razer.com/pc/gaming-headsets-and-audio" target="_blank">product user guide</a>.</p>
+	</li>
 </ol>
 
 <p>If all above steps did not work, it's likely that your product needs to be replaced. For warranty claims, please prepare the following before contacting support.</p>
 
 <ul>
-<li>Proof of purchase. For online purchases (e.g. Amazon, BestBuy, etc.), please print/export a PDF copy of the receipt.</li>
-<li>Shipping and billing address.</li>
+	<li>Proof of purchase. For online purchases (e.g. Amazon, BestBuy, etc.), please print/export a PDF copy of the receipt.</li>
+	<li>Shipping and billing address.</li>
 </ul>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="28" />I have reviewed and agreed to the terms and conditions of the Limited Warranty as specified in <a href="https://www.razer.com/warranty" target="_blank">Razer’s warranty policy</a>.</p>
-</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="28" />I have reviewed and agreed to the terms and conditions of the Limited Warranty as specified in <a href="https://www.razer.com/warranty" target="_blank">Razer’s warranty policy</a>.</p>
+	</li>
 </ul>
 
 <p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
@@ -722,4 +725,4 @@ function getUrlSegment(index) {
 	}
 }
 
-</script>
+</script></div>

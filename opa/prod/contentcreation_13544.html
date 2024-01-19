@@ -1,4 +1,7 @@
-<style type="text/css">#support-map .rz_Btn {
+<style type="text/css">
+.rn_ContentDetail .rn_RecordDetail .rn_AnswerInfo { display: none; }
+
+#support-map .rz_Btn {
 	display: block;
 	width: 100%;
 	max-width: 230px;
@@ -80,28 +83,28 @@
 <div>$oda_ts_notice
 <form action="https://mysupport.razer.com/app/contact-support" id="support-map" method="POST"><input name="case_category" type="hidden" value="broadcaster" /> <!-- Issues List -->
 <div class="row mt-5">
-<div class="col-sm-4"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" onclick="showSection('connection-issue')"> Connection<br />
+<div class="col-sm-4"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" tabindex="0" onclick="showSection('connection-issue')"> Connection<br />
 Issues</label></div>
 
-<div class="col-sm-4"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" onclick="showSection('audio-mic-issue')"> Audio &amp; Mic<br />
+<div class="col-sm-4"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" tabindex="0" onclick="showSection('audio-mic-issue')"> Audio &amp; Mic<br />
 Issues</label></div>
 
-<div class="col-sm-4"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" onclick="showSection('video-issue')"> Video<br />
+<div class="col-sm-4"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" tabindex="0" onclick="showSection('video-issue')"> Video<br />
 Issues</label></div>
 </div>
 
 <div class="row mb-5">
-<div class="col-sm-4 offset-sm-2"><input id="main-tab-4" name="case_reason" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-4" onclick="showSection('nq-issues')"> Non-quality<br />
+<div class="col-sm-4 offset-sm-2"><input id="main-tab-4" name="case_reason" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-4" tabindex="0" onclick="showSection('nq-issues')"> Non-quality<br />
 Issues</label></div>
 
-<div class="col-sm-4"><input id="main-tab-5" name="case_reason" type="radio" value="4" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-5" onclick="showSection('general-inquiry')"> General<br />
+<div class="col-sm-4"><input id="main-tab-5" name="case_reason" type="radio" value="4" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-5" tabindex="0" onclick="showSection('general-inquiry')"> General<br />
 Inquiry</label></div>
 </div>
 
 <div class="ts-section d-none mb-5" id="connection-issue">
 <h2 class="mb-4">Connection Issues</h2>
 
-<p>Please select one or more symptoms your broadcaster device is experiencing:</p>
+<p>Please select one or more symptoms your device is experiencing:</p>
 
 <h3><strong>Symptom(s):</strong></h3>
 <!-- Connection Issues Symptoms -->
@@ -142,13 +145,13 @@ Inquiry</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-1-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-usb" onclick="showSubItem('usb')">USB<br />
+<div class="col-sm"><input id="tab-1-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-usb" tabindex="0" onclick="showSubItem('usb')">USB<br />
 Cable</label></div>
 
-<div class="col-sm"><input id="tab-1-jack" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-jack" onclick="showSubItem('audio-jack')">3.5mm Audio<br />
+<div class="col-sm"><input id="tab-1-jack" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-jack" tabindex="0" onclick="showSubItem('audio-jack')">3.5mm Audio<br />
 Cable</label></div>
 
-<div class="col-sm"><input id="tab-1-bluetooth" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-bluetooth" onclick="showSubItem('bluetooth')">Bluetooth via<br />
+<div class="col-sm"><input id="tab-1-bluetooth" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-bluetooth" tabindex="0" onclick="showSubItem('bluetooth')">Bluetooth via<br />
 Phone/Console</label></div>
 </div>
 </fieldset>
@@ -187,18 +190,18 @@ Phone/Console</label></div>
 	<p><input name="case_solutions[]" type="checkbox" value="6" /> Device should be <a href="https://mysupport.razer.com/app/answers/detail/a_id/4130" target="_blank">compatible with Synapse</a> or check device <a href="https://support.razer.com/pc/content-creation" target="_blank">product user guide</a> to configure device accordingly.</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="7" /> Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your broadcaster if it is on the list.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="7" /> Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your device if it is on the list.</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="8" /> <strong>Rule out software issues.</strong> Close all broadcaster related software including Razer Synapse.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="8" /> <strong>Rule out software issues.</strong> Close all Razer device related software including Razer Synapse.</p>
 
 	<p><img alt="software issues" src="https://dl.razerzone.com/src/opa/brd/brd-synapse-en-v1.png" /></p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="9" /> If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">reinstall your device drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse. Restart your computer then test your broadcaster device.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="9" /> If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">reinstall your device drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse. Restart your computer then test your device.</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="10" /> Connect and Test your broadcaster device using a different computer.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="10" /> Connect and Test your device using a different computer.</p>
 	</li>
 </ul>
 </div>
@@ -217,7 +220,7 @@ Phone/Console</label></div>
 	<p><input name="case_solutions[]" type="checkbox" value="3" /> Get the latest <a href="https://support.microsoft.com/en-us/windows/update-windows-3c5ae7fc-9fb6-9af1-1984-b5e0412c556a" target="_blank">Windows Update</a>.</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="7" /> Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your broadcaster if it is on the list.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="7" /> Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your device if it is on the list.</p>
 	</li>
 	<li>
 	<p><input name="case_solutions[]" type="checkbox" value="12" /> <a href="https://support.microsoft.com/en-us/windows/fix-sound-or-audio-problems-in-windows-73025246-b61c-40fb-671a-2535c7cd56c8" target="_blank">Fix sound or audio problems in Windows</a>.</p>
@@ -233,10 +236,10 @@ Phone/Console</label></div>
 	<p><img alt="software issues" src="https://dl.razerzone.com/src/opa/brd/brd-synapse-en-v1.png" /></p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="8" /> If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">reinstall your device drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse. Restart your computer then test your broadcaster device.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="8" /> If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">reinstall your device drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse. Restart your computer then test your device.</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="15" /> Test your broadcaster device with a different PC.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="15" /> Test your device with a different PC.</p>
 	</li>
 </ul>
 </div>
@@ -249,22 +252,22 @@ Phone/Console</label></div>
 
 <ul class="list-unstyled list-solutions">
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="16" />Make sure your phone is compatible with your broadcaster device.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="16" />Make sure your phone is compatible with your device.</p>
 	</li>
 	<li>
 	<p><input name="case_solutions[]" type="checkbox" value="17" />Clean the attached silicone tips with a soft cloth lightly saturated with warm water.</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="18" /> <strong>Power is important.</strong> Broadcaster device must be fully charged and turned on. Check your <a href="https://support.razer.com/pc/content-creation" target="_blank">product user guide</a> for best practices.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="18" /> <strong>Power is important.</strong> The device must be fully charged and turned on. Check your <a href="https://support.razer.com/pc/content-creation" target="_blank">product user guide</a> for best practices.</p>
 	</li>
 	<li>
 	<p><input name="case_solutions[]" type="checkbox" value="19" />Update your device to the latest firmware via the Razer Audio app for <a href="https://apps.apple.com/us/app/razer-audio/id1525531841" target="_blank">iOS</a> or <a href="https://play.google.com/store/apps/details?id=com.razer.audiocompanion&amp;hl=en_US&amp;gl=US" target="_blank">Android</a>.</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="20" />Remove and re-pair the Bluetooth broadcaster device to your phone.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="20" />Remove and re-pair the Bluetooth device to your phone.</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="21" />Test your broadcaster device with a different Phone/console.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="21" />Test your device with a different Phone/console.</p>
 	</li>
 </ul>
 </div>
@@ -280,7 +283,7 @@ Phone/Console</label></div>
 <div class="ts-section d-none mb-5" id="audio-mic-issue">
 <h2 class="mb-4">Audio &amp; Mic Issues</h2>
 
-<p>Please select one or more symptoms your broadcaster device is experiencing:</p>
+<p>Please select one or more symptoms your device is experiencing:</p>
 
 <h3><strong>Symptom(s):</strong></h3>
 
@@ -317,13 +320,13 @@ Phone/Console</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-2-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-usb" onclick="showSubItem('audio-mic-sol')">USB<br />
+<div class="col-sm"><input id="tab-2-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-usb" tabindex="0" onclick="showSubItem('audio-mic-sol')">USB<br />
 Cable</label></div>
 
-<div class="col-sm"><input id="tab-2-jack" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-jack" onclick="showSubItem('audio-mic-sol')">3.5mm Audio<br />
+<div class="col-sm"><input id="tab-2-jack" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-jack" tabindex="0" onclick="showSubItem('audio-mic-sol')">3.5mm Audio<br />
 Cable</label></div>
 
-<div class="col-sm"><input id="tab-2-bluetooth" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-bluetooth" onclick="showSubItem('audio-mic-sol')">Bluetooth via<br />
+<div class="col-sm"><input id="tab-2-bluetooth" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-bluetooth" tabindex="0" onclick="showSubItem('audio-mic-sol')">Bluetooth via<br />
 Phone/Console</label></div>
 </div>
 </fieldset>
@@ -336,7 +339,7 @@ Phone/Console</label></div>
 
 <ul class="list-unstyled list-solutions">
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="22" /> <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">Clean the broadcaster device</a>.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="22" /> <a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">Clean the device</a>.</p>
 	</li>
 	<li>
 	<p><input name="case_solutions[]" type="checkbox" value="23" /> Do not place the microphone directly in front of your mouth.</p>
@@ -362,18 +365,18 @@ Phone/Console</label></div>
 	<p><img alt="micropohone" src="https://dl.razerzone.com/src/opa/brd/brd-mic-en-v1.png" style="width: 500px;" /></p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="7" /> Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your broadcaster if it is on the list.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="7" /> Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your device if it is on the list.</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="8" /> <strong>Rule out software issues.</strong> Close all broadcaster related software including Razer Synapse.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="8" /> <strong>Rule out software issues.</strong> Close all Razer device related software including Razer Synapse.</p>
 
 	<p><img alt="closed synapse" src="https://dl.razerzone.com/src/opa/brd/brd-synapse-en-v1.png" /></p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="9" /> If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">reinstall your device drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse. Restart your computer then test your broadcaster device.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="9" /> If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">reinstall your device drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse. Restart your computer then test your device.</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="28" /> Test your broadcaster device with a PC.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="28" /> Test your device with a PC.</p>
 	</li>
 </ul>
 </div>
@@ -389,7 +392,7 @@ Phone/Console</label></div>
 <div class="ts-section d-none mb-5" id="video-issue">
 <h2 class="mb-4">Video Issues</h2>
 
-<p>Please select one or more symptoms your broadcaster device is experiencing:</p>
+<p>Please select one or more symptoms your device is experiencing:</p>
 
 <h3><strong>Symptom(s):</strong></h3>
 
@@ -433,7 +436,7 @@ Phone/Console</label></div>
 
 <ul class="list-unstyled list-solutions">
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="29" /> <a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">Clean the broadcaster device</a>.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="29" /> <a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">Clean the device</a>.</p>
 	</li>
 	<li>
 	<p><input name="case_solutions[]" type="checkbox" value="30" /> Remove other peripherals not needed during troubleshooting except for the primary keyboard and mouse.</p>
@@ -448,7 +451,7 @@ Phone/Console</label></div>
 	<p><input name="case_solutions[]" type="checkbox" value="3" /> Get the latest <a href="https://support.microsoft.com/en-us/windows/update-windows-3c5ae7fc-9fb6-9af1-1984-b5e0412c556a" target="_blank">Windows Update</a>.</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="7" /> Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your broadcaster if it is on the list.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="7" /> Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your device if it is on the list.</p>
 	</li>
 	<li>
 	<p><input name="case_solutions[]" type="checkbox" value="4" /> <a href="ms-settings:privacy-webcam?activationSource=SMC-Article-13753" target="_blank">Allow camera access</a> on your window settings.</p>
@@ -488,15 +491,15 @@ Phone/Console</label></div>
 	<p>&nbsp;</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="8" /> <strong>Rule out software issues.</strong> Close all broadcaster related software including Razer Synapse.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="8" /> <strong>Rule out software issues.</strong> Close all Razer device related software including Razer Synapse.</p>
 
 	<p><img alt="close synapse" src="https://dl.razerzone.com/src/opa/brd/brd-synapse-en-v1.png" /></p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="35" /> If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your device drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse. Restart your computer then test your broadcaster device.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="35" /> If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your device drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse. Restart your computer then test your device.</p>
 	</li>
 	<li>
-	<p><input name="case_solutions[]" type="checkbox" value="36" /> Test your broadcaster device using a different a PC.</p>
+	<p><input name="case_solutions[]" type="checkbox" value="36" /> Test your device using a different a PC.</p>
 	</li>
 </ul>
 
@@ -509,7 +512,7 @@ Phone/Console</label></div>
 <div class="ts-section d-none mb-5" id="nq-issues">
 <h2 class="mb-4">Non-quality Issues</h2>
 
-<p>Please select one or more symptoms your broadcaster device is experiencing:</p>
+<p>Please select one or more symptoms your device is experiencing:</p>
 
 <h3><strong>Symptom(s):</strong></h3>
 
@@ -537,13 +540,13 @@ Phone/Console</label></div>
 
 <ol>
 	<li>
-	<p>Check <a href="https://support.razer.com/pc/content-creation" target="_blank">product user guide</a> to see broadcaster compatibility, specifications, and best practices.</p>
+	<p>Check <a href="https://support.razer.com/pc/content-creation" target="_blank">product user guide</a> to see device compatibility, specifications, and best practices.</p>
 	</li>
 	<li>
 	<p><a href="https://support.microsoft.com/en-us/windows/update-windows-3c5ae7fc-9fb6-9af1-1984-b5e0412c556a" target="_blank">Windows update</a>.</p>
 	</li>
 	<li>
-	<p>Update broadcaster <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a>.</p>
+	<p>Update device <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a>.</p>
 	</li>
 </ol>
 

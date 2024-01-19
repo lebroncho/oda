@@ -1,4 +1,7 @@
-<style type="text/css">#support-map .rz_Btn {
+<style type="text/css">
+.rn_ContentDetail .rn_RecordDetail .rn_AnswerInfo { display: none; }
+
+#support-map .rz_Btn {
 	display: block;
 	width: 100%;
 	max-width: 230px;
@@ -80,16 +83,16 @@
 <div>$oda_ts_notice
 <form action="https://mysupport.razer.com/app/contact-support" id="support-map" method="POST"><input name="case_category" type="hidden" value="controller" />
 <div class="row my-5">
-<div class="col-sm-3"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" onclick="showSection('joystick-issues')">Joystick /<br />
+<div class="col-sm-3"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" tabindex="0" onclick="showSection('joystick-issues')">Joystick /<br />
 Controller Issues</label></div>
 
-<div class="col-sm-3"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" onclick="showSection('connection-issues')">Power &amp;<br />
+<div class="col-sm-3"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" tabindex="0" onclick="showSection('connection-issues')">Power &amp;<br />
 Connection Issues</label></div>
 
-<div class="col-sm-3"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" onclick="showSection('cosmetic-issues')">Cosmetic &amp;<br />
+<div class="col-sm-3"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" tabindex="0" onclick="showSection('cosmetic-issues')">Cosmetic &amp;<br />
 Physical Issues</label></div>
 
-<div class="col-sm-3"><input id="main-tab-4" name="case_reason" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-4" onclick="showSection('general-inquiry')">General<br />
+<div class="col-sm-3"><input id="main-tab-4" name="case_reason" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-4" tabindex="0" onclick="showSection('general-inquiry')">General<br />
 Inquiry</label></div>
 </div>
 
@@ -124,13 +127,13 @@ Inquiry</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-1-pc" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-pc" onclick="showSubItem('joystick-pc')">PC<br />
+<div class="col-sm"><input id="tab-1-pc" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-pc" tabindex="0" onclick="showSubItem('joystick-pc')">PC<br />
 (wired/wireless)</label></div>
 
-<div class="col-sm"><input id="tab-1-console" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-console" onclick="showSubItem('joystick-console')">Gaming Console<br />
+<div class="col-sm"><input id="tab-1-console" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-console" tabindex="0" onclick="showSubItem('joystick-console')">Gaming Console<br />
 (wired/wireless)</label></div>
 
-<div class="col-sm"><input id="tab-1-console-bt" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-console-bt" onclick="showSubItem('joystick-console-bt')">Gaming Console<br />
+<div class="col-sm"><input id="tab-1-console-bt" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-console-bt" tabindex="0" onclick="showSubItem('joystick-console-bt')">Gaming Console<br />
 via Bluetooth</label></div>
 </div>
 </fieldset>
@@ -344,13 +347,13 @@ via Bluetooth</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-2-pc" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-pc" onclick="showSubItem('connection-pc')">PC<br />
+<div class="col-sm"><input id="tab-2-pc" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-pc" tabindex="0" onclick="showSubItem('connection-pc')">PC<br />
 (wired/wireless)</label></div>
 
-<div class="col-sm"><input id="tab-2-console" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-console" onclick="showSubItem('connection-console')">Gaming Console<br />
+<div class="col-sm"><input id="tab-2-console" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-console" tabindex="0" onclick="showSubItem('connection-console')">Gaming Console<br />
 (wired/wireless)</label></div>
 
-<div class="col-sm"><input id="tab-2-console-bt" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-console-bt" onclick="showSubItem('connection-console-bt')">Gaming Console<br />
+<div class="col-sm"><input id="tab-2-console-bt" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-console-bt" tabindex="0" onclick="showSubItem('connection-console-bt')">Gaming Console<br />
 via Bluetooth</label></div>
 </div>
 </fieldset>

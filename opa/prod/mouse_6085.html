@@ -1,4 +1,7 @@
-<style type="text/css">#support-map .rz_Btn {
+<style type="text/css">
+.rn_ContentDetail .rn_RecordDetail .rn_AnswerInfo { display: none; }
+
+#support-map .rz_Btn {
 	display: block;
 	width: 100%;
 	max-width: 230px;
@@ -77,26 +80,26 @@
 	display: none;
 }
 </style>
-$oda_ts_notice
+<div>$oda_ts_notice
 <form action="https://mysupport.razer.com/app/contact-support" id="support-map" method="POST"><input name="case_category" type="hidden" value="mouse" />
 <div class="row mt-5">
-<div class="col-sm-4"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" onclick="showSection('button-issues')">Buttons &amp; Scroll Wheel Issues</label></div>
+<div class="col-sm-4"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" tabindex="0" onclick="showSection('button-issues')">Buttons &amp; Scroll Wheel Issues</label></div>
 
-<div class="col-sm-4"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" onclick="showSection('cosmetic-issues')">Cosmetic &amp;<br />
+<div class="col-sm-4"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" tabindex="0" onclick="showSection('cosmetic-issues')">Cosmetic &amp;<br />
 Physical Issues</label></div>
 
-<div class="col-sm-4"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" onclick="showSection('connection-issues')">Mouse<br />
+<div class="col-sm-4"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" tabindex="0" onclick="showSection('connection-issues')">Mouse<br />
 Connection Issues</label></div>
 </div>
 
 <div class="row mb-5">
-<div class="col-sm-4"><input id="main-tab-4" name="case_reason" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-4" onclick="showSection('power-issues')">Power &amp;<br />
+<div class="col-sm-4"><input id="main-tab-4" name="case_reason" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-4" tabindex="0" onclick="showSection('power-issues')">Power &amp;<br />
 Battery Issues</label></div>
 
-<div class="col-sm-4"><input id="main-tab-5" name="case_reason" type="radio" value="4" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-5" onclick="showSection('tracking-issues')">Tracking &amp;<br />
+<div class="col-sm-4"><input id="main-tab-5" name="case_reason" type="radio" value="4" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-5" tabindex="0" onclick="showSection('tracking-issues')">Tracking &amp;<br />
 Sensor Issues</label></div>
 
-<div class="col-sm-4"><input id="main-tab-6" name="case_reason" type="radio" value="5" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-6" onclick="showSection('general-questions')">General Product Questions</label></div>
+<div class="col-sm-4"><input id="main-tab-6" name="case_reason" type="radio" value="5" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-6" tabindex="0" onclick="showSection('general-questions')">General Product Questions</label></div>
 </div>
 
 <div class="ts-section d-none mb-5" id="button-issues">
@@ -109,29 +112,29 @@ Sensor Issues</label></div>
 <div class="row">
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-1-sym1" name="case_symptoms[]" type="checkbox" value="0" /><label for="tab-1-sym1">Buttons double clicking</label></p>
-</li>
-<li>
-<p><input id="tab-1-sym2" name="case_symptoms[]" type="checkbox" value="1" /><label for="tab-1-sym2">Buttons spamming</label></p>
-</li>
-<li>
-<p><input id="tab-1-sym3" name="case_symptoms[]" type="checkbox" value="2" /><label for="tab-1-sym3">Buttons do not respond when pressed</label></p>
-</li>
+	<li>
+	<p><input id="tab-1-sym1" name="case_symptoms[]" type="checkbox" value="0" /><label for="tab-1-sym1">Buttons double clicking</label></p>
+	</li>
+	<li>
+	<p><input id="tab-1-sym2" name="case_symptoms[]" type="checkbox" value="1" /><label for="tab-1-sym2">Buttons spamming</label></p>
+	</li>
+	<li>
+	<p><input id="tab-1-sym3" name="case_symptoms[]" type="checkbox" value="2" /><label for="tab-1-sym3">Buttons do not respond when pressed</label></p>
+	</li>
 </ul>
 </div>
 
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-1-sym4" name="case_symptoms[]" type="checkbox" value="3" /><label for="tab-1-sym4">Buttons releasing while pressed</label></p>
-</li>
-<li>
-<p><input id="tab-1-sym5" name="case_symptoms[]" type="checkbox" value="4" /><label for="tab-1-sym5">Bouncing or skipping cursor while scrolling</label></p>
-</li>
-<li>
-<p><input id="tab-1-sym6" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-1-sym6">Other symptom not listed</label></p>
-</li>
+	<li>
+	<p><input id="tab-1-sym4" name="case_symptoms[]" type="checkbox" value="3" /><label for="tab-1-sym4">Buttons releasing while pressed</label></p>
+	</li>
+	<li>
+	<p><input id="tab-1-sym5" name="case_symptoms[]" type="checkbox" value="4" /><label for="tab-1-sym5">Bouncing or skipping cursor while scrolling</label></p>
+	</li>
+	<li>
+	<p><input id="tab-1-sym6" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-1-sym6">Other symptom not listed</label></p>
+	</li>
 </ul>
 </div>
 </div>
@@ -141,11 +144,11 @@ Sensor Issues</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-1-dongle" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-dongle" onclick="showSubItem('button-dongle')">USB Dongle</label></div>
+<div class="col-sm"><input id="tab-1-dongle" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-dongle" tabindex="0" onclick="showSubItem('button-dongle')">USB Dongle</label></div>
 
-<div class="col-sm"><input id="tab-1-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-bt" onclick="showSubItem('button-bt')">Bluetooth</label></div>
+<div class="col-sm"><input id="tab-1-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-bt" tabindex="0" onclick="showSubItem('button-bt')">Bluetooth</label></div>
 
-<div class="col-sm"><input id="tab-1-cable" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-cable" onclick="showSubItem('button-cable')">USB Cable</label></div>
+<div class="col-sm"><input id="tab-1-cable" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-cable" tabindex="0" onclick="showSubItem('button-cable')">USB Cable</label></div>
 </div>
 </fieldset>
 
@@ -155,29 +158,29 @@ Sensor Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="0" />Clean the affected button using a can of compressed air.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Connect the USB dongle directly to the PC and verify there is a clear line of sight from the mouse to the dongle.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="0" />Clean the affected button using a can of compressed air.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Connect the USB dongle directly to the PC and verify there is a clear line of sight from the mouse to the dongle.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
+	</li>
 </ul>
 </div>
 
@@ -187,29 +190,29 @@ Sensor Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="0" />Clean the affected button using a can of compressed air.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="7" /><a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Troubleshoot Windows Bluetooth Problems</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="0" />Clean the affected button using a can of compressed air.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="7" /><a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Troubleshoot Windows Bluetooth Problems</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
+	</li>
 </ul>
 </div>
 
@@ -219,29 +222,29 @@ Sensor Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="0" />Clean the affected button using a can of compressed air.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Connect your mouse directly to the PC and not a USB hub.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="0" />Clean the affected button using a can of compressed air.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Connect your mouse directly to the PC and not a USB hub.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
+	</li>
 </ul>
 </div>
 
@@ -259,26 +262,26 @@ Sensor Issues</label></div>
 <p>Please make sure to have the information below available prior to contacting our support team in the event an RMA for a replacement is needed.</p>
 
 <ul>
-<li>
-<p>When and how the issue occurred.</p>
-</li>
-<li>
-<p>We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">picture/video</a> of the issue. Please have this before you contact our support team.</p>
-</li>
-<li>
-<p>Proof of purchase. For online purchases, please print/export a PDF copy of the receipt from your place of purchase.</p>
-</li>
-<li>
-<p>Shipping and billing address.</p>
-</li>
+	<li>
+	<p>When and how the issue occurred.</p>
+	</li>
+	<li>
+	<p>We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">picture/video</a> of the issue. Please have this before you contact our support team.</p>
+	</li>
+	<li>
+	<p>Proof of purchase. For online purchases, please print/export a PDF copy of the receipt from your place of purchase.</p>
+	</li>
+	<li>
+	<p>Shipping and billing address.</p>
+	</li>
 </ul>
 
 <p>In order to move forward, we require you to review and agree on the terms and conditions of the limited warranty from our warranty policy.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="14" />I have reviewed and agreed to the terms and conditions of the Limited Warranty as specified in <a href="https://www.razer.com/warranty" target="_blank">Razer’s warranty policy</a>.</p>
-</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="14" />I have reviewed and agreed to the terms and conditions of the Limited Warranty as specified in <a href="https://www.razer.com/warranty" target="_blank">Razer’s warranty policy</a>.</p>
+	</li>
 </ul>
 
 <p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
@@ -294,29 +297,29 @@ Sensor Issues</label></div>
 <div class="row">
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-3-sym1" name="case_symptoms[]" type="checkbox" value="5" /><label for="tab-3-sym1">Disconnection issues</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym2" name="case_symptoms[]" type="checkbox" value="6" /><label for="tab-3-sym2">Mouse does not work or is not detected</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym3" name="case_symptoms[]" type="checkbox" value="7" /><label for="tab-3-sym3">Connection drops randomly</label></p>
-</li>
+	<li>
+	<p><input id="tab-3-sym1" name="case_symptoms[]" type="checkbox" value="5" /><label for="tab-3-sym1">Disconnection issues</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym2" name="case_symptoms[]" type="checkbox" value="6" /><label for="tab-3-sym2">Mouse does not work or is not detected</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym3" name="case_symptoms[]" type="checkbox" value="7" /><label for="tab-3-sym3">Connection drops randomly</label></p>
+	</li>
 </ul>
 </div>
 
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-3-sym4" name="case_symptoms[]" type="checkbox" value="8" /><label for="tab-3-sym4">Random freezing issues</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym5" name="case_symptoms[]" type="checkbox" value="9" /><label for="tab-3-sym5">Mouse cannot pair</label></p>
-</li>
-<li>
-<p><input id="tab-3-sym6" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-3-sym6">Other symptom not listed</label></p>
-</li>
+	<li>
+	<p><input id="tab-3-sym4" name="case_symptoms[]" type="checkbox" value="8" /><label for="tab-3-sym4">Random freezing issues</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym5" name="case_symptoms[]" type="checkbox" value="9" /><label for="tab-3-sym5">Mouse cannot pair</label></p>
+	</li>
+	<li>
+	<p><input id="tab-3-sym6" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-3-sym6">Other symptom not listed</label></p>
+	</li>
 </ul>
 </div>
 </div>
@@ -326,11 +329,11 @@ Sensor Issues</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-3-dongle" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-dongle" onclick="showSubItem('connection-dongle')">USB Dongle</label></div>
+<div class="col-sm"><input id="tab-3-dongle" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-dongle" tabindex="0" onclick="showSubItem('connection-dongle')">USB Dongle</label></div>
 
-<div class="col-sm"><input id="tab-3-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-bt" onclick="showSubItem('connection-bt')">Bluetooth</label></div>
+<div class="col-sm"><input id="tab-3-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-bt" tabindex="0" onclick="showSubItem('connection-bt')">Bluetooth</label></div>
 
-<div class="col-sm"><input id="tab-3-cable" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-cable" onclick="showSubItem('connection-cable')">USB Cable</label></div>
+<div class="col-sm"><input id="tab-3-cable" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-3-cable" tabindex="0" onclick="showSubItem('connection-cable')">USB Cable</label></div>
 </div>
 </fieldset>
 
@@ -340,35 +343,35 @@ Sensor Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="8" /><strong>Power is important.</strong> Make sure your mouse is fully charged.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="9" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the mouse is switched to the correct wireless mode.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Connect the USB dongle directly to the PC and verify there is a clear line of sight from the mouse to the dongle.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="10" />Download and run the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4868" target="_blank">Pairing Utility</a> for your mouse. If your device is not listed, skip this step.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="8" /><strong>Power is important.</strong> Make sure your mouse is fully charged.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="9" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the mouse is switched to the correct wireless mode.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Connect the USB dongle directly to the PC and verify there is a clear line of sight from the mouse to the dongle.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="10" />Download and run the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4868" target="_blank">Pairing Utility</a> for your mouse. If your device is not listed, skip this step.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
+	</li>
 </ul>
 </div>
 
@@ -378,32 +381,32 @@ Sensor Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="8" /><strong>Power is important.</strong> Make sure your mouse is fully charged.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="9" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the mouse is switched to the correct wireless mode.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="7" /><a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Troubleshoot Windows Bluetooth Problems</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="8" /><strong>Power is important.</strong> Make sure your mouse is fully charged.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="9" /><strong>Switch it ON.</strong> Make sure wireless mode is ON or the mouse is switched to the correct wireless mode.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="7" /><a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Troubleshoot Windows Bluetooth Problems</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
+	</li>
 </ul>
 </div>
 
@@ -413,26 +416,26 @@ Sensor Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Connect your mouse directly to the PC and not a USB hub.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Connect your mouse directly to the PC and not a USB hub.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
+	</li>
 </ul>
 </div>
 
@@ -454,29 +457,29 @@ Sensor Issues</label></div>
 <div class="row">
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-4-sym1" name="case_symptoms[]" type="checkbox" value="10" /><label for="tab-4-sym1">Mouse does not charge</label></p>
-</li>
-<li>
-<p><input id="tab-4-sym2" name="case_symptoms[]" type="checkbox" value="11" /><label for="tab-4-sym2">Battery drains fast</label></p>
-</li>
-<li>
-<p><input id="tab-4-sym3" name="case_symptoms[]" type="checkbox" value="12" /><label for="tab-4-sym3">Poor battery life</label></p>
-</li>
+	<li>
+	<p><input id="tab-4-sym1" name="case_symptoms[]" type="checkbox" value="10" /><label for="tab-4-sym1">Mouse does not charge</label></p>
+	</li>
+	<li>
+	<p><input id="tab-4-sym2" name="case_symptoms[]" type="checkbox" value="11" /><label for="tab-4-sym2">Battery drains fast</label></p>
+	</li>
+	<li>
+	<p><input id="tab-4-sym3" name="case_symptoms[]" type="checkbox" value="12" /><label for="tab-4-sym3">Poor battery life</label></p>
+	</li>
 </ul>
 </div>
 
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-4-sym4" name="case_symptoms[]" type="checkbox" value="13" /><label for="tab-4-sym4">Stuck at X% while charging</label></p>
-</li>
-<li>
-<p><input id="tab-4-sym5" name="case_symptoms[]" type="checkbox" value="14" /><label for="tab-4-sym5">Mouse won't power on</label></p>
-</li>
-<li>
-<p><input id="tab-4-sym6" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-4-sym6">Other symptom not listed</label></p>
-</li>
+	<li>
+	<p><input id="tab-4-sym4" name="case_symptoms[]" type="checkbox" value="13" /><label for="tab-4-sym4">Stuck at X% while charging</label></p>
+	</li>
+	<li>
+	<p><input id="tab-4-sym5" name="case_symptoms[]" type="checkbox" value="14" /><label for="tab-4-sym5">Mouse won't power on</label></p>
+	</li>
+	<li>
+	<p><input id="tab-4-sym6" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-4-sym6">Other symptom not listed</label></p>
+	</li>
 </ul>
 </div>
 </div>
@@ -487,52 +490,52 @@ Sensor Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least three (3) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="8" />Verify the mouse is fully charged (use new batteries or charge Lithium-Ion batteries for 30+ minutes).</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="8" />Verify the mouse is fully charged (use new batteries or charge Lithium-Ion batteries for 30+ minutes).</p>
 
-<div class="support_faq" id="support_faq" itemscope="" itemtype="https://schema.org/FAQPage">
-<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
-<h3 itemprop="name">Mouse uses a Lithium-Ion Battery Pack</h3>
+	<div class="support_faq" id="support_faq" itemscope="" itemtype="https://schema.org/FAQPage">
+	<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+	<h3 itemprop="name">Mouse uses a Lithium-Ion Battery Pack</h3>
 
-<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
-<div itemprop="text">
-<ol type="i">
-	<li>Turn off your Razer Mouse and charge for at least 30 mins.</li>
-	<li>When charging using a Razer Mouse Dock. Clean the pogo pins and the mouse charging pins using a Q-tip and alcohol. See <a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">How to clean Razer devices</a>.</li>
-	<li>Verify if the issue is present to both charging methods (i.e. charging via a dock or USB charging cable). If issue is present on both charging methods, verify if the issue is present with another PC.</li>
-	<li>If the issue is present with another PC, it is most likely an issue with the mouse. Contact support for warranty options.</li>
-</ol>
-</div>
-</div>
-</div>
+	<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+	<div itemprop="text">
+	<ol type="i">
+		<li>Turn off your Razer Mouse and charge for at least 30 mins.</li>
+		<li>When charging using a Razer Mouse Dock. Clean the pogo pins and the mouse charging pins using a Q-tip and alcohol. See <a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">How to clean Razer devices</a>.</li>
+		<li>Verify if the issue is present to both charging methods (i.e. charging via a dock or USB charging cable). If issue is present on both charging methods, verify if the issue is present with another PC.</li>
+		<li>If the issue is present with another PC, it is most likely an issue with the mouse. Contact support for warranty options.</li>
+	</ol>
+	</div>
+	</div>
+	</div>
 
-<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
-<h3 itemprop="name">Mouse uses AA Alkaline Batteries</h3>
+	<div itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+	<h3 itemprop="name">Mouse uses AA Alkaline Batteries</h3>
 
-<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
-<div itemprop="text">
-<ol type="i">
-	<li>Replace the batteries with new ones and confirm if that resolves the issue.</li>
-	<li>Verify if the issue is present with another PC using the new set of batteries.</li>
-	<li>If the issue is present with another PC, it is most likely an issue with the mouse. Contact support for warranty options.</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="11" />If charging via a mouse dock, <a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">clean the pogo pins and the mouse charging pins</a> using a Q-tip and alcohol.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
-</li>
+	<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+	<div itemprop="text">
+	<ol type="i">
+		<li>Replace the batteries with new ones and confirm if that resolves the issue.</li>
+		<li>Verify if the issue is present with another PC using the new set of batteries.</li>
+		<li>If the issue is present with another PC, it is most likely an issue with the mouse. Contact support for warranty options.</li>
+	</ol>
+	</div>
+	</div>
+	</div>
+	</div>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="11" />If charging via a mouse dock, <a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">clean the pogo pins and the mouse charging pins</a> using a Q-tip and alcohol.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
+	</li>
 </ul>
 
 <p>We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">picture/video</a> of the issue. Please have this before you contact our support team.</p>
@@ -551,26 +554,26 @@ Sensor Issues</label></div>
 <div class="row">
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-5-sym1" name="case_symptoms[]" type="checkbox" value="15" /><label for="tab-5-sym1">Erratic Cursor Movement</label></p>
-</li>
-<li>
-<p><input id="tab-5-sym2" name="case_symptoms[]" type="checkbox" value="16" /><label for="tab-5-sym2">Cursor is jumping or skipping</label></p>
-</li>
-<li>
-<p><input id="tab-5-sym3" name="case_symptoms[]" type="checkbox" value="17" /><label for="tab-5-sym3">Cursor does not move but buttons are working</label></p>
-</li>
+	<li>
+	<p><input id="tab-5-sym1" name="case_symptoms[]" type="checkbox" value="15" /><label for="tab-5-sym1">Erratic Cursor Movement</label></p>
+	</li>
+	<li>
+	<p><input id="tab-5-sym2" name="case_symptoms[]" type="checkbox" value="16" /><label for="tab-5-sym2">Cursor is jumping or skipping</label></p>
+	</li>
+	<li>
+	<p><input id="tab-5-sym3" name="case_symptoms[]" type="checkbox" value="17" /><label for="tab-5-sym3">Cursor does not move but buttons are working</label></p>
+	</li>
 </ul>
 </div>
 
 <div class="col-sm">
 <ul class="list-unstyled list-symptoms">
-<li>
-<p><input id="tab-5-sym4" name="case_symptoms[]" type="checkbox" value="18" /><label for="tab-5-sym4">Cursor keeps disappearing</label></p>
-</li>
-<li>
-<p><input id="tab-5-sym5" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-5-sym5">Other symptom not listed</label></p>
-</li>
+	<li>
+	<p><input id="tab-5-sym4" name="case_symptoms[]" type="checkbox" value="18" /><label for="tab-5-sym4">Cursor keeps disappearing</label></p>
+	</li>
+	<li>
+	<p><input id="tab-5-sym5" name="case_symptoms[]" type="checkbox" value="19" /><label for="tab-5-sym5">Other symptom not listed</label></p>
+	</li>
 </ul>
 </div>
 </div>
@@ -580,11 +583,11 @@ Sensor Issues</label></div>
 
 <fieldset>
 <div class="row mb-2">
-<div class="col-sm"><input id="tab-5-dongle" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-5-dongle" onclick="showSubItem('tracking-dongle')">USB Dongle</label></div>
+<div class="col-sm"><input id="tab-5-dongle" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-5-dongle" tabindex="0" onclick="showSubItem('tracking-dongle')">USB Dongle</label></div>
 
-<div class="col-sm"><input id="tab-5-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-5-bt" onclick="showSubItem('tracking-bt')">Bluetooth</label></div>
+<div class="col-sm"><input id="tab-5-bt" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-5-bt" tabindex="0" onclick="showSubItem('tracking-bt')">Bluetooth</label></div>
 
-<div class="col-sm"><input id="tab-5-cable" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-5-cable" onclick="showSubItem('tracking-cable')">USB Cable</label></div>
+<div class="col-sm"><input id="tab-5-cable" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-5-cable" tabindex="0" onclick="showSubItem('tracking-cable')">USB Cable</label></div>
 </div>
 </fieldset>
 
@@ -594,35 +597,35 @@ Sensor Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="15" />Clean the mouse sensor with a Q-tip lightly coated with alcohol while the mouse is unplugged. Let it dry then blow any accumulated dirt using a can of compressed air.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Connect the USB dongle directly to the PC and verify there is a clear line of sight from the mouse to the dongle.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Reset your mouse's surface calibration in <a href="https://mysupport.razer.com/app/answers/detail/a_id/1845" target="_blank">Razer Synapse 2.0</a> or <a href="https://mysupport.razer.com/app/answers/detail/a_id/1605" target="_blank">Razer Synapse 3</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />Test the mouse on a different surface.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="15" />Clean the mouse sensor with a Q-tip lightly coated with alcohol while the mouse is unplugged. Let it dry then blow any accumulated dirt using a can of compressed air.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Connect the USB dongle directly to the PC and verify there is a clear line of sight from the mouse to the dongle.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Reset your mouse's surface calibration in <a href="https://mysupport.razer.com/app/answers/detail/a_id/1845" target="_blank">Razer Synapse 2.0</a> or <a href="https://mysupport.razer.com/app/answers/detail/a_id/1605" target="_blank">Razer Synapse 3</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />Test the mouse on a different surface.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
+	</li>
 </ul>
 </div>
 
@@ -632,35 +635,35 @@ Sensor Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="15" />Clean the mouse sensor with a Q-tip lightly coated with alcohol while the mouse is unplugged. Let it dry then blow any accumulated dirt using a can of compressed air.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Reset your mouse's surface calibration in <a href="https://mysupport.razer.com/app/answers/detail/a_id/1845" target="_blank">Razer Synapse 2.0</a> or <a href="https://mysupport.razer.com/app/answers/detail/a_id/1605" target="_blank">Razer Synapse 3</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />Test the mouse on a different surface.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="7" /><a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Troubleshoot Windows Bluetooth Problems</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="15" />Clean the mouse sensor with a Q-tip lightly coated with alcohol while the mouse is unplugged. Let it dry then blow any accumulated dirt using a can of compressed air.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Reset your mouse's surface calibration in <a href="https://mysupport.razer.com/app/answers/detail/a_id/1845" target="_blank">Razer Synapse 2.0</a> or <a href="https://mysupport.razer.com/app/answers/detail/a_id/1605" target="_blank">Razer Synapse 3</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />Test the mouse on a different surface.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="7" /><a href="https://support.microsoft.com/en-us/windows/fix-bluetooth-problems-in-windows-723e092f-03fa-858b-5c80-131ec3fba75c#WindowsVersion=Windows_10" target="_blank">Troubleshoot Windows Bluetooth Problems</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
+	</li>
 </ul>
 </div>
 
@@ -670,35 +673,35 @@ Sensor Issues</label></div>
 <p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
 
 <ul class="list-unstyled list-solutions">
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="15" />Clean the mouse sensor with a Q-tip lightly coated with alcohol while the mouse is unplugged. Let it dry then blow any accumulated dirt using a can of compressed air.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="2" />Connect your mouse directly to the PC and not a USB hub.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="12" />Reset your mouse's surface calibration in <a href="https://mysupport.razer.com/app/answers/detail/a_id/1845" target="_blank">Razer Synapse 2.0</a> or <a href="https://mysupport.razer.com/app/answers/detail/a_id/1605" target="_blank">Razer Synapse 3</a>.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="13" />Test the mouse on a different surface.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="15" />Clean the mouse sensor with a Q-tip lightly coated with alcohol while the mouse is unplugged. Let it dry then blow any accumulated dirt using a can of compressed air.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="1" />Verify <a href="https://mysupport.razer.com/app/answers/detail/a_id/1546" target="_blank">Windows is up to date</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="2" />Connect your mouse directly to the PC and not a USB hub.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="3" />Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> on your mouse if it is on the list.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="12" />Reset your mouse's surface calibration in <a href="https://mysupport.razer.com/app/answers/detail/a_id/1845" target="_blank">Razer Synapse 2.0</a> or <a href="https://mysupport.razer.com/app/answers/detail/a_id/1605" target="_blank">Razer Synapse 3</a>.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="13" />Test the mouse on a different surface.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="4" />Check if a software is causing the issue by closing all Razer apps and software.</p>
 
-<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
-</li>
-<li>
-<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
-</li>
+	<p><img alt="Razer Synapse on the system tray" src="https://dl.razerzone.com/src/6085/6085-1-en-v1.png" style="width: 350px; height: 236px;" /></p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="5" />If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4118" target="_blank">reinstall your mouse drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse.</p>
+	</li>
+	<li>
+	<p><input name="case_solutions[]" type="checkbox" value="6" />Test your mouse on another PC and verify if the issue still exists.</p>
+	</li>
 </ul>
 </div>
 
@@ -858,4 +861,4 @@ function getUrlSegment(index) {
 	}
 }
 
-</script>
+</script></div>

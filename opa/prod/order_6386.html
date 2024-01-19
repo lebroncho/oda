@@ -1,309 +1,313 @@
-<style type="text/css">#support-map .rz_Btn {
-	display: block;
-	width: 100%;
-	max-width: 210px;
-	text-align: center;
-	font-size: 1rem;
-	line-height: 1.5rem;
-	font-weight: 400 !important;
-	letter-spacing: 0.09rem !important;
-	border-radius: 0.25rem !important;
-	padding: 0.45rem;
-	margin: 0;
-	white-space: normal;
-	cursor: pointer;
-	text-transform: uppercase;
-	border: 1px solid var(--color-green);
-	color: var(--color-green);
-}
-
-#support-map .rz_Btn:hover,
-#support-map .rz_Btn.disabled {
-	opacity: 1;
-}
-
-#support-map .rz_Btn.disabled {
-	border-color: #555;
-	color: #555 !important;
-}
-
-#support-map input[type=radio]:checked+label.rz_Btn {
-	background-color: var(--color-green) !important;
-	color: #000 !important;
-	font-weight: 500 !important;
-}
-
-#support-map .list-unstyled,
-#support-map .list-unstyled>li {
-	list-style: none !important;
-}
-
-#support-map .list-unstyled {
-	padding-left: 2rem;
-	margin-bottom: 0;
-}
-
-#support-map .list-unstyled li {
-	position: relative;
-}
-
-#support-map .list-unstyled input[type=checkbox] {
-	position: absolute;
-	left: -2rem;
-	top: 0.25rem;
-}
-
-#support-map .list-unstyled input[type=checkbox]:after {
-	border-color: var(--color-green) !important;
-	border-radius: 0.25rem !important;
-}
-
-#support-map .list-unstyled input[type=checkbox]:checked:before {
-	border-color: #222 !important;
-}
-
-#support-map .list-unstyled input[type=checkbox]:checked:after {
-	background-color: var(--color-green) !important;
-}
-
-#support-map input[type=radio] {
-	position: absolute;
-	opacity: 0;
-	height: 0;
-	width: 0;
-}
-
-.d-none {
-	display: none;
-}
-
-@media screen and (max-width: 576px) {
+<style type="text/css">
+	.rn_ContentDetail .rn_RecordDetail .rn_AnswerInfo { display: none; }
+	  
 	#support-map .rz_Btn {
-		display: block !important;
-		margin-left: auto !important;
-		margin-right: auto !important;
-		margin-bottom: 1rem;
+		display: block;
+		width: 100%;
+		max-width: 210px;
+		text-align: center;
+		font-size: 1rem;
+		line-height: 1.5rem;
+		font-weight: 400 !important;
+		letter-spacing: 0.09rem !important;
+		border-radius: 0.25rem !important;
+		padding: 0.45rem;
+		margin: 0;
+		white-space: normal;
+		cursor: pointer;
+		text-transform: uppercase;
+		border: 1px solid var(--color-green);
+		color: var(--color-green);
 	}
-}
-</style>
-<div class="mb-3">$oda_ts_notice</div>
-<form action="https://mysupport.razer.com/app/contact-support" id="support-map" method="POST"><!--	<form action="https://tst1.dev.mysupport.razer.com/app/contact-support?i=or" id="support-map" method="POST">--><input name="case_category" type="hidden" value="order" />
-<p class="mb-3">If you purchased your product from a Razer retail store or an authorized Razer reseller, visit <a href="https://www.razer.com/legal/returns-refunds" target="_blank">Razer refund/return policy</a> for assistance. For RESPAWN purchases, please check <a href="https://www.razer.com/legal/respawn/specific-returns-and-refunds-policy" target="_blank">RESPAWN - specific refunds and returns policy</a>.</p>
-
-<p class="mb-0">What do you need help with your order?</p>
-
-<div class="row my-5">
-<div class="col-sm-4"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" onclick="showSection('order-status')">Get<br />
-Order Status</label></div>
-
-<div class="col-sm-4"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" onclick="showSection('order-return')">Return my Purchase</label></div>
-
-<div class="col-sm-4"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" onclick="showSection('order-cancel')">Cancel<br />
-my Order</label></div>
-</div>
-
-<div class="ts-section d-none mb-5" id="order-status">
-<p>Please note that shipments can be stuck at customs up to 13 days.</p>
-
-<p class="my-4"><a class="rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" href="https://www.razer.com/my-account/orders" target="_blank">Get Order Status</a></p>
-</div>
-
-<div class="ts-section d-none mb-5" id="order-return">
-<p>Did you order from US or Canada?</p>
-
-<div class="mt-4"><input id="region-tab-1" name="case_region" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3" for="region-tab-1" onclick="showSubItem('region-set', 'region-na')">Yes</label> <input id="region-tab-2" name="case_region" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto" for="region-tab-2" onclick="showSubItem('region-set', 'region-not-na')">No</label></div>
-
-<div class="region-set d-none">
-<div class="ts-sub-item d-none" id="region-not-na">
-<p class="mb-3">To expedite your return/refund, you will need to provide your order number, email, and the shipping address from the order.</p>
-
-<ul class="list-unstyled list-solutions mb-3">
-	<li>
-	<p><input id="req-action-1" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-1">I have reviewed the <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a>.</label></p>
-	</li>
-	<li>
-	<p><input id="req-action-2" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-2">I can provide the order number and postal code on the order.</label></p>
-	</li>
-</ul>
-
-<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
-</div>
-
-<div class="ts-sub-item d-none" id="region-na">
-<p>Did you receive the product more than 14 days ago?</p>
-
-<div class="mt-4"><input id="warranty-tab-1" name="case_warranty" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3" for="warranty-tab-1" onclick="showSubItem('warranty-set', 'out-of-warranty')">Yes</label> <input id="warranty-tab-2" name="case_warranty" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto" for="warranty-tab-2" onclick="showSubItem('warranty-set', 'in-warranty')">No</label></div>
-
-<div class="warranty-set d-none">
-<div class="ts-sub-item d-none" id="in-warranty">
-<p>Please make sure to review our <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a> and have your order number to initiate your return/refund.</p>
-
-<p class="my-4"><a class="rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" href="https://returns.narvar.com/razer/returns" target="_blank">Start My Return</a></p>
-</div>
-
-<div class="ts-sub-item d-none" id="out-of-warranty">
-<p class="mb-3">To expedite your return/refund, you will need to provide your order number, email, and the shipping address from the order.</p>
-
-<ul class="list-unstyled list-solutions mb-3">
-	<li>
-	<p><input id="req-action-3" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-3">I have reviewed the <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a>.</label></p>
-	</li>
-	<li>
-	<p><input id="req-action-4" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-4">I can provide the order number and postal code on the order.</label></p>
-	</li>
-</ul>
-
-<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="ts-section d-none mb-5" id="order-cancel">
-<p class="mb-3">To expedite your return/refund, you will need to provide your order number, email, and the shipping address from the order.</p>
-
-<ul class="list-unstyled list-solutions mb-3">
-	<li>
-	<p><input id="req-action-5" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-5">I have reviewed the <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a>.</label></p>
-	</li>
-	<li>
-	<p><input id="req-action-6" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-6">I can provide the order number and postal code on the order.</label></p>
-	</li>
-</ul>
-
-<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
-</div>
-</form>
-<script>
-	// Shows the target section and scrolls down to it on mobile view
-	function showSection(target) {
-		document.querySelectorAll(".ts-section, .ts-content, .ts-sub-item, .contact-supp").forEach(elem => elem.classList.add("d-none"));
-		document.querySelectorAll(".contact_support_Btn").forEach(function(elem) {
-			elem.classList.add("disabled");
-			elem.setAttribute("disabled", true);
-		});
-		document.getElementById("support-map").reset();
-		document.getElementById(target).classList.remove("d-none");
-		//        if (window.innerWidth < 576) {
-		//            $("html, body").animate({
-		//                scrollTop: 820
-		//            }, "slow");
-		//        }
-		// Bypasses the required count of solutions taken
-		if (target == "general-questions") {
-			let contactBtn = document.querySelectorAll(".contact_support_Btn");
-			contactBtn[contactBtn.length - 1].classList.remove("disabled");
-			contactBtn[contactBtn.length - 1].removeAttribute("disabled");
+	
+	#support-map .rz_Btn:hover,
+	#support-map .rz_Btn.disabled {
+		opacity: 1;
+	}
+	
+	#support-map .rz_Btn.disabled {
+		border-color: #555;
+		color: #555 !important;
+	}
+	
+	#support-map input[type=radio]:checked+label.rz_Btn {
+		background-color: var(--color-green) !important;
+		color: #000 !important;
+		font-weight: 500 !important;
+	}
+	
+	#support-map .list-unstyled,
+	#support-map .list-unstyled>li {
+		list-style: none !important;
+	}
+	
+	#support-map .list-unstyled {
+		padding-left: 2rem;
+		margin-bottom: 0;
+	}
+	
+	#support-map .list-unstyled li {
+		position: relative;
+	}
+	
+	#support-map .list-unstyled input[type=checkbox] {
+		position: absolute;
+		left: -2rem;
+		top: 0.25rem;
+	}
+	
+	#support-map .list-unstyled input[type=checkbox]:after {
+		border-color: var(--color-green) !important;
+		border-radius: 0.25rem !important;
+	}
+	
+	#support-map .list-unstyled input[type=checkbox]:checked:before {
+		border-color: #222 !important;
+	}
+	
+	#support-map .list-unstyled input[type=checkbox]:checked:after {
+		background-color: var(--color-green) !important;
+	}
+	
+	#support-map input[type=radio] {
+		position: absolute;
+		opacity: 0;
+		height: 0;
+		width: 0;
+	}
+	
+	.d-none {
+		display: none;
+	}
+	
+	@media screen and (max-width: 576px) {
+		#support-map .rz_Btn {
+			display: block !important;
+			margin-left: auto !important;
+			margin-right: auto !important;
+			margin-bottom: 1rem;
 		}
-		return false;
 	}
-
-	// Shows the target sub-section
-	function showSubItem(parent, target) {
-		document.querySelectorAll("." + parent + " .ts-sub-item").forEach(elem => elem.classList.add("d-none"));
-		document.querySelectorAll(".list-solutions input").forEach(elem => elem.checked = false);
-		document.getElementsByName("case_warranty").forEach(elem => elem.checked = false);
-		document.querySelectorAll(".contact-supp").forEach(elem => elem.classList.remove("d-none"));
-		document.querySelectorAll(".contact_support_Btn").forEach(function(elem) {
-			elem.classList.add("disabled");
-			elem.setAttribute("disabled", true);
-		});
-		document.querySelector("." + parent).classList.remove("d-none");
-		document.getElementById(target).classList.remove("d-none");
-		return false;
-	}
-
-	// Checks if at least the required count of solutions have been taken
-	function checkStepsTaken(section, reqCount) {
-		let symList = document.querySelectorAll("#" + section + " .list-symptoms input"),
-			tsContent = document.querySelector("#" + section + " .ts-content"),
-			solList = document.querySelectorAll("#" + section + " .list-solutions input"),
-			contactBtn = document.querySelector("#" + section + " .contact_support_Btn");
-		symList.forEach(elem => elem.addEventListener("change", function() {
-			let inCount = 0;
-			for (let i = 0; i < symList.length; i++) {
-				symList[i].checked ? inCount++ : inCount;
+	</style>
+	<div class="mb-3">$oda_ts_notice</div>
+	
+	<form action="https://mysupport.razer.com/app/contact-support" id="support-map" method="POST"><!--	<form action="https://tst1.dev.mysupport.razer.com/app/contact-support?i=or" id="support-map" method="POST">--><input name="case_category" type="hidden" value="order" />
+	<p class="mb-3">If you purchased your product from a Razer retail store or an authorized Razer reseller, visit <a href="https://www.razer.com/legal/returns-refunds" target="_blank">Razer refund/return policy</a> for assistance. For RESPAWN purchases, please check <a href="https://www.razer.com/legal/respawn/specific-returns-and-refunds-policy" target="_blank">RESPAWN - specific refunds and returns policy</a>.</p>
+	
+	<p class="mb-0">What do you need help with your order?</p>
+	
+	<div class="row my-5">
+	<div class="col-sm-4"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" tabindex="0" onclick="showSection('order-status')">Get<br />
+	Order Status</label></div>
+	
+	<div class="col-sm-4"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" tabindex="0" onclick="showSection('order-return')">Return my Purchase</label></div>
+	
+	<div class="col-sm-4"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" tabindex="0" onclick="showSection('order-cancel')">Cancel<br />
+	my Order</label></div>
+	</div>
+	
+	<div class="ts-section d-none mb-5" id="order-status">
+	<p>Please note that shipments can be stuck at customs up to 13 days.</p>
+	
+	<p class="my-4"><a class="rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" href="https://www.razer.com/my-account/orders" target="_blank">Get Order Status</a></p>
+	</div>
+	
+	<div class="ts-section d-none mb-5" id="order-return">
+	<p>Did you order from US or Canada?</p>
+	
+	<div class="mt-4"><input id="region-tab-1" name="case_region" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3" for="region-tab-1" tabindex="0" onclick="showSubItem('region-set', 'region-na')">Yes</label> <input id="region-tab-2" name="case_region" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto" for="region-tab-2" tabindex="0" onclick="showSubItem('region-set', 'region-not-na')">No</label></div>
+	
+	<div class="region-set d-none">
+	<div class="ts-sub-item d-none" id="region-not-na">
+	<p class="mb-3">To expedite your return/refund, you will need to provide your order number, email, and the shipping address from the order.</p>
+	
+	<ul class="list-unstyled list-solutions mb-3">
+		<li>
+		<p><input id="req-action-1" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-1">I have reviewed the <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a>.</label></p>
+		</li>
+		<li>
+		<p><input id="req-action-2" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-2">I can provide the order number and postal code on the order.</label></p>
+		</li>
+	</ul>
+	
+	<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+	</div>
+	
+	<div class="ts-sub-item d-none" id="region-na">
+	<p>Did you receive the product more than 14 days ago?</p>
+	
+	<div class="mt-4"><input id="warranty-tab-1" name="case_warranty" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3" for="warranty-tab-1" tabindex="0" onclick="showSubItem('warranty-set', 'out-of-warranty')">Yes</label> <input id="warranty-tab-2" name="case_warranty" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto" for="warranty-tab-2" tabindex="0" onclick="showSubItem('warranty-set', 'in-warranty')">No</label></div>
+	
+	<div class="warranty-set d-none">
+	<div class="ts-sub-item d-none" id="in-warranty">
+	<p>Please make sure to review our <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a> and have your order number to initiate your return/refund.</p>
+	
+	<p class="my-4"><a class="rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" href="https://returns.narvar.com/razer/returns" target="_blank">Start My Return</a></p>
+	</div>
+	
+	<div class="ts-sub-item d-none" id="out-of-warranty">
+	<p class="mb-3">To expedite your return/refund, you will need to provide your order number, email, and the shipping address from the order.</p>
+	
+	<ul class="list-unstyled list-solutions mb-3">
+		<li>
+		<p><input id="req-action-3" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-3">I have reviewed the <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a>.</label></p>
+		</li>
+		<li>
+		<p><input id="req-action-4" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-4">I can provide the order number and postal code on the order.</label></p>
+		</li>
+	</ul>
+	
+	<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	<div class="ts-section d-none mb-5" id="order-cancel">
+	<p class="mb-3">To expedite your return/refund, you will need to provide your order number, email, and the shipping address from the order.</p>
+	
+	<ul class="list-unstyled list-solutions mb-3">
+		<li>
+		<p><input id="req-action-5" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-5">I have reviewed the <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a>.</label></p>
+		</li>
+		<li>
+		<p><input id="req-action-6" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-6">I can provide the order number and postal code on the order.</label></p>
+		</li>
+	</ul>
+	
+	<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+	</div>
+	</form>
+	<script>
+		// Shows the target section and scrolls down to it on mobile view
+		function showSection(target) {
+			document.querySelectorAll(".ts-section, .ts-content, .ts-sub-item, .contact-supp").forEach(elem => elem.classList.add("d-none"));
+			document.querySelectorAll(".contact_support_Btn").forEach(function(elem) {
+				elem.classList.add("disabled");
+				elem.setAttribute("disabled", true);
+			});
+			document.getElementById("support-map").reset();
+			document.getElementById(target).classList.remove("d-none");
+			//        if (window.innerWidth < 576) {
+			//            $("html, body").animate({
+			//                scrollTop: 820
+			//            }, "slow");
+			//        }
+			// Bypasses the required count of solutions taken
+			if (target == "general-questions") {
+				let contactBtn = document.querySelectorAll(".contact_support_Btn");
+				contactBtn[contactBtn.length - 1].classList.remove("disabled");
+				contactBtn[contactBtn.length - 1].removeAttribute("disabled");
 			}
-			inCount > 0 ? tsContent.classList.remove("d-none") : tsContent.classList.add("d-none");
-		}));
-		solList.forEach(elem => elem.addEventListener("change", function() {
-			let inCount = 0;
-			for (let i = 0; i < solList.length; i++) {
-				solList[i].checked ? inCount++ : inCount;
-			}
-			if (inCount >= reqCount) {
-				contactBtn.classList.remove("disabled");
-				contactBtn.removeAttribute("disabled");
-			} else {
-				contactBtn.classList.add("disabled");
-				contactBtn.setAttribute("disabled", true);
-			};
-		}));
-	}
-
-	// Stores the checked field values in localStorage
-	function setCaseInfo() {
-		localStorage.setItem("case_category", document.getElementsByName("case_category")[0].value);
-		localStorage.setItem("case_reason", getValues("case_reason"));
-		localStorage.setItem("case_region", getValues("case_region"));
-		localStorage.setItem("case_warranty", getValues("case_warranty"));
-		localStorage.setItem("case_solutions", getValues("case_solutions[]", true));
-	}
-
-	function getValues(key, multiple = false) {
-		let data = document.getElementsByName(key),
-			value = 'unspecified',
-			valArr = [];
-		if (data.length > 0) {
-			for (let i = 0; i < data.length; i++) {
-				if (data[i].checked) {
-					multiple ? valArr.push(data[i].value) : value = data[i].value;
+			return false;
+		}
+	
+		// Shows the target sub-section
+		function showSubItem(parent, target) {
+			document.querySelectorAll("." + parent + " .ts-sub-item").forEach(elem => elem.classList.add("d-none"));
+			document.querySelectorAll(".list-solutions input").forEach(elem => elem.checked = false);
+			document.getElementsByName("case_warranty").forEach(elem => elem.checked = false);
+			document.querySelectorAll(".contact-supp").forEach(elem => elem.classList.remove("d-none"));
+			document.querySelectorAll(".contact_support_Btn").forEach(function(elem) {
+				elem.classList.add("disabled");
+				elem.setAttribute("disabled", true);
+			});
+			document.querySelector("." + parent).classList.remove("d-none");
+			document.getElementById(target).classList.remove("d-none");
+			return false;
+		}
+	
+		// Checks if at least the required count of solutions have been taken
+		function checkStepsTaken(section, reqCount) {
+			let symList = document.querySelectorAll("#" + section + " .list-symptoms input"),
+				tsContent = document.querySelector("#" + section + " .ts-content"),
+				solList = document.querySelectorAll("#" + section + " .list-solutions input"),
+				contactBtn = document.querySelector("#" + section + " .contact_support_Btn");
+			symList.forEach(elem => elem.addEventListener("change", function() {
+				let inCount = 0;
+				for (let i = 0; i < symList.length; i++) {
+					symList[i].checked ? inCount++ : inCount;
+				}
+				inCount > 0 ? tsContent.classList.remove("d-none") : tsContent.classList.add("d-none");
+			}));
+			solList.forEach(elem => elem.addEventListener("change", function() {
+				let inCount = 0;
+				for (let i = 0; i < solList.length; i++) {
+					solList[i].checked ? inCount++ : inCount;
+				}
+				if (inCount >= reqCount) {
+					contactBtn.classList.remove("disabled");
+					contactBtn.removeAttribute("disabled");
+				} else {
+					contactBtn.classList.add("disabled");
+					contactBtn.setAttribute("disabled", true);
+				};
+			}));
+		}
+	
+		// Stores the checked field values in localStorage
+		function setCaseInfo() {
+			localStorage.setItem("case_category", document.getElementsByName("case_category")[0].value);
+			localStorage.setItem("case_reason", getValues("case_reason"));
+			localStorage.setItem("case_region", getValues("case_region"));
+			localStorage.setItem("case_warranty", getValues("case_warranty"));
+			localStorage.setItem("case_solutions", getValues("case_solutions[]", true));
+		}
+	
+		function getValues(key, multiple = false) {
+			let data = document.getElementsByName(key),
+				value = 'unspecified',
+				valArr = [];
+			if (data.length > 0) {
+				for (let i = 0; i < data.length; i++) {
+					if (data[i].checked) {
+						multiple ? valArr.push(data[i].value) : value = data[i].value;
+					}
 				}
 			}
+			if (multiple) {
+				return JSON.stringify(valArr);
+			}
+			return value;
 		}
-		if (multiple) {
-			return JSON.stringify(valArr);
-		}
-		return value;
-	}
-
-	document.addEventListener("DOMContentLoaded", function() {
-		// Inserts additional actions upon form submission
-		document.getElementById("support-map").addEventListener("submit", function(e) {
-			// e.preventDefault();
-			setCaseInfo();
-		});
-		// Initializes the required steps per section before enabling the contact support button
-		checkStepsTaken("region-not-na", 2);
-		// checkStepsTaken("in-warranty", 2);
-		checkStepsTaken("out-of-warranty", 2);
-		checkStepsTaken("order-cancel", 2);
-		
-		// This is a drop-in functionality that does the necessary processing related to the Project Opera pages
-		const paramsValue = getUrlSegment(6);
-		const sigValue = getUrlSegment(8);
-
-		const buttons = document.querySelectorAll('.contact_support_Btn');
-		buttons.forEach(button => {
-			button.addEventListener('click', function (event) {
-				event.preventDefault();
-				setCaseInfo();	// Stores the troubleshooting page selection to the local storage for a contact page script to compile and pass those values to ODA
-
-				window.location.href = "/app/contact-support/params/" + paramsValue + "/sig/" + sigValue;
+	
+		document.addEventListener("DOMContentLoaded", function() {
+			// Inserts additional actions upon form submission
+			document.getElementById("support-map").addEventListener("submit", function(e) {
+				// e.preventDefault();
+				setCaseInfo();
+			});
+			// Initializes the required steps per section before enabling the contact support button
+			checkStepsTaken("region-not-na", 2);
+			// checkStepsTaken("in-warranty", 2);
+			checkStepsTaken("out-of-warranty", 2);
+			checkStepsTaken("order-cancel", 2);
+			
+			// This is a drop-in functionality that does the necessary processing related to the Project Opera pages
+			const paramsValue = getUrlSegment(6);
+			const sigValue = getUrlSegment(8);
+	
+			const buttons = document.querySelectorAll('.contact_support_Btn');
+			buttons.forEach(button => {
+				button.addEventListener('click', function (event) {
+					event.preventDefault();
+					setCaseInfo();	// Stores the troubleshooting page selection to the local storage for a contact page script to compile and pass those values to ODA
+	
+					window.location.href = "/app/contact-support/params/" + paramsValue + "/sig/" + sigValue;
+				});
 			});
 		});
-	});
-
-	function getUrlSegment(index) {
-		const url = window.location.pathname;
-		const segments = url.split('/').filter(segment => segment !== '');
-
-		if (index >= 0 && index < segments.length) {
-			return segments[index];
-		} else {
-			return null;
+	
+		function getUrlSegment(index) {
+			const url = window.location.pathname;
+			const segments = url.split('/').filter(segment => segment !== '');
+	
+			if (index >= 0 && index < segments.length) {
+				return segments[index];
+			} else {
+				return null;
+			}
 		}
-	}
-
-</script>
+	
+	</script>
