@@ -1,5 +1,4 @@
-<style type="text/css">
-	.rn_ContentDetail .rn_RecordDetail .rn_AnswerInfo { display: none; }
+<style type="text/css">.rn_ContentDetail .rn_RecordDetail .rn_AnswerInfo { display: none; }
 	  
 	#support-map .rz_Btn {
 		display: block;
@@ -88,98 +87,98 @@
 			margin-bottom: 1rem;
 		}
 	}
-	</style>
-	<div class="mb-3">$oda_ts_notice</div>
-	
-	<form action="https://mysupport.razer.com/app/contact-support" id="support-map" method="POST"><!--	<form action="https://tst1.dev.mysupport.razer.com/app/contact-support?i=or" id="support-map" method="POST">--><input name="case_category" type="hidden" value="order" />
-	<p class="mb-3">If you purchased your product from a Razer retail store or an authorized Razer reseller, visit <a href="https://www.razer.com/legal/returns-refunds" target="_blank">Razer refund/return policy</a> for assistance. For RESPAWN purchases, please check <a href="https://www.razer.com/legal/respawn/specific-returns-and-refunds-policy" target="_blank">RESPAWN - specific refunds and returns policy</a>.</p>
-	
-	<p class="mb-0">What do you need help with your order?</p>
-	
-	<div class="row my-5">
-	<div class="col-sm-4"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" tabindex="0" onclick="showSection('order-status')">Get<br />
-	Order Status</label></div>
-	
-	<div class="col-sm-4"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" tabindex="0" onclick="showSection('order-return')">Return my Purchase</label></div>
-	
-	<div class="col-sm-4"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" tabindex="0" onclick="showSection('order-cancel')">Cancel<br />
-	my Order</label></div>
-	</div>
-	
-	<div class="ts-section d-none mb-5" id="order-status">
-	<p>Please note that shipments can be stuck at customs up to 13 days.</p>
-	
-	<p class="my-4"><a class="rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" href="https://www.razer.com/my-account/orders" target="_blank">Get Order Status</a></p>
-	</div>
-	
-	<div class="ts-section d-none mb-5" id="order-return">
-	<p>Did you order from US or Canada?</p>
-	
-	<div class="mt-4"><input id="region-tab-1" name="case_region" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3" for="region-tab-1" tabindex="0" onclick="showSubItem('region-set', 'region-na')">Yes</label> <input id="region-tab-2" name="case_region" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto" for="region-tab-2" tabindex="0" onclick="showSubItem('region-set', 'region-not-na')">No</label></div>
-	
-	<div class="region-set d-none">
-	<div class="ts-sub-item d-none" id="region-not-na">
-	<p class="mb-3">To expedite your return/refund, you will need to provide your order number, email, and the shipping address from the order.</p>
-	
-	<ul class="list-unstyled list-solutions mb-3">
-		<li>
-		<p><input id="req-action-1" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-1">I have reviewed the <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a>.</label></p>
-		</li>
-		<li>
-		<p><input id="req-action-2" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-2">I can provide the order number and postal code on the order.</label></p>
-		</li>
-	</ul>
-	
-	<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
-	</div>
-	
-	<div class="ts-sub-item d-none" id="region-na">
-	<p>Did you receive the product more than 14 days ago?</p>
-	
-	<div class="mt-4"><input id="warranty-tab-1" name="case_warranty" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3" for="warranty-tab-1" tabindex="0" onclick="showSubItem('warranty-set', 'out-of-warranty')">Yes</label> <input id="warranty-tab-2" name="case_warranty" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto" for="warranty-tab-2" tabindex="0" onclick="showSubItem('warranty-set', 'in-warranty')">No</label></div>
-	
-	<div class="warranty-set d-none">
-	<div class="ts-sub-item d-none" id="in-warranty">
-	<p>Please make sure to review our <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a> and have your order number to initiate your return/refund.</p>
-	
-	<p class="my-4"><a class="rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" href="https://returns.narvar.com/razer/returns" target="_blank">Start My Return</a></p>
-	</div>
-	
-	<div class="ts-sub-item d-none" id="out-of-warranty">
-	<p class="mb-3">To expedite your return/refund, you will need to provide your order number, email, and the shipping address from the order.</p>
-	
-	<ul class="list-unstyled list-solutions mb-3">
-		<li>
-		<p><input id="req-action-3" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-3">I have reviewed the <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a>.</label></p>
-		</li>
-		<li>
-		<p><input id="req-action-4" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-4">I can provide the order number and postal code on the order.</label></p>
-		</li>
-	</ul>
-	
-	<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
-	
-	<div class="ts-section d-none mb-5" id="order-cancel">
-	<p class="mb-3">To expedite your return/refund, you will need to provide your order number, email, and the shipping address from the order.</p>
-	
-	<ul class="list-unstyled list-solutions mb-3">
-		<li>
-		<p><input id="req-action-5" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-5">I have reviewed the <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a>.</label></p>
-		</li>
-		<li>
-		<p><input id="req-action-6" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-6">I can provide the order number and postal code on the order.</label></p>
-		</li>
-	</ul>
-	
-	<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
-	</div>
-	</form>
-	<script>
+</style>
+<div class="mb-3">$oda_ts_notice</div>
+
+<form action="https://mysupport.razer.com/app/contact-support" id="support-map" method="POST"><input name="case_category" type="hidden" value="order" />
+<p class="mb-3">If you purchased your product from a Razer retail store or an authorized Razer reseller, visit <a href="https://www.razer.com/legal/returns-refunds" target="_blank">Razer refund/return policy</a> for assistance. For RESPAWN purchases, please check <a href="https://www.razer.com/legal/respawn/specific-returns-and-refunds-policy" target="_blank">RESPAWN - specific refunds and returns policy</a>.</p>
+
+<p class="mb-0">What do you need help with your order?</p>
+
+<div class="row my-5">
+<div class="col-sm-4"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" onclick="showSection('order-status')" tabindex="0">Get<br />
+Order Status</label></div>
+
+<div class="col-sm-4"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" onclick="showSection('order-return')" tabindex="0">Return my Purchase</label></div>
+
+<div class="col-sm-4"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" onclick="showSection('order-cancel')" tabindex="0">Cancel<br />
+my Order</label></div>
+</div>
+
+<div class="ts-section d-none mb-5" id="order-status">
+<p>Please note that shipments can be stuck at customs up to 13 days.</p>
+
+<p class="my-4"><a class="rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" href="https://www.razer.com/my-account/orders" target="_blank">Get Order Status</a></p>
+</div>
+
+<div class="ts-section d-none mb-5" id="order-return">
+<p>Did you order from US or Canada?</p>
+
+<div class="mt-4"><input id="region-tab-1" name="case_region" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3" for="region-tab-1" onclick="showSubItem('region-set', 'region-na')" tabindex="0">Yes</label> <input id="region-tab-2" name="case_region" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto" for="region-tab-2" onclick="showSubItem('region-set', 'region-not-na')" tabindex="0">No</label></div>
+
+<div class="region-set d-none">
+<div class="ts-sub-item d-none" id="region-not-na">
+<p class="mb-3">To expedite your return/refund, you will need to provide your order number, email, and the shipping address from the order.</p>
+
+<ul class="list-unstyled list-solutions mb-3">
+	<li>
+	<p><input id="req-action-1" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-1">I have reviewed the <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a>.</label></p>
+	</li>
+	<li>
+	<p><input id="req-action-2" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-2">I can provide the order number and postal code on the order.</label></p>
+	</li>
+</ul>
+
+<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+</div>
+
+<div class="ts-sub-item d-none" id="region-na">
+<p>Did you receive the product more than 14 days ago?</p>
+
+<div class="mt-4"><input id="warranty-tab-1" name="case_warranty" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3" for="warranty-tab-1" onclick="showSubItem('warranty-set', 'out-of-warranty')" tabindex="0">Yes</label> <input id="warranty-tab-2" name="case_warranty" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto" for="warranty-tab-2" onclick="showSubItem('warranty-set', 'in-warranty')" tabindex="0">No</label></div>
+
+<div class="warranty-set d-none">
+<div class="ts-sub-item d-none" id="in-warranty">
+<p>Please make sure to review our <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a> and have your order number to initiate your return/refund.</p>
+
+<p class="my-4"><a class="rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" href="https://returns.narvar.com/razer/returns" target="_blank">Start My Return</a></p>
+</div>
+
+<div class="ts-sub-item d-none" id="out-of-warranty">
+<p class="mb-3">To expedite your return/refund, you will need to provide your order number, email, and the shipping address from the order.</p>
+
+<ul class="list-unstyled list-solutions mb-3">
+	<li>
+	<p><input id="req-action-3" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-3">I have reviewed the <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a>.</label></p>
+	</li>
+	<li>
+	<p><input id="req-action-4" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-4">I can provide the order number and postal code on the order.</label></p>
+	</li>
+</ul>
+
+<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="ts-section d-none mb-5" id="order-cancel">
+<p class="mb-3">To expedite your return/refund, you will need to provide your order number, email, and the shipping address from the order.</p>
+
+<ul class="list-unstyled list-solutions mb-3">
+	<li>
+	<p><input id="req-action-5" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-5">I have reviewed the <a href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return policy</a>.</label></p>
+	</li>
+	<li>
+	<p><input id="req-action-6" name="case_solutions[]" type="checkbox" value="1" /><label for="req-action-6">I can provide the order number and postal code on the order.</label></p>
+	</li>
+</ul>
+
+<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+</div>
+</form>
+<script>
 		// Shows the target section and scrolls down to it on mobile view
 		function showSection(target) {
 			document.querySelectorAll(".ts-section, .ts-content, .ts-sub-item, .contact-supp").forEach(elem => elem.classList.add("d-none"));
@@ -309,5 +308,20 @@
 				return null;
 			}
 		}
+
+		const labels = document.querySelectorAll('label[for]');
+		labels.forEach(label => {
+			label.addEventListener('keydown', function(event) {
+				if (event.code === 'Space' || event.key === 'Enter') {
+					event.preventDefault();
+					let forAttr = label.getAttribute('for');
+					let inputElement = document.getElementById(forAttr);
+					if (inputElement) {
+						label.click();
+						inputElement.click();
+					}
+				}
+			});
+		});
 	
 	</script>
