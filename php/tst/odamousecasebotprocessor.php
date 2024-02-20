@@ -497,7 +497,7 @@ try {
 } catch (\Exception $e) {
   $mm = new RNCPHP\MailMessage();
   $mm->To->EmailAddresses = array("josh.cabiles.ext@razer.com");
-  $mm->Subject = "odamousecasebotprocessor-TST";
+  $mm->Subject = "odasupportcasebotprocessor-TST";
   $mm->Body->Text = $e->getMessage();
   $mm->Options->IncludeOECustomHeaders = false;
   $mm->Options->HonorMarketingOptIn = false;
