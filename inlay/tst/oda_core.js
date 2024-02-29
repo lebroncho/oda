@@ -116,6 +116,12 @@ const addInlayToUx = () => {
                 "name": "c$pay_repair_fee",
                 "required": false,
                 "value": getWarrantyInfo('pay_repair_fee')
+            },
+            {
+                "hidden": false,
+                "name": "c$custom_oda_payload",
+                "required": false,
+                "value": getSubject()
             }
             ];
 
@@ -127,7 +133,7 @@ const addInlayToUx = () => {
             chatInlayElemEmbed.setAttribute("class", "inlay");
             chatInlayElemEmbed.setAttribute("site-type", "b2c-service");
             chatInlayElemEmbed.setAttribute("site-url", "razer--tst2.widget.custhelp.com");
-            chatInlayElemEmbed.setAttribute("site-url", "razer.widget.custhelp.com");
+            //chatInlayElemEmbed.setAttribute("site-url", "razer.widget.custhelp.com");
             chatInlayElemEmbed.setAttribute("file-upload-valid-types", JSON.stringify(upload_type));
             if (isCookieSet()) {
                 chatInlayElemEmbed.setAttribute("launch-form-fields", JSON.stringify(launchFormFields));

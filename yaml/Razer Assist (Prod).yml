@@ -1391,7 +1391,7 @@ states:
       metadata:
         responseItems:
           - type: text
-            text: "Did you buy your Razer device from Razer.com?"
+            text: "Did you buy your Razer device from www.razer.com?"
             actions:
               - label: "Yes"
                 type: postback
@@ -2378,7 +2378,7 @@ states:
       metadata:
         responseItems:
           - type: text
-            text: "Do you have a Proof of Purchase (POP) or Razer.com Order Number for warranty eligibility?"
+            text: "Do you have a Proof of Purchase (POP) or www.razer.com Order Number for warranty eligibility?"
             actions:
               - label: "I don't have a Proof of Purchase"
                 type: postback
@@ -2390,7 +2390,7 @@ states:
                 keyword: "b,B"
                 payload:
                   action: With proof of purchase
-              - label: "I have a Razer.com Order #"
+              - label: "I have a www.razer.com Order #"
                 type: postback
                 keyword: "c,C"
                 payload:
@@ -10760,7 +10760,7 @@ states:
       autoNumberPostbackActions: false
       metadata:
         responseItems:
-          - text: "How can we help you with your razer.com order?"
+          - text: "How can we help you with your www.razer.com order?"
             type: "text"
             actions:
               - skipAutoNumber: true
@@ -10800,7 +10800,7 @@ states:
     component: "System.Output"
     properties:
       keepTurn: true
-      text: "You can get your order status from the link below <br /> <ul><li><a href='https://www.razer.com/my-account/orders' target='_blank'>Get razer.com order status</a></li></ul>"
+      text: "You can get your order status from the link below <br /> <ul><li><a href='https://www.razer.com/my-account/orders' target='_blank'>Get www.razer.com order status</a></li></ul>"
     transitions:
       next: "RazerComOrder.askIsQuestionAnsweredForRefund"
 
@@ -10942,7 +10942,7 @@ states:
     properties:
       insightsInclude: false
       variable: casePrivateNotes
-      value: "${casePrivateNotes} + User has read refund/return policy: Yes \n + User purchased from razer.com in: NA \n + Order Number: ${razerComOrder_orderNumber.value} \n + Postal Code: ${razerComOrder_postalCode.value} \n + Cancel or change your order: ${razerComOrder_reason.value}"
+      value: "${casePrivateNotes} + User has read refund/return policy: Yes \n + User purchased from www.razer.com in: NA \n + Order Number: ${razerComOrder_orderNumber.value} \n + Postal Code: ${razerComOrder_postalCode.value} \n + Cancel or change your order: ${razerComOrder_reason.value}"
 
   RazerComOrder.prefillIssueForCancel:
     component: System.SetVariable
@@ -11002,7 +11002,7 @@ states:
       autoNumberPostbackActions: false
       metadata:
         responseItems:
-          - text: "Is your order from razer.com?"
+          - text: "Is your order from www.razer.com?"
             type: text
             actions:
               - skipAutoNumber: true
@@ -11175,7 +11175,7 @@ states:
     properties:
       insightsInclude: false
       variable: casePrivateNotes
-      value: "${casePrivateNotes.value} + User has read refund/return policy: Yes \n + User purchased from razer.com in: NA \n + Order Number: ${razerComOrder_orderNumber.value} \n + Postal Code: ${razerComOrder_postalCode.value} \n + Reason: ${razerComOrder_reason.value}"
+      value: "${casePrivateNotes.value} + User has read refund/return policy: Yes \n + User purchased from www.razer.com in: NA \n + Order Number: ${razerComOrder_orderNumber.value} \n + Postal Code: ${razerComOrder_postalCode.value} \n + Reason: ${razerComOrder_reason.value}"
 
   RazerComOrder.prefillIssueForRefund:
     component: System.SetVariable
@@ -11354,7 +11354,7 @@ states:
   RazerComOrder.showCaseData:
     component: System.Output
     properties:
-      text: "Name: ${case.value.firstName} ${case.value.lastName}<br />Email: ${case.value.email?lower_case}<br />Category: Razer.com Order<br /><#if case.value.orderNumber != 'null'>Order Number: ${case.value.orderNumber}</#if><br /><#if razerComOrder_postalCode.value != 'null'>Postal Code: ${razerComOrder_postalCode.value}<br /></#if>Description: ${case.value.issue}"
+      text: "Name: ${case.value.firstName} ${case.value.lastName}<br />Email: ${case.value.email?lower_case}<br />Category: www.razer.com Order<br /><#if case.value.orderNumber != 'null'>Order Number: ${case.value.orderNumber}</#if><br /><#if razerComOrder_postalCode.value != 'null'>Postal Code: ${razerComOrder_postalCode.value}<br /></#if>Description: ${case.value.issue}"
       keepTurn: true
     transitions:
       next: "RazerComOrder.casePrompt"
@@ -11469,7 +11469,7 @@ states:
       autoNumberPostbackActions: false
       metadata:
         responseItems:
-          - text: "Please confirm you are requesting to return a product you purchase from razer.com for a refund."
+          - text: "Please confirm you are requesting to return a product you purchase from www.razer.com for a refund."
             type: text
             actions:
               - skipAutoNumber: true
@@ -11522,7 +11522,7 @@ states:
       autoNumberPostbackActions: false
       metadata:
         responseItems:
-          - text: "Please confirm you are requesting to cancel or change your order from razer.com."
+          - text: "Please confirm you are requesting to cancel or change your order from www.razer.com."
             type: text
             actions:
               - skipAutoNumber: true

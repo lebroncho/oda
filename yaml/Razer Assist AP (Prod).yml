@@ -102,6 +102,7 @@ states:
         HelpGuide: helpGuide
         StartOver: resetConversation
         RmaFlow: contactSupport
+        OrderStatus: orderStatus
         RmaStatus: rmaStatus
         CaseStatus: caseStatus
         RefundStatus: refundStatus
@@ -110,6 +111,8 @@ states:
         CreditRejected: ccRejectedOutput
         FinancingOptions: financingOutput
         ItemAvailability: availabilityOutput
+        OrderCustoms: customsOutput
+        OrderCancel: cancelOrder
         TrackingNumber: shippingStatus
         ContactSupport: contactSupport
         NariPairing: nariPairing
@@ -167,9 +170,11 @@ states:
         AuthSupport: authSupport
         UnhelpfulAnswer: unhelpfulAnswer
         ChatExpired: chatExpired
-        #GetAccessory: getAccessoryOutput
+        OrderSupport: orderSupport
         RmaChangeAddress: rmaChangeAddress
         RmaSla: rmaSla
+        OrderNotFound: orderNotFound
+        OrderRefund: orderRefund
         RegistrationFailed: registrationFailed
         ThumbpadIssue: thumbpadIssue
         LowFPS: lowFps
@@ -290,14 +295,6 @@ states:
         NewSynapseSupportedDevices: newSynapseSupportedDevices
         NewSynapseSupport: newSynapseSupport
         ChromaAppSupport: chromaAppSupport
-
-        #------ Order-related Intents -------#
-        OrderRefund: orderPath
-        OrderCancel: orderPath
-        OrderStatus: orderPath
-        OrderCustoms: orderPath
-        OrderSupport: orderPath
-        OrderNotFound: orderPath
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -484,20 +481,10 @@ states:
                 type: postback
                 keyword: "4,d,D,order"
                 payload:
-                  action: "system.textReceived"
-                  variables:
-                    system.text: "RZRORDRVFD"
-                    user.journey: true
-                    user.secondTry: true
-                    user.chatType: "CS"
-              - label: "Buy spare part/accessory"
-                type: postback
-                keyword: "5,e,E,parts,accessory"
-                payload:
-                  action: "accessory"
+                  action: "order"
               - label: "Product registration issue"
                 type: postback
-                keyword: "6,f,F,register"
+                keyword: "5,e,E,register"
                 payload:
                   action: "registration"
     transitions:
@@ -507,7 +494,6 @@ states:
         status: rmaStatus
         question: technicalSupport
         order: orderPath
-        accessory: menuGetAccessory
         registration: menuRegistrationFailed
         match: hiddenAction
         cancel: errorOutput
@@ -680,6 +666,51 @@ states:
         cancel: errorOutput
 
   #-------------------------------------------------------------------------------
+  # Order FAQ --------------------------------------------------------------------
+  #-------------------------------------------------------------------------------
+  orderPath:
+    component: System.SetVariable
+    properties:
+      variable: user.journey
+      value: true
+  setTypeCS:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: user.chatType
+      value: "CS"
+  setOrderCaseCategory:
+    component: System.SetVariable
+    properties:
+      insightsInclude: false
+      variable: selectedOption
+      value: "OrderSupport"
+  checkDRGC:
+    component: "osvc.CheckDRGC"
+    properties:
+      countryCode: "${webCountry}"
+    transitions:
+      actions:
+        hasDRGC: orderSupportDRGC
+        noDRGC: orderSupport
+
+  orderSupportDRGC:
+    component: System.Output
+    properties:
+      text: "${rb.orderFAQDRGC}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerCS
+
+  orderSupport:
+    component: System.Output
+    properties:
+      text: "${rb.orderFAQ}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerCS
+
+  #-------------------------------------------------------------------------------
   # Question Answered ------------------------------------------------------------
   #-------------------------------------------------------------------------------
   quickAnswerCS:
@@ -722,17 +753,12 @@ states:
                 type: postback
                 keyword: "b,B,n,N"
                 payload:
-                  action: "system.textReceived"
-                  variables:
-                    system.text: "RZRORDRVFD"
-                    user.journey: true
-                    user.secondTry: true
-                    user.chatType: "CS"
+                  action: "No"
     transitions:
       next: intent
       actions:
         Yes: queryResolved
-        No: unresolvedActions
+        No: checkTryCount
         match: hiddenAction
         cancel: errorOutput
 
@@ -1339,7 +1365,7 @@ states:
       metadata:
         responseItems:
           - type: text
-            text: "Did you buy your Razer device from Razer.com?"
+            text: "Did you buy your Razer device from www.razer.com?"
             actions:
               - label: "Yes"
                 type: postback
@@ -1793,73 +1819,6 @@ states:
       actions:
         agent: startChat
         replace: setRmaTypeReplace
-        match: hiddenAction
-        cancel: errorOutput
-
-  #-------------------------------------------------------------------------------
-  # Task "Spare Parts Accessories" -----------------------------------------------
-  #-------------------------------------------------------------------------------
-  resetAccessory:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "What do you need?"
-            actions:
-              - label: Spare Parts
-                type: url
-                keyword: "a,A,spare,parts"
-                payload:
-                  url: "https://razercarestore.razer.com/"
-              - label: Accessories
-                type: postback
-                keyword: "b,B,accessory"
-                payload:
-                  action: accessory
-    transitions:
-      next: intent
-      actions:
-        accessory: resolveAccessory
-        match: hiddenAction
-        cancel: errorOutput
-
-  resolveAccessory:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "What type of accessory?"
-            actions:
-              - label: PC
-                type: url
-                keyword: "a,A,pc"
-                payload:
-                  url: "https://www.razer.com/shop/pc/gaming-pc-accessories"
-              - label: Peripheral
-                type: url
-                keyword: "b,B,peri"
-                payload:
-                  url: "https://www.razer.com/gaming-peripheral-accessories"
-              - label: Mobile
-                type: url
-                keyword: "c,C,mobile"
-                payload:
-                  url: "https://www.razer.com/shop/mobile/mobile-accessories"
-    transitions:
-      next: intent
-      actions:
         match: hiddenAction
         cancel: errorOutput
 
@@ -2319,55 +2278,6 @@ states:
         match: hiddenAction
         cancel: errorOutput
 
-  orderPath:
-    component: System.SetVariable
-    properties:
-      variable: user.journey
-      value: true
-  orderPath2:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.secondTry
-      value: true
-  setTypeOrder:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: user.chatType
-      value: "CS"
-  resolveOrderPath:
-    component: System.CommonResponse
-    properties:
-      processUserMessage: true
-      nlpResultVariable: iResult
-      transitionAfterMatch: "true"
-      autoNumberPostbackActions: "false"
-      maxPrompts: 2
-      metadata:
-        responseItems:
-          - type: text
-            text: "Please confirm you need help with your Razer order"
-            actions:
-              - label: "Yes"
-                type: postback
-                keyword: "a,A,y,Y"
-                payload:
-                  action: "system.textReceived"
-                  variables:
-                    system.text: "RZRORDRVFD"
-              - label: "No"
-                type: postback
-                keyword: "b,B,n,N"
-                payload:
-                  action: "No"
-    transitions:
-      next: intent
-      actions:
-        No: rephraseQuestionPath
-        match: hiddenAction
-        cancel: errorOutput
-
   #-------------------------------------------------------------------------------
   # Task "Proof of purchase" -----------------------------------------------------
   #-------------------------------------------------------------------------------
@@ -2382,7 +2292,7 @@ states:
       metadata:
         responseItems:
           - type: text
-            text: "Do you have a Proof of Purchase (POP) or Razer.com Order Number for warranty eligibility?"
+            text: "Do you have a Proof of Purchase (POP) or www.razer.com Order Number for warranty eligibility?"
             actions:
               - label: "I don't have a Proof of Purchase"
                 type: postback
@@ -2394,7 +2304,7 @@ states:
                 keyword: "b,B"
                 payload:
                   action: With proof of purchase
-              - label: "I have a Razer.com Order #"
+              - label: "I have a www.razer.com Order #"
                 type: postback
                 keyword: "c,C"
                 payload:
@@ -3782,20 +3692,10 @@ states:
                 type: postback
                 keyword: "4,d,D,order"
                 payload:
-                  action: "system.textReceived"
-                  variables:
-                    system.text: "RZRORDRVFD"
-                    user.journey: true
-                    user.secondTry: true
-                    user.chatType: "CS"
-              - label: "Buy spare part/accessory"
-                type: postback
-                keyword: "5,e,E,parts,accessory"
-                payload:
-                  action: "accessory"
+                  action: "order"
               - label: "Product registration issue"
                 type: postback
-                keyword: "6,f,F,register"
+                keyword: "5,e,E,register"
                 payload:
                   action: "registration"
     transitions:
@@ -3805,7 +3705,6 @@ states:
         status: rmaStatus
         question: technicalSupport
         order: orderPath
-        accessory: menuGetAccessory
         registration: menuRegistrationFailed
         match: hiddenAction
         cancel: errorOutput
@@ -5042,20 +4941,6 @@ states:
       keepTurn: true
     transitions:
       next: quickAnswerCS
-
-  menuGetAccessory:
-    component: System.SetVariable
-    properties:
-      insightsInclude: false
-      variable: selectedOption
-      value: "GetAccessory"
-  getAccessoryOutput:
-    component: System.Output
-    properties:
-      text: "${rb.getAccessory}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
 
   rmaChangeAddress:
     component: System.Output
@@ -7294,7 +7179,7 @@ states:
       keepTurn: true
     transitions:
       next: quickAnswerLaptop
-
+  
   calmanVerifiedDisplay:
     component: System.Output
     properties:
