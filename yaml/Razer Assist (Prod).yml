@@ -309,6 +309,16 @@ states:
         NewSynapseSupportedDevices: newSynapseSupportedDevices
         NewSynapseSupport: newSynapseSupport
         ChromaAppSupport: chromaAppSupport
+        AetherLightBarPair: aetherLightBarPair
+        AetherLampProPair: aetherLampProPair
+        AetherLampProReset: aetherLampProReset
+        AetherLampPair: aetherLampPair
+        AetherLampReset: aetherLampReset
+        AetherLightBulbPair: aetherLightBulbPair
+        AetherLightBulbReset: aetherLightBulbReset
+        AetherLightStripPair: aetherLightStripPair
+        AetherLightStripReset: aetherLightStripReset
+        GamerRoomSmartHomeLink: gamerRoomSmartHomeLink
 
         #------ Order-related Intents -------#
         RazerComOrder: orderPath #RazerComOrder.start
@@ -7299,6 +7309,94 @@ states:
     component: System.Output
     properties:
       text: "${rb.chromaAppSupport}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  aetherLightBarPair:
+    component: System.Output
+    properties:
+      text: "${rb.aetherLightBarPair}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  aetherLampProPair:
+    component: System.Output
+    properties:
+      text: "${rb.aetherLampProPair}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  aetherLampProPair:
+    component: System.Output
+    properties:
+      text: "${rb.aetherLampProPair}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  aetherLampProReset:
+    component: System.Output
+    properties:
+      text: "${rb.aetherLampProReset}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  aetherLampPair:
+    component: System.Output
+    properties:
+      text: "${rb.aetherLampPair}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  aetherLampReset:
+    component: System.Output
+    properties:
+      text: "${rb.aetherLampReset}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  aetherLightBulbPair:
+    component: System.Output
+    properties:
+      text: "${rb.aetherLightBulbPair}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  aetherLightBulbReset:
+    component: System.Output
+    properties:
+      text: "${rb.aetherLightBulbReset}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  aetherLightStripPair:
+    component: System.Output
+    properties:
+      text: "${rb.aetherLightStripPair}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+      
+  aetherLightStripReset:
+    component: System.Output
+    properties:
+      text: "${rb.aetherLightStripReset}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  gamerRoomSmartHomeLink:
+    component: System.Output
+    properties:
+      text: "${rb.gamerRoomSmartHomeLink}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
