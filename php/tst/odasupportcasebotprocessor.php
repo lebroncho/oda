@@ -245,7 +245,7 @@ function createServiceCategory($problemID, $categoryID)
     // if ($problemID == 1341 && $categoryID != 'NULL') { //Surround Sound Activation
     //     $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryID));
     // }
-    if ($categoryID != NULL && $categoryID != '') {
+    if ($categoryID != NULL && $categoryID != '' && $categoryID != '<not set>') {   // include <not set> as blank value case
         $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryID));
     }
     return $serviceCategory;
