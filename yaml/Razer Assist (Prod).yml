@@ -7329,14 +7329,6 @@ states:
     transitions:
       next: quickAnswerTS1
 
-  aetherLampProPair:
-    component: System.Output
-    properties:
-      text: "${rb.aetherLampProPair}"
-      keepTurn: true
-    transitions:
-      next: quickAnswerTS1
-
   aetherLampProReset:
     component: System.Output
     properties:
