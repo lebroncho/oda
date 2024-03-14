@@ -1,6 +1,5 @@
 ﻿<?php
 require_once(get_cfg_var('doc_root') . "/ConnectPHP/Connect_init.php");
-
 use RightNow\Connect\v1_3 as RNCPHP;
 
 header("Access-Control-Allow-Origin: *");
@@ -22,68 +21,59 @@ const CONTENT_TYPE_MAPPING = [
 /**********************************************************/
 /**************** LEGACY CODES START *********************/
 
-function getContactReason($problemID, $issue = null)
-{
+function getContactReason($productID, $issue = null){
     $contactReason = null;
     $order = [9, 35, 73];
     $rma = [90, 88, 98, 101];
-
-    // if ($problemID == 932) {
-    //     if ($issue == 'General Product Questions') {
-    //         $contactReason = 3;
-    //     } else {
-    //         $contactReason = 7;
-    //     }
-    // } else if
-    if (in_array($problemID, $order)) {
+  
+    if (in_array($productID, $order)) {
         $contactReason = 6;
-    } else if (in_array($problemID, $rma)) {
-        $contactReason = 8;
+    } else if (in_array($productID, $order)) {
+      $contactReason = 6;
+    } else if (in_array($productID, $rma)) {
+      $contactReason = 8;
     } else {
-        $contactReason = 3;
+      $contactReason = 3;
     }
-
+  
     return $contactReason;
 }
 
-function findProduct($productNumber)
-{
-    $productQuery = "ID > 0";
-    $productQuery .= " AND product_code = '$productNumber'";
-    $productQuery .= " AND end_of_life = 0";
-    $productQuery .= " AND is_active = 1";
+function findProduct($productNumber){
+  $productQuery = "ID > 0";
+  $productQuery .= " AND product_code = '$productNumber'";
+  $productQuery .= " AND end_of_life = 0";
+  $productQuery .= " AND is_active = 1";
 
-    return RNCPHP\CO\Products::first($productQuery);
+  return RNCPHP\CO\Products::first($productQuery);
 }
 
-function getIncidentType($problemID)
-{
-    $typeID = null;
-    $software = [1284, 567, 671, 1323, 1585, 663, 1268, 1341];
-    $mobile = [284, 2003];
-    $networking = [129];
-    $peripherals = [1220, 856, 891, 932, 691, 725, 916, 1073, 1609, 1035, 101, 2494];
-    $system = [281, 1827, 277, 88, 2678];
+function getIncidentType($productID){
+  $typeID = null;
+  $software = [1284, 567, 671, 1323, 1585, 663, 1268, 1341];
+  $mobile = [284, 2003];
+  $networking = [129];
+  $peripherals = [1220, 856, 891, 932, 691, 725, 916, 1073, 1609, 1035, 101, 2494];
+  $system = [281, 1827, 277, 88, 2678];
 
-    if (in_array($problemID, $software)) {
-        $typeID = 149;  // Software & Services
-    } else if (in_array($problemID, $mobile)) {
-        $typeID = 155;  // Mobile
-    } else if (in_array($problemID, $networking)) {
-        $typeID = 159;  // Networking
-    } else if (in_array($problemID, $peripherals)) {
-        $typeID = 148;  // Peripherals
-    } else if (in_array($problemID, $system)) {
-        $typeID = 147;  // System
-    } else {
-        $typeID = 157;  // Customer Service
-    }
+  if (in_array($productID, $software)) {
+    $typeID = 149;
+  } else if (in_array($productID, $mobile)) {
+    $typeID = 155;
+  } else if (in_array($productID, $networking)) {
+    $typeID = 159;
+  } else if (in_array($productID, $peripherals)) {
+    $typeID = 148;
+  } else if (in_array($productID, $system)) {
+    $typeID = 147;
+  } else {
+    $typeID = 157;
+  }
 
-    return $typeID;
+  return $typeID;
 }
 
-function getWebIncidentType($problemID)
-{
+function getWebIncidentType($productID){
     $typeID = null;
     $software = [1284, 567, 671, 1323, 1585, 663, 1268, 1341];
     $mobile = [284];
@@ -92,17 +82,17 @@ function getWebIncidentType($problemID)
     $laptop = [281];
     $desktop = [1827, 1220, 277, 88, 2678];
 
-    if (in_array($problemID, $software)) {
+    if (in_array($productID, $software)) {
         $typeID = 425;  // My Razer Software
-    } else if (in_array($problemID, $mobile)) {
+    } else if (in_array($productID, $mobile)) {
         $typeID = 420;  // My Razer Phone
-    } else if (in_array($problemID, $networking)) {
+    } else if (in_array($productID, $networking)) {
         $typeID = 419;  // My Razer Network & Monitor
-    } else if (in_array($problemID, $peripherals)) {
+    } else if (in_array($productID, $peripherals)) {
         $typeID = 413;  // My Peripheral (mouse, keyboard, headset)
-    } else if (in_array($problemID, $laptop)) {
+    } else if (in_array($productID, $laptop)) {
         $typeID = 418;  // My Razer Laptop
-    } else if (in_array($problemID, $desktop)) {
+    } else if (in_array($productID, $desktop)) {
         $typeID = 431;  // My Razer Desktop & Components
     } else {
         $typeID = 410;  // My Order from Razer.com
@@ -111,26 +101,26 @@ function getWebIncidentType($problemID)
     return $typeID;
 }
 
-function getRegion($region)
-{
-    $regionObject = NULL;
+function getCountry($region){
+    $region = strtoupper($region);
+    return $region == 'NA' ? 'us' : NULL;
+}
+
+function getRegion($region){
     $regionID = NULL;
     $region = strtoupper($region);
 
     switch ($region) {
         case 'AP':
         case 'ODAAP':
-            // $regionObject = RNCPHP\CO\Region::fetch(734);
             $regionID = 734;
             break;
         case 'EU':
         case 'ODAEU':
-            // $regionObject = RNCPHP\CO\Region::fetch(733);
             $regionID = 733;
             break;
-        default: 
-            // $regionObject = RNCPHP\CO\Region::fetch(732);
-            $regionID = 732; // Americas
+        default: //Americas
+            $regionID = 732;
     }
 
     return $regionID;
@@ -140,23 +130,20 @@ function getRegion($region)
 /*******************************************************/
 
 /** Emulate enums since it is not supported on older PHP versions */
-class MessageEntryType
-{
+class MessageEntryType{
 
     const PRIVATE_NOTE = 1;
     const CUSTOM = 3;
     const CHAT = 5;
 }
 
-class MessageContentType
-{
+class MessageContentType{
 
     const TEXT = 1;
     const HTML = 2;
 }
 
-function parseCaseDataFromPayload($input)
-{
+function parseCaseDataFromPayload($input){
     $payloadData = json_decode($input, true);
 
     // note = ['content' => 'sample', 'id' => 'troubleshooting', 'entryType' => 'private-note', 'contentType': 'text']
@@ -168,28 +155,22 @@ function parseCaseDataFromPayload($input)
         "subject" => $payloadData['subject'],
         "productNumber" => $payloadData['productNumber'],
         "productDescription" => $payloadData['productDescription'],
-        "payRepairFeeID" => $payloadData['payRepairFeeID'],
-        "problemID" => $payloadData['problemID'], "issue" => $payloadData['issue'],
-        "rmaNumber" => $payloadData['rmaNumber'], "files" => $payloadData['files'],
-        "notes" => $payloadData['notes']
+        "productID" => $payloadData['productID'], "issue" => $payloadData['issue'],
+        "rmaNumber" => $payloadData['rmaNumber'], "payRepairFeeID" => $payloadData['payRepairFeeID'],
+        "country" => $payloadData['country'],
+        "files" => $payloadData['files'], "notes" => $payloadData['notes']
     ];
-
-    if(array_key_exists('country', $payloadData)){
-        $caseData["country"] = $payloadData['country'];
-    }
 
     return $caseData;
 }
 
-function sanitizeCaseData($caseData)
-{
+function sanitizeCaseData($caseData){
     // DO SOME SANITATION, CHECKING, FORMATTING AND ETC.
 
     return $caseData;
 }
 
-function getAnalyticsReportResults($sessionID, $reportID)
-{
+function getAnalyticsReportResults($sessionID, $reportID){
 
     $sessionIDFilterOperator = new RNCPHP\NamedIDOptList;
     $sessionIDFilterOperator->Id = "1"; //Equal:=
@@ -208,48 +189,44 @@ function getAnalyticsReportResults($sessionID, $reportID)
     return $results;
 }
 
-function buildChatTranscript($analyticsReportResults)
-{
+function buildChatTranscript($analyticsReportResults){
     $nrows = $analyticsReportResults->count();
     $row = $analyticsReportResults->next(); //skip column headings
-    $chatId = 0; // int max chat id
+    $chatID = 0; // int max chat id
     $transcript = "";
 
     for ($i = 0; $i++ < $nrows; $row = $analyticsReportResults->next()) {
-        // print_r($row);
-        // format
-        // [TIMESTAMP] <ROLE>: MESSAGE
-        // set chat ID to most recent
-        if ($i == 1) {
-            $chatId = intval($row['Chat ID']);
-        }
-        // if not the most recent chat for the session, do not include in transcript block
-        if ($chatId == intval($row['Chat ID'])) {
-            $role = $row['Role in Conversation'] == "Lead" ? "Bot" : $row['Contact Name'];
-            $transcript .= sprintf("[%s] %s: %s<br/>", $row['Date of Event'], $role, $row['Data String']);
-        }
+      // print_r($row);
+      // format
+      // [TIMESTAMP] <ROLE>: MESSAGE
+      // set chat ID to most recent
+      if ($i == 1) {
+        $chatID = intval($row['Chat ID']);
+      }
+      // if not the most recent chat for the session, do not include in transcript block
+      if ($chatID == intval($row['Chat ID'])) {
+        $role = $row['Role in Conversation'] == "Lead" ? "Bot" : $row['Contact Name'];
+        $transcript .= sprintf("[%s] %s: %s<br/>", $row['Date of Event'], $role, $row['Data String']);
+      }
     }
     return $transcript;
 }
 
-function createContact($contactID)
-{
+function createContact($contactID){
     $validateKeysOff = RNCPHP\RNObject::VALIDATE_KEYS_OFF;
     $contact = RNCPHP\Contact::fetch($contactID, $validateKeysOff);
     return $contact;
 }
 
-function createServiceCategory($problemID, $categoryID)
-{
+function createServiceCategory($categoryID){
     $serviceCategory = NULL;
-    if ($problemID == 1341 && $categoryID != 'NULL') { //Surround Sound Activation
+    if ($categoryID != NULL && $categoryID != '' && $categoryID != '<not set>') {   // include <not set> as blank value case
         $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryID));
     }
     return $serviceCategory;
 }
 
-function assignOrderNumberToIncident($incident, $orderNumber)
-{
+function assignOrderNumberToIncident($incident, $orderNumber){
     if ($orderNumber != NULL && !empty($orderNumber) && $orderNumber != 'null') {
         $orderNumber = (strlen($orderNumber) > 20) ? substr($orderNumber, 0, 20) : $orderNumber;
         $incident->CustomFields->CO1->order_number = $orderNumber;
@@ -257,40 +234,36 @@ function assignOrderNumberToIncident($incident, $orderNumber)
     }
 }
 
-function createServiceProduct($problemID)
-{
-    $problemID = intval($problemID);
-    $serviceProduct = RNCPHP\ServiceProduct::fetch($problemID);
+function createServiceProduct($productID){
+    $productID = intval($productID);
+    $serviceProduct = RNCPHP\ServiceProduct::fetch($productID);
     return $serviceProduct;
 }
 
-function createContactReason($problemID, $issue)
-{
-    $problemID = intval($problemID);
-    $contactReasonID = getContactReason($problemID, $issue);
+function createContactReason($productID, $issue){
+    $productID = intval($productID);
+    $contactReasonID = getContactReason($productID, $issue);
     $contactReason = RNCPHP\CO1\Contact_Reason::fetch($contactReasonID);
     return $contactReason;
 }
 
-function assignSerialNumberToIncident($incident, $serialNumber)
-{
+function assignSerialNumberToIncident($incident, $serialNumber){
     // set the serial number to uppercase; SysAtrrib length of field = 20
-    if ($serialNumber != NULL && !empty($serialNumber)) {
+    if($serialNumber != NULL && !empty($serialNumber)){
         $serialNumber = strtoupper($serialNumber);
         $serialNumber = (strlen($serialNumber) > 20) ? substr($serialNumber, 0, 20) : $serialNumber;
         $incident->CustomFields->CO1->serial_num = $serialNumber;
     }
 }
 
-function assignTypeAndSourceToIncident($incident, $problemID, $source)
-{
-    $problemID = intval($problemID);
+function assignTypeAndSourceToIncident($incident, $productID, $source){
+    $productID = intval($productID);
 
     $incident->CustomFields->c->incident_type = new RNCPHP\NamedIDLabel();
-    $incident->CustomFields->c->incident_type->id = getIncidentType($problemID);
+    $incident->CustomFields->c->incident_type->id = getIncidentType($productID);
 
     $incident->CustomFields->c->web_incident_type = new RNCPHP\NamedIDLabel();
-    $incident->CustomFields->c->web_incident_type->id = getWebIncidentType($problemID);
+    $incident->CustomFields->c->web_incident_type->id = getWebIncidentType($productID);
 
     $incident->CustomFields->c->incident_source = new RNCPHP\NamedIDLabel();
     $incident->CustomFields->c->incident_source->id = $source;
@@ -301,6 +274,7 @@ function assignSourceCountryAndRegion($incident, $country, $region){
     if(empty($country) || $country == ''){
         $country = 'us';
     }
+
     $incident->CustomFields->c->web_country = $country;
 
     $incident->CustomFields->c->region = new RNCPHP\NamedIDLabel();
@@ -309,11 +283,10 @@ function assignSourceCountryAndRegion($incident, $country, $region){
     $incident->CustomFields->c->chat_region = $region;
 }
 
-function mapProductNumberAndDescription($incident, $caseData)
-{
+function mapProductNumberAndDescription($incident, $productNumber){
     $product = NULL;
-    $productNumber = strval($caseData['productNumber']);
-    if ($productNumber != NULL && !empty($productNumber)) {
+    $productNumber = strval($productNumber);
+    if($productNumber != NULL && !empty($productNumber)){
         $productNumber = strtoupper($productNumber);
         $product = findProduct($productNumber);
     }
@@ -332,8 +305,7 @@ function setRazerCareInfo($incident, $payRepairFeeID)
     }
 }
 
-function createMessage($content, $entryType, $contentType)
-{
+function createMessage($content, $entryType, $contentType){
     $message = [
         'content' => $content, 'entryType' => $entryType,
         'contentType' => $contentType
@@ -341,8 +313,7 @@ function createMessage($content, $entryType, $contentType)
     return $message;
 }
 
-function createMessageThread($message)
-{
+function createMessageThread($message){
     $thread = new RNCPHP\Thread();
     $thread->Text = $message['content'];
     $thread->EntryType = new RNCPHP\NamedIDOptList();
@@ -353,53 +324,45 @@ function createMessageThread($message)
     return $thread;
 }
 
-function createMessageThreads($messages)
-{
+function createMessageThreads($messages){
     $messageThreads = [];
-    foreach ($messages as $message) {
+    foreach($messages as $message){
         $messageThread = createMessageThread($message);
         $messageThreads[] = $messageThread;
     }
     return $messageThreads;
 }
 
-function assignMessageThreadToIncident($incident, $index, $messageThread)
-{
+function assignMessageThreadToIncident($incident, $index, $messageThread){
     $incident->Threads[$index] = $messageThread;
 }
 
-function assignMessageThreadsToIncident($incident, $startingIndex, $messageThreads)
-{
+function assignMessageThreadsToIncident($incident, $startingIndex, $messageThreads){
     $count = 0;
-    foreach ($messageThreads as $messageThread) {
+    foreach($messageThreads as $messageThread){
         assignMessageThreadToIncident($incident, $startingIndex, $messageThread);
-        $startingIndex++;
-        $count++;
+        $startingIndex++; $count++;
     }
     return $count;
 }
 
-function createMessageFromNote($note)
-{
+function createMessageFromNote($note){
     $message = createMessage(
-        $note['content'],
-        ENTRY_TYPE_MAPPING[$note['entryType']],
+        $note['content'], ENTRY_TYPE_MAPPING[$note['entryType']],
         CONTENT_TYPE_MAPPING[$note['contentType']]
     );
     return $message;
 }
 
-function createMessageFromNotes($notes)
-{
+function createMessageFromNotes($notes){
     $messages = [];
-    foreach ($notes as $note) {
+    foreach($notes as $note){
         $messages[] = createMessageFromNote($note);
     }
     return $messages;
 }
 
-function createFileAttachmentIncident($file)
-{
+function createFileAttachmentIncident($file){
     $path = sprintf("/tmp/%s", $file['path']);
 
     $fileAttachmentIncident = new RNCPHP\FileAttachmentIncident();
@@ -414,37 +377,33 @@ function createFileAttachmentIncident($file)
     return $fileAttachmentIncident;
 }
 
-function createFileAttachmentIncidents($files)
-{
+function createFileAttachmentIncidents($files){
     $fileAttachmentIncidents = [];
 
-    foreach ($files as $file) {
+    foreach($files as $file){
         $fileAttachmentIncident = createFileAttachmentIncident($file);
         $fileAttachmentIncidents[] = $fileAttachmentIncident;
     }
     return $fileAttachmentIncidents;
 }
 
-function appendFileAttachmentIncidentToFileAttachmentIncidentArray($incidentArray, $fileAttachmentIncidents)
-{
-    foreach ($fileAttachmentIncidents as $fileAttachmentIncident) {
+function appendFileAttachmentIncidentToFileAttachmentIncidentArray($incidentArray, $fileAttachmentIncidents){
+    foreach($fileAttachmentIncidents as $fileAttachmentIncident){
         $incidentArray[] = $fileAttachmentIncident;
     }
 }
 
-function respond($payloadData)
-{
+function respond($payloadData){
     $payloadJSON = json_encode($payloadData);
-
+    
     header("Content-Type: application/json; charset=UTF-8");
     header("Content-Length: " . strlen($payloadJSON));
     header("X-Content-Type-Options: nosniff");
-
+  
     echo $payloadJSON;
 }
 
-function sendEmail($subject, $content, $recipients)
-{
+function sendEmail($subject, $content, $recipients){
     $mailMessage = new RNCPHP\MailMessage();
     $mailMessage->To->EmailAddresses = $recipients;
     $mailMessage->Subject = $subject;
@@ -455,13 +414,13 @@ function sendEmail($subject, $content, $recipients)
     $mailMessage->send();
 }
 
-function main()
-{
+
+function main(){
     $payloadData = [];
-    $RECIPIENTS = ['darwin.sardual.ext@razer.com', 'josh.cabiles.ext@razer.com', 'jericho.farolan.ext@razer.com'];
+    $RECIPIENTS = ['darwin.sardual.ext@razer.com','josh.cabiles.ext@razer.com'];
 
-    try {
-
+    try{
+        
         $WEB_ODA_INCIDENT_SOURCE = 346;
         $input = file_get_contents('php://input');
         $threadIndex = 0;
@@ -475,17 +434,17 @@ function main()
 
         $incident->PrimaryContact = createContact($caseData['contactID']);
         $incident->CustomFields->CO1->contact_reason = createContactReason(
-            $caseData['problemID'],
-            $caseData['issue']
+            $caseData['productID'], $caseData['issue']
         );
-        $incident->Product = createServiceProduct($caseData['problemID']);
-        $incident->Category = createServiceCategory($caseData['problemID'], $caseData['categoryID']);
-
-        assignTypeAndSourceToIncident($incident, $caseData['problemID'], $WEB_ODA_INCIDENT_SOURCE);
+        $incident->Product = createServiceProduct($caseData['productID']);
+        $incident->Category = createServiceCategory($caseData['categoryID']);
+        
+        // $incidentType = getIncidentType(intval($caseData['productID']));
+        assignTypeAndSourceToIncident($incident, $caseData['productID'], $WEB_ODA_INCIDENT_SOURCE);
         assignOrderNumberToIncident($incident, $caseData['orderNumber']);
         assignSerialNumberToIncident($incident, $caseData['serialNumber']);
         assignSourceCountryAndRegion($incident, $caseData['country'], $caseData['region']);
-        mapProductNumberAndDescription($incident, $caseData);
+        mapProductNumberAndDescription($incident, $caseData['productNumber']);
         setRazerCareInfo($incident, $caseData['payRepairFeeID']);
 
         /** ADD MESSAGES START */
@@ -504,11 +463,11 @@ function main()
         }
 
         $chatSessionID = $caseData['chatSessionID'];
-        if ($chatSessionID != NULL && !empty($chatSessionID)) {
+        if($chatSessionID != NULL && !empty($chatSessionID)){
             $analyticsReportResults = getAnalyticsReportResults($chatSessionID, REPORTID);
             $transcript = buildChatTranscript($analyticsReportResults);
 
-            if (!empty($transcript)) {
+            if(!empty($transcript)){
                 $message = createMessage($transcript, MessageEntryType::CHAT, MessageContentType::HTML);
                 $defaultMessages[] = $message;
             }
@@ -535,7 +494,9 @@ function main()
 
         $payloadData = [
             'status' => 'OK', 'id' => $incident->ID,
-            'referenceNumber' => $incident->ReferenceNumber
+            'referenceNumber' => $incident->ReferenceNumber,
+            'payRepairFeeID' => $caseData['payRepairFeeID'],
+            'country' => $caseData['country']
         ];
 
         /** NOTE: Not really sure if this is still useful */
@@ -552,7 +513,7 @@ function main()
         /*********************************************** */
 
         sendEmail('ODA Case Creation Processor', json_encode($payloadData), $RECIPIENTS);
-    } catch (\Exception $e) {
+    }catch(\Exception $e){
         $exceptionMessage = $e->getMessage();
         $payloadData = [
             'status' => 'Failed',

@@ -1,509 +1,571 @@
 ﻿<?php
-header("Access-Control-Allow-Origin: *");
-
 require_once(get_cfg_var('doc_root') . "/ConnectPHP/Connect_init.php");
-initConnectAPI("api_integration", "H@%ttd9945HQ");
 
 use RightNow\Connect\v1_3 as RNCPHP;
 
-$input = file_get_contents('php://input');
-$data = json_decode($input);
+header("Access-Control-Allow-Origin: *");
+initConnectAPI("api_integration", "H@%ttd9945HQ");
 
-$contactId = intval($data->c_id);
-$caseSubject = trim($data->issue);
-$problemId = trim($data->problem_id);
-$categoryId = trim($data->category_id);
-$rmaNumber = trim($data->rma_number);
-$orderNumber = trim($data->order_number);
-$serialNumber = trim($data->serial_number);
-$productNumber = trim($data->product_number);
-$issue = trim($data->issue);
-$region = trim($data->region);
-$chatSessionId = trim($data->chat_session_id);
+// tst1: 105274 ; prod: 106257
+const REPORTID = 106257;
 
-$fileLocalFname = trim($data->file_local_fname);
-$fileUserFname = trim($data->file_user_fname);
-$fileContentType = trim($data->file_content_type);
+const ENTRY_TYPE_MAPPING = [
+    'private-note' => MessageEntryType::PRIVATE_NOTE,
+    'custom' => MessageEntryType::CUSTOM,
+    'chat' => MessageEntryType::CHAT
+];
+const CONTENT_TYPE_MAPPING = [
+    'text' => MessageContentType::TEXT,
+    'html' => MessageContentType::HTML
+];
 
-$deviceSymptoms = trim($data->deviceSymptoms);
-$deviceConnection = trim($data->deviceConnection);
-$deviceTsSteps = trim($data->deviceTsSteps);
-$deviceUpdated = trim($data->deviceUpdated);
-$deviceOccurrence = trim($data->deviceOccurrence);
+/**********************************************************/
+/**************** LEGACY CODES START *********************/
 
-$rmaType = trim($data->rmaType);
-$rmaPhone = trim($data->rmaPhone);
-$rmaShippingAddress = trim($data->rmaShippingAddress);
-$rmaBillingAddress = trim($data->rmaBillingAddress);
-$rmaPurchaseDate = trim($data->rmaPurchaseDate);
-$rmaPurchasePlace = trim($data->rmaPurchasePlace);
-$rmaCountry = trim($data->rmaCountry);
-$rmaZipPostal = trim($data->rmaZipPostal);
-$rmaStateProvince = trim($data->rmaStateProvince);
-$rmaCity = trim($data->rmaCity);
-$rmaStreetAddress = trim($data->rmaStreetAddress);
-$rmaFileLocalFname = trim($data->rmaFile);
-$rmaFileUserFname = trim($data->rmaFileTitle);
-$rmaFileType = trim($data->rmaFileType);
-
-$issueDescription = trim($data->issueDescription);
-
-// DEBUG
-// function getCurrentTime() {
-//     $currtime = time();
-//     return date("Y-m-d H:i:s",$currtime);
-// }
-// $mm = new RNCPHP\MailMessage();
-// $mm->To->EmailAddresses = array("herzon.tan@concentrix.com");
-// $mm->Subject = "odacasebotprocessor";
-// $mm->Body->Text = $rmaNumber;
-// $mm->Options->IncludeOECustomHeaders = false;
-// $mm->Options->HonorMarketingOptIn = false;
-// $mm->send();
-// DEBUG
-
-// tst1: 105274
-// prod: 106257
-// $reportId = 105274;
-$reportId = 106257;
-
-function findProduct($productCode)
+function getContactReason($problemID, $issue = null)
 {
-  $productQuery = "ID > 0";
-  $productQuery .= " AND product_code = '$productCode'";
-  $productQuery .= " AND end_of_life = 0";
-  $productQuery .= " AND is_active = 1";
-  return RNCPHP\CO\Products::first($productQuery);
-}
+    $contactReason = null;
+    $order = [9, 35, 73];
+    $rma = [90, 88, 98, 101];
 
-function addMessageToIncidentThread(&$p_incident, $idx, $p_text, $p_type, $c_type = 1)
-{
-  // add new message thread to incident
-  // if (!isset($incident->Threads)) {
-  //     $p_incident->Threads = new RNCPHP\ThreadArray();
-  // }
-  $p_incident->Threads[$idx] = new RNCPHP\Thread();
-  $p_incident->Threads[$idx]->EntryType = new RNCPHP\NamedIDOptList();
-  $p_incident->Threads[$idx]->EntryType->ID = $p_type;
-  $p_incident->Threads[$idx]->ContentType = new RNCPHP\NamedIDOptList();
-  $p_incident->Threads[$idx]->ContentType->ID = $c_type; //1=text,2=html
-  $p_incident->Threads[$idx]->Text = $p_text;
-}
-
-function respond($respData)
-{
-  $_json = json_encode($respData);
-  header("Content-Type: application/json; charset=UTF-8");
-  header("Content-Length: " . strlen($_json));
-  header("X-Content-Type-Options: nosniff");
-  echo $_json;
-}
-
-function runAnalyticsReport($sessionId)
-{
-  global $reportId;
-  $sessionIdFilterOperator = new RNCPHP\NamedIDOptList;
-  $sessionIdFilterOperator->Id = "1"; //Equal:=
-  $sessionIdFilter = new RNCPHP\AnalyticsReportSearchFilter;
-  $sessionIdFilter->Name = "sessionId";
-  $sessionIdFilter->Values = array($sessionId);
-  $sessionIdFilter->Operator = $sessionIdFilterOperator;
-  $reportFilters = new RNCPHP\AnalyticsReportSearchFilterArray;
-  $reportFilters[] = $sessionIdFilter;
-  $ar = RNCPHP\AnalyticsReport::fetch($reportId);
-  return $ar->run(0, $reportFilters);
-}
-
-function buildChatTranscript($sessionId)
-{
-  $reportResults = runAnalyticsReport($sessionId);
-  $nrows = $reportResults->count();
-  //column headings
-  $row = $reportResults->next();
-  // int max chat id
-  $chatId = 0;
-  $transcript = "";
-  for ($i = 0; $i++ < $nrows; $row = $reportResults->next()) {
-    // print_r($row);
-    // format
-    // [TIMESTAMP] <ROLE>: MESSAGE
-    // set chat ID to most recent
-    if ($i == 1) {
-      $chatId = intval($row['Chat ID']);
+    // if ($problemID == 932) {
+    //     if ($issue == 'General Product Questions') {
+    //         $contactReason = 3;
+    //     } else {
+    //         $contactReason = 7;
+    //     }
+    // } else if
+    if (in_array($problemID, $order)) {
+        $contactReason = 6;
+    } else if (in_array($problemID, $rma)) {
+        $contactReason = 8;
+    } else {
+        $contactReason = 3;
     }
-    // if not the most recent chat for the session, do not include in transcript block
-    if ($chatId == intval($row['Chat ID'])) {
-      $role = $row['Role in Conversation'] == "Lead" ? "Bot" : $row['Contact Name'];
-      $transcript .= sprintf("[%s] %s: %s<br/>", $row['Date of Event'], $role, $row['Data String']);
+
+    return $contactReason;
+}
+
+function findProduct($productNumber)
+{
+    $productQuery = "ID > 0";
+    $productQuery .= " AND product_code = '$productNumber'";
+    $productQuery .= " AND end_of_life = 0";
+    $productQuery .= " AND is_active = 1";
+
+    return RNCPHP\CO\Products::first($productQuery);
+}
+
+function getIncidentType($problemID)
+{
+    $typeID = null;
+    $software = [1284, 567, 671, 1323, 1585, 663, 1268, 1341];
+    $mobile = [284, 2003];
+    $networking = [129];
+    $peripherals = [1220, 856, 891, 932, 691, 725, 916, 1073, 1609, 1035, 101, 2494];
+    $system = [281, 1827, 277, 88, 2678];
+
+    if (in_array($problemID, $software)) {
+        $typeID = 149;  // Software & Services
+    } else if (in_array($problemID, $mobile)) {
+        $typeID = 155;  // Mobile
+    } else if (in_array($problemID, $networking)) {
+        $typeID = 159;  // Networking
+    } else if (in_array($problemID, $peripherals)) {
+        $typeID = 148;  // Peripherals
+    } else if (in_array($problemID, $system)) {
+        $typeID = 147;  // System
+    } else {
+        $typeID = 157;  // Customer Service
     }
-  }
-  return $transcript;
+
+    return $typeID;
+}
+
+function getWebIncidentType($problemID)
+{
+    $typeID = null;
+    $software = [1284, 567, 671, 1323, 1585, 663, 1268, 1341];
+    $mobile = [284];
+    $networking = [129];
+    $peripherals = [856, 891, 932, 691, 725, 916, 1073, 1609, 2003, 1035, 101, 2494];
+    $laptop = [281];
+    $desktop = [1827, 1220, 277, 88, 2678];
+
+    if (in_array($problemID, $software)) {
+        $typeID = 425;  // My Razer Software
+    } else if (in_array($problemID, $mobile)) {
+        $typeID = 420;  // My Razer Phone
+    } else if (in_array($problemID, $networking)) {
+        $typeID = 419;  // My Razer Network & Monitor
+    } else if (in_array($problemID, $peripherals)) {
+        $typeID = 413;  // My Peripheral (mouse, keyboard, headset)
+    } else if (in_array($problemID, $laptop)) {
+        $typeID = 418;  // My Razer Laptop
+    } else if (in_array($problemID, $desktop)) {
+        $typeID = 431;  // My Razer Desktop & Components
+    } else {
+        $typeID = 410;  // My Order from Razer.com
+    }
+
+    return $typeID;
 }
 
 function getRegion($region)
 {
-  $regionObject = null;
+    $regionObject = NULL;
+    $regionID = NULL;
+    $region = strtoupper($region);
 
-  switch ($region) {
-    case 'AP':
-      $regionObject = RNCPHP\CO\Region::fetch(734);
-      break;
-    case 'EU':
-      $regionObject = RNCPHP\CO\Region::fetch(733);
-      break;
-    default:        //Americas
-      $regionObject = RNCPHP\CO\Region::fetch(732);
-  }
-
-  return $regionObject;
-}
-
-function getQueue($problemId)
-{
-  $queue = null;
-  // $repair = [87, 97];
-  $order = [9, 35, 73, 90, 98];
-  $l1 = [1220, 856, 891, 932, 691, 725, 916, 1073, 129, 2003, 1035, 284, 101, 2494];
-  $l15 = [281, 1827, 277, 88, 2678];
-  $software = [1284, 567, 671, 1323, 1585, 663, 1268];
-  $chair = [1609];
-
-  if (in_array($problemId, $order)) {
-    $queue = 84;
-  } else if (in_array($problemId, $l1)) {
-    $queue = 69;
-  } else if (in_array($problemId, $l15)) {
-    $queue = 78;
-  } else if (in_array($problemId, $chair)) {
-    $queue = 327;
-  } else {
-    $queue = 93;
-  }
-
-  return $queue;
-}
-
-function getRmaProductTo($typeId)
-{
-  $returnId = ($typeId == 860) ? 2 : 1;   //To Razer : To Customer
-
-  return RNCPHP\CO\Return_Product_To::fetch($returnId);
-}
-
-function getIncidentType($problemId)
-{
-  $typeId = null;
-  $software = [1284, 567, 671, 1323, 1585, 663, 1268, 1341];
-  $mobile = [284, 2003];
-  $networking = [129];
-  $peripherals = [1220, 856, 891, 932, 691, 725, 916, 1073, 129, 1609, 1035, 101, 2494];
-  $system = [281, 1827, 277, 88, 2678];
-
-  if (in_array($problemId, $software)) {
-    $typeId = 149;
-  } else if (in_array($problemId, $mobile)) {
-    $typeId = 155;
-  } else if (in_array($problemId, $networking)) {
-    $typeId = 159;
-  } else if (in_array($problemId, $peripherals)) {
-    $typeId = 148;
-  } else if (in_array($problemId, $system)) {
-    $typeId = 147;
-  } else {
-    $typeId = 157;
-  }
-
-  return $typeId;
-}
-
-function getContactReason($problemId, $issue = null)
-{
-  $contactReason = null;
-  $order = [9, 35, 73];
-  $rma = [90, 88, 98, 101];
-
-  if ($problemId == 932) {
-    if ($issue == 'General Product Questions') {
-      $contactReason = 3;
-    } else {
-      $contactReason = 7;
+    switch ($region) {
+        case 'AP':
+        case 'ODAAP':
+            // $regionObject = RNCPHP\CO\Region::fetch(734);
+            $regionID = 734;
+            break;
+        case 'EU':
+        case 'ODAEU':
+            // $regionObject = RNCPHP\CO\Region::fetch(733);
+            $regionID = 733;
+            break;
+        default: 
+            // $regionObject = RNCPHP\CO\Region::fetch(732);
+            $regionID = 732; // Americas
     }
-  } else if (in_array($problemId, $order)) {
-    $contactReason = 6;
-  } else if (in_array($problemId, $rma)) {
-    $contactReason = 8;
-  } else {
-    $contactReason = 3;
-  }
 
-  return $contactReason;
+    return $regionID;
 }
 
-function getCurrentTime()
+/**************** LEGACY CODES END *********************/
+/*******************************************************/
+
+/** Emulate enums since it is not supported on older PHP versions */
+class MessageEntryType
 {
-  $currtime = time();
-  return date("Y-m-d H:i:s", $currtime);
+
+    const PRIVATE_NOTE = 1;
+    const CUSTOM = 3;
+    const CHAT = 5;
 }
 
-function createMouseCaseNotes(
-  $issue,
-  $deviceSymptoms,
-  $deviceConnection,
-  $deviceTsSteps,
-  $deviceUpdated,
-  $deviceOccurrence,
-  $fileLocalFname,
-  $rmaType,
-  $rmaPhone,
-  $rmaShippingAddress,
-  $rmaBillingAddress,
-  $rmaPurchaseDate,
-  $rmaPurchasePlace,
-  $rmaCountry,
-  $rmaZipPostal,
-  $rmaStateProvince,
-  $rmaCity,
-  $rmaStreetAddress,
-  $rmaFileLocalFname,
-  $issueDescription
-) {
-  $note = "<b>Please describe your issue:</b> " . $issueDescription . "</br></br>";
-  $note .= "<b>Issue Category:</b> " . $issue . "</br>";
-  if (($deviceSymptoms != '') && ($deviceSymptoms != '<not set>')) {
-    $note .= "<b>Symptoms:</b></br> " . $deviceSymptoms . "</br>";
-  }
-  if (($deviceConnection != '') && ($deviceConnection != '<not set>')) {
-    $note .= "<b>How are you using the device?</b> " . $deviceConnection . "</br>";
-  }
-  if (($deviceTsSteps != '') && ($deviceTsSteps != '<not set>')) {
-    $note .= "<b>What troubleshooting steps did you perform?</b></br> " . $deviceTsSteps . "</br>";
-  }
-  if (($deviceUpdated != '') && ($deviceUpdated != '<not set>')) {
-    $note .= "<b>Did you update the firmware to the latest version?</b> " . $deviceUpdated . "</br>";
-  }
-  if (($deviceOccurrence != '') && ($deviceOccurrence != '<not set>')) {
-    $note .= "<b>Does the issue occur on another PC?</b> " . $deviceOccurrence . "</br>";
-  }
-  if (!empty($fileLocalFname) && ($fileLocalFname != '<not set>')) {
-    $note .= "<b>Photo or video of the issue:</b> See Attached</br>";
-  }
+class MessageContentType
+{
 
-  // if (($rmaType != '') && ($rmaType != '<not set>')) {
-  //   $note .= "</br><b>Replacement Option:</b> " . $rmaType . "</br>";
-  //   $note .= "<b>Terms & Conditions:</b> Yes</br>";
-  //   $note .= "<b>Phone:</b> " . $rmaPhone . "</br>";
-  //   $note .= "<b>Shipping Address:</b> " . $rmaShippingAddress . "</br>";
-  //   $note .= "<b>Billing Address:</b> " . $rmaBillingAddress . "</br>";
-  //   $note .= "<b>Date of Purchase:</b> " . $rmaPurchaseDate . "</br>";
-  //   $note .= "<b>Place of Purchase:</b> " . $rmaPurchasePlace . "</br>";
-  //   if (!empty($rmaFileLocalFname) && ($rmaFileLocalFname != '<not set>')) {
-  //     $note .= "<b>Proof of Purchase:</b> See Attached";
-  //   }
-  // }
+    const TEXT = 1;
+    const HTML = 2;
+}
 
-  // if (($rmaCity != '') && ($rmaCity != '<not set>')) {
-  //   $note .= "</br><b>Replacement Option:</b> Standard</br>";
-  //   $note .= "<b>Phone:</b> " . $rmaPhone . "</br>";
-  //   $note .= "<b>Street Address:</b> " . $rmaStreetAddress . "</br>";
-  //   $note .= "<b>City:</b> " . $rmaCity . "</br>";
-  //   $note .= "<b>State/Province:</b> " . $rmaStateProvince . "</br>";
-  //   $note .= "<b>Zip/Postal Code:</b> " . $rmaZipPostal . "</br>";
-  //   $note .= "<b>Country:</b> " . $rmaCountry . "</br>";
-  //   $note .= "<b>Date of Purchase:</b> " . $rmaPurchaseDate . "</br>";
-  //   $note .= "<b>Place of Purchase:</b> " . $rmaPurchasePlace . "</br>";
-  //   if (!empty($rmaFileLocalFname) && ($rmaFileLocalFname != '<not set>')) {
-  //     $note .= "<b>Proof of Purchase:</b> See Attached";
-  //   }
-  // }
+function parseCaseDataFromPayload($input)
+{
+    $payloadData = json_decode($input, true);
 
-  if (($rmaPhone != '') && ($rmaPhone != '<not set>')) {
-    $note .= "<b>Phone:</b> " . $rmaPhone . "</br>";
-    $note .= "<b>Date of Purchase:</b> " . $rmaPurchaseDate . "</br>";
-    $note .= "<b>Place of Purchase:</b> " . $rmaPurchasePlace . "</br>";
-    if (!empty($rmaFileLocalFname) && ($rmaFileLocalFname != '<not set>')) {
-      $note .= "<b>Proof of Purchase:</b> See Attached";
+    // note = ['content' => 'sample', 'id' => 'troubleshooting', 'entryType' => 'private-note', 'contentType': 'text']
+    // file = ['name' => 'sample', 'path' => '/tmp', 'contentType': '']
+    $caseData = [
+        "region" => $payloadData['region'], "chatSessionID" => $payloadData['chatSessionID'],
+        "contactID" => $payloadData['contactID'], "orderNumber" => $payloadData['orderNumber'],
+        "serialNumber" => $payloadData['serialNumber'], "categoryID" => $payloadData['categoryID'],
+        "subject" => $payloadData['subject'],
+        "productNumber" => $payloadData['productNumber'],
+        "productDescription" => $payloadData['productDescription'],
+        "payRepairFeeID" => $payloadData['payRepairFeeID'],
+        "problemID" => $payloadData['problemID'], "issue" => $payloadData['issue'],
+        "rmaNumber" => $payloadData['rmaNumber'], "files" => $payloadData['files'],
+        "notes" => $payloadData['notes']
+    ];
+
+    if(array_key_exists('country', $payloadData)){
+        $caseData["country"] = $payloadData['country'];
     }
-  }
 
-  return $note;
+    return $caseData;
 }
 
-$result = array();
+function sanitizeCaseData($caseData)
+{
+    // DO SOME SANITATION, CHECKING, FORMATTING AND ETC.
 
-try {
+    return $caseData;
+}
 
-  $contact = RNCPHP\Contact::fetch($contactId, RNCPHP\RNObject::VALIDATE_KEYS_OFF);
+function getAnalyticsReportResults($sessionID, $reportID)
+{
 
-  $incident = new RNCPHP\Incident;
-  $incident->PrimaryContact = $contact;
-  $incident->Subject = $caseSubject;
+    $sessionIDFilterOperator = new RNCPHP\NamedIDOptList;
+    $sessionIDFilterOperator->Id = "1"; //Equal:=
 
-  $incident->Threads = new RNCPHP\ThreadArray();
+    $sessionIDFilter = new RNCPHP\AnalyticsReportSearchFilter;
+    $sessionIDFilter->Name = "sessionId";
+    $sessionIDFilter->Values = array($sessionID);
+    $sessionIDFilter->Operator = $sessionIDFilterOperator;
 
-  $serviceProduct = RNCPHP\ServiceProduct::fetch(intval($problemId));
-  $incident->Product = $serviceProduct;
+    $reportFilters = new RNCPHP\AnalyticsReportSearchFilterArray;
+    $reportFilters[] = $sessionIDFilter;
 
-  if ($problemId == 1341 && $categoryId != 'NULL') { //Surround Sound Activation
-    $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryId));
-    $incident->Category = $serviceCategory;
-  }
+    $analyticsReport = RNCPHP\AnalyticsReport::fetch($reportID);
+    $results = $analyticsReport->run(0, $reportFilters);
 
-  $contactReason = RNCPHP\CO1\Contact_Reason::fetch(getContactReason(intval($problemId), $issue));
-  $incident->CustomFields->CO1->contact_reason = $contactReason;
+    return $results;
+}
 
-  if ($orderNumber != 'null') {
-    $orderNumber = (strlen($orderNumber) > 20) ? substr($orderNumber, 0, 20) : $orderNumber;
-    $incident->CustomFields->CO1->order_number = $orderNumber;
-    $incident->CustomFields->c->web_store_order_num = $orderNumber;
-  }
+function buildChatTranscript($analyticsReportResults)
+{
+    $nrows = $analyticsReportResults->count();
+    $row = $analyticsReportResults->next(); //skip column headings
+    $chatId = 0; // int max chat id
+    $transcript = "";
 
-  // first idx=0, type=3 for cust entry
-  addMessageToIncidentThread($incident, 0, $issue, 3);
-
-  /**
-   * Case ICFs
-   */
-  // serial number, set to uppercase
-  if (!empty($serialNumber)) {
-    // SysAttrib Length of Field=20
-    $serialNumber = strtoupper($serialNumber);
-    $serialNumber = (strlen($serialNumber) > 20) ? substr($serialNumber, 0, 20) : $serialNumber;
-    $incident->CustomFields->CO1->serial_num = $serialNumber;
-  }
-
-  $noteText = sprintf("+ Case Contact ID %d\n", $contact->ID);
-
-  // store order #
-  if (!empty($orderNumber)) {
-    // ICF Size of Field=20
-    $orderNumber = (strlen($orderNumber) > 20) ? substr($orderNumber, 0, 20) : $orderNumber;
-    // $incident->CustomFields->c->web_store_order_num = $orderNumber;
-  }
-
-  $incident->FileAttachments = new RNCPHP\FileAttachmentIncidentArray(); //is this right?
-
-  // 20201110 robert.surujbhan@oracle.com removed file attachment logic
-  // 20201201 robert.surujbhan@oracle.com added file attachment logic for DA-as-Agent flow via Embedded Chat Inlay
-  if (!empty($fileLocalFname) && ($fileLocalFname != '<not set>')) {
-    // file path in /tmp directory
-    $fullFilePath = sprintf("/tmp/%s", $fileLocalFname);
-
-    $file1 = new RNCPHP\FileAttachmentIncident();
-
-    $file1->setFile($fullFilePath);
-
-    $file1->FileName = $fileUserFname;
-    $file1->ContentType = $fileContentType;
-    $file1->Description = "End-user POP uploaded via ODA";
-    $file1->Private = false;
-
-    $incident->FileAttachments[] = $file1;
-  }
-
-  if (!empty($rmaFileLocalFname) && ($rmaFileLocalFname != '<not set>')) {
-    // file path in /tmp directory
-    $fullFilePath = sprintf("/tmp/%s", $rmaFileLocalFname);
-
-    $file2 = new RNCPHP\FileAttachmentIncident();
-
-    $file2->setFile($fullFilePath);
-
-    $file2->FileName = $rmaFileUserFname;
-    $file2->ContentType = $rmaFileType;
-    $file2->Description = "End-user POP uploaded via ODA";
-    $file2->Private = false;
-
-    $incident->FileAttachments[] = $file2;
-  }
-
-  /**
-   * CO.RMA record logic
-   */
-
-  // CO.Products lookup for product SKU
-  $product = null;
-  $productCode = strtoupper($productNumber);
-  if (!empty($productCode)) {
-    $product = findProduct($productCode);
-  }
-
-  $noteCount = 1;
-
-  // second idx=1, type=1 for private note
-  addMessageToIncidentThread($incident, $noteCount++, $noteText, 1);
-
-  if ($rmaNumber != 'null') { //changed
-    $rmaText = sprintf("+ RMA Number: %s\n", $rmaNumber);
-
-    addMessageToIncidentThread($incident, $noteCount++, $rmaText, 1);
-  }
-
-  if (!empty($chatSessionId)) {
-    $chatTranscript = buildChatTranscript($chatSessionId);
-    if (!empty($chatTranscript)) {
-      $chatTranscript = buildChatTranscript($chatSessionId);
-      addMessageToIncidentThread($incident, $noteCount++, $chatTranscript, 5, 2); //html
+    for ($i = 0; $i++ < $nrows; $row = $analyticsReportResults->next()) {
+        // print_r($row);
+        // format
+        // [TIMESTAMP] <ROLE>: MESSAGE
+        // set chat ID to most recent
+        if ($i == 1) {
+            $chatId = intval($row['Chat ID']);
+        }
+        // if not the most recent chat for the session, do not include in transcript block
+        if ($chatId == intval($row['Chat ID'])) {
+            $role = $row['Role in Conversation'] == "Lead" ? "Bot" : $row['Contact Name'];
+            $transcript .= sprintf("[%s] %s: %s<br/>", $row['Date of Event'], $role, $row['Data String']);
+        }
     }
-  }
-
-  $mouseNotes = createMouseCaseNotes(
-    $issue,
-    $deviceSymptoms,
-    $deviceConnection,
-    $deviceTsSteps,
-    $deviceUpdated,
-    $deviceOccurrence,
-    $fileLocalFname,
-    $rmaType,
-    $rmaPhone,
-    $rmaShippingAddress,
-    $rmaBillingAddress,
-    $rmaPurchaseDate,
-    $rmaPurchasePlace,
-    $rmaCountry,
-    $rmaZipPostal,
-    $rmaStateProvince,
-    $rmaCity,
-    $rmaStreetAddress,
-    $rmaFileLocalFname,
-    $issueDescription
-  );
-  addMessageToIncidentThread($incident, $noteCount++, $mouseNotes, 3, 2);
-
-  // remove manual queue assignment for the routing rules to take over
-  // $incident->Queue = new RNCPHP\NamedIDLabel();
-  // $incident->Queue->ID = getQueue(intval($problemId));
-
-  $incident->CustomFields->c->incident_type = new RNCPHP\NamedIDLabel();
-  $incident->CustomFields->c->incident_type->id = getIncidentType(intval($problemId));
-
-  $incident->CustomFields->c->incident_source = new RNCPHP\NamedIDLabel();
-  $incident->CustomFields->c->incident_source->id = 346;     //Web ODA
-
-  // incident save
-  $incident->save();
-  // avoid running InProcess state rules again
-  // $incident->save(RNCPHP\RNObject::SuppressAll);
-
-  $result = array("status" => "OK", "id" => $incident->ID, "refNo" => $incident->ReferenceNumber);
-
-  // send email receipt via transactional mailing
-  $mailingId = RNCPHP\Configuration::fetch("CUSTOM_CFG_RMA_BOT_CPM_MAILING_ID_CUST_RECEIPT")->Value;
-  $mailingId = intval($mailingId);
-  // check to make sure RMA was created and the mailing ID config is not at a Default value (0 or 1)
-  if ($rmaCreated == true && $mailingId > 1) {
-    RNCPHP\Mailing::SendMailingToContact($contact, $incident, $mailingId, 0);
-  }
-} catch (\Exception $e) {
-  $mm = new RNCPHP\MailMessage();
-  $mm->To->EmailAddresses = array("josh.cabiles.ext@razer.com");
-  $mm->Subject = "odasupportcasebotprocessor";
-  $mm->Body->Text = $e->getMessage();
-  $mm->Options->IncludeOECustomHeaders = false;
-  $mm->Options->HonorMarketingOptIn = false;
-  $mm->send();
-
-  $result = array("status" => "Failed", "exception" => $e->getMessage());
+    return $transcript;
 }
 
-respond($result);
+function createContact($contactID)
+{
+    $validateKeysOff = RNCPHP\RNObject::VALIDATE_KEYS_OFF;
+    $contact = RNCPHP\Contact::fetch($contactID, $validateKeysOff);
+    return $contact;
+}
+
+function createServiceCategory($problemID, $categoryID)
+{
+    $serviceCategory = NULL;
+    // if ($problemID == 1341 && $categoryID != 'NULL') { //Surround Sound Activation
+    //     $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryID));
+    // }
+    if ($categoryID != NULL && $categoryID != '' && $categoryID != '<not set>') {   // include <not set> as blank value case
+        $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryID));
+    }
+    return $serviceCategory;
+}
+
+function assignOrderNumberToIncident($incident, $orderNumber)
+{
+    if ($orderNumber != NULL && !empty($orderNumber) && $orderNumber != 'null') {
+        $orderNumber = (strlen($orderNumber) > 20) ? substr($orderNumber, 0, 20) : $orderNumber;
+        $incident->CustomFields->CO1->order_number = $orderNumber;
+        $incident->CustomFields->c->web_store_order_num = $orderNumber;
+    }
+}
+
+function createServiceProduct($problemID)
+{
+    $problemID = intval($problemID);
+    $serviceProduct = RNCPHP\ServiceProduct::fetch($problemID);
+    return $serviceProduct;
+}
+
+function createContactReason($problemID, $issue)
+{
+    $problemID = intval($problemID);
+    $contactReasonID = getContactReason($problemID, $issue);
+    $contactReason = RNCPHP\CO1\Contact_Reason::fetch($contactReasonID);
+    return $contactReason;
+}
+
+function assignSerialNumberToIncident($incident, $serialNumber)
+{
+    // set the serial number to uppercase; SysAtrrib length of field = 20
+    if ($serialNumber != NULL && !empty($serialNumber)) {
+        $serialNumber = strtoupper($serialNumber);
+        $serialNumber = (strlen($serialNumber) > 20) ? substr($serialNumber, 0, 20) : $serialNumber;
+        $incident->CustomFields->CO1->serial_num = $serialNumber;
+    }
+}
+
+function assignTypeAndSourceToIncident($incident, $problemID, $source)
+{
+    $problemID = intval($problemID);
+
+    $incident->CustomFields->c->incident_type = new RNCPHP\NamedIDLabel();
+    $incident->CustomFields->c->incident_type->id = getIncidentType($problemID);
+
+    $incident->CustomFields->c->web_incident_type = new RNCPHP\NamedIDLabel();
+    $incident->CustomFields->c->web_incident_type->id = getWebIncidentType($problemID);
+
+    $incident->CustomFields->c->incident_source = new RNCPHP\NamedIDLabel();
+    $incident->CustomFields->c->incident_source->id = $source;
+}
+
+function assignSourceCountryAndRegion($incident, $country, $region){
+    // Default web_country value for skills without country in their payload
+    if(empty($country) || $country == ''){
+        $country = 'us';
+    }
+    $incident->CustomFields->c->web_country = $country;
+
+    $incident->CustomFields->c->region = new RNCPHP\NamedIDLabel();
+    $incident->CustomFields->c->region->id = getRegion($region);
+
+    $incident->CustomFields->c->chat_region = $region;
+}
+
+function mapProductNumberAndDescription($incident, $caseData)
+{
+    $product = NULL;
+    $productNumber = strval($caseData['productNumber']);
+    if ($productNumber != NULL && !empty($productNumber)) {
+        $productNumber = strtoupper($productNumber);
+        $product = findProduct($productNumber);
+    }
+    $incident->CustomFields->CO->Products1 = $product;
+}
+
+function setRazerCareInfo($incident, $payRepairFeeID)
+{
+    $payRepairFeeID = intval($payRepairFeeID);
+    if ($payRepairFeeID != 0) {
+        // Sets RazerCare coverage to Yes if pay repair fee is set to Razer Care (472)
+        $incident->CustomFields->CO1->razercare_purchased = ($payRepairFeeID == 472) ? true : false;
+
+        $incident->CustomFields->c->pay_repair_fee = new RNCPHP\NamedIDLabel();
+        $incident->CustomFields->c->pay_repair_fee->id = $payRepairFeeID;
+    }
+}
+
+function createMessage($content, $entryType, $contentType)
+{
+    $message = [
+        'content' => $content, 'entryType' => $entryType,
+        'contentType' => $contentType
+    ];
+    return $message;
+}
+
+function createMessageThread($message)
+{
+    $thread = new RNCPHP\Thread();
+    $thread->Text = $message['content'];
+    $thread->EntryType = new RNCPHP\NamedIDOptList();
+    $thread->EntryType->ID = $message['entryType'];
+    $thread->ContentType = new RNCPHP\NamedIDOptList();
+    $thread->ContentType->ID = $message['contentType'];
+
+    return $thread;
+}
+
+function createMessageThreads($messages)
+{
+    $messageThreads = [];
+    foreach ($messages as $message) {
+        $messageThread = createMessageThread($message);
+        $messageThreads[] = $messageThread;
+    }
+    return $messageThreads;
+}
+
+function assignMessageThreadToIncident($incident, $index, $messageThread)
+{
+    $incident->Threads[$index] = $messageThread;
+}
+
+function assignMessageThreadsToIncident($incident, $startingIndex, $messageThreads)
+{
+    $count = 0;
+    foreach ($messageThreads as $messageThread) {
+        assignMessageThreadToIncident($incident, $startingIndex, $messageThread);
+        $startingIndex++;
+        $count++;
+    }
+    return $count;
+}
+
+function createMessageFromNote($note)
+{
+    $message = createMessage(
+        $note['content'],
+        ENTRY_TYPE_MAPPING[$note['entryType']],
+        CONTENT_TYPE_MAPPING[$note['contentType']]
+    );
+    return $message;
+}
+
+function createMessageFromNotes($notes)
+{
+    $messages = [];
+    foreach ($notes as $note) {
+        $messages[] = createMessageFromNote($note);
+    }
+    return $messages;
+}
+
+function createFileAttachmentIncident($file)
+{
+    $path = sprintf("/tmp/%s", $file['path']);
+
+    $fileAttachmentIncident = new RNCPHP\FileAttachmentIncident();
+    $fileAttachmentIncident->setFile($path);
+    $fileAttachmentIncident->FileName = $file['name'];
+    $fileAttachmentIncident->ContentType = $file['contentType'];
+
+    $description = isset($file['description']) ? $file['description'] : 'End-user POP uploaded via ODA';
+    $fileAttachmentIncident->Description = $description;
+    $fileAttachmentIncident->Private = false;
+
+    return $fileAttachmentIncident;
+}
+
+function createFileAttachmentIncidents($files)
+{
+    $fileAttachmentIncidents = [];
+
+    foreach ($files as $file) {
+        $fileAttachmentIncident = createFileAttachmentIncident($file);
+        $fileAttachmentIncidents[] = $fileAttachmentIncident;
+    }
+    return $fileAttachmentIncidents;
+}
+
+function appendFileAttachmentIncidentToFileAttachmentIncidentArray($incidentArray, $fileAttachmentIncidents)
+{
+    foreach ($fileAttachmentIncidents as $fileAttachmentIncident) {
+        $incidentArray[] = $fileAttachmentIncident;
+    }
+}
+
+function respond($payloadData)
+{
+    $payloadJSON = json_encode($payloadData);
+
+    header("Content-Type: application/json; charset=UTF-8");
+    header("Content-Length: " . strlen($payloadJSON));
+    header("X-Content-Type-Options: nosniff");
+
+    echo $payloadJSON;
+}
+
+function sendEmail($subject, $content, $recipients)
+{
+    $mailMessage = new RNCPHP\MailMessage();
+    $mailMessage->To->EmailAddresses = $recipients;
+    $mailMessage->Subject = $subject;
+    $mailMessage->Body->Text = $content;
+    $mailMessage->Options->IncludeOECustomHeaders = false;
+    $mailMessage->Options->HonorMarketingOptIn = false;
+
+    $mailMessage->send();
+}
+
+function main()
+{
+    $payloadData = [];
+    $RECIPIENTS = ['darwin.sardual.ext@razer.com', 'josh.cabiles.ext@razer.com', 'jericho.farolan.ext@razer.com'];
+
+    try {
+
+        $WEB_ODA_INCIDENT_SOURCE = 346;
+        $input = file_get_contents('php://input');
+        $threadIndex = 0;
+        $defaultMessages = [];
+
+        $caseData = parseCaseDataFromPayload($input);
+        $caseData = sanitizeCaseData($caseData);
+
+        $incident = new RNCPHP\Incident;
+        $incident->Subject = $caseData['subject'];
+
+        $incident->PrimaryContact = createContact($caseData['contactID']);
+        $incident->CustomFields->CO1->contact_reason = createContactReason(
+            $caseData['problemID'],
+            $caseData['issue']
+        );
+        $incident->Product = createServiceProduct($caseData['problemID']);
+        $incident->Category = createServiceCategory($caseData['problemID'], $caseData['categoryID']);
+
+        assignTypeAndSourceToIncident($incident, $caseData['problemID'], $WEB_ODA_INCIDENT_SOURCE);
+        assignOrderNumberToIncident($incident, $caseData['orderNumber']);
+        assignSerialNumberToIncident($incident, $caseData['serialNumber']);
+        assignSourceCountryAndRegion($incident, $caseData['country'], $caseData['region']);
+        mapProductNumberAndDescription($incident, $caseData);
+        setRazerCareInfo($incident, $caseData['payRepairFeeID']);
+
+        /** ADD MESSAGES START */
+        $message = createMessage($caseData['issue'], MessageEntryType::CUSTOM, MessageContentType::TEXT);
+        $defaultMessages[] = $message;
+
+        $contactText = sprintf("+ Case Contact ID %d\n", $incident->PrimaryContact->ID);
+        $message = createMessage($contactText, MessageEntryType::PRIVATE_NOTE, MessageContentType::TEXT);
+        $defaultMessages[] = $message;
+
+        $rmaNumber = $caseData['rmaNumber'];
+        if ($rmaNumber != NULL && $rmaNumber != 'null') {
+            $rmaText = sprintf("+ RMA Number: %s\n", $rmaNumber);
+            $message = createMessage($rmaText, MessageEntryType::PRIVATE_NOTE, MessageContentType::TEXT);
+            $defaultMessages[] = $message;
+        }
+
+        $chatSessionID = $caseData['chatSessionID'];
+        if ($chatSessionID != NULL && !empty($chatSessionID)) {
+            $analyticsReportResults = getAnalyticsReportResults($chatSessionID, REPORTID);
+            $transcript = buildChatTranscript($analyticsReportResults);
+
+            if (!empty($transcript)) {
+                $message = createMessage($transcript, MessageEntryType::CHAT, MessageContentType::HTML);
+                $defaultMessages[] = $message;
+            }
+        }
+
+        $additionalMessages = createMessageFromNotes($caseData['notes']);
+        $allMessages = array_merge($defaultMessages, $additionalMessages);
+
+        $messageThreads = createMessageThreads($allMessages);
+        $notesCount = assignMessageThreadsToIncident($incident, $threadIndex, $messageThreads);
+        $threadIndex = $threadIndex + $notesCount;
+
+        /** ADD MESSAGES END */
+
+        /** ADD FILE ATTACHEMENTS START */
+        $fileAttachmentIncidentArray = new RNCPHP\FileAttachmentIncidentArray();
+        $fileAttachmentIncidents = createFileAttachmentIncidents($caseData['files']);
+        appendFileAttachmentIncidentToFileAttachmentIncidentArray($fileAttachmentIncidentArray, $fileAttachmentIncidents);
+        $incident->FileAttachments = $fileAttachmentIncidentArray;
+
+        /** ADD FILE ATTACHEMENTS END */
+
+        $incident->save();
+
+        $payloadData = [
+            'status' => 'OK', 'id' => $incident->ID,
+            'referenceNumber' => $incident->ReferenceNumber
+        ];
+
+        /** NOTE: Not really sure if this is still useful */
+
+        // send email receipt via transactional mailing
+        $mailingID = RNCPHP\Configuration::fetch("CUSTOM_CFG_RMA_BOT_CPM_MAILING_ID_CUST_RECEIPT")->Value;
+        $mailingID = intval($mailingID);
+
+        // check to make sure RMA was created and the mailing ID config is not at a Default value (0 or 1)
+        if ($rmaCreated == true && $mailingID > 1) {
+            RNCPHP\Mailing::SendMailingToContact($incident->PrimaryContact, $incident, $mailingID, 0);
+        }
+
+        /*********************************************** */
+
+        sendEmail('ODA Case Creation Processor', json_encode($payloadData), $RECIPIENTS);
+    } catch (\Exception $e) {
+        $exceptionMessage = $e->getMessage();
+        $payloadData = [
+            'status' => 'Failed',
+            'exception' => $exceptionMessage
+        ];
+
+        sendEmail('ODA Case Creation Processor', $exceptionMessage, $RECIPIENTS);
+    }
+
+    respond($payloadData);
+}
+
+main();

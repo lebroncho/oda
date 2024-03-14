@@ -242,7 +242,7 @@ function createContact($contactID)
 function createServiceCategory($problemID, $categoryID)
 {
     $serviceCategory = NULL;
-    if ($problemID == 1341 && $categoryID != 'NULL') { //Surround Sound Activation
+    if ($categoryID != NULL && $categoryID != '' && $categoryID != '<not set>') {   // include <not set> as blank value case
         $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryID));
     }
     return $serviceCategory;
