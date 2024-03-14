@@ -118,7 +118,7 @@ const addInlayToUx = () => {
                 "value": getWarrantyInfo('pay_repair_fee')
             },
             {
-                "hidden": false,
+                "hidden": true,
                 "name": "c$custom_oda_payload",
                 "required": false,
                 "value": getSubject()
