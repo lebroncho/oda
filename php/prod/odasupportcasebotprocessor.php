@@ -242,9 +242,6 @@ function createContact($contactID)
 function createServiceCategory($problemID, $categoryID)
 {
     $serviceCategory = NULL;
-    // if ($problemID == 1341 && $categoryID != 'NULL') { //Surround Sound Activation
-    //     $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryID));
-    // }
     if ($categoryID != NULL && $categoryID != '' && $categoryID != '<not set>') {   // include <not set> as blank value case
         $serviceCategory = RNCPHP\ServiceCategory::fetch(intval($categoryID));
     }
@@ -327,8 +324,8 @@ function setRazerCareInfo($incident, $payRepairFeeID)
 {
     $payRepairFeeID = intval($payRepairFeeID);
     if ($payRepairFeeID != 0) {
-        // Sets RazerCare coverage to Yes if pay repair fee is set to Razer Care (472)
-        $incident->CustomFields->CO1->razercare_purchased = ($payRepairFeeID == 472) ? true : false;
+        // Sets RazerCare coverage to Yes if pay repair fee is set to Razer Care (473)
+        $incident->CustomFields->CO1->razercare_purchased = ($payRepairFeeID == 473) ? true : false;
 
         $incident->CustomFields->c->pay_repair_fee = new RNCPHP\NamedIDLabel();
         $incident->CustomFields->c->pay_repair_fee->id = $payRepairFeeID;
@@ -554,7 +551,7 @@ function main()
 
         /*********************************************** */
 
-        sendEmail('ODA Case Creation Processor', json_encode($payloadData), $RECIPIENTS);
+        // sendEmail('ODA Case Creation Processor', json_encode($payloadData), $RECIPIENTS);
     } catch (\Exception $e) {
         $exceptionMessage = $e->getMessage();
         $payloadData = [

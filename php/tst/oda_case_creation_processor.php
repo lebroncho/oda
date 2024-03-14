@@ -297,8 +297,8 @@ function setRazerCareInfo($incident, $payRepairFeeID)
 {
     $payRepairFeeID = intval($payRepairFeeID);
     if ($payRepairFeeID != 0) {
-        // Sets RazerCare coverage to Yes if pay repair fee is set to Razer Care (472)
-        $incident->CustomFields->CO1->razercare_purchased = ($payRepairFeeID == 472) ? true : false;
+        // Sets RazerCare coverage to Yes if pay repair fee is set to Razer Care (473)
+        $incident->CustomFields->CO1->razercare_purchased = ($payRepairFeeID == 473) ? true : false;
 
         $incident->CustomFields->c->pay_repair_fee = new RNCPHP\NamedIDLabel();
         $incident->CustomFields->c->pay_repair_fee->id = $payRepairFeeID;
