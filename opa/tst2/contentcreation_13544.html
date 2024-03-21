@@ -1,0 +1,712 @@
+<style type="text/css">.rn_ContentDetail .rn_RecordDetail .rn_AnswerInfo { display: none; }
+
+	#support-map .rz_Btn {
+		display: block;
+		width: 100%;
+		max-width: 230px;
+		text-align: center;
+		font-size: 1rem;
+		line-height: 1.5rem;
+		font-weight: 400 !important;
+		letter-spacing: 0.09rem !important;
+		border-radius: 0.25rem !important;
+		padding: 0.45rem;
+		margin: 1.5rem auto;
+		white-space: normal;
+		cursor: pointer;
+		text-transform: uppercase;
+		border: 1px solid var(--color-green);
+		color: var(--color-green);
+	}
+	
+	#support-map .rz_Btn:hover,
+	#support-map .rz_Btn.disabled {
+		opacity: 1;
+	}
+	
+	#support-map .rz_Btn.disabled {
+		border-color: #555;
+		color: #555 !important;
+	}
+	
+	#support-map input[type=radio]:checked+label.rz_Btn {
+		background-color: var(--color-green) !important;
+		color: #000 !important;
+		font-weight: 500 !important;
+	}
+	
+	#support-map .list-unstyled,
+	#support-map .list-unstyled>li {
+		list-style: none !important;
+	}
+	
+	#support-map .list-unstyled {
+		padding-left: 2rem;
+		margin-bottom: 1.5rem;
+	}
+	
+	#support-map .list-unstyled li {
+		position: relative;
+	}
+	
+	#support-map .list-unstyled input[type=checkbox] {
+		position: absolute;
+		left: -2rem;
+		top: 0.25rem;
+	}
+	
+	#support-map .list-unstyled input[type=checkbox]:after {
+		border-color: var(--color-green) !important;
+		border-radius: 0.25rem !important;
+	}
+	
+	#support-map .list-unstyled input[type=checkbox]:checked:before {
+		border-color: #222 !important;
+	}
+	
+	#support-map .list-unstyled input[type=checkbox]:checked:after {
+		background-color: var(--color-green) !important;
+	}
+	
+	#support-map input[type=radio] {
+		position: absolute;
+		opacity: 0;
+		height: 0;
+		width: 0;
+	}
+	
+	.d-none {
+		display: none;
+	}
+	</style>
+	<div>$oda_ts_notice
+	<form action="https://mysupport.razer.com/app/contact-support" id="support-map" method="POST"><input name="case_category" type="hidden" value="broadcaster" /> <!-- Issues List -->
+	<div class="row mt-5">
+	<div class="col-sm-4"><input id="main-tab-1" name="case_reason" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-1" onclick="showSection('connection-issue')" tabindex="0"> Connection<br />
+	Issues</label></div>
+	
+	<div class="col-sm-4"><input id="main-tab-2" name="case_reason" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-2" onclick="showSection('audio-mic-issue')" tabindex="0"> Audio &amp; Mic<br />
+	Issues</label></div>
+	
+	<div class="col-sm-4"><input id="main-tab-3" name="case_reason" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-3" onclick="showSection('video-issue')" tabindex="0"> Video<br />
+	Issues</label></div>
+	</div>
+	
+	<div class="row mb-5">
+	<div class="col-sm-4 offset-sm-2"><input id="main-tab-4" name="case_reason" type="radio" value="3" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-4" onclick="showSection('nq-issues')" tabindex="0"> Non-quality<br />
+	Issues</label></div>
+	
+	<div class="col-sm-4"><input id="main-tab-5" name="case_reason" type="radio" value="4" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="main-tab-5" onclick="showSection('general-inquiry')" tabindex="0"> General<br />
+	Inquiry</label></div>
+	</div>
+	
+	<div class="ts-section d-none mb-5" id="connection-issue">
+	<h2 class="mb-4">Connection Issues</h2>
+	
+	<p>Please select one or more symptoms your device is experiencing:</p>
+	
+	<h3><strong>Symptom(s):</strong></h3>
+	<!-- Connection Issues Symptoms -->
+	
+	<div class="row">
+	<div class="col-sm">
+	<ul class="list-unstyled list-symptoms">
+		<li>
+		<p><input id="tab-1-sym1" name="case_symptoms[]" type="checkbox" value="0" /> <label for="tab-1-sym1">Detected but not recognized</label></p>
+		</li>
+		<li>
+		<p><input id="tab-1-sym2" name="case_symptoms[]" type="checkbox" value="1" /> <label for="tab-1-sym2">Detected but audio/video not working</label></p>
+		</li>
+		<li>
+		<p><input id="tab-1-sym3" name="case_symptoms[]" type="checkbox" value="2" /> <label for="tab-1-sym3">Disconnected periodically</label></p>
+		</li>
+	</ul>
+	</div>
+	
+	<div class="col-sm">
+	<ul class="list-unstyled list-symptoms">
+		<li>
+		<p><input id="tab-1-sym4" name="case_symptoms[]" type="checkbox" value="3" /> <label for="tab-1-sym4">Intermittent connection</label></p>
+		</li>
+		<li>
+		<p><input id="tab-1-sym5" name="case_symptoms[]" type="checkbox" value="4" /> <label for="tab-1-sym5">Not detected at all</label></p>
+		</li>
+		<li>
+		<p><input id="tab-1-sym6" name="case_symptoms[]" type="checkbox" value="18" /> <label for="tab-1-sym6">Other issues not listed</label></p>
+		</li>
+	</ul>
+	</div>
+	</div>
+	
+	<div class="ts-content d-none">
+	<h3><strong>How are you connected?</strong></h3>
+	<!-- Connection Issues Connections -->
+	
+	<fieldset>
+	<div class="row mb-2">
+	<div class="col-sm"><input id="tab-1-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-usb" onclick="showSubItem('usb')" tabindex="0">USB<br />
+	Cable</label></div>
+	
+	<div class="col-sm"><input id="tab-1-jack" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-jack" onclick="showSubItem('audio-jack')" tabindex="0">3.5mm Audio<br />
+	Cable</label></div>
+	
+	<div class="col-sm"><input id="tab-1-bluetooth" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-1-bluetooth" onclick="showSubItem('bluetooth')" tabindex="0">Bluetooth via<br />
+	Phone/Console</label></div>
+	</div>
+	</fieldset>
+	<!-- Connection Issues USB -->
+	
+	<div class="ts-sub-item d-none" id="usb">
+	<h3><strong>Solutions</strong></h3>
+	
+	<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
+	<!-- USB Solutions -->
+	
+	<ul class="list-unstyled list-solutions">
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="0" /> Remove other peripherals not needed during troubleshooting except for the primary keyboard and mouse.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="1" /> Unplug and re-plug the device and connect it directly to a PC’s USB port and not a USB Hub.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="2" /> Connect it to a different USB Port.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="3" /> Get the latest <a href="https://support.microsoft.com/en-us/windows/update-windows-3c5ae7fc-9fb6-9af1-1984-b5e0412c556a" target="_blank">Windows Update</a>.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="4" /> <a href="ms-settings:privacy-webcam?activationSource=SMC-Article-13753" target="_blank">Allow camera access</a> for video issues.</p>
+	
+		<p><img alt="allow camera access" src="https://dl.razerzone.com/src/opa/brd/brd-camera-en-v1.png" style="width: 500px;" /></p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="5" /> <a href="https://support.microsoft.com/en-us/windows/fix-microphone-problems-5f230348-106d-bfa4-1db5-336f35576011#WindowsVersion=Windows_10" target="_blank">Make sure your apps can access the mic</a> for audio concern.</p>
+	
+		<p><img alt="microphone concern" src="https://dl.razerzone.com/src/opa/brd/brd-mic-en-v1.png" style="width: 500px;" /></p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="6" /> Device should be <a href="https://mysupport.razer.com/app/answers/detail/a_id/4130" target="_blank">compatible with Synapse</a> or check device <a href="https://support.razer.com/pc/content-creation" target="_blank">product user guide</a> to configure device accordingly.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="7" /> Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your device if it is on the list.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="8" /> <strong>Rule out software issues.</strong> Close all Razer device related software including Razer Synapse.</p>
+	
+		<p><img alt="software issues" src="https://dl.razerzone.com/src/opa/brd/brd-synapse-en-v1.png" /></p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="9" /> If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">reinstall your device drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse. Restart your computer then test your device.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="10" /> Connect and Test your device using a different computer.</p>
+		</li>
+	</ul>
+	</div>
+	<!-- Connection Issues audio jack -->
+	
+	<div class="ts-sub-item d-none" id="audio-jack">
+	<h3><strong>Solutions</strong></h3>
+	
+	<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
+	
+	<ul class="list-unstyled list-solutions">
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="11" /> Check the audio ports and audio jack for any dirt or debris.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="3" /> Get the latest <a href="https://support.microsoft.com/en-us/windows/update-windows-3c5ae7fc-9fb6-9af1-1984-b5e0412c556a" target="_blank">Windows Update</a>.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="7" /> Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your device if it is on the list.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="12" /> <a href="https://support.microsoft.com/en-us/windows/fix-sound-or-audio-problems-in-windows-73025246-b61c-40fb-671a-2535c7cd56c8" target="_blank">Fix sound or audio problems in Windows</a>.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="13" />Ensure the systems onboard audio playback device (e.g., Realtek High-Definition Audio) is set as default.</p>
+	
+		<p><img alt="audio playback" src="https://dl.razerzone.com/src/opa/brd/brd-audio-en-v1.png" style="width: 400px;" /></p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="14" /> <strong>Rule out software issues.</strong> Close all audio enhancing software including Razer Synapse, Razer 7.1 Surround Sound, THX Spatial Audio and check if the issue persists.</p>
+	
+		<p><img alt="software issues" src="https://dl.razerzone.com/src/opa/brd/brd-synapse-en-v1.png" /></p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="8" /> If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">reinstall your device drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse. Restart your computer then test your device.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="15" /> Test your device with a different PC.</p>
+		</li>
+	</ul>
+	</div>
+	<!-- Connection Issues bluetooth -->
+	
+	<div class="ts-sub-item d-none" id="bluetooth">
+	<h3><strong>Solutions</strong></h3>
+	
+	<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
+	
+	<ul class="list-unstyled list-solutions">
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="16" />Make sure your phone is compatible with your device.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="17" />Clean the attached silicone tips with a soft cloth lightly saturated with warm water.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="18" /> <strong>Power is important.</strong> The device must be fully charged and turned on. Check your <a href="https://support.razer.com/pc/content-creation" target="_blank">product user guide</a> for best practices.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="19" />Update your device to the latest firmware via the Razer Audio app for <a href="https://apps.apple.com/us/app/razer-audio/id1525531841" target="_blank">iOS</a> or <a href="https://play.google.com/store/apps/details?id=com.razer.audiocompanion&amp;hl=en_US&amp;gl=US" target="_blank">Android</a>.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="20" />Remove and re-pair the Bluetooth device to your phone.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="21" />Test your device with a different Phone/console.</p>
+		</li>
+	</ul>
+	</div>
+	
+	<div class="contact-supp">
+	<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">picture/video</a> of the issue. Please have this before you contact our support team.</p>
+	
+	<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+	</div>
+	</div>
+	</div>
+	
+	<div class="ts-section d-none mb-5" id="audio-mic-issue">
+	<h2 class="mb-4">Audio &amp; Mic Issues</h2>
+	
+	<p>Please select one or more symptoms your device is experiencing:</p>
+	
+	<h3><strong>Symptom(s):</strong></h3>
+	
+	<div class="row">
+	<div class="col-sm">
+	<ul class="list-unstyled list-symptoms">
+		<li>
+		<p><input id="tab-2-sym1" name="case_symptoms[]" type="checkbox" value="5" /> <label for="tab-2-sym1">Audio distortion</label></p>
+		</li>
+		<li>
+		<p><input id="tab-2-sym2" name="case_symptoms[]" type="checkbox" value="6" /> <label for="tab-2-sym2">Muffled</label></p>
+		</li>
+		<li>
+		<p><input id="tab-2-sym3" name="case_symptoms[]" type="checkbox" value="7" /> <label for="tab-2-sym3">Not picking up sound</label></p>
+		</li>
+	</ul>
+	</div>
+	
+	<div class="col-sm">
+	<ul class="list-unstyled list-symptoms">
+		<li>
+		<p><input id="tab-2-sym4" name="case_symptoms[]" type="checkbox" value="8" /> <label for="tab-2-sym4">Too sensitive</label></p>
+		</li>
+		<li>
+		<p><input id="tab-2-sym5" name="case_symptoms[]" type="checkbox" value="18" /> <label for="tab-2-sym5">Other issues not listed</label></p>
+		</li>
+	</ul>
+	</div>
+	</div>
+	
+	<div class="ts-content d-none">
+	<h3><strong>How are you connected?</strong></h3>
+	<!-- Audio Mic Connections -->
+	
+	<fieldset>
+	<div class="row mb-2">
+	<div class="col-sm"><input id="tab-2-usb" name="case_connection" type="radio" value="0" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-usb" onclick="showSubItem('audio-mic-sol')" tabindex="0">USB<br />
+	Cable</label></div>
+	
+	<div class="col-sm"><input id="tab-2-jack" name="case_connection" type="radio" value="1" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-jack" onclick="showSubItem('audio-mic-sol')" tabindex="0">3.5mm Audio<br />
+	Cable</label></div>
+	
+	<div class="col-sm"><input id="tab-2-bluetooth" name="case_connection" type="radio" value="2" /> <label class="rz_Btn btn-outline-primary gtm_insider2" for="tab-2-bluetooth" onclick="showSubItem('audio-mic-sol')" tabindex="0">Bluetooth via<br />
+	Phone/Console</label></div>
+	</div>
+	</fieldset>
+	<!-- Audio Mic Solutions -->
+	
+	<div class="ts-sub-item d-none" id="audio-mic-sol">
+	<h3><strong>Solutions</strong></h3>
+	
+	<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
+	
+	<ul class="list-unstyled list-solutions">
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="22" /> <a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">Clean the device</a>.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="23" /> Do not place the microphone directly in front of your mouth.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="24" /> Position the microphone off to the side so that the air from your mouth does not directly hit the microphone when you speak.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="25" /> Ensure that there are no fans or air-conditioning units blowing directly onto your microphone.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="26" /> Check device <a href="https://support.razer.com/pc/content-creation" target="_blank">product user guide</a> to configure device accordingly.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="27" /> Open/download video streaming apps (<a href="https://obsproject.com/" target="_blank">OBS</a> or <a href="https://www.xsplit.com/" target="_blank">XSplit</a>) and make necessary adjustments based on desired output.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="3" /> Get the latest <a href="https://support.microsoft.com/en-us/windows/update-windows-3c5ae7fc-9fb6-9af1-1984-b5e0412c556a" target="_blank">Windows Update</a>.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="5" /> <a href="https://support.microsoft.com/en-us/windows/fix-microphone-problems-5f230348-106d-bfa4-1db5-336f35576011#WindowsVersion=Windows_10" target="_blank">Make sure your apps can access the mic</a>.</p>
+	
+		<p><img alt="micropohone" src="https://dl.razerzone.com/src/opa/brd/brd-mic-en-v1.png" style="width: 500px;" /></p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="7" /> Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your device if it is on the list.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="8" /> <strong>Rule out software issues.</strong> Close all Razer device related software including Razer Synapse.</p>
+	
+		<p><img alt="closed synapse" src="https://dl.razerzone.com/src/opa/brd/brd-synapse-en-v1.png" /></p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="9" /> If closing Razer Synapse fixed the issue, <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">reinstall your device drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse. Restart your computer then test your device.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="28" /> Test your device with a PC.</p>
+		</li>
+	</ul>
+	</div>
+	
+	<div class="contact-supp">
+	<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">picture/video</a> of the issue. Please have this before you contact our support team.</p>
+	
+	<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+	</div>
+	</div>
+	</div>
+	
+	<div class="ts-section d-none mb-5" id="video-issue">
+	<h2 class="mb-4">Video Issues</h2>
+	
+	<p>Please select one or more symptoms your device is experiencing:</p>
+	
+	<h3><strong>Symptom(s):</strong></h3>
+	
+	<div class="row">
+	<div class="col-sm">
+	<ul class="list-unstyled list-symptoms">
+		<li>
+		<p><input id="tab-3-sym1" name="case_symptoms[]" type="checkbox" value="9" /><label for="tab-3-sym1">Autofocus is slow</label></p>
+		</li>
+		<li>
+		<p><input id="tab-3-sym2" name="case_symptoms[]" type="checkbox" value="10" /><label for="tab-3-sym2">Cannot Focus</label></p>
+		</li>
+		<li>
+		<p><input id="tab-3-sym3" name="case_symptoms[]" type="checkbox" value="11" /><label for="tab-3-sym3">Distorted</label></p>
+		</li>
+		<li>
+		<p><input id="tab-3-sym4" name="case_symptoms[]" type="checkbox" value="12" /><label for="tab-3-sym4">Flickering</label></p>
+		</li>
+	</ul>
+	</div>
+	
+	<div class="col-sm">
+	<ul class="list-unstyled list-symptoms">
+		<li>
+		<p><input id="tab-3-sym5" name="case_symptoms[]" type="checkbox" value="13" /><label for="tab-3-sym5">Lags/Freezes</label></p>
+		</li>
+		<li>
+		<p><input id="tab-3-sym6" name="case_symptoms[]" type="checkbox" value="14" /><label for="tab-3-sym6">No image</label></p>
+		</li>
+		<li>
+		<p><input id="tab-3-sym7" name="case_symptoms[]" type="checkbox" value="18" /> <label for="tab-3-sym7">Other issues not listed</label></p>
+		</li>
+	</ul>
+	</div>
+	</div>
+	
+	<div class="ts-content d-none">
+	<h3><strong>Solutions</strong></h3>
+	
+	<p><span style="font-style:italic;color:red;">Important:</span> You must <strong><u>attempt and check at least four (4) solutions</u></strong> below to contact us for support.</p>
+	
+	<ul class="list-unstyled list-solutions">
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="29" /> <a href="https://mysupport.razer.com/app/answers/detail/a_id/845" target="_blank">Clean the device</a>.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="30" /> Remove other peripherals not needed during troubleshooting except for the primary keyboard and mouse.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="31" /> Unplug and re-plug the device and connect it directly to a PC’s USB port and not a USB Hub.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="32" /> Connect it to a different USB Port.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="3" /> Get the latest <a href="https://support.microsoft.com/en-us/windows/update-windows-3c5ae7fc-9fb6-9af1-1984-b5e0412c556a" target="_blank">Windows Update</a>.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="7" /> Update the <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a> of your device if it is on the list.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="4" /> <a href="ms-settings:privacy-webcam?activationSource=SMC-Article-13753" target="_blank">Allow camera access</a> on your window settings.</p>
+	
+		<p><img alt="allow camera access" src="https://dl.razerzone.com/src/opa/brd/brd-camera-en-v1.png" style="width: 500px;" /></p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="26" /> Check device <a href="https://support.razer.com/pc/content-creation" target="_blank">product user guide</a> to configure device accordingly.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="27" /> Open/download video streaming apps (<a href="https://obsproject.com/" target="_blank">OBS</a> or <a href="https://www.xsplit.com/" target="_blank">XSplit</a>) and make necessary adjustments based on desired output.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="33" /> Open your video streaming app (<a href="https://obsproject.com/" target="_blank">OBS</a> or <a href="https://www.xsplit.com/" target="_blank">XSplit</a>) and configure camera settings:</p>
+	
+		<ul>
+			<li>Double click “Video Capture Device".</li>
+			<li>Click “Configure Video".</li>
+			<li>Go to the “Camera Control" tab.</li>
+			<li>Untick “Auto" for “Focus".</li>
+			<li>Adjust the slider accordingly.</li>
+		</ul>
+	
+		<p><img alt="video stream" src="https://dl.razerzone.com/src/opa/brd/brd-video-strm-en-v1.png" style="width: 500px;" /></p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="34" /> Adjust Advance Camera settings in Synapse.</p>
+	
+		<ul>
+			<li>Launch Razer Synapse &gt; Click on "BROADCASTER" &gt; Click on "ADVANCED SETTINGS".<br />
+			<img alt="advance camera access" src="https://dl.razerzone.com/src/opa/brd/brd-adv-camera-en-v1.png" style="width: 500px;" /></li>
+			<li>Choose a "PowerLine Frequency (Anti-Flicker)" setting that matches the lighting or powerline frequency.<br />
+			<img alt="anti flicker" src="https://dl.razerzone.com/src/opa/brd/brd-anti-flicker-en-v1.png" style="width: 500px;" /></li>
+			<li>Click "Ok".</li>
+		</ul>
+	
+		<p>&nbsp;</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="8" /> <strong>Rule out software issues.</strong> Close all Razer device related software including Razer Synapse.</p>
+	
+		<p><img alt="close synapse" src="https://dl.razerzone.com/src/opa/brd/brd-synapse-en-v1.png" /></p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="35" /> If closing Razer Synapse fixed the issue, <a href="https://support.microsoft.com/en-us/windows/update-drivers-manually-in-windows-ec62f46c-ff14-c91d-eead-d7126dc1f7b6" target="_blank">reinstall your device drivers</a>, and perform a <a href="https://mysupport.razer.com/app/answers/detail/a_id/1708" target="_blank">clean reinstall</a> of Razer Synapse. Restart your computer then test your device.</p>
+		</li>
+		<li>
+		<p><input name="case_solutions[]" type="checkbox" value="36" /> Test your device using a different a PC.</p>
+		</li>
+	</ul>
+	
+	<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">picture/video</a> of the issue. Please have this before you contact our support team.</p>
+	
+	<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+	</div>
+	</div>
+	
+	<div class="ts-section d-none mb-5" id="nq-issues">
+	<h2 class="mb-4">Non-quality Issues</h2>
+	
+	<p>Please select one or more symptoms your device is experiencing:</p>
+	
+	<h3><strong>Symptom(s):</strong></h3>
+	
+	<div class="row">
+	<div class="col-sm">
+	<ul class="list-unstyled list-symptoms">
+		<li>
+		<p><input id="tab-4-sym1" name="case_symptoms[]" type="checkbox" value="15" /><label for="tab-4-sym1">Firmware update request</label></p>
+		</li>
+		<li>
+		<p><input id="tab-4-sym2" name="case_symptoms[]" type="checkbox" value="16" /><label for="tab-4-sym2">General information</label></p>
+		</li>
+		<li>
+		<p><input id="tab-4-sym3" name="case_symptoms[]" type="checkbox" value="17" /><label for="tab-4-sym3">Incompatibility</label></p>
+		</li>
+		<li>
+		<p><input id="tab-4-sym4" name="case_symptoms[]" type="checkbox" value="18" /><label for="tab-4-sym4">Other issues not listed</label></p>
+		</li>
+	</ul>
+	</div>
+	</div>
+	
+	<div class="ts-content d-none">
+	<h3><strong>Solutions</strong></h3>
+	
+	<ol>
+		<li>
+		<p>Check <a href="https://support.razer.com/pc/content-creation" target="_blank">product user guide</a> to see device compatibility, specifications, and best practices.</p>
+		</li>
+		<li>
+		<p><a href="https://support.microsoft.com/en-us/windows/update-windows-3c5ae7fc-9fb6-9af1-1984-b5e0412c556a" target="_blank">Windows update</a>.</p>
+		</li>
+		<li>
+		<p>Update device <a href="https://mysupport.razer.com/app/answers/detail/a_id/4166" target="_blank">firmware</a>.</p>
+		</li>
+	</ol>
+	
+	<p class="my-4"><button class="contact_support_Btn rz_Btn disabled btn-outline-primary gtm_insider2 m-md-0 m-auto" disabled="disabled" type="submit">Contact Support</button></p>
+	</div>
+	</div>
+	
+	<div class="ts-section d-none mb-5" id="general-inquiry">
+	<h2 class="mb-4">General Inquiry</h2>
+	
+	<p><strong>Note:</strong> We may need a <a href="https://mysupport.razer.com/app/answers/detail/a_id/4011" target="_blank">picture/video</a> of the issue. Please have this before you contact our support team.</p>
+	
+	<p class="my-4"><button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">Contact Support</button></p>
+	</div>
+	</form>
+	<script>
+	// Shows the target section and scrolls down to it on mobile view
+	function showSection(target) {
+		document.querySelectorAll(".ts-section, .ts-content, .ts-sub-item, .contact-supp").forEach(elem => elem.classList.add("d-none"));
+		document.querySelectorAll(".contact_support_Btn").forEach(function (elem) {
+			elem.classList.add("disabled");
+			elem.setAttribute("disabled", true);
+		});
+		document.getElementById("support-map").reset();
+		document.getElementById(target).classList.remove("d-none");
+		if (window.innerWidth < 576) {
+			$("html, body").animate({
+				scrollTop: 820
+			}, "slow");
+		}
+		// Bypasses the required count of solutions taken
+		if (target == "general-inquiry" || target == "nq-issues") {
+			let contactBtn = document.querySelectorAll(".contact_support_Btn");
+			contactBtn[contactBtn.length - 1].classList.remove("disabled");
+			contactBtn[contactBtn.length - 1].removeAttribute("disabled");
+			contactBtn[contactBtn.length - 2].classList.remove("disabled");
+			contactBtn[contactBtn.length - 2].removeAttribute("disabled");
+		}
+		return false;
+	}
+	
+	// Shows the target sub-section
+	function showSubItem(target) {
+		document.querySelectorAll(".ts-sub-item").forEach(elem => elem.classList.add("d-none"));
+		document.querySelectorAll(".list-solutions input").forEach(elem => elem.checked = false);
+		document.querySelectorAll(".contact-supp").forEach(elem => elem.classList.remove("d-none"));
+		document.querySelectorAll(".contact_support_Btn").forEach(function (elem) {
+			elem.classList.add("disabled");
+			elem.setAttribute("disabled", true);
+		});
+		document.getElementById(target).classList.remove("d-none");
+		return false;
+	}
+	
+	// Checks if at least the required count of solutions have been taken
+	function checkStepsTaken(section, reqCount) {
+		let symList = document.querySelectorAll("#" + section + " .list-symptoms input"),
+			tsContent = document.querySelector("#" + section + " .ts-content"),
+			solList = document.querySelectorAll("#" + section + " .list-solutions input"),
+			contactBtn = document.querySelectorAll("#" + section + " .contact_support_Btn");
+		symList.forEach(elem => elem.addEventListener("change", function () {
+			let inCount = 0;
+			for (let i = 0; i < symList.length; i++) {
+				symList[i].checked ? inCount++ : inCount;
+			}
+			inCount > 0 ? tsContent.classList.remove("d-none") : tsContent.classList.add("d-none");
+		}));
+		solList.forEach(elem => elem.addEventListener("change", function () {
+			let inCount = 0;
+			for (let i = 0; i < solList.length; i++) {
+				solList[i].checked ? inCount++ : inCount;
+			}
+			// console.log(inCount);
+			if (inCount >= reqCount) {
+				contactBtn.forEach(elem => elem.classList.remove("disabled"));
+				contactBtn.forEach(elem => elem.removeAttribute("disabled"));
+			} else {
+				contactBtn.forEach(elem => elem.classList.add("disabled"));
+				contactBtn.forEach(elem => elem.setAttribute("disabled", true));
+			};
+		}));
+	}
+	
+	// Stores the checked field values in localStorage
+	function setCaseInfo() {
+		localStorage.setItem("case_category", document.getElementsByName("case_category")[0].value);
+		localStorage.setItem("case_reason", getValues("case_reason"));
+		localStorage.setItem("case_symptoms", getValues("case_symptoms[]", true));
+		localStorage.setItem("case_connection", getValues("case_connection"));
+		localStorage.setItem("case_solutions", getValues("case_solutions[]", true));
+	}
+	
+	function getValues(key, multiple = false) {
+		let data = document.getElementsByName(key),
+			value = 'unspecified',
+			valArr = [];
+		if (data.length > 0) {
+			for (let i = 0; i < data.length; i++) {
+				if (data[i].checked) {
+					multiple ? valArr.push(data[i].value) : value = data[i].value;
+				}
+			}
+		}
+		if (multiple) {
+			return JSON.stringify(valArr);
+		}
+		return value;
+	}
+	
+	document.addEventListener("DOMContentLoaded", function () {
+		// Inserts additional actions upon form submission
+		document.getElementById("support-map").addEventListener("submit", function (e) {
+			//e.preventDefault();
+			setCaseInfo();
+		});
+		// Initializes the required steps per section before enabling the contact support button
+		checkStepsTaken("connection-issue", 4);
+		checkStepsTaken("audio-mic-issue", 4);
+		checkStepsTaken("video-issue", 4);
+		checkStepsTaken("nq-issues", 0);
+		
+		// This is a drop-in functionality that does the necessary processing related to the Project Opera pages
+		const paramsValue = getUrlSegment(6);
+		const sigValue = getUrlSegment(8);
+	
+		const buttons = document.querySelectorAll('.contact_support_Btn');
+		buttons.forEach(button => {
+			button.addEventListener('click', function (event) {
+				event.preventDefault();
+				setCaseInfo();	// Stores the troubleshooting page selection to the local storage for a contact page script to compile and pass those values to ODA
+	
+				window.location.href = "/app/contact-support/params/" + paramsValue + "/sig/" + sigValue;
+			});
+		});
+	});
+	
+	function getUrlSegment(index) {
+		const url = window.location.pathname;
+		const segments = url.split('/').filter(segment => segment !== '');
+	
+		if (index >= 0 && index < segments.length) {
+			return segments[index];
+		} else {
+			return null;
+		}
+	}
+
+	const labels = document.querySelectorAll('label[for]');
+	labels.forEach(label => {
+		label.addEventListener('keydown', function(event) {
+			if (event.code === 'Space' || event.key === 'Enter') {
+				event.preventDefault();
+				let forAttr = label.getAttribute('for');
+				let inputElement = document.getElementById(forAttr);
+				if (inputElement) {
+					label.click();
+					inputElement.click();
+				}
+			}
+		});
+	});
+	
+</script></div>
+	
