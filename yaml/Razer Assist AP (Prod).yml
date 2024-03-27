@@ -305,6 +305,9 @@ states:
         AetherLightStripPair: aetherLightStripPair
         AetherLightStripReset: aetherLightStripReset
         GamerRoomSmartHomeLink: gamerRoomSmartHomeLink
+        GamerRoomAetherSeriesSetup: gamerRoomAetherSeriesSetup
+        GamerRoomAppInvites: gamerRoomAppInvites
+        GamerRoomRoutinesSetup: gamerRoomRoutinesSetup
 
         #------ Mouse-related Intents -------#
         MouseSupport: mousePath
@@ -7298,6 +7301,30 @@ states:
     component: System.Output
     properties:
       text: "${rb.gamerRoomSmartHomeLink}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  gamerRoomAetherSeriesSetup:
+    component: System.Output
+    properties:
+      text: "${rb.gamerRoomAetherSeriesSetup}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+      
+  gamerRoomAppInvites:
+    component: System.Output
+    properties:
+      text: "${rb.gamerRoomAppInvites}"
+      keepTurn: true
+    transitions:
+      next: quickAnswerTS1
+
+  gamerRoomRoutinesSetup:
+    component: System.Output
+    properties:
+      text: "${rb.gamerRoomRoutinesSetup}"
       keepTurn: true
     transitions:
       next: quickAnswerTS1
