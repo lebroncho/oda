@@ -463,7 +463,11 @@
 				event.preventDefault();
 				setCaseInfo();	// Stores the troubleshooting page selection to the local storage for a contact page script to compile and pass those values to ODA
 
-				window.location.href = "/app/contact-support/params/" + paramsValue + "/sig/" + sigValue;
+				// window.location.href = "/app/contact-support/params/" + paramsValue + "/sig/" + sigValue;
+
+				// Fires an event towards the warranty selection content widget to start redirection towards contact support page.
+				var eventObject = new RightNow.Event.EventObject(this, { data: { } });
+				RightNow.Event.fire("evt_OrderSupportRedirect", eventObject);
 			});
 		});
 	});
@@ -479,6 +483,7 @@
 		}
 	}
 
+	// Additional keydown event listener for keyboard-only navigation
 	const labels = document.querySelectorAll('label[for]');
 	labels.forEach(label => {
 		label.addEventListener('keydown', function (event) {
