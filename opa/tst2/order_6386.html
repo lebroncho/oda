@@ -168,11 +168,13 @@
 			<input id="delivery-tab-1" name="case_region" type="radio" value="0" /> 
 			<label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3" for="delivery-tab-1"
 			onclick="showSubItem('delivery-set', 'track-delivery')" tabindex="0">
-				TRACK YOUR PACKAGE
+				TRACK YOUR <br>
+				PACKAGE
 			</label> <input id="delivery-tab-2" name="case_region" type="radio" value="1" /> 
 			<label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto" for="delivery-tab-2"
 			onclick="showSubItem('delivery-set', 'track-delivery')" tabindex="0">
-				LATE DELIVERIES
+				LATE <br>
+				DELIVERIES
 			</label>
 		</div>
 
@@ -183,10 +185,12 @@
 				<p class="my-4">
 					<a class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3"
 					href="https://www.razer.com/my-account/orders" target="_blank">
-						Sign in with Razer ID
+						Sign in with <br>
+						Razer ID
 					</a> <a class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto"
 					href="https://mysupport.razer.com/app/contact-support" target="_blank">
-						Sign in as Guest
+						Sign in as <br>
+						Guest
 					</a>
 				</p>
 
@@ -269,7 +273,7 @@
 
 				<ul class="list-unstyled list-solutions mb-3">
 					<li>
-						<p><input id="req-action-1" name="case_solutions[]" type="checkbox" value="1" /><label
+						<p><input id="req-action-1" type="checkbox" value="1" /><label
 								for="req-action-1">I have reviewed the <a
 									href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return
 									policy</a>.</label></p>
@@ -282,55 +286,41 @@
 			</div>
 
 			<div class="ts-sub-item d-none" id="region-navbar">
-				<ul class="list-unstyled list-solutions mb-3">
-					<li>
-						<p><input id="req-action-2" type="checkbox" onclick="showSubItem('warranty-section', 'warranty-validity')" /><label
-								for="req-action-2">I have reviewed the <a
-									href="https://www.razer.com/legal/returns-refunds" target="_blank">refund/return
-									policy</a>.</label></p>
-					</li>
-				</ul>
+				<p>Did you receive the product more than 14 days ago?</p>
 
-				<div class="warranty-section d-none">
-					<div class="ts-sub-item d-none" id="warranty-validity">
-						<p>Did you receive the product more than 14 days ago?</p>
-
-						<div class="mt-4">
-							<input id="warranty-tab-1" name="case_warranty" type="radio" value="1" /> 
-							<label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3" 
-							for="warranty-tab-1" onclick="showSubItem('warranty-set', 'out-of-warranty')" tabindex="0">
-								Yes
-							</label> 
-							
-							<input id="warranty-tab-2" name="case_warranty" type="radio" value="0" /> 
-							<label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto"
-							for="warranty-tab-2" onclick="showSubItem('warranty-set', 'in-warranty')" tabindex="0">
-								No
-							</label>
-						</div>
-
-						<div class="warranty-set d-none">
-							<div class="ts-sub-item d-none" id="out-of-warranty">
-								<p>Please make sure to review our <a href="https://www.razer.com/legal/returns-refunds"
-										target="_blank">refund/return policy</a> and have your order number to initiate your
-									return/refund.</p>
-
-								<p class="my-4">
-									<a class="rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" href="https://returns.narvar.com/razer/returns" target="_blank">Start My Return</a>
-								</p>
-							</div>
-
-							<div class="ts-sub-item d-none" id="in-warranty">
-								<p class="my-4">
-									<button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">
-										Contact Support
-									</button>
-								</p>
-							</div>
-						</div>
-					</div>
+				<div class="mt-4">
+					<input id="warranty-tab-1" name="case_warranty" type="radio" value="1" /> 
+					<label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3" 
+					for="warranty-tab-1" onclick="showSubItem('warranty-set', 'out-of-warranty')" tabindex="0">
+						Yes
+					</label> 
+					
+					<input id="warranty-tab-2" name="case_warranty" type="radio" value="0" /> 
+					<label class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto"
+					for="warranty-tab-2" onclick="showSubItem('warranty-set', 'in-warranty')" tabindex="0">
+						No
+					</label>
 				</div>
 
+				<div class="warranty-set d-none">
+					<div class="ts-sub-item d-none" id="out-of-warranty">
+						<p>Please make sure to review our <a href="https://www.razer.com/legal/returns-refunds"
+								target="_blank">refund/return policy</a> and have your order number to initiate your
+							return/refund.</p>
+
+						<p class="my-4">
+							<a class="rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" href="https://returns.narvar.com/razer/returns" target="_blank">Start My Return</a>
+						</p>
+					</div>
+
+					<div class="ts-sub-item d-none" id="in-warranty">
+						<p class="my-4">
+							<button class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 m-md-0 m-auto" type="submit">
+								Contact Support
+							</button>
+						</p>
+					</div>
+				</div>
 				
 			</div>
 		</div>
@@ -367,11 +357,10 @@
 		//            }, "slow");
 		//        }
 		// Bypasses the required count of solutions taken
-		if (target == "missing-package" || target == "missing-item" || target == "order-cancel" || target == "refund-status") {
-			let contactBtn = document.querySelectorAll(".contact_support_Btn");
-			contactBtn[contactBtn.length - 1].classList.remove("disabled");
-			contactBtn[contactBtn.length - 1].removeAttribute("disabled");
-		}
+		contactBtn = document.querySelector("#" + target + " .contact_support_Btn");
+		contactBtn.classList.remove("disabled");
+		contactBtn.removeAttribute("disabled");
+
 		return false;
 	}
 
@@ -387,6 +376,13 @@
 		});
 		document.querySelector("." + parent).classList.remove("d-none");
 		document.getElementById(target).classList.remove("d-none");
+
+		if (target == "in-warranty") {
+			contactBtn = document.querySelector("#" + target + " .contact_support_Btn");
+			contactBtn.classList.remove("disabled");
+			contactBtn.removeAttribute("disabled");
+		}
+
 		return false;
 	}
 
@@ -497,6 +493,11 @@
 				}
 			}
 		});
+	});
+
+	$( "#req-action-2" ).click(function() {
+		// This is what gets executed onClick
+		$( "#req-action-2" ).prop("checked", true);
 	});
 
 </script>
