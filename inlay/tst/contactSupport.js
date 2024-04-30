@@ -249,25 +249,25 @@ $(document).ready(function () {
     };
 
     const localesForm = {
-        "at":'https://razer-du--tst2.custhelp.com',
-        "cn": 'https://razer-chtr--tst2.custhelp.com',
-        "de": 'https://razer-du--tst2.custhelp.com',
-        "es": 'https://razer-sp--tst2.custhelp.com',
-        "fr": 'https://razer-fr--tst2.custhelp.com',
-        "hk": 'https://razer-chtra--tst2.custhelp.com',
-        "it": 'https://razer-it--tst2.custhelp.com',
-        "jp": 'https://razer-jp--tst2.custhelp.com',
-        "kr": 'https://razer-ko--tst2.custhelp.com',
-        "be": 'https://razer-du--tst2.custhelp.com',
-        "nl": 'https://razer-du--tst2.custhelp.com',
-        "pl": 'https://razer-po--tst2.custhelp.com',
-        "pt": 'https://razer-pt--tst2.custhelp.com',
-        "tw": 'https://razer-chtra--tst2.custhelp.com',
+        "at":'https://mysupport-du.razer.com',
+        "cn": 'https://mysupport-chsi.razer.com/',
+        "de": 'https://mysupport-du.razer.com',
+        "es": 'https://mysupport-sp.razer.com',
+        "fr": 'https://mysupport-fr.razer.com',
+        "hk": 'https://mysupport-chtr.razer.com',
+        "it": 'https://mysupport-it.razer.com',
+        "jp": 'https://mysupport-jp.razer.com',
+        "kr": 'https://mysupport-ko.razer.com',
+        "be": 'https://mysupport-du.razer.com',
+        "nl": 'https://mysupport-du.razer.com',
+        "pl": 'https://mysupport-po.razer.com',
+        "pt": 'https://mysupport-pt.razer.com',
+        "tw": 'https://mysupport-chtr.razer.com',
     };
 
     $("#email-us").click(function (e) {
         const searchParams = new URL(window.location).searchParams;
-        let formAction = `https://razer--tst2.custhelp.com/${searchParams.toString().length > 0? '?'+searchParams.toString(): ''}`;
+        let formAction = `https://mysupport.razer.com/${searchParams.toString().length > 0? '?'+searchParams.toString(): ''}`;
         if (localesForm.hasOwnProperty(Cookies.get("country"))) {
             formAction = localesForm[Cookies.get("country")];
         }
@@ -276,7 +276,7 @@ $(document).ready(function () {
         form.style.visibility = "hidden";
         form.method = "POST";
         form.action = formAction;
-        if(Cookies.get('region') !=== 'me') {
+        if(Cookies.get('region') !== 'me') {
             form.target = "_blank";
         }
 
