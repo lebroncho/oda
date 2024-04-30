@@ -111,17 +111,13 @@ function getSubject() {
         case 'razer_orders':
             let data = getStoredData('case_reason');
             
-            if (data == '1') {
-                subject = 'my package is missing';
-            } else if (data == '2') {
-                subject = 'my item is missing';
-            } else if (data == '3') {
+            if (data == '3' || data == '4' || data == '5') {
+                subject = 'lRos9 ~' + data;
+            } else if (data == '1') {
                 subject = 'cancel or change my order';
-            } else if (data == '4') {
+            } else if (data == '2') {
                 // subject = 'return my order';
-                subject = 'lRos9 ~' + data + '|' + getStoredData('case_region') + '|' + getStoredData('case_warranty') + '~';
-            } else if (data == '5') {
-                subject = 'ask for refund';
+                subject = 'lRos9 ~2|' + getStoredData('case_region') + '|' + getStoredData('case_warranty') + '~';
             } else {
                 subject = 'Order Support';
             }
