@@ -112,12 +112,13 @@ function getSubject() {
             let data = getStoredData('case_reason');
             
             if (data == '3' || data == '4' || data == '5') {
-                subject = 'lRos9 ~' + data;
-            } else if (data == '1') {
-                subject = 'cancel or change my order';
+                subject = 'lRos9 ~' + data + '~';
             } else if (data == '2') {
-                // subject = 'return my order';
-                subject = 'lRos9 ~2|' + getStoredData('case_region') + '|' + getStoredData('case_warranty') + '~';
+                subject = 'cancel or change my order';
+            } else if (data == '0') {
+                subject = 'lRos9 ~' + data + '|' + getStoredData('case_region') + '~';
+            } else if (data == '1') {
+                subject = 'lRos9 ~' + data + '|' + getStoredData('case_region') + '|' + getStoredData('case_warranty') + '~';
             } else {
                 subject = 'Order Support';
             }

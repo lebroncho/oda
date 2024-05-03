@@ -121,12 +121,12 @@
 				onclick="showSection('missing-item')" tabindex="0"> Missing<br />
 				Item </label></div>
 
-		<div class="col-sm-3"><input id="main-tab-4" name="case_reason" type="radio" value="1" /> <label
+		<div class="col-sm-3"><input id="main-tab-4" name="case_reason" type="radio" value="2" /> <label
 				class="rz_Btn btn-outline-primary gtm_insider2 btn-block" for="main-tab-4"
 				onclick="showSection('order-cancel')" tabindex="0"> Cancel<br />
 				my Order </label></div>
 
-		<div class="col-sm-3"><input id="main-tab-6" name="case_reason" type="radio" value="2" /> <label
+		<div class="col-sm-3"><input id="main-tab-6" name="case_reason" type="radio" value="1" /> <label
 				class="rz_Btn btn-outline-primary gtm_insider2 btn-block" for="main-tab-6"
 				onclick="showSection('order-return')" tabindex="0"> Return<br />
 				my Purchase </label></div>
@@ -160,16 +160,15 @@
 		<div class="delivery-set d-none">
 			<div class="ts-sub-item d-none" id="track-delivery">
 				<p class="my-4">
-					How did you place your order? <br>
+					Want to view your order status? <br>
 					<a class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-3 mr-3"
-						href="https://www.razer.com/my-account/orders" style="text-decoration: none !important;">
+						href="https://www.razer.com/my-account" style="text-decoration: none !important;">
 						Sign in with<br />
 						Razer ID 
 					</a> 
-					<a class="rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto"
-						href="https://mysupport.razer.com/app/contact-support"
+					<a class="contact_support_Btn rz_Btn btn-outline-primary gtm_insider2 d-inline-block mb-4 m-xs-auto"
 						style="text-decoration: none !important;"> 
-						Sign in as<br />
+						Continue as<br />
 						Guest 
 					</a>
 				</p>
@@ -316,7 +315,7 @@
 		document.querySelector("." + parent).classList.remove("d-none");
 		document.getElementById(target).classList.remove("d-none");
 
-		if (target == "in-warranty") {
+		if (target == "in-warranty" || target == "track-delivery") {
 			let contactBtn = document.querySelectorAll("#" + target + " .contact_support_Btn");
 			contactBtn.forEach(elem => {
 				elem.classList.remove("disabled");
