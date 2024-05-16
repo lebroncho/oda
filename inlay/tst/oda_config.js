@@ -115,8 +115,6 @@ function getSubject() {
                 subject = 'lRos9 ~' + data + '~';
             } else if (data == '2') {
                 subject = 'cancel or change my order';
-            } else if (data == '0') {
-                subject = 'lRos9 ~' + data + '|' + getStoredData('case_region') + '~';
             } else if (data == '1') {
                 subject = 'lRos9 ~' + data + '|' + getStoredData('case_region') + '|' + getStoredData('case_warranty') + '~';
             } else {
